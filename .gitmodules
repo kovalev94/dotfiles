@@ -1,0 +1,3 @@
+[submodule "modules/my-modules/hosts/mts"]
+	path = modules/my-modules/hosts/mts
+	url = git@gitlab.mtu.ru:vpkoval4/hosts.git
