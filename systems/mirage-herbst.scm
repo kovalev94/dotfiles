@@ -142,10 +142,10 @@
                 hosts-service-type
                 (append
                  other-hosts
-                 kamchatka-hosts
                  spd:msk-servers
+                 (add-domain kamchatka-hosts "kam")
                  (add-domain xring:routers-hosts "xring")
-                 xring:servers-hosts))
+                 (add-domain xring:servers-hosts "xring")))
 
 
      (set-xorg-configuration
