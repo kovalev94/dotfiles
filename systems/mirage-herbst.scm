@@ -144,8 +144,8 @@
                  other-hosts
                  spd:msk-servers
                  (add-domain kamchatka-hosts "kam")
-                 (add-domain xring:routers-hosts "xring")
-                 (add-domain xring:servers-hosts "xring")))
+                 (add-domain xring:routers-hosts "routers.xring")
+                 (add-domain xring:servers-hosts "servers.xring")))
 
 
      (set-xorg-configuration
