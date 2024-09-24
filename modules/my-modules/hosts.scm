@@ -5,13 +5,16 @@
 
 
 (define (add-domain hosts-list domain-name)
-  "Return new list of hosts with @var{aliases} field set to
-@var{canonical-name} + @var{domain-name} from @var{hosts-lists}"
+  "For each host in @var{hosts-list} - Append @var{domain-name} to @var{canonical-name}.
+Set old value of @var{canonical-name} to @var{aliases}.
+Data returned as new list,old data kept unmodified"
   (map
    (lambda (host)
        (if (host? host)
-           (set-field
+           (set-fields
             host
-            (host-aliases)
-            (list(string-append (host-canonical-name host) "." domain-name)))))
+            ((host-canonical-name)
+             (string-append (host-canonical-name host) "." domain-name))
+            ((host-aliases)
+             (list(host-canonical-name host))))))
    hosts-list))
