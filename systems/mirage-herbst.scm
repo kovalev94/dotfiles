@@ -14,9 +14,6 @@
              (nongnu system linux-initrd)
              (my-modules hosts)
              (my-modules hosts other)
-             (my-modules hosts mts kamchatka)
-             ((my-modules hosts mts spd)
-              #:prefix spd:)
              ((my-modules hosts mts xring)
               #:prefix xring:))
 
@@ -142,8 +139,6 @@
                 hosts-service-type
                 (append
                  other-hosts
-                 spd:msk-servers
-                 (add-domain kamchatka-hosts "kam")
                  (add-domain xring:routers-hosts "routers.xring")
                  (add-domain xring:servers-hosts "servers.xring")))
 
