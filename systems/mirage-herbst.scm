@@ -12,6 +12,8 @@
 (use-modules (gnu)
              (nongnu packages linux)
              (nongnu system linux-initrd)
+             ((my-modules packages)
+              #:prefix my:)
              (my-modules hosts)
              (my-modules hosts other)
              ((my-modules hosts mts xring)
@@ -78,48 +80,7 @@
 
 
   ;Globaly installed packages(e.g. for all users)
-  (packages
-   (append
-    (map specification->package
-         (list
-          ;;GUI toolkit
-          "herbstluftwm"
-          "polybar"
-          "dmenu"
-          "xrandr"
-          "xinput"
-          "xrdb"
-          "xdg-utils"
-          "picom"
-          "pavucontrol"
-          "feh"
-          "font-gnu-freefont"
-          ;;System utitilies
-          "htop"
-          "lvm2"
-          "bluez"
-          "spice-gtk"
-          "screen"
-          ;;Network utitilies
-          "tcpdump"
-          "nmap"
-          "iputils"
-          "curl"
-          "wireguard-tools"
-          ;;File utitilities
-          "vim"
-          "mc"
-          "unzip"
-          "git"
-          ;;Programming
-          "python"
-          ;;Terminal
-          "xterm"
-          ;;Web Browser
-          "firefox"
-          ;;VPN plugin, needed for NM
-          "vpnc"))
-    %base-packages))
+  (packages my:system-packages)
 
 
   (services
@@ -139,8 +100,8 @@
                 hosts-service-type
                 (append
                  other-hosts
-                 (add-domain xring:routers-hosts "routers.xring")
-                 (add-domain xring:servers-hosts "servers.xring")))
+                 (add-domain xring:routers-hosts "routers.xring.")
+                 (add-domain xring:servers-hosts "servers.xring.")))
 
 
      (set-xorg-configuration
