@@ -12,23 +12,13 @@
 (use-modules (gnu)
              (nongnu packages linux)
              (nongnu system linux-initrd)
-             ((my-modules packages)
-              #:prefix my:)
+             ((my-modules packages) #:prefix my:)
+             ((my-modules services) #:prefix my:)
+             ((my-modules keyboard) #:prefix my:)
              (my-modules hosts)
              (my-modules hosts other)
-             ((my-modules hosts mts xring)
-              #:prefix xring:))
+             ((my-modules hosts mts xring) #:prefix xring:))
 
-(use-service-modules
- desktop
- docker
- networking
- avahi
- ssh
- virtualization
- xorg
- dbus
- nix)
 
 (use-package-modules
  spice
@@ -42,28 +32,25 @@
   (kernel linux)
   ;Temporary(I hope) fix for screen redraw lags
   (kernel-arguments 
-    (append
-     (list "i915.enable_psr=0")
-     %default-kernel-arguments))
+   (append
+    (list "i915.enable_psr=0")
+    %default-kernel-arguments))
 
   (initrd microcode-initrd)
   (firmware (list linux-firmware sof-firmware))
   (locale "ru_RU.utf8")
   (timezone "Asia/Novosibirsk")
   ;keyboard-layout will use in several places in this config
-  (keyboard-layout
-   (keyboard-layout
-    "us,ru"
-    #:options '("grp:win_space_toggle")))
+  (keyboard-layout my:kb-layout)
 
   (bootloader
    (bootloader-configuration
     (bootloader grub-efi-bootloader)
     (targets '("/boot/efi"))
     (theme (grub-theme
-	    (inherit (grub-theme))
-	    (gfxmode '("1920x1080x32" "auto"))))
-    (keyboard-layout keyboard-layout)))
+            (inherit (grub-theme))
+            (gfxmode '("1920x1080x32" "auto"))))
+    (keyboard-layout my:kb-layout)))
 
   (host-name "mirage")
 
@@ -81,60 +68,8 @@
 
   ;Globaly installed packages(e.g. for all users)
   (packages my:system-packages)
-
-
-  (services
-   (append
-    (list
-     (service openssh-service-type)
-     (service nix-service-type)
-     (service docker-service-type)
-     (service containerd-service-type)
-     (service bluetooth-service-type)
-     (service libvirt-service-type
-              (libvirt-configuration
-               (unix-sock-group "libvirt")))
-     (service virtlog-service-type)
-     (simple-service 'spice-polkit polkit-service-type (list spice-gtk))
-     (simple-service 'add-extra-hosts
-                hosts-service-type
-                (append
-                 other-hosts
-                 (add-domain xring:routers-hosts "routers.xring.")
-                 (add-domain xring:servers-hosts "servers.xring.")))
-
-
-     (set-xorg-configuration
-      (xorg-configuration
-       (keyboard-layout keyboard-layout))))
-
-    (modify-services %desktop-services
-                     (delete avahi-service-type)
-                     (guix-service-type config =>
-                                        (guix-configuration
-                                         (inherit config)
-                                         (substitute-urls
-                                          (list
-                                           "https://bordeaux.guix.gnu.org"
-                                           "https://substitutes.nonguix.org"))
-                                         (authorized-keys
-                                          (append
-                                           (list
-                                            (local-file
-                                             "/home/kovalev/.config/guix/nonguix-signing-key.pub"))
-                                           %default-authorized-guix-keys))))
-                     (console-font-service-type ttys-font-config =>
-                                                (map (lambda (tty-font-pair)
-                                                       (cons (car tty-font-pair)
-                                                             (file-append
-                                                              font-terminus
-                                                              "/share/consolefonts/ter-132n")))
-                                                     ttys-font-config))
-                     (network-manager-service-type config =>
-                                                   (network-manager-configuration
-                                                    (inherit config)
-                                                    (vpn-plugins
-                                                     (list network-manager-vpnc)))))))
+  ;Installed and enabled services(like ssh-server,docker, etc.)
+  (services my:system-services)
 
 
   (setuid-programs
