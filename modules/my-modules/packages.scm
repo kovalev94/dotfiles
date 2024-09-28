@@ -18,6 +18,7 @@
    "nmap"
    "iputils"
    "curl"
+   "bind:utils"
    "wireguard-tools"
    "vpnc"))
 
@@ -47,7 +48,7 @@
 
 (define system-packages
   (append
-   (map specification->package
+   (map (compose list specification->package+output)
         (append
          system-utils
          network-utils
