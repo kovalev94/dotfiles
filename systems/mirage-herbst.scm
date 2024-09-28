@@ -10,13 +10,6 @@
              (my-modules hosts other)
              ((my-modules hosts mts xring) #:prefix xring:))
 
-(use-package-modules
- spice
- fonts
- gnome)
-
-(use-system-modules setuid)
-
 
 (operating-system
   (kernel linux)
@@ -48,12 +41,7 @@
   ;Installed and enabled services(like ssh-server,docker, etc.)
   (services my:system-services)
 
-  (setuid-programs
-   (append
-    (list
-     (setuid-program
-      (program (file-append spice-gtk "/libexec/spice-client-glib-usb-acl-helper"))))
-    %setuid-programs))
+  (setuid-programs my:setuid-programs)
 
   ;Required for LVM disks
   (mapped-devices my:lvm-mapped-devices)

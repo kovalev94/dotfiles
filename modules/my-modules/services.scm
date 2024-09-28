@@ -1,4 +1,6 @@
 (define-module (my-modules services)
+  #:use-module (gnu system)
+  #:use-module (gnu system setuid)
   #:use-module (gnu system keyboard)
   #:use-module (gnu services)
   #:use-module (gnu services base)
@@ -21,8 +23,8 @@
   #:use-module ((my-modules hosts mts xring)
                 #:prefix xring:)
   #:export (modified-desktop-services
-            system-services))
-
+            system-services
+            setuid-programs))
 
 
 (define modified-desktop-services
@@ -55,8 +57,6 @@
                                    (vpn-plugins
                                     (list network-manager-vpnc))))))
 
-
-
 (define system-services
   (append
    (list
@@ -80,3 +80,10 @@
      (xorg-configuration
       (keyboard-layout kb-layout))))
    modified-desktop-services))
+
+(define setuid-programs
+  (append
+   (list
+    (setuid-program
+     (program (file-append spice-gtk "/libexec/spice-client-glib-usb-acl-helper"))))
+   %setuid-programs))
