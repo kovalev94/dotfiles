@@ -74,8 +74,8 @@
                     hosts-service-type
                     (append
                      other-hosts
-                     (add-domain xring:routers-hosts "routers.xring.")
-                     (add-domain xring:servers-hosts "servers.xring.")))
+                     (add-domain xring:routers-hosts "routers.xring")
+                     (add-domain xring:servers-hosts "servers.xring")))
     (set-xorg-configuration
      (xorg-configuration
       (keyboard-layout kb-layout))))

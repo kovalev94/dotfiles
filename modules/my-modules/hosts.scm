@@ -14,7 +14,7 @@ Data returned as new list,old data kept unmodified"
            (set-fields
             host
             ((host-canonical-name)
-             (string-append (host-canonical-name host) "." domain-name))
+             (string-append (host-canonical-name host) "." domain-name "."))
             ((host-aliases)
-             (list(host-canonical-name host))))))
+             (list (host-canonical-name host) (string-append (host-canonical-name host ) "." domain-name))))))
    hosts-list))
