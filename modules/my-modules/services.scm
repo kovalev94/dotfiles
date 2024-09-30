@@ -29,6 +29,7 @@
 (define modified-desktop-services
   (modify-services %desktop-services
     (delete avahi-service-type)
+    (delete gdm-service-type)
     (guix-service-type config =>
                        (guix-configuration
                         (inherit config)
@@ -74,10 +75,7 @@
                     (append
                      my:other-hosts
                      (my:add-domain mts:xring:routers-hosts "routers.xring")
-                     (my:add-domain mts:xring:servers-hosts "servers.xring")))
-    (set-xorg-configuration
-     (xorg-configuration
-      (keyboard-layout kb-layout))))
+                     (my:add-domain mts:xring:servers-hosts "servers.xring"))))
    modified-desktop-services))
 
 (define setuid-programs

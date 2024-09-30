@@ -7,9 +7,12 @@
 (use-modules (gnu home)
              (gnu packages)
              (gnu services)
+             (gnu services xorg)
              (guix gexp)
              (gnu home services shells)
              (gnu home services ssh)
+             (gnu home services desktop)
+             (my-modules keyboard)
              ((my-modules ssh) #:prefix my:)
              ((mts ssh) #:prefix mts:))
 
@@ -66,6 +69,9 @@
   (services
    (list
     (service home-ssh-agent-service-type)
+    (service home-startx-command-service-type
+             (xorg-configuration
+              (keyboard-layout kb-layout)))
     (service home-bash-service-type
                   (home-bash-configuration
                    (aliases '(("grep" . "grep --color=auto") ("ll" . "ls -l")
