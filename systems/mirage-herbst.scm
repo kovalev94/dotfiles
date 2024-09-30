@@ -5,10 +5,7 @@
              ((my-modules services) #:prefix my:)
              ((my-modules keyboard) #:prefix my:)
              ((my-modules filesystem) #:prefix my:)
-             ((my-modules users) #:prefix my:)
-             (my-modules hosts)
-             (my-modules hosts other)
-             ((my-modules hosts mts xring) #:prefix xring:))
+             ((my-modules users) #:prefix my:))
 
 
 (operating-system
