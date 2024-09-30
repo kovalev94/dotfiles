@@ -18,10 +18,9 @@
   #:use-module (gnu packages spice)
   #:use-module (guix gexp)
   #:use-module (my-modules keyboard)
-  #:use-module (my-modules hosts)
-  #:use-module (my-modules hosts other)
-  #:use-module ((my-modules hosts mts xring)
-                #:prefix xring:)
+  #:use-module ((my-modules hosts) #:prefix my:)
+  #:use-module ((my-modules hosts other) #:prefix my:)
+  #:use-module ((mts hosts xring) #:prefix mts:xring:)
   #:export (modified-desktop-services
             system-services
             setuid-programs))
@@ -73,9 +72,9 @@
     (simple-service 'add-extra-hosts
                     hosts-service-type
                     (append
-                     other-hosts
-                     (add-domain xring:routers-hosts "routers.xring")
-                     (add-domain xring:servers-hosts "servers.xring")))
+                     my:other-hosts
+                     (my:add-domain mts:xring:routers-hosts "routers.xring")
+                     (my:add-domain mts:xring:servers-hosts "servers.xring")))
     (set-xorg-configuration
      (xorg-configuration
       (keyboard-layout kb-layout))))
