@@ -9,7 +9,9 @@
              (gnu services)
              (guix gexp)
              (gnu home services shells)
-             (gnu home services ssh))
+             (gnu home services ssh)
+             ((my-modules ssh) #:prefix my:)
+             ((mts ssh) #:prefix mts:))
 
 (home-environment
   ;; Below is the list of packages that will show up in your
@@ -63,22 +65,22 @@
   ;; services, run 'guix home search KEYWORD' in a terminal.
   (services
    (list
+    (service home-ssh-agent-service-type)
     (service home-bash-service-type
                   (home-bash-configuration
                    (aliases '(("grep" . "grep --color=auto") ("ll" . "ls -l")
                               ("ls" . "ls -p --color=auto")))
                    (bashrc (list (local-file
-                                  "/home/kovalev/.guix-config/guix/homes/.bashrc"
+                                  "/home/kovalev/.guix-config/homes/.bashrc"
                                   "bashrc")))
                    (bash-profile (list (local-file
-                                        "/home/kovalev/.guix-config/guix/homes/.bash_profile"
+                                        "/home/kovalev/.guix-config/homes/.bash_profile"
                                         "bash_profile")))))
     (service home-openssh-service-type
-              (home-openssh-configuration
-               (hosts
-                (list
-                 (openssh-host
-                  (name "test")
-                  (user "testing")
-                  (port 10022))))))
-          )))
+             (home-openssh-configuration
+              (hosts
+               (append
+                my:ssh-hosts
+                mts:ssh-hosts))
+             (authorized-keys '())
+             (add-keys-to-agent "120m"))))))
