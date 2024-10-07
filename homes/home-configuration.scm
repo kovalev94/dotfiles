@@ -12,6 +12,7 @@
              (gnu home services shells)
              (gnu home services ssh)
              (gnu home services desktop)
+             (gnu home services dotfiles)
              (my-modules keyboard)
              ((my-modules ssh) #:prefix my:)
              ((mts ssh) #:prefix mts:))
@@ -77,11 +78,23 @@
                    (aliases '(("grep" . "grep --color=auto") ("ll" . "ls -l")
                               ("ls" . "ls -p --color=auto")))
                    (bashrc (list (local-file
-                                  "/home/kovalev/.guix-config/homes/.bashrc"
+                                  ".dotfiles/.bashrc"
                                   "bashrc")))
                    (bash-profile (list (local-file
-                                        "/home/kovalev/.guix-config/homes/.bash_profile"
+                                        ".dotfiles/.bash_profile"
                                         "bash_profile")))))
+    (service home-dotfiles-service-type
+             (home-dotfiles-configuration
+              (directories '(".dotfiles"))
+              (excluded
+               (list
+                ".*~"
+                ".*\\.swp"
+                "\\.git"
+                "\\.gitignore"
+                ;Exclude .bash* files because they are managed by home-bash-service
+                ".bashrc"
+                ".bash_profile"))))
     (service home-openssh-service-type
              (home-openssh-configuration
               (hosts
