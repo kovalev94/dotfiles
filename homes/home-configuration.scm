@@ -22,7 +22,7 @@
   ;; Home profile, under ~/.guix-home/profile.
   (packages (specifications->packages (list "telegram-desktop"
                                             "qbittorrent"
-                                            "google-chrome-stable"
+                                            "ungoogled-chromium"
                                             "libreoffice"
                                             "obs"
                                             "nyxt"
