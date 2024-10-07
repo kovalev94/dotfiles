@@ -6,4 +6,4 @@
 (define kb-layout
   (keyboard-layout
    "us,ru"
-   #:options '("grp:alt_space_toggle")))
+   #:options '("grp:alt_space_toggle" "caps:swapescape")))
