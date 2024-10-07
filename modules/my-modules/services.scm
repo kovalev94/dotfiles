@@ -73,9 +73,7 @@
     (simple-service 'add-extra-hosts
                     hosts-service-type
                     (append
-                     my:other-hosts
-                     (my:add-domain mts:xring:routers-hosts "routers.xring")
-                     (my:add-domain mts:xring:servers-hosts "servers.xring"))))
+                     my:other-hosts)))
    modified-desktop-services))
 
 (define setuid-programs
