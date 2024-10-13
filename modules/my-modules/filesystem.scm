@@ -12,8 +12,8 @@
     (source "MirageLinux")
     (targets
      (list
-      "MirageLinux-GuixRootSecond"
-      "MirageLinux-GuixHomeSecond"
+      "MirageLinux-GuixRoot"
+      "MirageLinux-GuixHome"
       "MirageLinux-Swap"))
     (type lvm-device-mapping))))
 
@@ -21,11 +21,11 @@
   (cons*
    (file-system
     (mount-point "/home")
-    (device "/dev/mapper/MirageLinux-GuixHomeSecond")
+    (device "/dev/mapper/MirageLinux-GuixHome")
     (type "ext4"))
    (file-system
     (mount-point "/")
-    (device "/dev/mapper/MirageLinux-GuixRootSecond")
+    (device "/dev/mapper/MirageLinux-GuixRoot")
     (type "ext4"))
    (file-system
     (mount-point "/boot/efi")
