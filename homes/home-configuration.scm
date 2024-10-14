@@ -48,6 +48,7 @@
                                             "alacritty"
                                             "docker-compose"
                                             "node"
+                                            "unison"
                                             "shellcheck"
                                             "python-pytest"
                                             "python-pyflakes"
