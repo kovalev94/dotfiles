@@ -11,7 +11,6 @@
   #:use-module (gnu services virtualization)
   #:use-module (gnu services xorg)
   #:use-module (gnu services dbus)
-  #:use-module (gnu services nix)
   #:use-module (gnu services desktop)
   #:use-module (gnu packages gnome)
   #:use-module (gnu packages fonts)
@@ -49,7 +48,7 @@
                                   (cons (car tty-font-pair)
                                         (file-append
                                          font-terminus
-                                         "/share/consolefonts/ter-132n")))
+                                         "/share/consolefonts/ter-k32n")))
                                 ttys-font-config))
     (network-manager-service-type config =>
                                   (network-manager-configuration
@@ -61,7 +60,6 @@
   (append
    (list
     (service openssh-service-type)
-    (service nix-service-type)
     (service docker-service-type)
     (service containerd-service-type)
     (service bluetooth-service-type)
