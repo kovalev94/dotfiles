@@ -93,7 +93,8 @@
                 ".*\\.swp"
                 "\\.git"
                 "\\.gitignore"
-                ;Exclude .bash* files because they are managed by home-bash-service
+                ;;Exclude .bash* files because they are
+                ;;already managed by home-bash-service
                 ".bashrc"
                 ".bash_profile"))))
     (service home-openssh-service-type
