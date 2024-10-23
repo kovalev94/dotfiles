@@ -9,6 +9,7 @@
              (gnu services)
              (gnu services xorg)
              (guix gexp)
+             (gnu home services)
              (gnu home services shells)
              (gnu home services ssh)
              (gnu home services desktop)
@@ -97,6 +98,9 @@
                 ;;already managed by home-bash-service
                 ".bashrc"
                 ".bash_profile"))))
+    (simple-service 'my-env-vars-service
+                    home-environment-variables-service-type
+                     `(("GUIX_PACKAGE_PATH". "/home/kovalev/.guix-config/modules")))
     (service home-openssh-service-type
              (home-openssh-configuration
               (hosts
