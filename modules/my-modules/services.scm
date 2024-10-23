@@ -15,8 +15,10 @@
   #:use-module (gnu packages gnome)
   #:use-module (gnu packages fonts)
   #:use-module (gnu packages spice)
+  #:use-module (gnu packages package-management)
   #:use-module (guix gexp)
   #:use-module (my-modules keyboard)
+  #:use-module (my-modules channels)
   #:use-module ((my-modules hosts) #:prefix my:)
   #:use-module ((my-modules hosts other) #:prefix my:)
   #:use-module ((mts hosts xring) #:prefix mts:xring:)
@@ -32,6 +34,8 @@
     (guix-service-type config =>
                        (guix-configuration
                         (inherit config)
+                        (channels system-channels)
+                        (guix (guix-for-channels system-channels))
                         (substitute-urls
                          (list
                           "https://bordeaux.guix.gnu.org"
@@ -39,8 +43,9 @@
                         (authorized-keys
                          (append
                           (list
-                           (local-file
-                            "/home/kovalev/.config/guix/nonguix-signing-key.pub"))
+                           (plain-file "non-guix.pub"
+                                       "(public-key (ecc (curve Ed25519)
+  (q #C1FD53E5D4CE971933EC50C9F307AE2171A2D3B52C804642A7A35F84F3A4EA98#)))"))
                           %default-authorized-guix-keys))))
     (console-font-service-type ttys-font-config =>
                                (map
