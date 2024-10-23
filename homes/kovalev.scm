@@ -14,6 +14,7 @@
              (gnu home services ssh)
              (gnu home services desktop)
              (gnu home services dotfiles)
+             (my-modules packages home kovalev)
              (my-modules keyboard)
              ((my-modules ssh) #:prefix my:)
              ((mts ssh) #:prefix mts:))
@@ -21,51 +22,7 @@
 (home-environment
   ;; Below is the list of packages that will show up in your
   ;; Home profile, under ~/.guix-home/profile.
-  (packages (specifications->packages (list "telegram-desktop"
-                                            "qbittorrent"
-                                            "ungoogled-chromium"
-                                            "libreoffice"
-                                            "obs"
-                                            "nyxt"
-                                            "emacs"
-                                            "emacs-rg"
-                                            "emacs-pdf-tools"
-                                            "emacs-clang-format"
-                                            "emacs-vterm"
-                                            "dzen"
-                                            "xftwidth"
-                                            "font-google-noto-emoji"
-                                            "font-gnu-unifont"
-                                            "ripgrep"
-                                            "kdenlive"
-                                            "python-black"
-                                            "python-isort"
-                                            "imagemagick"
-                                            "flameshot"
-                                            "virt-manager"
-                                            "vlc"
-                                            "wireshark"
-                                            "pulsemixer"
-                                            "alacritty"
-                                            "docker-compose"
-                                            "node"
-                                            "unison"
-                                            "shellcheck"
-                                            "python-pytest"
-                                            "python-pyflakes"
-                                            "python-nose"
-                                            "sshfs"
-                                            "minicom"
-                                            "markdown"
-                                            "lrzsz"
-                                            "fping"
-                                            "dia"
-                                            "fd"
-                                            "ccls"
-                                            "libvterm"
-                                            "font-fira-mono"
-                                            "font-fira-sans"
-                                            "font-fira-code")))
+  (packages home-packages)
 
   ;; Below is the list of Home services.  To search for available
   ;; services, run 'guix home search KEYWORD' in a terminal.

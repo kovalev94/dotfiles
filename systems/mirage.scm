@@ -1,11 +1,11 @@
 (use-modules (gnu)
              (nongnu packages linux)
              (nongnu system linux-initrd)
-             ((my-modules packages) #:prefix my:)
-             ((my-modules services) #:prefix my:)
-             ((my-modules keyboard) #:prefix my:)
-             ((my-modules filesystem) #:prefix my:)
-             ((my-modules users) #:prefix my:))
+             (my-modules packages system)
+             (my-modules services)
+             (my-modules keyboard)
+             (my-modules filesystem)
+             (my-modules users))
 
 
 (operating-system
@@ -24,24 +24,24 @@
     (theme (grub-theme
             (inherit (grub-theme))
             (gfxmode '("1920x1080x32" "auto"))))
-    (keyboard-layout my:kb-layout)))
+    (keyboard-layout kb-layout)))
 
   (locale "ru_RU.utf8")
   (timezone "Asia/Novosibirsk")
   ;keyboard-layout will use in several places in this config
-  (keyboard-layout my:kb-layout)
+  (keyboard-layout kb-layout)
   (host-name "mirage")
 
-  (users my:users)
+  (users users)
   ;Globaly installed packages(e.g. for all users)
-  (packages my:system-packages)
+  (packages system-packages)
   ;Installed and enabled services(like ssh-server,docker, etc.)
-  (services my:system-services)
+  (services system-services)
 
-  (setuid-programs my:setuid-programs)
+  (setuid-programs setuid-programs)
 
   ;Required for LVM disks
-  (mapped-devices my:lvm-mapped-devices)
+  (mapped-devices lvm-mapped-devices)
   ;OS file systems
-  (file-systems my:file-systems)
-  (swap-devices my:swap-devices))
+  (file-systems file-systems)
+  (swap-devices swap-devices))

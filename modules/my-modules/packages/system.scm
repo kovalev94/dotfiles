@@ -1,4 +1,4 @@
-(define-module (my-modules packages)
+(define-module (my-modules packages system)
   #:use-module (gnu system)
   #:use-module (gnu packages)
   #:export (system-packages))
@@ -37,6 +37,9 @@
   (list
    "herbstluftwm"
    "polybar"
+   "dzen"
+   "xftwidth"
+   "flameshot"
    "dmenu"
    "picom"
    "pavucontrol"
