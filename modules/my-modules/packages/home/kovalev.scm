@@ -54,7 +54,7 @@
    "minicom"
    "lrzsz"
    "sshfs"
-   "unison"
+   "rclone"
    "fping"
    "wireshark"
    "imagemagick"
