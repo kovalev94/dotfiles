@@ -1,7 +1,7 @@
 (use-modules (gnu)
              (nongnu packages linux)
              (nongnu system linux-initrd)
-             (my-modules packages system)
+             (my-modules packages system mirage)
              (my-modules services)
              (my-modules keyboard)
              (my-modules filesystem)

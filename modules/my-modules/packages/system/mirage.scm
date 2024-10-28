@@ -1,4 +1,4 @@
-(define-module (my-modules packages system)
+(define-module (my-modules packages system mirage)
   #:use-module (gnu system)
   #:use-module (gnu packages)
   #:export (system-packages))
