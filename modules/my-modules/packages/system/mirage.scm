@@ -31,6 +31,8 @@
    "vim"
    "mc"
    "unzip"
+   "zip"
+   "p7zip"
    "git"))
 
 (define base-gui
