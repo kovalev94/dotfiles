@@ -10,7 +10,13 @@
     (host-name "vpn.web-wyrd.space")
     (user "vpn_admin")
     (port 56713)
-    (identity-file "~/.ssh/keys/vpnserv"))))
+    (identity-file "~/.ssh/keys/vpnserv"))
+   (openssh-host
+    (name "damocles")
+    (host-name "damocles.web-wyrd.space")
+    (user "schneizel")
+    (port 53622)
+    (identity-file "~/.ssh/keys/damocles"))))
 
 (define ipoint
   (list
