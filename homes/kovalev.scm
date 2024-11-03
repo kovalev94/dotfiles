@@ -14,6 +14,7 @@
              (gnu home services ssh)
              (gnu home services desktop)
              (gnu home services dotfiles)
+             (gnu home services syncthing)
              (my-modules packages home kovalev)
              (my-modules keyboard)
              ((my-modules ssh) #:prefix my:)
@@ -32,6 +33,7 @@
     (service home-startx-command-service-type
              (xorg-configuration
               (keyboard-layout kb-layout)))
+    (service home-syncthing-service-type)
     (service home-bash-service-type
                   (home-bash-configuration
                    (aliases '(("grep" . "grep --color=auto") ("ll" . "ls -l")
