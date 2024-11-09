@@ -1,9 +1,11 @@
 (define-module (my-modules ssh)
   #:use-module (gnu home services ssh)
-  #:export (ssh-hosts))
+  #:export (personal-servers
+            ipoint
+            akadem))
 
 
-(define my-servers
+(define personal-servers
   (list
    (openssh-host
     (name "vpnserv")
@@ -34,10 +36,3 @@
    (openssh-host
     (name "orangepi3")
     (user "admin"))))
-
-
-(define ssh-hosts
-  (append
-   my-servers
-   ipoint
-   akadem))

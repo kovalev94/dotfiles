@@ -17,8 +17,8 @@
              (gnu home services syncthing)
              (my-modules packages home kovalev)
              (my-modules keyboard)
-             ((my-modules ssh) #:prefix my:)
-             ((mts ssh) #:prefix mts:))
+             (my-modules ssh)
+             (mts ssh))
 
 (home-environment
   ;; Below is the list of packages that will show up in your
@@ -64,7 +64,14 @@
              (home-openssh-configuration
               (hosts
                (append
-                my:ssh-hosts
-                mts:ssh-hosts))
+                personal-servers
+                ipoint
+                akadem
+                spd-servers
+                spd-routers
+                xring-servers
+                xring-routers
+                xring-general
+                general))
              (authorized-keys '())
              (add-keys-to-agent "120m"))))))
