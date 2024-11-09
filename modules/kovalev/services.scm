@@ -33,8 +33,8 @@
     (guix-service-type config =>
                        (guix-configuration
                         (inherit config)
-                        (channels system-channels)
-                        (guix (guix-for-channels system-channels))
+                        (channels default-channels-with-nonguix)
+                        (guix (guix-for-channels default-channels-with-nonguix))
                         (substitute-urls
                          (list
                           "https://bordeaux.guix.gnu.org"

@@ -1,8 +1,8 @@
 (define-module (kovalev channels)
   #:use-module (guix channels)
-  #:export (system-channels))
+  #:export (default-channels-with-nonguix))
 
-(define system-channels
+(define default-channels-with-nonguix
   (cons* (channel
          (name 'nonguix)
          (url "https://gitlab.com/nonguix/nonguix")
