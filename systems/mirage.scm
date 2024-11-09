@@ -3,9 +3,7 @@
              (nongnu system linux-initrd)
              (kovalev packages system mirage)
              (kovalev services)
-             (kovalev keyboard)
-             (kovalev filesystem)
-             (kovalev users))
+             (kovalev keyboard))
 
 
 (operating-system
@@ -32,7 +30,16 @@
   (keyboard-layout kb-layout)
   (host-name "mirage")
 
-  (users users)
+  (users
+   (cons*
+    (user-account
+     (name "kovalev")
+     (comment "Виталий Ковалёв")
+     (group "users")
+     (home-directory "/home/kovalev")
+     (supplementary-groups
+      '("wheel" "netdev" "audio" "video" "kvm" "libvirt" "docker")))
+   %base-user-accounts))
   ;Globaly installed packages(e.g. for all users)
   (packages system-packages)
   ;Installed and enabled services(like ssh-server,docker, etc.)
@@ -41,7 +48,35 @@
   (setuid-programs setuid-programs)
 
   ;Required for LVM disks
-  (mapped-devices lvm-mapped-devices)
-  ;OS file systems
-  (file-systems file-systems)
-  (swap-devices swap-devices))
+  (mapped-devices
+   (list
+    (mapped-device
+     (source "MirageLinux")
+     (targets
+      (list
+       "MirageLinux-GuixRoot"
+       "MirageLinux-GuixHome"
+       "MirageLinux-Swap"))
+     (type lvm-device-mapping))))
+
+  (file-systems
+   (cons*
+    (file-system
+     (mount-point "/home")
+     (device "/dev/mapper/MirageLinux-GuixHome")
+     (type "ext4"))
+    (file-system
+     (mount-point "/")
+     (device "/dev/mapper/MirageLinux-GuixRoot")
+     (type "ext4"))
+    (file-system
+     (mount-point "/boot/efi")
+     (device (uuid "BFD6-6AB9" 'fat32))
+     (type "vfat"))
+    %base-file-systems))
+
+  (swap-devices
+   (list
+    (swap-space
+     (target (file-system-label "swap"))
+     (dependencies mapped-devices)))))
