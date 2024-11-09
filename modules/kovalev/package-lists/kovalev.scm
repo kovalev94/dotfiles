@@ -1,5 +1,4 @@
 (define-module (kovalev package-lists kovalev)
-  #:use-module (gnu system)
   #:use-module (gnu packages)
   #:export (emacs-stuff
             fonts
