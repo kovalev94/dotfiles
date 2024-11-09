@@ -5,7 +5,7 @@
              (gnu services desktop)
              (gnu services ssh)
              (nongnu system linux-initrd)
-             (kovalev packages system mirage)
+             (kovalev package-lists mirage)
              (kovalev services)
              (kovalev etc-hosts)
              ((mts hosts xring) #:prefix mts:xring:)

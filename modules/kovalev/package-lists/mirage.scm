@@ -1,4 +1,4 @@
-(define-module (kovalev packages system mirage)
+(define-module (kovalev package-lists mirage)
   #:use-module (gnu system)
   #:use-module (gnu packages)
   #:export (system-packages))

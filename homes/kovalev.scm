@@ -15,7 +15,7 @@
              (gnu home services desktop)
              (gnu home services dotfiles)
              (gnu home services syncthing)
-             (kovalev packages home kovalev)
+             (kovalev package-lists kovalev)
              (kovalev keyboard)
              (kovalev ssh)
              (mts ssh))
