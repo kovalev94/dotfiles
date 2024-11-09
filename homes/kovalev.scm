@@ -23,7 +23,16 @@
 (home-environment
   ;; Below is the list of packages that will show up in your
   ;; Home profile, under ~/.guix-home/profile.
-  (packages home-packages)
+ (packages
+  (map (compose list specification->package+output)
+       (append
+        emacs-stuff
+        fonts
+        www
+        video
+        virtualization
+        tools
+        work)))
 
   ;; Below is the list of Home services.  To search for available
   ;; services, run 'guix home search KEYWORD' in a terminal.

@@ -1,7 +1,10 @@
 (define-module (kovalev package-lists mirage)
   #:use-module (gnu system)
   #:use-module (gnu packages)
-  #:export (system-packages))
+  #:export (system-utils
+            network-utils
+            base-toolkit
+            base-gui))
 
 
 (define system-utils
@@ -51,13 +54,3 @@
    "xrdb"
    "font-gnu-freefont"
    "xdg-utils"))
-
-(define system-packages
-  (append
-   (map (compose list specification->package+output)
-        (append
-         system-utils
-         network-utils
-         base-toolkit
-         base-gui))
-   %base-packages))

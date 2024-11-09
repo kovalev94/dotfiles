@@ -1,7 +1,13 @@
 (define-module (kovalev package-lists kovalev)
   #:use-module (gnu system)
   #:use-module (gnu packages)
-  #:export (home-packages))
+  #:export (emacs-stuff
+            fonts
+            www
+            video
+            virtualization
+            tools
+            work))
 
 (define emacs-stuff
   (list
@@ -65,14 +71,3 @@
    "libreoffice"
    "alacritty"
    "dia"))
-
-(define home-packages
-  (map (compose list specification->package+output)
-       (append
-        emacs-stuff
-        fonts
-        www
-        video
-        virtualization
-        tools
-        work)))

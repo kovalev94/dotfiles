@@ -47,7 +47,16 @@
       '("wheel" "netdev" "audio" "video" "kvm" "libvirt" "docker")))
    %base-user-accounts))
   ;Globaly installed packages(e.g. for all users)
-  (packages system-packages)
+  (packages
+   (append
+    (map (compose list specification->package+output)
+         (append
+          system-utils
+          network-utils
+          base-toolkit
+          base-gui))
+    %base-packages))
+
   ;Installed and enabled services(like ssh-server,docker, etc.)
   (services
    (append
