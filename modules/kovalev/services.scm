@@ -1,4 +1,4 @@
-(define-module (my-modules services)
+(define-module (kovalev services)
   #:use-module (gnu system)
   #:use-module (gnu system setuid)
   #:use-module (gnu system keyboard)
@@ -17,10 +17,10 @@
   #:use-module (gnu packages spice)
   #:use-module (gnu packages package-management)
   #:use-module (guix gexp)
-  #:use-module (my-modules keyboard)
-  #:use-module (my-modules channels)
-  #:use-module ((my-modules hosts) #:prefix my:)
-  #:use-module ((my-modules hosts other) #:prefix my:)
+  #:use-module (kovalev keyboard)
+  #:use-module (kovalev channels)
+  #:use-module ((kovalev hosts) #:prefix my:)
+  #:use-module ((kovalev hosts other) #:prefix my:)
   #:use-module ((mts hosts xring) #:prefix mts:xring:)
   #:export (modified-desktop-services
             system-services

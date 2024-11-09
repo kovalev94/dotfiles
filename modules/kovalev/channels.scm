@@ -1,4 +1,4 @@
-(define-module (my-modules channels)
+(define-module (kovalev channels)
   #:use-module (guix channels)
   #:export (system-channels))
 

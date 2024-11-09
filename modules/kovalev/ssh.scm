@@ -1,4 +1,4 @@
-(define-module (my-modules ssh)
+(define-module (kovalev ssh)
   #:use-module (gnu home services ssh)
   #:export (personal-servers
             ipoint

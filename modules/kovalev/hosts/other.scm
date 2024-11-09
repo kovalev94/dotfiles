@@ -1,4 +1,4 @@
-(define-module (my-modules hosts other)
+(define-module (kovalev hosts other)
   #:use-module (gnu services base)
   #:export (other-hosts))
 

@@ -1,4 +1,4 @@
-(define-module (my-modules users)
+(define-module (kovalev users)
   #:use-module (gnu system accounts)
   #:use-module (gnu system shadow)
   #:export (users))

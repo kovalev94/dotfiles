@@ -1,11 +1,11 @@
 (use-modules (gnu)
              (nongnu packages linux)
              (nongnu system linux-initrd)
-             (my-modules packages system mirage)
-             (my-modules services)
-             (my-modules keyboard)
-             (my-modules filesystem)
-             (my-modules users))
+             (kovalev packages system mirage)
+             (kovalev services)
+             (kovalev keyboard)
+             (kovalev filesystem)
+             (kovalev users))
 
 
 (operating-system

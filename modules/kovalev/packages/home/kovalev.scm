@@ -1,4 +1,4 @@
-(define-module (my-modules packages home kovalev)
+(define-module (kovalev packages home kovalev)
   #:use-module (gnu system)
   #:use-module (gnu packages)
   #:export (home-packages))

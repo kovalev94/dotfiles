@@ -1,4 +1,4 @@
-(define-module (my-modules filesystem)
+(define-module (kovalev filesystem)
   #:use-module (gnu system mapped-devices)
   #:use-module (gnu system file-systems)
   #:export (lvm-mapped-devices

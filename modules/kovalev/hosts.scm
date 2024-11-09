@@ -1,4 +1,4 @@
-(define-module (my-modules hosts)
+(define-module (kovalev hosts)
   #:use-module (gnu services base)
   #:use-module (srfi srfi-9 gnu)
   #:export (add-domain))
