@@ -1,29 +1,27 @@
 (define-module (kovalev services)
   #:use-module (gnu system)
-  #:use-module (gnu system setuid)
   #:use-module (gnu system keyboard)
+  #:use-module (gnu system setuid)
   #:use-module (gnu services)
+  #:use-module (gnu packages spice)
   #:use-module (gnu services base)
   #:use-module (gnu services docker)
   #:use-module (gnu services networking)
   #:use-module (gnu services avahi)
-  #:use-module (gnu services ssh)
   #:use-module (gnu services virtualization)
   #:use-module (gnu services xorg)
   #:use-module (gnu services dbus)
   #:use-module (gnu services desktop)
   #:use-module (gnu packages gnome)
   #:use-module (gnu packages fonts)
-  #:use-module (gnu packages spice)
   #:use-module (gnu packages package-management)
   #:use-module (guix gexp)
   #:use-module (kovalev keyboard)
   #:use-module (kovalev channels)
-  #:use-module (kovalev etc-hosts)
-  #:use-module ((mts hosts xring) #:prefix mts:xring:)
   #:export (modified-desktop-services
-            system-services
-            setuid-programs))
+            docker-service-list
+            virtualization-service-list
+            system-services))
 
 
 (define modified-desktop-services
@@ -60,28 +58,23 @@
                                    (vpn-plugins
                                     (list network-manager-vpnc))))))
 
-(define system-services
-  (append
-   (list
-    (service openssh-service-type)
+(define docker-service-list
+  (list
     (service docker-service-type)
-    (service containerd-service-type)
-    (service bluetooth-service-type)
-    (service libvirt-service-type
-             (libvirt-configuration
-              (unix-sock-group "libvirt")))
-    (service virtlog-service-type)
-    (simple-service 'spice-polkit polkit-service-type (list spice-gtk))
-    (simple-service 'add-extra-hosts
-                    hosts-service-type
-                    (append
-                     ipoint
-                     akadem)))
-   modified-desktop-services))
+    (service containerd-service-type)))
 
-(define setuid-programs
-  (append
-   (list
-    (setuid-program
-     (program (file-append spice-gtk "/libexec/spice-client-glib-usb-acl-helper"))))
-   %setuid-programs))
+
+(define virtualization-service-list
+  `(( "services" . (,(service libvirt-service-type
+                              (libvirt-configuration
+                               (unix-sock-group "libvirt")))
+                    ,(service virtlog-service-type)
+                    ,(simple-service
+                      'spice-polkit polkit-service-type
+                      (list spice-gtk))))
+
+    ( "setuid-programs" . (,(setuid-program
+                             (program
+                              (file-append
+                               spice-gtk
+                               "/libexec/spice-client-glib-usb-acl-helper")))))))

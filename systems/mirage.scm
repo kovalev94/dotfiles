@@ -1,8 +1,14 @@
 (use-modules (gnu)
+             (gnu system setuid)
+             (gnu packages spice)
              (nongnu packages linux)
+             (gnu services desktop)
+             (gnu services ssh)
              (nongnu system linux-initrd)
              (kovalev packages system mirage)
              (kovalev services)
+             (kovalev etc-hosts)
+             ((mts hosts xring) #:prefix mts:xring:)
              (kovalev keyboard))
 
 
@@ -43,9 +49,24 @@
   ;Globaly installed packages(e.g. for all users)
   (packages system-packages)
   ;Installed and enabled services(like ssh-server,docker, etc.)
-  (services system-services)
+  (services
+   (append
+    docker-service-list
+    (assoc-ref virtualization-service-list "services")
+    (list
+     (service bluetooth-service-type)
+     (simple-service 'add-extra-hosts
+                     hosts-service-type
+                     (append
+                      ipoint
+                      akadem))
+     (service openssh-service-type))
+    modified-desktop-services))
 
-  (setuid-programs setuid-programs)
+  (setuid-programs
+   (append
+    (assoc-ref virtualization-service-list "setuid-programs")
+    %setuid-programs))
 
   ;Required for LVM disks
   (mapped-devices
