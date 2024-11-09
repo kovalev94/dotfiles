@@ -19,7 +19,6 @@
   #:use-module (guix gexp)
   #:use-module (kovalev keyboard)
   #:use-module (kovalev channels)
-  #:use-module ((kovalev hosts) #:prefix my:)
   #:use-module ((kovalev hosts other) #:prefix my:)
   #:use-module ((mts hosts xring) #:prefix mts:xring:)
   #:export (modified-desktop-services
