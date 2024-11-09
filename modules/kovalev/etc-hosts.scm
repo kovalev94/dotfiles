@@ -1,6 +1,7 @@
-(define-module (kovalev hosts other)
+(define-module (kovalev etc-hosts)
   #:use-module (gnu services base)
-  #:export (other-hosts))
+  #:export (ipoint
+            akadem))
 
 
 (define ipoint
@@ -18,9 +19,3 @@
    (host "192.168.114.11" "breadrobot")
    ;; Targets Soft
    (host "192.168.114.17" "orangepi3")))
-
-
-(define other-hosts
-  (append
-   ipoint
-   akadem))
