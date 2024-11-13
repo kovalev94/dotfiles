@@ -2,6 +2,8 @@
              (gnu system setuid)
              (gnu packages spice)
              (nongnu packages linux)
+             (gnu services avahi)
+             (gnu services networking)
              (gnu services desktop)
              (gnu services ssh)
              (nongnu system linux-initrd)
@@ -9,7 +11,8 @@
              (kovalev services)
              (kovalev etc-hosts)
              ((mts hosts xring) #:prefix mts:xring:)
-             (kovalev keyboard))
+             (kovalev keyboard)
+             ((srfi srfi-1) #:prefix srfi-1:))
 
 
 (operating-system
@@ -70,7 +73,25 @@
                       ipoint
                       akadem))
      (service openssh-service-type))
-    modified-desktop-services))
+
+    (modify-services (remove-services
+                      (list
+                       avahi-service-type
+                       nm-applet-service-type
+                       usb-modeswitch-service-type)
+                      desktop-without-gdm-service-list)
+
+      (guix-service-type _ =>
+                         (guix-configuration
+                          (inherit guix-with-nonguix-channels-configuration)
+                          (substitute-urls
+                           (srfi-1:delete "https://ci.guix.gnu.org"
+                                          (guix-configuration-substitute-urls
+                                           guix-with-nonguix-channels-configuration)))))
+      (console-font-service-type _ =>
+                                 hi-dpi-console-font-configuration)
+      (network-manager-service-type _ =>
+                                    network-manager-with-vpnc-configuration))))
 
   (setuid-programs
    (append
