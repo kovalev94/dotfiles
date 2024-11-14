@@ -63,6 +63,7 @@
    "fping"
    "wireshark"
    "imagemagick"
+   "brightnessctl"
    "pulsemixer"))
 
 (define work
