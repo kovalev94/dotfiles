@@ -42,7 +42,19 @@
     (service home-startx-command-service-type
              (xorg-configuration
               (keyboard-layout kb-layout)))
-    (service home-syncthing-service-type)
+    (service home-syncthing-service-type
+             (for-home
+              (syncthing-configuration
+               (arguments
+                (list
+                 (string-append
+                  "--config="
+                  (getenv "XDG_CONFIG_HOME")
+                  "/syncthing")
+                 (string-append
+                  "--data="
+                  (getenv "XDG_STATE_HOME")
+                  "/syncthing"))))))
     (service home-bash-service-type
                   (home-bash-configuration
                    (aliases '(("grep" . "grep --color=auto") ("ll" . "ls -l")
