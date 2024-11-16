@@ -21,6 +21,7 @@
    "tcpdump"
    "nmap"
    "iputils"
+   "whois"
    "curl"
    "bind:utils"
    "wireguard-tools"

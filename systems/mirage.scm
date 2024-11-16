@@ -1,6 +1,7 @@
 (use-modules (gnu)
              (gnu system setuid)
              (gnu packages spice)
+             (gnu packages networking)
              (nongnu packages linux)
              (gnu services avahi)
              (gnu services networking)
@@ -95,8 +96,12 @@
 
   (setuid-programs
    (append
-    (assoc-ref virtualization-service-list "setuid-programs")
-    %setuid-programs))
+    (cons*
+     (setuid-program
+      (program
+       (file-append iputils "/bin/ping")));Neeeded for iptuils ping
+     (assoc-ref virtualization-service-list "setuid-programs"))
+     %setuid-programs))
 
   ;Required for LVM disks
   (mapped-devices
