@@ -1,0 +1,48 @@
+* Reproducibility
+** +Guix configs to github repo+
+** +Guix home start+
+** KeepassXC integration
+- [ ] Replace ssh-agent with gpg-agent
+- [ ] Install KeepassXC
+- [ ] Setup communication between two above.
+- [ ] Delete .ssh/keys dir
+** nm-connections setup with guix or home(Network manager user connection, where it store connections, does it configurable???)
+- [ ] Comstar VPN cipher and to github
+
+* UI/UX
+*** Window Manager Related
+**** herbstluftwm config split with variables
+**** Вынести оформление в отдельный файл и поменять тему
+**** добавить форк пикома и анимации
+**** настроить панель Polybar
+**** поменять имена ворспэйсов?
+**** tabbed layouts herbst
+**** no frame herbst
+**** save layouts herbst
+**** herbst custom layouts?
+**** doom autoterminal on win-enter + doom on win-e
+** блокировка экрана
+** Сон гибернация?
+** Батарейка
+** режимы производительность/оптимизация
+** настроить тему grub
+** выключение/сон по раскладке и меню
+** splash screen  как у убунты с федорой
+** собрать citrix-workspace
+** change dmenu with rofi
+** dmenu/rofi mini programs(translator, ssh run, etc(see distrotube xmonad))
+** +Sync Documents and other non git+
+** telegram-cli
+* General
+** alacritty-themes+fonts
+** вынести автостарт программ в другое место
+** emacs daemon reload font config
+** reload font config for opened apps
+** alsa без pulseaudio?
+** +Setup iptables-service+
+** Move from iptables to nftables
+** Better way touchpad settings
+** Docker replace with podman
+
+* Сравнение с убунту(фишечки,dmesg,демоны, электропитание итд)
+* игры
