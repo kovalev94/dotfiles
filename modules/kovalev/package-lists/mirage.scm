@@ -21,6 +21,7 @@
    "tcpdump"
    "nmap"
    "iputils"
+   "iptables"
    "whois"
    "curl"
    "bind:utils"
