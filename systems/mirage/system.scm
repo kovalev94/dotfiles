@@ -77,7 +77,9 @@
                      (append
                       ipoint
                       akadem))
-     (service openssh-service-type))
+     (service openssh-service-type
+              (openssh-configuration
+               (port-number 13131))))
 
     (modify-services (remove-services
                       (list
