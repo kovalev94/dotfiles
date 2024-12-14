@@ -48,7 +48,7 @@
      (group "users")
      (home-directory "/home/kovalev")
      (supplementary-groups
-      '("wheel" "netdev" "audio" "video" "kvm" "libvirt" "docker")))
+      '("wheel" "netdev" "audio" "video" "kvm" "libvirt" )))
    %base-user-accounts))
   ;Globaly installed packages(e.g. for all users)
   (packages
@@ -64,7 +64,6 @@
   ;Installed and enabled services(like ssh-server,docker, etc.)
   (services
    (append
-    docker-service-list
     (assoc-ref virtualization-service-list "services")
     (list
      (service bluetooth-service-type)
