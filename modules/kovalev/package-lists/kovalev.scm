@@ -6,7 +6,8 @@
             video
             virtualization
             tools
-            work))
+            work
+            all))
 
 (define emacs-stuff
   (list
@@ -64,6 +65,7 @@
    "wireshark"
    "imagemagick"
    "brightnessctl"
+   "keepassxc"
    "pulsemixer"))
 
 (define work
@@ -71,3 +73,13 @@
    "libreoffice"
    "alacritty"
    "dia"))
+
+(define all
+  (append
+   emacs-stuff
+   fonts
+   www
+   video
+   virtualization
+   tools
+   work))

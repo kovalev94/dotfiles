@@ -4,7 +4,8 @@
   #:export (system-utils
             network-utils
             base-toolkit
-            base-gui))
+            base-gui
+            all))
 
 
 (define system-utils
@@ -56,3 +57,11 @@
    "xrdb"
    "font-gnu-freefont"
    "xdg-utils"))
+
+
+(define all
+  (append
+   system-utils
+   network-utils
+   base-toolkit
+   base-gui))
