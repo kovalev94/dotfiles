@@ -1,8 +1,15 @@
 (define-module (kovalev etc-hosts)
   #:use-module (gnu services base)
-  #:export (ipoint
-            akadem))
+  #:export (personal-machines
+            ipoint))
 
+
+(define personal-machines
+  (list
+  ;; Orange Pi R1+ LTS
+  (host "172.16.13.3" "lancelot")
+  ;; Mikrotik Hex RB760igs - home router
+  (host "172.16.13.5" "gawain")))
 
 (define ipoint
   (list
@@ -10,12 +17,5 @@
   (host "109.174.98.182" "ipoint-marksa")
   ;; iPoint gogolya
   (host "109.111.191.225" "ipoint-gogolya")
-  ;; iPoint office controller
+  ;; iPoint unifi controller
   (host "176.126.103.60" "ipoint-controller")))
-
-(define akadem
-  (list
-   ;; Kiosk for bread
-   (host "192.168.114.11" "breadrobot")
-   ;; Targets Soft
-   (host "192.168.114.17" "orangepi3")))

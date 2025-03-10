@@ -7,12 +7,28 @@
 
 (define personal-servers
   (list
+   ;; VPN server
    (openssh-host
     (name "vpnserv")
     (host-name "vpn.web-wyrd.space")
     (user "vpn_admin")
     (port 56713)
     (identity-file "~/.ssh/keys/vpnserv"))
+   ;; Orange Pi R1+ LTS
+   (openssh-host
+    (name "lancelot")
+    (host-name "lancelot")
+    (user "suzaku")
+    (port 57133)
+    (identity-file "~/.ssh/keys/lancelot"))
+   ;; Mikrotik Hex RB760igs - home router
+   (openssh-host
+    (name "gawain")
+    (host-name "gawain")
+    (user "lanadmin")
+    (port 57133)
+    (identity-file "~/.ssh/keys/gawain"))
+   ;; Syncting and knightmares wireguard
    (openssh-host
     (name "damocles")
     (host-name "damocles.web-wyrd.space")
