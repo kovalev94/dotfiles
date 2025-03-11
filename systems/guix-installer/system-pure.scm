@@ -2,7 +2,6 @@
              (gnu services networking)
              (gnu services desktop)
              (gnu services ssh)
-             (gnu services avahi)
              ((kovalev package-lists mirage) #:prefix mirage-packages:)
              ((kovalev package-lists kovalev) #:prefix kovalev-packages:)
              (kovalev services)
@@ -68,19 +67,10 @@
              (openssh-configuration
               (port-number 13131))))
 
-   (modify-services (remove-services
-                     (list
-                      avahi-service-type
-                      nm-applet-service-type
-                      usb-modeswitch-service-type)
-                     desktop-without-gdm-service-list)
-
-                    (guix-service-type config =>
+   (modify-services shit-trimmed-desktop-services
+                    (guix-service-type _ =>
                                        (guix-configuration
-                                        (inherit config)
-                                        (substitute-urls
-                                         (srfi-1:delete "https://ci.guix.gnu.org"
-                                                        %default-substitute-urls))))
+                                        (substitute-urls bordeaux-nonguix-substitute-urls)))
                     (console-font-service-type _ =>
                                                hi-dpi-console-font-configuration))))
 

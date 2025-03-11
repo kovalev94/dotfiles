@@ -2,7 +2,7 @@
              (gnu services networking)
              (gnu services desktop)
              (gnu services ssh)
-             (gnu services avahi)
+             (gnu packages package-management)
              (nongnu packages linux)
              (nongnu system linux-initrd)
              ((kovalev package-lists mirage) #:prefix mirage-packages:)
@@ -76,15 +76,18 @@
               (port-number 13131))))
 
    (modify-services shit-trimmed-desktop-services
-     (guix-service-type _ =>
-                        (guix-configuration
-                         (inherit guix-with-nonguix-channels-configuration)
-                         (substitute-urls
-                          (srfi-1:delete "https://ci.guix.gnu.org"
-                                         (guix-configuration-substitute-urls
-                                          guix-with-nonguix-channels-configuration)))))
-     (console-font-service-type _ =>
-                                hi-dpi-console-font-configuration))))
+                    (guix-service-type _ =>
+                                       (guix-configuration
+                                        (channels default-channels-with-nonguix)
+                                        (guix (guix-for-channels default-channels-with-nonguix))
+                                        (substitute-urls bordeaux-nonguix-substitute-urls)
+                                        (authorized-keys default-authorized-keys-with-nonguix)))
+                    (console-font-service-type _ =>
+                                               hi-dpi-console-font-configuration)
+                    (network-manager-service-type _ =>
+                                                  network-manager-with-vpnc-configuration)
+                    (console-font-service-type _ =>
+                                               hi-dpi-console-font-configuration))))
 
 
  (file-systems

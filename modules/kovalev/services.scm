@@ -7,12 +7,14 @@
   #:use-module (gnu packages package-management)
   #:use-module (gnu services base)
   #:use-module (gnu services docker)
+  #:use-module (gnu services avahi)
   #:use-module (gnu services networking)
   #:use-module (gnu services virtualization)
   #:use-module (gnu services xorg)
   #:use-module (gnu services dbus)
   #:use-module (gnu services desktop)
   #:use-module (guix gexp)
+  #:use-module (guix channels)
   #:use-module ((srfi srfi-1) #:prefix srfi-1:)
 
   #:export (remove-services
