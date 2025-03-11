@@ -18,7 +18,9 @@
 
   #:export (remove-services
             hi-dpi-console-font-configuration
-            guix-with-nonguix-channels-configuration
+            default-channels-with-nonguix
+            default-authorized-keys-with-nonguix
+            bordeaux-nonguix-substitute-urls
             network-manager-with-vpnc-configuration
             desktop-without-gdm-service-list
             docker-service-list
@@ -53,21 +55,32 @@ from SERVICE-LIST (%desktop-services for example)"
    '("tty1" "tty2" "tty3" "tty4" "tty5" "tty6")))
 
 
-(define guix-with-nonguix-channels-configuration
-  (guix-configuration
-   (channels default-channels-with-nonguix)
-   (guix (guix-for-channels default-channels-with-nonguix))
-   (substitute-urls
-    (cons*
-     "https://substitutes.nonguix.org"
-     %default-substitute-urls))
-   (authorized-keys
-    (append
-     (list
-      (plain-file "non-guix.pub"
-                  "(public-key (ecc (curve Ed25519)
+(define default-channels-with-nonguix
+  (cons* (channel
+         (name 'nonguix)
+         (url "https://gitlab.com/nonguix/nonguix")
+         ;; Enable signature verification:
+         (introduction
+          (make-channel-introduction
+           "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
+           (openpgp-fingerprint
+            "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5"))))
+        %default-channels))
+
+
+(define default-authorized-keys-with-nonguix
+  (append
+   (list
+    (plain-file "non-guix.pub"
+                "(public-key (ecc (curve Ed25519)
   (q #C1FD53E5D4CE971933EC50C9F307AE2171A2D3B52C804642A7A35F84F3A4EA98#)))"))
-     %default-authorized-guix-keys))))
+   %default-authorized-guix-keys))
+
+
+(define bordeaux-nonguix-substitute-urls
+  (cons*
+   "https://substitutes.nonguix.org"
+   %default-substitute-urls))
 
 
 (define network-manager-with-vpnc-configuration

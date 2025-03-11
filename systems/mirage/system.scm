@@ -87,17 +87,16 @@
                        usb-modeswitch-service-type)
                       desktop-without-gdm-service-list)
 
-      (guix-service-type _ =>
-                         (guix-configuration
-                          (inherit guix-with-nonguix-channels-configuration)
-                          (substitute-urls
-                           (srfi-1:delete "https://ci.guix.gnu.org"
-                                          (guix-configuration-substitute-urls
-                                           guix-with-nonguix-channels-configuration)))))
-      (console-font-service-type _ =>
-                                 hi-dpi-console-font-configuration)
-      (network-manager-service-type _ =>
-                                    network-manager-with-vpnc-configuration))))
+                     (guix-service-type _ =>
+                                        (guix-configuration
+                                         (channels default-channels-with-nonguix)
+                                         (guix (guix-for-channels default-channels-with-nonguix))
+                                         (substitute-urls bordeaux-nonguix-subsitute-urls)
+                                         (authorized-keys default-authorized-keys-with-nonguix)))
+                     (console-font-service-type _ =>
+                                                hi-dpi-console-font-configuration)
+                     (network-manager-service-type _ =>
+                                                   network-manager-with-vpnc-configuration))))
 
   (setuid-programs
    (append
