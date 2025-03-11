@@ -90,23 +90,17 @@
              (openssh-configuration
               (port-number 13131))))
 
-   (modify-services (remove-services
-                     (list
-                      avahi-service-type
-                      nm-applet-service-type
-                      usb-modeswitch-service-type)
-                     desktop-without-gdm-service-list)
-
-                    (guix-service-type _ =>
-                                       (guix-configuration
-                                        (channels default-channels-with-nonguix)
-                                        (guix (guix-for-channels default-channels-with-nonguix))
-                                        (substitute-urls bordeaux-nonguix-subsitute-urls)
-                                        (authorized-keys default-authorized-keys-with-nonguix)))
-                    (console-font-service-type _ =>
-                                               hi-dpi-console-font-configuration)
-                    (network-manager-service-type _ =>
-                                                  network-manager-with-vpnc-configuration))))
+   (modify-services shit-trimmed-desktop-services
+     (guix-service-type _ =>
+                        (guix-configuration
+                         (channels default-channels-with-nonguix)
+                         (guix (guix-for-channels default-channels-with-nonguix))
+                         (substitute-urls bordeaux-nonguix-subsitute-urls)
+                         (authorized-keys default-authorized-keys-with-nonguix)))
+     (console-font-service-type _ =>
+                                hi-dpi-console-font-configuration)
+     (network-manager-service-type _ =>
+                                   network-manager-with-vpnc-configuration))))
 
 
  (setuid-programs

@@ -13,19 +13,18 @@
   #:use-module (gnu services dbus)
   #:use-module (gnu services desktop)
   #:use-module (guix gexp)
-  #:use-module (kovalev channels)
   #:use-module ((srfi srfi-1) #:prefix srfi-1:)
 
   #:export (remove-services
-            hi-dpi-console-font-configuration
             default-channels-with-nonguix
             default-authorized-keys-with-nonguix
             bordeaux-nonguix-substitute-urls
+            hi-dpi-console-font-configuration
             network-manager-with-vpnc-configuration
-            desktop-without-gdm-service-list
             docker-service-list
             virtualization-service-list
-            nm-applet-service-type))
+            nm-applet-service-type
+            shit-trimmed-desktop-services))
 
 
 
@@ -41,18 +40,6 @@ from SERVICE-LIST (%desktop-services for example)"
       service-list))
    service-list
    services))
-
-
-(define hi-dpi-console-font-configuration
-  (map
-   (lambda
-       (tty)
-     (cons
-      tty
-      (file-append
-       font-terminus
-       "/share/consolefonts/ter-k32n")))
-   '("tty1" "tty2" "tty3" "tty4" "tty5" "tty6")))
 
 
 (define default-channels-with-nonguix
@@ -83,18 +70,22 @@ from SERVICE-LIST (%desktop-services for example)"
    %default-substitute-urls))
 
 
+(define hi-dpi-console-font-configuration
+  (map
+   (lambda
+       (tty)
+     (cons
+      tty
+      (file-append
+       font-terminus
+       "/share/consolefonts/ter-k32n")))
+   '("tty1" "tty2" "tty3" "tty4" "tty5" "tty6")))
+
+
 (define network-manager-with-vpnc-configuration
   (network-manager-configuration
    (vpn-plugins
     (list network-manager-vpnc))))
-
-
-(define desktop-without-gdm-service-list
-  (remove-services
-   (list
-    gdm-service-type
-    (service-kind gdm-file-system-service))
-   %desktop-services))
 
 
 (define docker-service-list
@@ -127,3 +118,12 @@ from SERVICE-LIST (%desktop-services for example)"
                    profile-service-type
                    (list network-manager-applet))))
 
+(define shit-trimmed-desktop-services
+  (remove-services
+   (list
+    avahi-service-type
+    nm-applet-service-type
+    usb-modeswitch-service-type
+    gdm-service-type
+    (service-kind gdm-file-system-service))
+   %desktop-services))
