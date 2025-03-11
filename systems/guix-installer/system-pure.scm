@@ -11,83 +11,89 @@
 
 
 (operating-system
-  (host-name "guix-builder")
-  (locale "ru_RU.utf8")
-  (timezone "Asia/Novosibirsk")
+ (host-name "guix-builder")
+ (locale "ru_RU.utf8")
+ (timezone "Asia/Novosibirsk")
 
-  (bootloader
-   (bootloader-configuration
-    (bootloader grub-bootloader)
-    (targets '("/dev/sda"))
-    (keyboard-layout kb-layout)))
+ (bootloader
+  (bootloader-configuration
+   (bootloader grub-bootloader)
+   (targets '("/dev/sda"))
+   (keyboard-layout kb-layout)))
 
-  (kernel-arguments (list "console=ttyS0,115200"))
-  (initrd-modules (append (list "virtio_scsi")
-                          %base-initrd-modules))
+ (kernel-arguments
+  (append
+   (list "console=ttyS0,115200")
+   %default-kernel-arguments))
 
-
-  (keyboard-layout kb-layout)
-
-
-  (users
-   (cons
-    (user-account
-     (name "manager")
-     (comment "Build Manager")
-     (group "users")
-     (supplementary-groups
-      '("wheel" "netdev" "audio" "video")))
-    %base-user-accounts))
+ (initrd-modules
+  (append
+   (list "virtio_scsi")
+   %base-initrd-modules))
 
 
-  (packages
-   (append
-    (map (compose list specification->package+output)
-         (srfi-1:delete
-          "firefox"
-          (append
-           mirage-packages:all
-           kovalev-packages:all)))
-    %base-packages))
+ (keyboard-layout kb-layout)
 
 
-  (services
-   (append
-    (list
-     (service iptables-service-type
-              (iptables-configuration
-               (ipv4-rules (local-file "iptables.rules"))
-               (ipv6-rules (local-file "iptables.rules"))))
-     (service openssh-service-type
-              (openssh-configuration
-               (port-number 13131))))
-
-    (modify-services (remove-services
-                      (list
-                       avahi-service-type
-                       nm-applet-service-type
-                       usb-modeswitch-service-type)
-                      desktop-without-gdm-service-list)
-
-      (guix-service-type config =>
-                         (guix-configuration
-                          (inherit config)
-                          (substitute-urls
-                           (srfi-1:delete "https://ci.guix.gnu.org"
-                                          %default-substitute-urls))))
-      (console-font-service-type _ =>
-                                 hi-dpi-console-font-configuration))))
+ (users
+  (cons
+   (user-account
+    (name "manager")
+    (comment "Build Manager")
+    (group "users")
+    (supplementary-groups
+     '("wheel" "netdev" "audio" "video")))
+   %base-user-accounts))
 
 
-  (file-systems
-   (cons
-    (file-system
-     (device (file-system-label "root"))
-     (mount-point "/")
-     (type "ext4"))
-    %base-file-systems))
+ (packages
+  (append
+   (map (compose list specification->package+output)
+        (srfi-1:delete
+         "firefox"
+         (append
+          mirage-packages:all
+          kovalev-packages:all)))
+   %base-packages))
 
-  (swap-devices
+
+ (services
+  (append
    (list
-    (swap-space
-     (target (file-system-label "swap"))))))
+    (service iptables-service-type
+             (iptables-configuration
+              (ipv4-rules (local-file "iptables.rules"))
+              (ipv6-rules (local-file "iptables.rules"))))
+    (service openssh-service-type
+             (openssh-configuration
+              (port-number 13131))))
+
+   (modify-services (remove-services
+                     (list
+                      avahi-service-type
+                      nm-applet-service-type
+                      usb-modeswitch-service-type)
+                     desktop-without-gdm-service-list)
+
+                    (guix-service-type config =>
+                                       (guix-configuration
+                                        (inherit config)
+                                        (substitute-urls
+                                         (srfi-1:delete "https://ci.guix.gnu.org"
+                                                        %default-substitute-urls))))
+                    (console-font-service-type _ =>
+                                               hi-dpi-console-font-configuration))))
+
+
+ (file-systems
+  (cons
+   (file-system
+    (device (file-system-label "root"))
+    (mount-point "/")
+    (type "ext4"))
+   %base-file-systems))
+
+ (swap-devices
+  (list
+   (swap-space
+    (target (file-system-label "swap"))))))
