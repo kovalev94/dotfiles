@@ -11,7 +11,7 @@
 
 
 (operating-system
- (host-name "guix-builder")
+ (host-name "guix-installer")
  (locale "ru_RU.utf8")
  (timezone "Asia/Novosibirsk")
 
