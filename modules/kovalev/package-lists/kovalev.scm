@@ -41,7 +41,7 @@
   (list
    "ungoogled-chromium"
    "nyxt"
-   "telegram-desktop"
+   ;"telegram-desktop"
    "qbittorrent"))
 
 (define video
