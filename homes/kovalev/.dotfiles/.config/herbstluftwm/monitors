@@ -1,0 +1,69 @@
+# Функция для настройки размера шрифта alacritty
+function change_font_size(){
+    ## If alacritty.yml does not exist, raise an alert
+    [[ ! -f ~/.config/alacritty/alacritty.yml ]] && \
+            notify-send "alacritty.yml does not exist" && exit 0
+            
+    ## Fetch background_opacity from alacritty.yml
+    font_size=$(awk '$1 == "size:" {print $2; exit}' \
+            ~/.config/alacritty/alacritty.yml)
+            
+    toggle_font_size=$1
+                            
+    ## Replace opacity value in alacritty.yml
+    sed -i -- "s/size: $font_size/size: $toggle_font_size/" \
+                                    ~/.config/alacritty/alacritty.yml
+}
+
+# Определяем режимы и настройки мониторов
+function work_mode(){
+    #change_font_size 11
+    xrandr --output eDP-1 --off
+    xrandr --output DP-4-2 --auto
+    xrandr --output DP-4-3 --auto
+    xrandr --output DP-4-2 --left-of DP-4-3
+    xrandr --dpi 96
+    herbstclient detect_monitors
+    echo "Xft.dpi:96" | xrdb -load
+    SCALE_FACTOR=1
+}
+
+function home_tv_mode(){
+    xrandr --output DP-4 --mode 4096x2160
+    xrandr --output eDP-1 --off
+    herbstclient detect_monitors
+    herbstclient add_monitor 2048x1080+0+0
+    herbstclient add_monitor 2048x1080+2048+0
+    herbstclient add_monitor 2048x1080+2048+1080
+    herbstclient add_monitor 2048x1080+0+1080
+    herbstclient remove_monitor 0
+    herbstclient set show_frame_decorations all
+    echo "Xft.dpi:96" | xrdb -load
+    SCALE_FACTOR=1
+}
+
+function laptop_mode(){
+    #change_font_size 7
+    #xrandr --output DP-1-1 --off
+    #xrandr --output DP-1-2 --off
+    xrandr --auto
+    xrdb -merge /home/kovalev/.Xresources
+    xrandr --output eDP-1 --dpi 192
+    echo "Xft.dpi:192" | xrdb -load
+    herbstclient detect_monitors
+    SCALE_FACTOR=2
+}
+
+
+# В зависимости от количества подключенных мониторов выбираем режим
+
+connected_mons=$(xrandr | grep -w connected)
+connected_mons_count=$(echo "$connected_mons" | wc | awk '{print $1}')
+if [[ $connected_mons_count = 3 ]]
+    then work_mode
+elif [[ $connected_mons_count = 2 ]]
+    then home_tv_mode
+elif [[ $connected_mons_count = 1 ]]
+    then laptop_mode
+fi
+echo $SCALE_FACTOR

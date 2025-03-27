@@ -1,0 +1,3 @@
+[submodule ".config/rclone"]
+	path = .config/rclone
+	url = git@gitlab.mtu.ru:vpkoval4/rclone-nextcloud.git

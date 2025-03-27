@@ -1,0 +1,38 @@
+[cursor.style]
+blinking = "On"
+shape = "Underline"
+
+[env]
+TERM = "xterm-256color"
+
+[[keyboard.bindings]]
+key = "O"
+mods = "Alt"
+
+[keyboard.bindings.command]
+args = ["msg", "config", "-w", "-1", "window.opacity=1" ]
+program = "alacritty"
+
+[[keyboard.bindings]]
+key = "O"
+mods = "Alt | Shift"
+
+[keyboard.bindings.command]
+args = ["msg", "config", "-w", "-1", "-r" ]
+program = "alacritty"
+
+#Globaly toggle opacity
+#[[keyboard.bindings]]
+#key = "O"
+#mods = "Alt | Shift"
+
+#[keyboard.bindings.command]
+#args = ["/home/kovalev/.config/alacritty/changeOpacity.bash"]
+#program = "bash"
+
+[scrolling]
+history = 10000
+
+[window]
+opacity = 0.65
+padding = { x = 6, y = 6 }

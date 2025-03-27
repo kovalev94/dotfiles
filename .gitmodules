@@ -1,6 +1,3 @@
 [submodule "modules/mts"]
 	path = modules/mts
 	url = git@gitlab.mtu.ru:vpkoval4/guix-mts.git
-[submodule "homes/kovalev/.dotfiles"]
-	path = homes/kovalev/.dotfiles
-	url = git@github.com:kovalev94/.dotfiles.git
