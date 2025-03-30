@@ -10,7 +10,6 @@
 
 (define system-utils
   (list
-   "glibc"
    "htop"
    "lvm2"
    "bluez"
