@@ -59,14 +59,14 @@
                    (aliases '(("grep" . "grep --color=auto") ("ll" . "ls -l")
                               ("ls" . "ls -p --color=auto")))
                    (bashrc (list (local-file
-                                  ".dotfiles/.bashrc"
+                                  "../../home-files/kovalev/.bashrc"
                                   "bashrc")))
                    (bash-profile (list (local-file
-                                        ".dotfiles/.bash_profile"
+                                        "../../home-files/kovalev/.bash_profile"
                                         "bash_profile")))))
     (service home-dotfiles-service-type
              (home-dotfiles-configuration
-              (directories '(".dotfiles"))
+              (directories '("../../home-files/kovalev"))
               (excluded
                (list
                 ".*~"
