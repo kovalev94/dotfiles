@@ -1,9 +1,19 @@
 (define-module (kovalev systems mirage)
+  #:use-module (guix gexp)
+  #:use-module (gnu services)
+  #:use-module (gnu system)
+  #:use-module (gnu system shadow)
+  #:use-module (gnu system file-systems)
+  #:use-module (gnu system mapped-devices)
+  #:use-module (gnu bootloader)
+  #:use-module (gnu bootloader grub)
+  #:use-module (gnu services base)
   #:use-module (gnu services networking)
   #:use-module (gnu services desktop)
   #:use-module (gnu services ssh)
   #:use-module (gnu services avahi)
   #:use-module (gnu system setuid)
+  #:use-module (gnu packages)
   #:use-module (gnu packages spice)
   #:use-module (gnu packages networking)
   #:use-module (gnu packages package-management)
@@ -91,16 +101,17 @@
                 (port-number 13131))))
 
      (modify-services shit-trimmed-desktop-services
-                      (guix-service-type _ =>
-                                         (guix-configuration
-                                          (channels default-channels-with-nonguix)
-                                          (guix (guix-for-channels default-channels-with-nonguix))
-                                          (substitute-urls bordeaux-nonguix-subsitute-urls)
-                                          (authorized-keys default-authorized-keys-with-nonguix)))
-                      (console-font-service-type _ =>
-                                                 hi-dpi-console-font-configuration)
-                      (network-manager-service-type _ =>
-                                                    network-manager-with-vpnc-configuration))))
+       (guix-service-type
+        config =>(guix-configuration
+                  (inherit config)
+                  (channels default-channels-with-nonguix)
+                  (guix (guix-for-channels default-channels-with-nonguix))
+                  (substitute-urls bordeaux-nonguix-subsitute-urls)
+                  (authorized-keys default-authorized-keys-with-nonguix)))
+       (console-font-service-type
+        _ => hi-dpi-console-font-configuration)
+       (network-manager-service-type
+        _ => network-manager-with-vpnc-configuration))))
 
 
    (setuid-programs

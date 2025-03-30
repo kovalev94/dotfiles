@@ -49,11 +49,11 @@
                  (list
                   (string-append
                    "--config="
-                   (getenv "XDG_CONFIG_HOME")
+                   (or (getenv "XDG_CONFIG_HOME") "/home/kovalev/.config")
                    "/syncthing")
                   (string-append
                    "--data="
-                   (getenv "XDG_STATE_HOME")
+                   (or (getenv "XDG_STATE_HOME") "/home/kovalev/.local/state")
                    "/syncthing"))))))
      (service home-bash-service-type
               (home-bash-configuration
@@ -67,7 +67,7 @@
                                     "bash_profile")))))
      (service home-dotfiles-service-type
               (home-dotfiles-configuration
-               (source-directory ("/home/kovalev/.guix-config/home-files"))
+               (source-directory "/home/kovalev/.guix-config/home-files")
                (directories '("kovalev"))
                (excluded
                 (list

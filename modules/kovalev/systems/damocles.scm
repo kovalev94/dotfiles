@@ -1,4 +1,4 @@
-(define-module (kovalev systmes damocles)
+(define-module (kovalev systems damocles)
   #:use-module (gnu)
   #:use-module (gnu services networking)
   #:use-module (gnu packages screen)
