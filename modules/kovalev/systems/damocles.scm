@@ -1,8 +1,8 @@
 (define-module (kovalev systmes damocles)
-  #:use-modules (gnu)
+  #:use-module (gnu)
   #:use-module (gnu services networking)
-  #:use-modules (gnu packages screen)
-  #:use-modules (gnu packages ssh))
+  #:use-module (gnu packages screen)
+  #:use-module (gnu packages ssh))
 
 (define-public damocles-system
   (operating-system

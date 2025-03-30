@@ -1,5 +1,4 @@
 (define-module (kovalev systems mirage)
-  #:use-module (gnu)
   #:use-module (gnu services networking)
   #:use-module (gnu services desktop)
   #:use-module (gnu services ssh)
