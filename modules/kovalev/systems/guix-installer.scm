@@ -52,8 +52,8 @@
      (list
       (service iptables-service-type
                (iptables-configuration
-                (ipv4-rules (local-file "../../../../sys-files/iptables/guix-installer.rules"))
-                (ipv6-rules (local-file "../../../../sys-files/iptables/guix-installer.rules")))))
+                (ipv4-rules (local-file "/home/kovalev/.guix-config/sys-files/iptables/guix-installer.rules"))
+                (ipv6-rules (local-file "/home/kovalev/.guix-config/sys-files/iptables/guix-installer.rules")))))
 
      (modify-services (operating-system-user-services installation-os-nonfree)
                       (openssh-service-type config =>

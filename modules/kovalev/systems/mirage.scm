@@ -80,8 +80,8 @@
       (service bluetooth-service-type)
       (service iptables-service-type
                (iptables-configuration
-                (ipv4-rules (local-file "../../../../sys-files/iptables/mirage.rules"))
-                (ipv6-rules (local-file "../../../../sys-files/iptables/mirage.rules"))))
+                (ipv4-rules (local-file "/home/kovalev/.guix-config/sys-files/iptables/mirage.rules"))
+                (ipv6-rules (local-file "/home/kovalev/.guix-config/sys-files/iptables/mirage.rules"))))
       (simple-service 'add-extra-hosts
                       hosts-service-type
                       (append
