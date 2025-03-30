@@ -60,14 +60,15 @@
                (aliases '(("grep" . "grep --color=auto") ("ll" . "ls -l")
                           ("ls" . "ls -p --color=auto")))
                (bashrc (list (local-file
-                              "../../../home-files/kovalev/.bashrc"
+                              "/home/kovalev/.guix-config/home-files/kovalev/.bashrc"
                               "bashrc")))
                (bash-profile (list (local-file
-                                    "../../../home-files/kovalev/.bash_profile"
+                                    "/home/kovalev/.guix-config/home-files/kovalev/.bash_profile"
                                     "bash_profile")))))
      (service home-dotfiles-service-type
               (home-dotfiles-configuration
-               (directories '("../../../home-files/kovalev"))
+               (source-directory ("/home/kovalev/.guix-config/home-files"))
+               (directories '("kovalev"))
                (excluded
                 (list
                  ".*~"
