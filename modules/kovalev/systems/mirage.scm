@@ -23,6 +23,7 @@
   #:use-module (kovalev etc-hosts)
   #:use-module (kovalev services)
   #:use-module (kovalev keyboard)
+  #:use-module (kovalev homes kovalev)
   #:use-module ((srfi srfi-1) #:prefix srfi-1:))
 
 (define-public mirage-system
@@ -86,6 +87,8 @@
     (append
      (assoc-ref virtualization-service-list "services")
      (list
+      (service guix-home-service-type
+            `(("kovalev" ,kovalev-home)))
       (service bluetooth-service-type)
       (service iptables-service-type
                (iptables-configuration
