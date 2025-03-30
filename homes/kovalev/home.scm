@@ -17,8 +17,7 @@
              (gnu home services syncthing)
              (kovalev package-lists kovalev)
              (kovalev keyboard)
-             (kovalev ssh)
-             (mts ssh))
+             (kovalev ssh))
 
 (home-environment
   ;; Below is the list of packages that will show up in your

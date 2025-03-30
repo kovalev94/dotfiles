@@ -11,7 +11,6 @@
              (nongnu system linux-initrd)
              (kovalev package-lists mirage)
              (kovalev etc-hosts)
-             ((mts hosts xring) #:prefix mts:xring:)
              (kovalev services)
              (kovalev keyboard)
              ((srfi srfi-1) #:prefix srfi-1:))

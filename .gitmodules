@@ -1,3 +1,0 @@
-[submodule "modules/mts"]
-	path = modules/mts
-	url = git@gitlab.mtu.ru:vpkoval4/guix-mts.git
