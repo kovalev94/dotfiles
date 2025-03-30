@@ -95,12 +95,12 @@
                 (ipv4-rules
                  (local-file
                   (string-append
-                   (or (getenv "$HOME") "/home/kovalev")
+                   (or (getenv "HOME") "/home/kovalev")
                    "/.guix-config/sys-files/iptables/mirage.rules")))
                 (ipv6-rules
                  (local-file
                   (string-append
-                   (or (getenv "$HOME") "/home/kovalev")
+                   (or (getenv "HOME") "/home/kovalev")
                    "/.guix-config/sys-files/iptables/mirage.rules")))))
       (simple-service 'add-extra-hosts
                       hosts-service-type

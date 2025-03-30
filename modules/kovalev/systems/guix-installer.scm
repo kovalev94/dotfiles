@@ -64,12 +64,12 @@
                 (ipv4-rules
                  (local-file
                   (string-append
-                   (or (getenv "$HOME") "/home/kovalev")
+                   (or (getenv "HOME") "/home/kovalev")
                    "/.guix-config/sys-files/iptables/guix-installer.rules")))
                 (ipv6-rules
                  (local-file
                   (string-append
-                   (or (getenv "$HOME") "/home/kovalev")
+                   (or (getenv "HOME") "/home/kovalev")
                    "/.guix-config/sys-files/iptables/guix-installer.rules"))))))
 
      (modify-services (operating-system-user-services installation-os-nonfree)
