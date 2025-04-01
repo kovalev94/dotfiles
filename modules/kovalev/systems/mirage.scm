@@ -12,6 +12,7 @@
   #:use-module (gnu services desktop)
   #:use-module (gnu services ssh)
   #:use-module (gnu services avahi)
+  #:use-module (gnu services guix)
   #:use-module (gnu system setuid)
   #:use-module (gnu packages)
   #:use-module (gnu packages spice)
@@ -106,7 +107,7 @@
                       hosts-service-type
                       (append
                        ipoint
-                       akadem))
+                       personal-machines))
       (service openssh-service-type
                (openssh-configuration
                 (port-number 13131))))
@@ -117,7 +118,7 @@
                   (inherit config)
                   (channels default-channels-with-nonguix)
                   (guix (guix-for-channels default-channels-with-nonguix))
-                  (substitute-urls bordeaux-nonguix-subsitute-urls)
+                  (substitute-urls bordeaux-nonguix-substitute-urls)
                   (authorized-keys default-authorized-keys-with-nonguix)))
        (console-font-service-type
         _ => hi-dpi-console-font-configuration)
