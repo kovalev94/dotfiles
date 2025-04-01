@@ -67,9 +67,9 @@ from SERVICE-LIST (%desktop-services for example)"
 
 
 (define bordeaux-nonguix-substitute-urls
-  (cons*
-   "https://substitutes.nonguix.org"
-   %default-substitute-urls))
+  (list
+   "https://bordeaux.guix.gnu.org"
+   "https://substitutes.nonguix.org"))
 
 
 (define hi-dpi-console-font-configuration
