@@ -51,7 +51,7 @@
     (append
      mirage-packages:all
      kovalev-packages:all
-    %base-packages))
+     (operating-system-packages installation-os-nonfree)))
 
    (services
     (append
