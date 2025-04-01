@@ -84,7 +84,6 @@
 (define all
   (append
    fs-utils
-   system-utils
    network-utils
    base-toolkit
    base-gui))
