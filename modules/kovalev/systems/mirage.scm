@@ -14,13 +14,12 @@
   #:use-module (gnu services avahi)
   #:use-module (gnu services guix)
   #:use-module (gnu system setuid)
-  #:use-module (gnu packages)
   #:use-module (gnu packages spice)
   #:use-module (gnu packages networking)
   #:use-module (gnu packages package-management)
   #:use-module (nongnu packages linux)
   #:use-module (nongnu system linux-initrd)
-  #:use-module (kovalev package-lists mirage)
+  #:use-module ((kovalev package-lists mirage) #:prefix mirage-packages:)
   #:use-module (kovalev etc-hosts)
   #:use-module (kovalev services)
   #:use-module (kovalev keyboard)
@@ -72,18 +71,13 @@
        '("wheel" "netdev" "audio" "video" "kvm" "libvirt" )))
      %base-user-accounts))
 
-                                        ;Globaly installed packages(e.g. for all users)
+   ;Globaly installed packages(e.g. for all users)
    (packages
     (append
-     (map (compose list specification->package+output)
-          (append
-           system-utils
-           network-utils
-           base-toolkit
-           base-gui))
+     mirage-packages:all
      %base-packages))
 
-                                        ;Installed and enabled services(like ssh-server,docker, etc.)
+   ;Installed and enabled services(like ssh-server,docker, etc.)
    (services
     (append
      (assoc-ref virtualization-service-list "services")

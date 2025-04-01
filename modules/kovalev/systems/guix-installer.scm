@@ -11,7 +11,6 @@
   #:use-module (gnu services networking)
   #:use-module (gnu services desktop)
   #:use-module (gnu services ssh)
-  #:use-module (gnu packages)
   #:use-module (gnu packages package-management)
   #:use-module (nongnu system install)
   #:use-module (nongnu system linux-initrd)
@@ -50,11 +49,9 @@
 
    (packages
     (append
-     (map (compose list specification->package+output)
-          (append
-           mirage-packages:all
-           kovalev-packages:all))
-     %base-packages))
+     mirage-packages:all
+     kovalev-packages:all
+    %base-packages))
 
    (services
     (append
