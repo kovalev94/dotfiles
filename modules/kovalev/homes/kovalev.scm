@@ -59,15 +59,23 @@
               (home-bash-configuration
                (aliases '(("grep" . "grep --color=auto") ("ll" . "ls -l")
                           ("ls" . "ls -p --color=auto")))
-               (bashrc (list (local-file
-                              "/home/kovalev/.guix-config/home-files/kovalev/.bashrc"
-                              "bashrc")))
-               (bash-profile (list (local-file
-                                    "/home/kovalev/.guix-config/home-files/kovalev/.bash_profile"
-                                    "bash_profile")))))
+               (bashrc (list
+                        (local-file
+                         (string-append
+                          (getenv "GUIX_CONFIG_DIR")
+                          "/home-files/kovalev/.bashrc")
+                         "bashrc")))
+               (bash-profile (list
+                              (local-file
+                               (string-append
+                                (getenv "GUIX_CONFIG_DIR")
+                                "/home-files/kovalev/.bash_profile")
+                               "bash_profile")))))
      (service home-dotfiles-service-type
               (home-dotfiles-configuration
-               (source-directory "/home/kovalev/.guix-config/home-files")
+               (source-directory
+                (string-append
+                 (getenv "GUIX_CONFIG_DIR") "/home-files"))
                (directories '("kovalev"))
                (excluded
                 (list
@@ -81,7 +89,12 @@
                  ".bash_profile"))))
      (simple-service 'my-env-vars-service
                      home-environment-variables-service-type
-                     `(("GUIX_PACKAGE_PATH". "/home/kovalev/.guix-config/modules")))
+                     `(("GUIX_CONFIG_DIR" .
+                        "/home/kovalev/.guix-config")
+                       ("GUIX_PACKAGE_PATH" .
+                        ,(string-append
+                          (getenv "GUIX_CONFIG_DIR")
+                          "/modules"))))
      (service home-openssh-service-type
               (home-openssh-configuration
                (hosts
@@ -97,4 +110,5 @@
                  general))
                (authorized-keys '())
                (add-keys-to-agent "120m")))))))
+(display (getcwd))
 kovalev-home
