@@ -44,7 +44,7 @@
    iptables
    whois
    curl
-   '(bind "utils")
+   (list isc-bind "utils")
    wireguard-tools
    vpnc))
 
