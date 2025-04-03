@@ -153,7 +153,7 @@
       (type "ext4"))
      (file-system
       (mount-point "/boot/efi")
-      (device (uuid "9E98-8E5C" 'fat32))
+      (device (file-system-label "EFI"))
       (type "vfat"))
      %base-file-systems))
 
