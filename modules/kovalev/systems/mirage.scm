@@ -90,13 +90,13 @@
                 (ipv4-rules
                  (local-file
                   (string-append
-                   (or (getenv "HOME") "/home/kovalev")
-                   "/.guix-config/sys-files/iptables/mirage.rules")))
+                   (getenv "GUIX_CONFIG_DIR")
+                   "/sys-files/iptables/mirage.rules")))
                 (ipv6-rules
                  (local-file
                   (string-append
-                   (or (getenv "HOME") "/home/kovalev")
-                   "/.guix-config/sys-files/iptables/mirage.rules")))))
+                   (getenv "GUIX_CONFIG_DIR")
+                   "/sys-files/iptables/guix-installer.rules")))))
       (simple-service 'add-extra-hosts
                       hosts-service-type
                       (append
