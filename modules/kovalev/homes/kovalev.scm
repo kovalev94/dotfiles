@@ -10,7 +10,7 @@
   #:use-module (gnu home services desktop)
   #:use-module (gnu home services dotfiles)
   #:use-module (gnu home services syncthing)
-  #:use-module (kovalev package-lists kovalev)
+  #:use-module ((kovalev package-lists kovalev) #:prefix kovalev-packages:)
   #:use-module (kovalev keyboard)
   #:use-module (kovalev ssh))
 
@@ -23,16 +23,7 @@
   (home-environment
    ;; Below is the list of packages that will show up in your
    ;; Home profile, under ~/.guix-home/profile.
-   (packages
-    (map (compose list specification->package+output)
-         (append
-          emacs-stuff
-          fonts
-          www
-          video
-          virtualization
-          tools
-          work)))
+    (packages kovalev-packages:all)
 
    ;; Below is the list of Home services.  To search for available
    ;; services, run 'guix home search KEYWORD' in a terminal.
