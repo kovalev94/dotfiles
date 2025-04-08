@@ -1,14 +1,51 @@
-## 🗒️ **DESCRIPTION**
-
+## **/home/kovalev/.guix-config**
 My Guix SD and Guix Home configuration and relative modules.
 
+##  **INFO**
 At this moment I don't know how to manipulate sensitive data - <br>
-So files: 
-    \*.nmconnection
-    rclone.conf
-    syncthing certificates and keys
-should be added before system or home reconfiguring, manually.
+So \*.nmconnection files should be added, after system reconfiguring/building, manually.
+Rclone.conf, syncthing certificates and keys, should be added before home reconfiguring, manually.
 
 Also, for now - doom emacs should copied or installed manually,
 after system or home reconfiguring
 
+##  **INSTALLATION**
+
+To recreate/deploy system from install iso, you should do the following steps.
+1. Clone this repository
+``` 
+git clone https://github.com/kovalev94/.guix-config.git
+```
+2. Set enviroment variable - GUIX_CONFIG_DIR with path to this repository
+``` 
+export GUIX_CONFIG_DIR=/path/to/this/repo
+``` 
+3. Manually create disk partitions, LVM volumes, etc., and create filesystems.
+4. Start cow-store on mnt 
+``` 
+herd start cow-store /mnt
+``` 
+5. Initialize the desired system with /path/to/this/repo/modules directory prepended to %load-path
+``` 
+guix system -L /path/to/this/repo/modules init \
+/path/to/this/repo/modules/kovalev/systems/desired-system.scm /mnt
+``` 
+6. After install reboot into new system
+7. Login as root and setup password for root and if needed for other users
+8. If system definition doesn't have guix-home-service -
+   Setup home enviroment:
+   1. Clone this repository
+      ``` 
+      git clone https://github.com/kovalev94/.guix-config.git
+      ```
+   2. Set enviroment variable - GUIX_CONFIG_DIR with path to this repository
+      ``` 
+      export GUIX_CONFIG_DIR=/path/to/this/repo
+      ``` 
+   3. Setup desired home environment with /path/to/this/repo/modules directory prepended to %load-path
+      ``` 
+      guix home -L /path/to/this/repo/modules reconfigure \
+      /path/to/this/repo/modules/kovalev/homes/desired-home.scm
+      ``` 
+
+    
