@@ -71,6 +71,8 @@
    dmenu
    picom
    pavucontrol
+   brightnessctl
+   pulsemixer
    feh
    xrandr
    xinput

@@ -95,9 +95,7 @@
    fping
    wireshark
    imagemagick
-   brightnessctl
-   keepassxc
-   pulsemixer))
+   keepassxc))
 
 (define work
   (list
