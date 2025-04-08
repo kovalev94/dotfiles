@@ -82,8 +82,6 @@
     (append
      (assoc-ref virtualization-service-list "services")
      (list
-      (service guix-home-service-type
-            `(("kovalev" ,kovalev-home)))
       (service bluetooth-service-type)
       (service iptables-service-type
                (iptables-configuration
