@@ -54,8 +54,6 @@
    bluez
    screen
    python
-   xterm
-   firefox
    vim
    mc
    unzip
@@ -77,6 +75,8 @@
    xrandr
    xinput
    xrdb
+   xterm
+   firefox
    font-gnu-freefont
    xdg-utils))
 
