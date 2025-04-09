@@ -55,5 +55,5 @@ feh --no-fehbg --bg-scale $WALLPAPER
 
 #turn on picom
 if $ENABLE_PICOM; then
-    picom -b
+    picom --backend glx -b
 fi
