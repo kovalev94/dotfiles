@@ -89,7 +89,8 @@
                (hosts
                 (append
                  personal-servers
-                 ipoint
+                 ipoint-whites
+                 ipoint-lan
                  akadem
                  spd-servers
                  spd-routers

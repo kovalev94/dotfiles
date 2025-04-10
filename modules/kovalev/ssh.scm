@@ -1,7 +1,8 @@
 (define-module (kovalev ssh)
   #:use-module (gnu home services ssh)
   #:export (personal-servers
-            ipoint
+            ipoint-whites
+            ipoint-lan
             akadem
             spd-servers
             spd-routers
@@ -42,10 +43,18 @@
     (port 53622)
     (identity-file "~/.ssh/keys/damocles"))))
 
-(define ipoint
+(define ipoint-whites
   (list
    (openssh-host
     (name "ipoint-*")
+    (port 57655)
+    (user "lanadmin")
+    (identity-file "~/.ssh/keys/ipoint"))))
+
+(define ipoint-lan
+  (list
+   (openssh-host
+    (name "*.ipoint-lan")
     (port 57655)
     (user "lanadmin")
     (identity-file "~/.ssh/keys/ipoint"))))
