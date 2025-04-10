@@ -24,10 +24,10 @@ export DOTFILES_DIR=/path/to/this/repo
    #+BEGIN_SRC
 herd start cow-store /mnt
    #+END_SRC
-5. Initialize the desired system with /path/to/this/repo/modules directory prepended to %load-path
+5. Initialize the desired system with /path/to/this/repo directory prepended to %load-path
    #+BEGIN_SRC
-guix system -L /path/to/this/repo/modules init \
-    /path/to/this/repo/modules/kovalev/systems/desired-system.scm /mnt
+guix system -L /path/to/this/repo/ init \
+    /path/to/this/repo/guix-config/systems/desired-system.scm /mnt
    #+END_SRC
 6. After install reboot into new system
 7. Login as root and setup password for root and if needed for other users
@@ -40,8 +40,8 @@ git clone https://github.com/kovalev94/.dotfiles.git
       #+BEGIN_SRC
 export DOTFILES_DIR=/path/to/this/repo
       #+END_SRC
-   3. Setup desired home environment with /path/to/this/repo/modules directory prepended to %load-path
+   3. Setup desired home environment with /path/to/this/repo directory prepended to %load-path
       #+BEGIN_SRC sh
-guix home -L /path/to/this/repo/modules reconfigure \
-    /path/to/this/repo/modules/kovalev/homes/desired-home.scm
+guix home -L /path/to/this/repo/guix-config reconfigure \
+    /path/to/this/repo/guix-config/kovalev/homes/desired-home.scm
       #+END_SRC

@@ -1,4 +1,4 @@
-(define-module (kovalev ssh)
+(define-module (guix-config ssh)
   #:use-module (gnu home services ssh)
   #:export (personal-servers
             ipoint-whites

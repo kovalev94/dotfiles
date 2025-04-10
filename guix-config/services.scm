@@ -1,4 +1,4 @@
-(define-module (kovalev services)
+(define-module (guix-config services)
   #:use-module (gnu system privilege)
   #:use-module (gnu services)
   #:use-module (gnu packages spice)

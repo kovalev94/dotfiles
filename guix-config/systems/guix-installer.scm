@@ -1,4 +1,4 @@
-(define-module (kovalev systems guix-installer)
+(define-module (guix-config systems guix-installer)
   #:use-module (guix gexp)
   #:use-module (gnu services)
   #:use-module (gnu system)
@@ -29,9 +29,9 @@
   #:use-module (nongnu system install)
   #:use-module (nongnu system linux-initrd)
   #:use-module (nongnu packages linux)
-  #:use-module (kovalev package-lists)
-  #:use-module (kovalev services)
-  #:use-module (kovalev keyboard)
+  #:use-module (guix-config package-lists)
+  #:use-module (guix-config services)
+  #:use-module (guix-config keyboard)
   #:use-module ((srfi srfi-1) #:prefix srfi-1:))
 
 

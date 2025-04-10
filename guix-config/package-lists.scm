@@ -1,4 +1,4 @@
-(define-module (kovalev package-lists)
+(define-module (guix-config package-lists)
   #:use-module (gnu packages linux)
   #:use-module (gnu packages disk)
   #:use-module (gnu packages admin)

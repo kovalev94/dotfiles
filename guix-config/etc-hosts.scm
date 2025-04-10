@@ -1,4 +1,4 @@
-(define-module (kovalev etc-hosts)
+(define-module (guix-config etc-hosts)
   #:use-module (gnu services base)
   #:export (personal-machines
             ipoint))

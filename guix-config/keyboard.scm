@@ -1,4 +1,4 @@
-(define-module (kovalev keyboard)
+(define-module (guix-config keyboard)
   #:use-module (gnu system keyboard)
   #:export (kb-layout))
 

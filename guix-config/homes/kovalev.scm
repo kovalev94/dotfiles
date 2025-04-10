@@ -1,4 +1,4 @@
-(define-module (kovalev homes kovalev)
+(define-module (guix-config homes kovalev)
   #:use-module (gnu home)
   #:use-module (gnu packages)
   #:use-module (gnu packages wm)
@@ -24,9 +24,9 @@
   #:use-module (gnu home services desktop)
   #:use-module (gnu home services dotfiles)
   #:use-module (gnu home services syncthing)
-  #:use-module (kovalev package-lists)
-  #:use-module (kovalev keyboard)
-  #:use-module (kovalev ssh))
+  #:use-module (guix-config package-lists)
+  #:use-module (guix-config keyboard)
+  #:use-module (guix-config ssh))
 
 ;; This "home-environment" file can be passed to 'guix home reconfigure'
 ;; to reproduce the content of your profile.  This is "symbolic": it only

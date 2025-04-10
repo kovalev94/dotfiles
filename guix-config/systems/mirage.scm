@@ -1,4 +1,4 @@
-(define-module (kovalev systems mirage)
+(define-module (guix-config systems mirage)
   #:use-module (guix gexp)
   #:use-module (gnu services)
   #:use-module (gnu system)
@@ -20,11 +20,11 @@
   #:use-module (gnu packages package-management)
   #:use-module (nongnu packages linux)
   #:use-module (nongnu system linux-initrd)
-  #:use-module (kovalev package-lists)
-  #:use-module (kovalev etc-hosts)
-  #:use-module (kovalev services)
-  #:use-module (kovalev keyboard)
-  #:use-module (kovalev homes kovalev)
+  #:use-module (guix-config package-lists)
+  #:use-module (guix-config etc-hosts)
+  #:use-module (guix-config services)
+  #:use-module (guix-config keyboard)
+  #:use-module (guix-config homes kovalev)
   #:use-module ((srfi srfi-1) #:prefix srfi-1:))
 
 (define-public mirage-system
@@ -107,7 +107,7 @@
                      `(("DOTFILES_DIR" .
                         "/home/kovalev/.dotfiles")
                        ("GUIX_PACKAGE_PATH" .
-                        "/home/kovalev/.dotfiles/modules")))
+                        "/home/kovalev/.dotfiles")))
       (simple-service 'add-extra-hosts
                       hosts-service-type
                       (append
