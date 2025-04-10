@@ -115,12 +115,6 @@
                  ;;already managed by home-bash-service
                  ".bashrc"
                  ".bash_profile"))))
-     (simple-service 'my-env-vars-service
-                     home-environment-variables-service-type
-                     `(("GUIX_CONFIG_DIR" .
-                        "/home/kovalev/.guix-config")
-                       ("GUIX_PACKAGE_PATH" .
-                        "/home/kovalev/.guix-config/modules")))
      (service home-openssh-service-type
               (home-openssh-configuration
                (hosts

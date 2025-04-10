@@ -103,6 +103,11 @@
                   (string-append
                    (getenv "GUIX_CONFIG_DIR")
                    "/sys-files/iptables/guix-installer.rules")))))
+      (simple-service 'guix-config-env session-environment-service-type
+                     `(("GUIX_CONFIG_DIR" .
+                        "/home/kovalev/.guix-config")
+                       ("GUIX_PACKAGE_PATH" .
+                        "/home/kovalev/.guix-config/modules")))
       (simple-service 'add-extra-hosts
                       hosts-service-type
                       (append
