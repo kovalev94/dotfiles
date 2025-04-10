@@ -1,5 +1,5 @@
 (define-module (kovalev services)
-  #:use-module (gnu system setuid)
+  #:use-module (gnu system privilege)
   #:use-module (gnu services)
   #:use-module (gnu packages spice)
   #:use-module (gnu packages gnome)
@@ -105,11 +105,12 @@ from SERVICE-LIST (%desktop-services for example)"
                       'spice-polkit polkit-service-type
                       (list spice-gtk))))
 
-    ( "setuid-programs" . (,(setuid-program
-                             (program
-                              (file-append
-                               spice-gtk
-                               "/libexec/spice-client-glib-usb-acl-helper")))))))
+    ( "privileged-programs" . (,(privileged-program
+                                 (program
+                                  (file-append
+                                   spice-gtk
+                                   "/libexec/spice-client-glib-usb-acl-helper"))
+                                 (setuid? #t))))))
 
 
  ;Because (gnu services networking) module does not expose nm-applet-service

@@ -14,7 +14,7 @@
   #:use-module (gnu services ssh)
   #:use-module (gnu services avahi)
   #:use-module (gnu services guix)
-  #:use-module (gnu system setuid)
+  #:use-module (gnu system privilege)
   #:use-module (gnu packages vpn)
   #:use-module (gnu packages networking)
   #:use-module (gnu packages package-management)
@@ -131,16 +131,17 @@
         _ => network-manager-with-vpnc-configuration))))
 
 
-   (setuid-programs
+   (privileged-programs
     (append
      (cons*
-      (setuid-program
+      (privileged-program
        (program
-        (file-append iputils "/bin/ping")));Neeeded for iptuils ping
-      (assoc-ref virtualization-service-list "setuid-programs"))
-     %setuid-programs))
+        (file-append iputils "/bin/ping"));Neeeded for iptuils ping
+       (setuid? #t))
+      (assoc-ref virtualization-service-list "privileged-programs"))
+     %default-privileged-programs))
 
-                                        ;Required for LVM disks
+   ;Required for LVM disks
    (mapped-devices
     (list
      (mapped-device
