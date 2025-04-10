@@ -46,3 +46,7 @@
 
 * Сравнение с убунту(фишечки,dmesg,демоны, электропитание итд)
 * игры
+
+* Setup damocles image
+* Setup syncthing
+* Slow autocompletion
