@@ -101,12 +101,12 @@
                 (ipv4-rules
                  (local-file
                   (string-append
-                   (getenv "GUIX_CONFIG_DIR")
+                   (getenv "DOTFILES_DIR")
                    "/sys-files/iptables/guix-installer.rules")))
                 (ipv6-rules
                  (local-file
                   (string-append
-                   (getenv "GUIX_CONFIG_DIR")
+                   (getenv "DOTFILES_DIR")
                    "/sys-files/iptables/guix-installer.rules"))))))
 
      (modify-services (operating-system-user-services installation-os-nonfree)

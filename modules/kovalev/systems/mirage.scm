@@ -96,18 +96,18 @@
                 (ipv4-rules
                  (local-file
                   (string-append
-                   (getenv "GUIX_CONFIG_DIR")
+                   (getenv "DOTFILES_DIR")
                    "/sys-files/iptables/mirage.rules")))
                 (ipv6-rules
                  (local-file
                   (string-append
-                   (getenv "GUIX_CONFIG_DIR")
+                   (getenv "DOTFILES_DIR")
                    "/sys-files/iptables/guix-installer.rules")))))
-      (simple-service 'guix-config-env session-environment-service-type
-                     `(("GUIX_CONFIG_DIR" .
-                        "/home/kovalev/.guix-config")
+      (simple-service 'dotfiles-and-guix-env session-environment-service-type
+                     `(("DOTFILES_DIR" .
+                        "/home/kovalev/.dotfiles")
                        ("GUIX_PACKAGE_PATH" .
-                        "/home/kovalev/.guix-config/modules")))
+                        "/home/kovalev/.dotfiles/modules")))
       (simple-service 'add-extra-hosts
                       hosts-service-type
                       (append

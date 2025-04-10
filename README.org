@@ -1,4 +1,4 @@
-#+TITLE: =/home/kovalev/.guix-config=
+#+TITLE: =/home/kovalev/.dotfiles=
 My Guix SD and Guix Home configuration and relative modules.
 
 * INFO
@@ -13,11 +13,11 @@ after system or home reconfiguring
 To recreate/deploy system from install iso, you should do the following steps:
 1. Clone this repository
    #+BEGIN_SRC
-git clone https://github.com/kovalev94/.guix-config.git
+git clone https://github.com/kovalev94/.dotfiles.git
    #+END_SRC
-2. Set enviroment variable - GUIX_CONFIG_DIR with path to this repository
+2. Set enviroment variable - DOTFILES_DIR with path to this repository
    #+BEGIN_SRC
-export GUIX_CONFIG_DIR=/path/to/this/repo
+export DOTFILES_DIR=/path/to/this/repo
    #+END_SRC
 3. Manually create disk partitions, LVM volumes, etc., and create filesystems.
 4. Start cow-store on mnt
@@ -34,11 +34,11 @@ guix system -L /path/to/this/repo/modules init \
 8. If system definition doesn't have guix-home-service Setup home enviroment:
    1. Clone this repository
       #+BEGIN_SRC
-git clone https://github.com/kovalev94/.guix-config.git
+git clone https://github.com/kovalev94/.dotfiles.git
       #+END_SRC
-   2. Set enviroment variable - GUIX_CONFIG_DIR with path to this repository
+   2. Set enviroment variable - DOTFILES_DIR with path to this repository
       #+BEGIN_SRC
-export GUIX_CONFIG_DIR=/path/to/this/repo
+export DOTFILES_DIR=/path/to/this/repo
       #+END_SRC
    3. Setup desired home environment with /path/to/this/repo/modules directory prepended to %load-path
       #+BEGIN_SRC sh

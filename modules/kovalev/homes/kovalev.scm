@@ -90,20 +90,20 @@
                (bashrc (list
                         (local-file
                          (string-append
-                          (getenv "GUIX_CONFIG_DIR")
+                          (getenv "DOTFILES_DIR")
                           "/home-files/kovalev/.bashrc")
                          "bashrc")))
                (bash-profile (list
                               (local-file
                                (string-append
-                                (getenv "GUIX_CONFIG_DIR")
+                                (getenv "DOTFILES_DIR")
                                 "/home-files/kovalev/.bash_profile")
                                "bash_profile")))))
      (service home-dotfiles-service-type
               (home-dotfiles-configuration
                (source-directory
                 (string-append
-                 (getenv "GUIX_CONFIG_DIR") "/home-files"))
+                 (getenv "DOTFILES_DIR") "/home-files"))
                (directories '("kovalev"))
                (excluded
                 (list
