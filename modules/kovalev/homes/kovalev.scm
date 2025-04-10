@@ -1,6 +1,20 @@
 (define-module (kovalev homes kovalev)
   #:use-module (gnu home)
   #:use-module (gnu packages)
+  #:use-module (gnu packages wm)
+  #:use-module (gnu packages vpn)
+  #:use-module (gnu packages sync)
+  #:use-module (gnu packages fonts)
+  #:use-module (gnu packages gnome)
+  #:use-module (gnu packages linux)
+  #:use-module (gnu packages chromium)
+  #:use-module (gnu packages terminals)
+  #:use-module (gnu packages networking)
+  #:use-module (gnu packages bittorrent)
+  #:use-module (gnu packages libreoffice)
+  #:use-module (gnu packages imagemagick)
+  #:use-module (gnu packages web-browsers)
+  #:use-module (gnu packages password-utils)
   #:use-module (gnu services)
   #:use-module (gnu services xorg)
   #:use-module (guix gexp)
@@ -10,7 +24,7 @@
   #:use-module (gnu home services desktop)
   #:use-module (gnu home services dotfiles)
   #:use-module (gnu home services syncthing)
-  #:use-module ((kovalev package-lists kovalev) #:prefix kovalev-packages:)
+  #:use-module (kovalev package-lists)
   #:use-module (kovalev keyboard)
   #:use-module (kovalev ssh))
 
@@ -23,7 +37,30 @@
   (home-environment
    ;; Below is the list of packages that will show up in your
    ;; Home profile, under ~/.guix-home/profile.
-    (packages kovalev-packages:all)
+   (packages
+    (append
+     (list
+      font-google-noto-emoji
+      font-fira-mono
+      font-fira-sans
+      font-fira-code
+      rclone
+      wireshark
+      wireguard-tools
+      herbstluftwm
+      libreoffice
+      dia
+      imagemagick
+      alacritty
+      bluez
+      ungoogled-chromium
+      nyxt
+      keepassxc
+      ;telegram-desktop
+      qbittorrent)
+     tiled-wm-toolkit
+     emacs-toolkit
+     video-tools))
 
    ;; Below is the list of Home services.  To search for available
    ;; services, run 'guix home search KEYWORD' in a terminal.

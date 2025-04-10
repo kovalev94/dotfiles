@@ -7,6 +7,7 @@
   #:use-module (gnu system mapped-devices)
   #:use-module (gnu bootloader)
   #:use-module (gnu bootloader grub)
+  #:use-module (gnu system pam)
   #:use-module (gnu services base)
   #:use-module (gnu services networking)
   #:use-module (gnu services desktop)
@@ -14,12 +15,12 @@
   #:use-module (gnu services avahi)
   #:use-module (gnu services guix)
   #:use-module (gnu system setuid)
-  #:use-module (gnu packages spice)
+  #:use-module (gnu packages vpn)
   #:use-module (gnu packages networking)
   #:use-module (gnu packages package-management)
   #:use-module (nongnu packages linux)
   #:use-module (nongnu system linux-initrd)
-  #:use-module ((kovalev package-lists mirage) #:prefix mirage-packages:)
+  #:use-module (kovalev package-lists)
   #:use-module (kovalev etc-hosts)
   #:use-module (kovalev services)
   #:use-module (kovalev keyboard)
@@ -73,9 +74,16 @@
 
    ;Globaly installed packages(e.g. for all users)
    (packages
-    (append
-     mirage-packages:all
-     %base-packages))
+    (cons*
+     vpnc
+     (append
+      base-sys-toolkit
+      base-gui-toolkit
+      fs-tools
+      network-tools
+      virtualization-tools
+      sys-fonts
+      %base-packages)))
 
    ;Installed and enabled services(like ssh-server,docker, etc.)
    (services

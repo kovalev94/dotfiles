@@ -11,12 +11,25 @@
   #:use-module (gnu services networking)
   #:use-module (gnu services desktop)
   #:use-module (gnu services ssh)
+  #:use-module (gnu packages wm)
+  #:use-module (gnu packages vpn)
+  #:use-module (gnu packages sync)
+  #:use-module (gnu packages fonts)
+  #:use-module (gnu packages gnome)
+  #:use-module (gnu packages linux)
+  #:use-module (gnu packages chromium)
+  #:use-module (gnu packages terminals)
+  #:use-module (gnu packages networking)
+  #:use-module (gnu packages bittorrent)
+  #:use-module (gnu packages libreoffice)
+  #:use-module (gnu packages imagemagick)
+  #:use-module (gnu packages web-browsers)
+  #:use-module (gnu packages password-utils)
   #:use-module (gnu packages package-management)
   #:use-module (nongnu system install)
   #:use-module (nongnu system linux-initrd)
   #:use-module (nongnu packages linux)
-  #:use-module ((kovalev package-lists mirage) #:prefix mirage-packages:)
-  #:use-module ((kovalev package-lists kovalev) #:prefix kovalev-packages:)
+  #:use-module (kovalev package-lists)
   #:use-module (kovalev services)
   #:use-module (kovalev keyboard)
   #:use-module ((srfi srfi-1) #:prefix srfi-1:))
@@ -49,8 +62,35 @@
 
    (packages
     (append
-     mirage-packages:all
-     kovalev-packages:all
+     (list
+      vpnc
+      font-google-noto-emoji
+      font-fira-mono
+      font-fira-sans
+      font-fira-code
+      rclone
+      wireshark
+      wireguard-tools
+      herbstluftwm
+      libreoffice
+      dia
+      imagemagick
+      alacritty
+      bluez
+      ungoogled-chromium
+      nyxt
+      keepassxc
+      ;telegram-desktop
+      qbittorrent)
+     base-sys-toolkit
+     base-gui-toolkit
+     tiled-wm-toolkit
+     emacs-toolkit
+     fs-tools
+     network-tools
+     video-tools
+     virtualization-tools
+     sys-fonts
      (operating-system-packages installation-os-nonfree)))
 
    (services
