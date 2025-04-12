@@ -15,6 +15,7 @@
   #:use-module (gnu packages imagemagick)
   #:use-module (gnu packages web-browsers)
   #:use-module (gnu packages password-utils)
+  #:use-module (gnu packages gnupg)
   #:use-module (gnu services)
   #:use-module (gnu services xorg)
   #:use-module (guix gexp)
@@ -55,7 +56,9 @@
       bluez
       ungoogled-chromium
       nyxt
-      keepassxc
+      gnupg
+      pinentry
+      password-store
       ;telegram-desktop
       qbittorrent)
      tiled-wm-toolkit
