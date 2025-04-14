@@ -21,6 +21,7 @@
   #:use-module (gnu services xorg)
   #:use-module (guix gexp)
   #:use-module (gnu home services)
+  #:use-module (gnu home services gnupg)
   #:use-module (gnu home services shells)
   #:use-module (gnu home services ssh)
   #:use-module (gnu home services desktop)
@@ -58,8 +59,6 @@
       bluez
       ungoogled-chromium
       nyxt
-      gnupg
-      pinentry
       password-store
       ;telegram-desktop
       qbittorrent)
@@ -72,6 +71,10 @@
    (services
     (list
      (service home-ssh-agent-service-type)
+     (service home-gpg-agent-service-type
+              (home-gpg-agent-configuration
+               (pinentry-program
+                (file-append pinentry-rofi "/bin/pinentry-rofi"))))
      (service home-startx-command-service-type
               (xorg-configuration
                (keyboard-layout kb-layout)))

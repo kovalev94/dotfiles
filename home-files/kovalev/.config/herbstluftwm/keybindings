@@ -15,7 +15,7 @@ hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-c close
 #hc keybind $Mod-Return spawn "${TERMINAL:-xterm}" # use your $TERMINAL with xterm as fallback
 hc keybind $Mod-Return spawn emacsclient -c -a emacs
-hc keybind $Mod-d spawn dmenu_run
+hc keybind $Mod-d spawn rofi -show drun
 hc keybind $Mod-t spawn "${TERMINAL:-xterm}" # use your $TERMINAL with xterm as fallback
 hc keybind $Mod-n spawn nyxt
 hc keybind XF86AudioMute spawn pulsemixer --toggle-mute

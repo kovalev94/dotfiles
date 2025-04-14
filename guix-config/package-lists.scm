@@ -82,7 +82,7 @@
 (define tiled-wm-toolkit
   (list
    polybar
-   dmenu
+   rofi
    dzen
    xftwidth
    brightnessctl

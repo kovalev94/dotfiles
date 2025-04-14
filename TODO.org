@@ -50,3 +50,5 @@
 * Setup damocles image
 * Setup syncthing
 * Slow autocompletion
+
+* Rofi config and themes (.local) to repo
