@@ -1,0 +1,4 @@
+configuration {
+    dpi: 0;
+}
+@theme "/home/kovalev/.local/share/rofi/themes/rounded-pink-dark.rasi"
