@@ -3,6 +3,7 @@
   #:use-module (gnu packages)
   #:use-module (gnu packages wm)
   #:use-module (gnu packages vpn)
+  #:use-module (gnu packages base)
   #:use-module (gnu packages sync)
   #:use-module (gnu packages fonts)
   #:use-module (gnu packages gnome)
@@ -41,6 +42,7 @@
    (packages
     (append
      (list
+      glibc
       font-google-noto-emoji
       font-fira-mono
       font-fira-sans
