@@ -1,0 +1,11 @@
+*filter
+:INPUT DROP
+:FORWARD DROP
+:OUTPUT ACCEPT
+-A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+-A INPUT -i lo -j ACCEPT
+-A INPUT -p icmp -j ACCEPT
+-A INPUT -p tcp --dport 13131 -j ACCEPT
+-A INPUT -p tcp --dport 22000 -j ACCEPT
+-A INPUT -p udp --dport 22000 -j ACCEPT
+COMMIT
