@@ -52,3 +52,6 @@
 * Slow autocompletion
 
 * Rofi config and themes (.local) to repo
+* .gitmodules delete from kovalev
+* rclone passintegration
+* network manager connections pass integration
