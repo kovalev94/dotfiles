@@ -29,19 +29,19 @@
    ;; services, run 'guix home search KEYWORD' in a terminal.
    (services
     (list
-     (service home-syncthing-service-type
-              (for-home
-               (syncthing-configuration
-                (arguments
-                 (list
-                  (string-append
-                   "--config="
-                   (or (getenv "XDG_CONFIG_HOME") "/home/schneizel/.config")
-                   "/syncthing")
-                  (string-append
-                   "--data="
-                   (or (getenv "XDG_STATE_HOME") "/home/schneizel/.local/state")
-                   "/syncthing"))))))
+     ;(service home-syncthing-service-type
+     ;         (for-home
+     ;          (syncthing-configuration
+     ;           (arguments
+     ;            (list
+     ;             (string-append
+     ;              "--config="
+     ;              (or (getenv "XDG_CONFIG_HOME") "/home/schneizel/.config")
+     ;              "/syncthing")
+     ;             (string-append
+     ;              "--data="
+     ;              (or (getenv "XDG_STATE_HOME") "/home/schneizel/.local/state")
+     ;              "/syncthing"))))))
      (service home-bash-service-type
               (home-bash-configuration
                (aliases '(("grep" . "grep --color=auto") ("ll" . "ls -l")

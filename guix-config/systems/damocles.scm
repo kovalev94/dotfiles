@@ -93,26 +93,26 @@
                         "/home/kovalev/.dotfiles")
                        ("GUIX_PACKAGE_PATH" .
                         "/home/kovalev/.dotfiles")))
-      (service wireguard-service-type
-               (wireguard-configuration
-                (interface "knightmares")
-                (adresses '("172.16.13.1/27"))
-                (port 51833)
-                (private-key
-                 #~(string-append "<("
-                                  #$(file-append password-store "/bin/pass")
-                   " Damocles/WireGuard/private-keys/%i)"))
-                (bootstrap-private-key? #f)
-                (peers
-                 (list
-                  (wireguard-peer
-                   (name "ipoint-test")
-                   (public-key "8f/vqKnyFNXV97tgJknBYd2YUt9WgSVxRaiQ2ngAnDQ=")
-                   (allowed-ips '("172.16.13.2/32"
-                                  "192.168.110.0/23"
-                                  "192.168.112.0/23"
-                                  "192.168.114.0/23"))
-                   (keep-alive #t))))))
+      ;(service wireguard-service-type
+      ;         (wireguard-configuration
+      ;          (interface "knightmares")
+      ;          (adresses '("172.16.13.1/27"))
+      ;          (port 51833)
+      ;          (private-key
+      ;           #~(string-append "<("
+      ;                            #$(file-append password-store "/bin/pass")
+      ;             " Damocles/WireGuard/private-keys/%i)"))
+      ;          (bootstrap-private-key? #f)
+      ;          (peers
+      ;           (list
+      ;            (wireguard-peer
+      ;             (name "ipoint-test")
+      ;             (public-key "8f/vqKnyFNXV97tgJknBYd2YUt9WgSVxRaiQ2ngAnDQ=")
+      ;             (allowed-ips '("172.16.13.2/32"
+      ;                            "192.168.110.0/23"
+      ;                            "192.168.112.0/23"
+      ;                            "192.168.114.0/23"))
+      ;             (keep-alive #t))))))
 
       (service openssh-service-type
                (openssh-configuration
