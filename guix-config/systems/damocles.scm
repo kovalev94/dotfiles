@@ -90,9 +90,9 @@
                    "/sys-files/iptables/damocles.rules")))))
       (simple-service 'dotfiles-and-guix-env session-environment-service-type
                      `(("DOTFILES_DIR" .
-                        "/home/kovalev/.dotfiles")
+                        "/home/schneizel/.dotfiles")
                        ("GUIX_PACKAGE_PATH" .
-                        "/home/kovalev/.dotfiles")))
+                        "/home/schneizel/.dotfiles")))
       ;(service wireguard-service-type
       ;         (wireguard-configuration
       ;          (interface "knightmares")
