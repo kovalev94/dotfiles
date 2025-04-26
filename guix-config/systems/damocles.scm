@@ -116,6 +116,7 @@
 
       (service openssh-service-type
                (openssh-configuration
+                (password-authentication? #f)
                 (port-number 13131))))
 
      (modify-services %base-services

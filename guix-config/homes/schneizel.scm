@@ -4,6 +4,7 @@
   #:use-module (gnu packages fonts)
   #:use-module (gnu services)
   #:use-module (guix gexp)
+  #:use-module (gnu home services ssh)
   #:use-module (gnu home services shells)
   #:use-module (gnu home services dotfiles)
   #:use-module (gnu home services syncthing)
@@ -42,6 +43,14 @@
      ;              "--data="
      ;              (or (getenv "XDG_STATE_HOME") "/home/schneizel/.local/state")
      ;              "/syncthing"))))))
+     (service home-openssh-service-type
+              (home-openssh-configuration
+               (authorized-keys
+                (list
+                 (local-file
+                  (string-append
+                   (getenv "DOTFILES_DIR")
+                   "/home-files/general/knightmares.pub"))))))
      (service home-bash-service-type
               (home-bash-configuration
                (aliases '(("grep" . "grep --color=auto") ("ll" . "ls -l")

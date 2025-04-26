@@ -38,10 +38,10 @@
    ;; Syncting and knightmares wireguard
    (openssh-host
     (name "damocles")
-    (host-name "damocles.web-wyrd.space")
+    (host-name "213.87.105.213")
     (user "schneizel")
-    (port 53622)
-    (identity-file "~/.ssh/keys/damocles"))))
+    (port 13131)
+    (identity-file "~/.ssh/keys/knightmares"))))
 
 (define ipoint-whites
   (list
