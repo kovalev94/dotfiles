@@ -16,6 +16,7 @@
   #:use-module (gnu bootloader grub)
   #:use-module (gnu packages vpn)
   #:use-module (gnu packages networking)
+  #:use-module (gnu packages package-management)
   #:use-module (nongnu packages linux)
   #:use-module (guix-config package-lists)
   #:use-module (guix-config etc-hosts)
