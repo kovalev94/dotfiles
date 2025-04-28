@@ -50,11 +50,9 @@
 * Setup damocles image
 * Setup syncthing
 * Slow autocompletion
-
+* Root password in config scm
 * Rofi config and themes (.local) to repo
-* .gitmodules delete from kovalev
 * rclone passintegration
 * network manager connections pass integration
 * Change filesystems to be called by label in mirage/damocles
 * Add to readme notes about user homes managed by system config
-* Check dry-run mirage
