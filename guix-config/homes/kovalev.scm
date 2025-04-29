@@ -60,6 +60,7 @@
       ungoogled-chromium
       nyxt
       password-store
+      gnupg
       ;telegram-desktop
       qbittorrent)
      tiled-wm-toolkit
