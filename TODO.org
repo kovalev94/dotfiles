@@ -50,9 +50,18 @@
 * Setup damocles image
 * Setup syncthing
 * Slow autocompletion
-* Root password in config scm
+* Root password in config.scm
+* User password in config.scm
+- [ ] plain hash password
+- [ ] pass integration
 * Rofi config and themes (.local) to repo
-* rclone passintegration
+* rclone pass integration
+* SOPS guix
+* Rofi network manager
 * network manager connections pass integration
 * Change filesystems to be called by label in mirage/damocles
 * Add to readme notes about user homes managed by system config
+* Herbstclient layouts
+* Herbstclient lock
+- [ ] keybind for xlock
+- [ ] move to xsecurelock?
