@@ -58,7 +58,6 @@
 * rclone pass integration
 * SOPS guix
 * Rofi network manager
-* ROFI pass
 * network manager connections pass integration
 * Change filesystems to be called by label in mirage/damocles
 * Add to readme notes about user homes managed by system config

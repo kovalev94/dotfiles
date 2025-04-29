@@ -60,6 +60,7 @@
       ungoogled-chromium
       nyxt
       password-store
+      rofi-pass
       gnupg
       ;telegram-desktop
       qbittorrent)
