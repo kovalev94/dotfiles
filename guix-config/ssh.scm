@@ -17,7 +17,7 @@
    ;; VPN server
    (openssh-host
     (name "vpnserv")
-    (host-name "vpn.web-wyrd.space")
+    (host-name "vpnserv")
     (user "vpn_admin")
     (port 56713)
     (identity-file "~/.ssh/keys/vpnserv"))
@@ -38,7 +38,7 @@
    ;; Syncting and knightmares wireguard
    (openssh-host
     (name "damocles")
-    (host-name "213.87.105.213")
+    (host-name "damocles")
     (user "schneizel")
     (port 13131)
     (identity-file "~/.ssh/keys/knightmares"))))
