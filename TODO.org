@@ -64,7 +64,7 @@
 * Herbstclient layouts
 * Password store multitenant keys
 * Herbstclient lock
-- [ ] keybind for xlock
+- [X] keybind for xlock
 - [ ] move to xsecurelock?
 
 * Guix Archive Exploring

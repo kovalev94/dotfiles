@@ -7,6 +7,7 @@ export -f hc
 
 CONFIG_DIR=/home/kovalev/.config/herbstluftwm
 TERMINAL=$(which alacritty)
+LOCK_CMD=$(which xlock)
 
 #Need normal very global(env) variable
 export SCALE_FACTOR=2
