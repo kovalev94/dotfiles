@@ -138,6 +138,7 @@
                  xring-servers
                  xring-routers
                  xring-general
+                 mts-gitlab
                  general))
                (authorized-keys '())
                (add-keys-to-agent "120m")))))))

@@ -9,6 +9,7 @@
             xring-servers
             xring-routers
             xring-general
+            mts-gitlab
             general))
 
 
@@ -147,6 +148,18 @@
    (openssh-host
     (name "*.xring")
     (user "vpkoval4"))))
+
+
+(define mts-gitlab
+  (list
+   (openssh-host
+    (name "gitlab.services.mts.ru")
+    (user "vpkoval4")
+    (identity-file "~/.ssh/keys/gitlab")
+    (proxy
+     (list
+      (proxy-jump
+       (host-name "dmiis-telemetry-04")))))))
 
 
 (define general
