@@ -27,6 +27,7 @@
   #:use-module (gnu packages node)
   #:use-module (gnu packages haskell-apps)
   #:use-module (gnu packages python-xyz)
+  #:use-module (gnu packages python-check)
   #:use-module (gnu packages cpp)
   #:use-module (gnu packages check)
   #:use-module (gnu packages markup)
