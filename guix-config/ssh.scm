@@ -1,6 +1,7 @@
 (define-module (guix-config ssh)
   #:use-module (gnu home services ssh)
   #:export (personal-servers
+            version-control
             ipoint-whites
             ipoint-lan
             akadem
@@ -9,7 +10,6 @@
             xring-servers
             xring-routers
             xring-general
-            mts-gitlab
             general))
 
 
@@ -43,6 +43,25 @@
     (user "schneizel")
     (port 13131)
     (identity-file "~/.ssh/keys/knightmares"))))
+
+
+(define version-control
+  (list
+   (openssh-host
+    (name "gitlab.services.mts.ru")
+    (identity-file "~/.ssh/keys/gitlab")
+    (proxy
+     (list
+      (proxy-jump
+       (host-name "dmiis-telemetry-04")))))
+
+   (openssh-host
+    (name "gitlab.mtu.ru")
+    (identity-file "~/.ssh/keys/gitlab"))
+
+   (openssh-host
+    (name "github.com")
+    (identity-file "~/.ssh/keys/github"))))
 
 (define ipoint-whites
   (list
@@ -148,18 +167,6 @@
    (openssh-host
     (name "*.xring")
     (user "vpkoval4"))))
-
-
-(define mts-gitlab
-  (list
-   (openssh-host
-    (name "gitlab.services.mts.ru")
-    (user "vpkoval4")
-    (identity-file "~/.ssh/keys/gitlab")
-    (proxy
-     (list
-      (proxy-jump
-       (host-name "dmiis-telemetry-04")))))))
 
 
 (define general

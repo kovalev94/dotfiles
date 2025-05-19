@@ -130,6 +130,7 @@
                (hosts
                 (append
                  personal-servers
+                 version-control
                  ipoint-whites
                  ipoint-lan
                  akadem
@@ -138,7 +139,6 @@
                  xring-servers
                  xring-routers
                  xring-general
-                 mts-gitlab
                  general))
                (authorized-keys '())
                (add-keys-to-agent "120m")))))))
