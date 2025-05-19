@@ -102,6 +102,15 @@
       "ssh -W \"[`getent hosts %h | awk '{print $1}'`]:%p\" glue")))
 
    (openssh-host
+    (name "dmiis-telemetry-05 dmiis-telemetry-05.servers.xring")
+    (user "vpkoval4")
+    (host-name "10.112.17.139")
+    (proxy
+     (list
+      (proxy-jump
+       (host-name "dmiis-telemetry-04")))))
+
+   (openssh-host
     (name "telemetry-bbn-test.servers.xring")
     (proxy
      (proxy-command
