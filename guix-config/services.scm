@@ -13,6 +13,7 @@
   #:use-module (gnu services xorg)
   #:use-module (gnu services dbus)
   #:use-module (gnu services desktop)
+  #:use-module (gnu services pm)
   #:use-module (guix gexp)
   #:use-module (guix channels)
   #:use-module ((srfi srfi-1) #:prefix srfi-1:)
@@ -24,6 +25,7 @@
             hi-dpi-console-font-configuration
             network-manager-with-vpnc-configuration
             docker-service-list
+            power-management-service-list
             virtualization-service-list
             nm-applet-service-type
             shit-trimmed-desktop-services))
@@ -94,6 +96,12 @@ from SERVICE-LIST (%desktop-services for example)"
   (list
     (service docker-service-type)
     (service containerd-service-type)))
+
+
+(define power-management-service-list
+  (list
+    (service tlp-service-type)
+    (service thermald-service-type)))
 
 
 (define virtualization-service-list

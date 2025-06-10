@@ -86,6 +86,7 @@
    (services
     (append
      (assoc-ref virtualization-service-list "services")
+     power-management-service-list
      (list
       (service bluetooth-service-type)
       (service iptables-service-type
@@ -115,6 +116,11 @@
                 (port-number 13131))))
 
      (modify-services shit-trimmed-desktop-services
+       ;Sleep doesn't work, using freeze until fix.
+       (elogind-service-type
+        config =>(elogind-configuration
+                  (inherit config)
+                  (suspend-mode '(s2idle deep))))
        (guix-service-type
         config =>(guix-configuration
                   (inherit config)
