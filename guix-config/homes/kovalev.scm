@@ -131,8 +131,7 @@
                 (append
                  personal-servers
                  version-control
-                 ipoint-whites
-                 ipoint-lan
+                 ipoint
                  akadem
                  spd-servers
                  spd-routers

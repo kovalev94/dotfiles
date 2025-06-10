@@ -16,8 +16,13 @@
 (define ipoint
   (list
   ;; iPoint marksa
-  (host "109.174.98.182" "ipoint-marksa")
+  (host "109.174.98.182" "ipoint-marksa-white")
+  (host "10.10.113.3" "ipoint-marksa-vpn")
   ;; iPoint gogolya
-  (host "109.111.191.225" "ipoint-gogolya")
+  (host "109.111.191.225" "ipoint-gogolya-white")
+  (host "10.10.113.4" "ipoint-gogolya-vpn")
+  ;; iPoint gogolya
+  (host "10.10.113.2" "ipoint-office-vpn")
   ;; iPoint unifi controller
-  (host "176.126.103.60" "ipoint-controller")))
+  (host "176.126.103.60" "ipoint-controller-white")
+  (host "10.10.113.1" "ipoint-controller-vpn")))

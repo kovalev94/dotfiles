@@ -2,8 +2,7 @@
   #:use-module (gnu home services ssh)
   #:export (personal-servers
             version-control
-            ipoint-whites
-            ipoint-lan
+            ipoint
             akadem
             spd-servers
             spd-routers
@@ -63,18 +62,10 @@
     (name "github.com")
     (identity-file "~/.ssh/keys/github"))))
 
-(define ipoint-whites
+(define ipoint
   (list
    (openssh-host
     (name "ipoint-*")
-    (port 57655)
-    (user "lanadmin")
-    (identity-file "~/.ssh/keys/ipoint"))))
-
-(define ipoint-lan
-  (list
-   (openssh-host
-    (name "*.ipoint-lan")
     (port 57655)
     (user "lanadmin")
     (identity-file "~/.ssh/keys/ipoint"))))
