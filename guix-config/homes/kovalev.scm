@@ -62,6 +62,7 @@
       password-store
       rofi-pass
       gnupg
+      tlp
       ;telegram-desktop
       qbittorrent)
      tiled-wm-toolkit
