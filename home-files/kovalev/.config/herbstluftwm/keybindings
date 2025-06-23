@@ -18,6 +18,7 @@ hc keybind $Mod-Return spawn emacsclient -c -a emacs
 hc keybind $Mod-d spawn rofi -show drun
 hc keybind $Mod-t spawn "${TERMINAL:-xterm}" # use your $TERMINAL with xterm as fallback
 hc keybind $Mod-n spawn nyxt
+hc keybind $Mod-y spawn rofi-pass
 hc keybind $Mod-grave spawn "${LOCK_CMD:-xlock}"
 hc keybind XF86AudioMute spawn pulsemixer --toggle-mute
 hc keybind XF86AudioMicMute spawn pulsemixer --toggle-mute --id source-5
