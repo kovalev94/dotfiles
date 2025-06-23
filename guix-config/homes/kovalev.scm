@@ -77,7 +77,9 @@
      (service home-gpg-agent-service-type
               (home-gpg-agent-configuration
                (pinentry-program
-                (file-append pinentry-rofi "/bin/pinentry-rofi"))))
+                (file-append pinentry-rofi "/bin/pinentry-rofi"))
+               (default-cache-ttl 6000)
+               (max-cache-ttl 7200)))
      (service home-startx-command-service-type
               (xorg-configuration
                (keyboard-layout kb-layout)))
