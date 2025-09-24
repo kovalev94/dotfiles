@@ -95,7 +95,7 @@
 
 (define emacs-toolkit
   (list
-   emacs
+   emacs-next
    emacs-rg
    emacs-pdf-tools
    emacs-clang-format
