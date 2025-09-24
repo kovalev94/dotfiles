@@ -53,11 +53,9 @@
       wireguard-tools
       herbstluftwm
       libreoffice
-      dia
       imagemagick
       alacritty
       bluez
-      ungoogled-chromium
       nyxt
       password-store
       rofi-pass
