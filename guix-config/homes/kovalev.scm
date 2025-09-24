@@ -79,8 +79,8 @@
                (default-cache-ttl 6000)
                (max-cache-ttl 7200)))
      (service home-startx-command-service-type
-              (xorg-configuration
-               (keyboard-layout kb-layout)))
+              (for-home (xorg-configuration
+               (keyboard-layout kb-layout))))
      (service home-syncthing-service-type
               (for-home
                (syncthing-configuration
