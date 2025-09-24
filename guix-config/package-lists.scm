@@ -40,6 +40,9 @@
   #:use-module (gnu packages engineering)
   #:use-module (gnu packages llvm)
   #:use-module (gnu packages telegram)
+  #:use-module (gnu packages golang)
+  #:use-module (gnu packages golang-xyz)
+  #:use-module (gnu packages golang-apps)
   #:use-module (nongnu packages mozilla)
 
   #:export (base-sys-toolkit
@@ -49,6 +52,7 @@
             fs-tools
             network-tools
             video-tools
+            golang-tools
             virtualization-tools
             sys-fonts))
 
@@ -131,6 +135,13 @@
    vlc
    obs
    kdenlive))
+
+(define golang-tools
+  (list
+   go
+   gopls
+   gore
+   go-github-com-fatih-gomodifytags))
 
 (define virtualization-tools
   (list

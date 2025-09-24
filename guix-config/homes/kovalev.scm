@@ -65,6 +65,7 @@
       qbittorrent)
      tiled-wm-toolkit
      emacs-toolkit
+     golang-tools
      video-tools))
 
    ;; Below is the list of Home services.  To search for available
