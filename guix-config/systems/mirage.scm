@@ -100,7 +100,7 @@
                  (local-file
                   (string-append
                    (getenv "DOTFILES_DIR")
-                   "/sys-files/iptables/guix-installer.rules")))))
+                   "/sys-files/iptables/mirage.rules")))))
       (simple-service 'dotfiles-and-guix-env session-environment-service-type
                      `(("DOTFILES_DIR" .
                         "/home/kovalev/.dotfiles")
@@ -160,11 +160,13 @@
     (cons*
      (file-system
       (mount-point "/home")
-      (device "/dev/mapper/MirageLinux-GuixHome")
+      (device (file-system-label "guix-home"))
+      (dependencies mapped-devices)
       (type "ext4"))
      (file-system
       (mount-point "/")
-      (device "/dev/mapper/MirageLinux-GuixRoot")
+      (device (file-system-label "guix-root"))
+      (dependencies mapped-devices)
       (type "ext4"))
      (file-system
       (mount-point "/boot/efi")
