@@ -95,12 +95,12 @@
                  (local-file
                   (string-append
                    (getenv "DOTFILES_DIR")
-                   "/sys-files/iptables/mirage.rules")))
+                   "/sys-files/mirage/iptables.rules")))
                 (ipv6-rules
                  (local-file
                   (string-append
                    (getenv "DOTFILES_DIR")
-                   "/sys-files/iptables/mirage.rules")))))
+                   "/sys-files/mirage/iptables.rules")))))
       (simple-service 'dotfiles-and-guix-env session-environment-service-type
                      `(("DOTFILES_DIR" .
                         "/home/kovalev/.dotfiles")
