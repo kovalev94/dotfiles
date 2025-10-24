@@ -134,7 +134,7 @@
                (hosts
                 (append
                  vpn-servers
-                 personal-servers
+                 personal-machines
                  work-machines
                  my-version-control
                  ipoint))

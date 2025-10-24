@@ -1,8 +1,8 @@
 (define-module (guix-config ssh)
   #:use-module (gnu home services ssh)
   #:export (vpn-servers
-            personal-servers
             work-machines
+            personal-machines
             my-version-control
             ipoint))
 
@@ -27,7 +27,7 @@
     (port 57133)
     (identity-file "~/.ssh/keys/work")))
 
-(define personal-servers
+(define personal-machines
   (list
    ;; Orange Pi R1+ LTS
    (openssh-host
