@@ -25,7 +25,7 @@
     (host-name "gawain")
     (user "vitaliy.kovalev")
     (port 57133)
-    (identity-file "~/.ssh/keys/work")))
+    (identity-file "~/.ssh/keys/work"))))
 
 (define personal-machines
   (list
@@ -58,4 +58,3 @@
     (port 57655)
     (user "lanadmin")
     (identity-file "~/.ssh/keys/ipoint"))))
-
