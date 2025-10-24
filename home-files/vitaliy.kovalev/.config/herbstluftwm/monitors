@@ -1,0 +1,15 @@
+SCALE_FACTOR=1
+# Определяем режимы и настройки мониторов
+function work_mode(){
+    #change_font_size 11
+    xrandr --output $1 --auto
+    xrandr --output $2 --auto
+    xrandr --output $1 --right-of $2
+    herbstclient detect_monitors
+}
+
+
+mapfile -t connected_monitors < <(xrandr | grep -w connected | awk '{print $1}')
+work_mode ${connected_monitors[@]}
+
+echo $SCALE_FACTOR
