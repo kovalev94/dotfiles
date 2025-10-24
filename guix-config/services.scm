@@ -28,7 +28,8 @@
             power-management-service-list
             virtualization-service-list
             nm-applet-service-type
-            shit-trimmed-desktop-services))
+            shit-trimmed-desktop-services
+            pinned-channels))
 
 
 
@@ -138,3 +139,27 @@ from SERVICE-LIST (%desktop-services for example)"
     gdm-service-type
     (service-kind gdm-file-system-service))
    %desktop-services))
+
+(define pinned-channels
+  (list (channel
+         (name 'guix)
+         (url "https://git.guix.gnu.org/guix.git")
+         (branch "master")
+         (commit
+          "21ce6b392ace4c4d22543abc41bd7c22596cd6d2")
+         (introduction
+          (make-channel-introduction
+           "9edb3f66fd807b096b48283debdcddccfea34bad"
+           (openpgp-fingerprint
+            "BBB0 2DDF 2CEA F6A8 0D1D  E643 A2A0 6DF2 A33A 54FA"))))
+        (channel
+         (name 'nonguix)
+         (url "https://gitlab.com/nonguix/nonguix")
+         (branch "master")
+         (commit
+          "a345ef84fbdf3b2491acb2c2b6665a4eb97bd4aa")
+         (introduction
+          (make-channel-introduction
+           "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
+           (openpgp-fingerprint
+            "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5"))))))
