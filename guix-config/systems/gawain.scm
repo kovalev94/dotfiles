@@ -1,4 +1,4 @@
-(define-module (guix-config systems mirage)
+(define-module (guix-config systems gawain)
   #:use-module (guix gexp)
   #:use-module (gnu services)
   #:use-module (gnu services ssh)
@@ -23,7 +23,7 @@
   #:use-module (guix-config services)
   #:use-module (guix-config keyboard))
 
-(define-public mirage-system
+(define-public gawain-system
   (operating-system
    (host-name "mirage")
    (locale "ru_RU.utf8")
@@ -39,15 +39,9 @@
              (gfxmode '("1920x1080x32" "auto"))))
      (keyboard-layout kb-layout)))
 
+
    (kernel linux)
-   ;Temporary(I hope) fix for screen redraw lags
-   (kernel-arguments
-    (append
-     (list "i915.enable_psr=0")
-     %default-kernel-arguments))
-
    (initrd microcode-initrd)
-
    (firmware
     (list
      linux-firmware
@@ -85,7 +79,6 @@
    (services
     (append
      (assoc-ref virtualization-service-list "services")
-     power-management-service-list
      (list
       (service bluetooth-service-type)
       (service iptables-service-type
@@ -94,21 +87,20 @@
                  (local-file
                   (string-append
                    (getenv "DOTFILES_DIR")
-                   "/sys-files/mirage/iptables.rules")))
+                   "/sys-files/gawain/iptables.rules")))
                 (ipv6-rules
                  (local-file
                   (string-append
                    (getenv "DOTFILES_DIR")
-                   "/sys-files/mirage/iptables.rules")))))
+                   "/sys-files/gawain/iptables.rules")))))
       (simple-service 'dotfiles-and-guix-env session-environment-service-type
                      `(("DOTFILES_DIR" .
-                        "/home/kovalev/.dotfiles")
+                        "/home/vitaliy.kovalev/.dotfiles")
                        ("GUIX_PACKAGE_PATH" .
-                        "/home/kovalev/.dotfiles")))
+                        "/home/vitaliy.kovalev/.dotfiles")))
       (simple-service 'add-extra-hosts
                       hosts-service-type
                       (append
-                       ipoint
                        vpn-servers
                        personal-machines
                        work-machines))
@@ -117,22 +109,13 @@
                 (port-number 13131))))
 
      (modify-services shit-trimmed-desktop-services
-       ;Sleep doesn't work, using freeze until fix.
-       (elogind-service-type
-        config =>(elogind-configuration
-                  (inherit config)
-                  (suspend-mode '(s2idle deep))))
        (guix-service-type
         config =>(guix-configuration
                   (inherit config)
                   (channels default-channels-with-nonguix)
                   (guix (guix-for-channels default-channels-with-nonguix))
                   (substitute-urls bordeaux-nonguix-substitute-urls)
-                  (authorized-keys default-authorized-keys-with-nonguix)))
-       (console-font-service-type
-        _ => hi-dpi-console-font-configuration)
-       (network-manager-service-type
-        _ => network-manager-with-vpnc-configuration))))
+                  (authorized-keys default-authorized-keys-with-nonguix))))))
 
 
    (privileged-programs
@@ -149,12 +132,12 @@
    (mapped-devices
     (list
      (mapped-device
-      (source "MirageLinux")
+      (source "GawainLinux")
       (targets
        (list
-        "MirageLinux-GuixRoot"
-        "MirageLinux-GuixHome"
-        "MirageLinux-Swap"))
+        "GawainLinux-GuixRoot"
+        "GawainLinux-GuixHome"
+        "GawainLinux-Swap"))
       (type lvm-device-mapping))))
 
    (file-systems
@@ -182,4 +165,4 @@
       (dependencies mapped-devices))))))
 
 
-mirage-system
+gawain-system

@@ -2,6 +2,7 @@
   #:use-module (gnu services base)
   #:export (vpn-servers
             personal-machines
+            work-machines
             ipoint))
 
 
@@ -14,6 +15,10 @@
   (list
   (host "213.87.105.213" "damocles")
   (host "172.16.13.3" "lancelot")))
+
+(define work-machines
+  (list
+  (host "192.168.114.175" "gawain")))
 
 (define ipoint
   (list

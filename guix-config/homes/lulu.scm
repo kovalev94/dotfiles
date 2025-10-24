@@ -135,6 +135,7 @@
                 (append
                  vpn-servers
                  personal-servers
+                 work-machines
                  my-version-control
                  ipoint))
                (authorized-keys '())

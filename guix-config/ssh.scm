@@ -2,6 +2,7 @@
   #:use-module (gnu home services ssh)
   #:export (vpn-servers
             personal-servers
+            work-machines
             my-version-control
             ipoint))
 
@@ -15,6 +16,16 @@
     (user "vpn_admin")
     (port 56713)
     (identity-file "~/.ssh/keys/vpnserv"))))
+
+(define work-machines
+  (list
+   ;; Gawain Work PC
+   (openssh-host
+    (name "gawain")
+    (host-name "gawain")
+    (user "vitaliy.kovalev")
+    (port 57133)
+    (identity-file "~/.ssh/keys/work")))
 
 (define personal-servers
   (list
