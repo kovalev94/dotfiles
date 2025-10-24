@@ -126,7 +126,12 @@
                 (append
                  vpn-servers
                  my-version-control))
-               (authorized-keys '())
+               (authorized-keys (list
+                                 (local-file
+                                  (string-append
+                                   (getenv "DOTFILES_DIR")
+                                   "/home-files/vitaliy.kovalev/.ssh/keys/gawain.pub")
+                                  "gawain.pub")))
                (add-keys-to-agent "120m")))))))
 
 vitaliy.kovalev-home
