@@ -17,6 +17,7 @@
   #:use-module (gnu packages web-browsers)
   #:use-module (gnu packages password-utils)
   #:use-module (gnu packages gnupg)
+  #:use-module (nongnu packages chrome)
   #:use-module (gnu services)
   #:use-module (gnu services xorg)
   #:use-module (guix gexp)
@@ -57,6 +58,7 @@
       alacritty
       bluez
       nyxt
+      google-chrome-stable
       password-store
       rofi-pass
       gnupg
