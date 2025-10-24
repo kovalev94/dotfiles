@@ -34,7 +34,7 @@
   #:use-module (gnu packages rust-apps)
   #:use-module (gnu packages web-browsers)
   #:use-module (gnu packages video)
-  #:use-module (gnu packages kde)
+  #:use-module (gnu packages kde-multimedia)
   #:use-module (gnu packages virtualization)
   #:use-module (gnu packages spice)
   #:use-module (gnu packages engineering)
@@ -65,7 +65,7 @@
    mc
    vim
    minicom
-   lrzsz
+   ;;lrzsz
    unzip
    zip
    p7zip
@@ -133,7 +133,7 @@
 (define video-tools
   (list
    vlc
-   obs
+   ;obs
    kdenlive))
 
 (define golang-tools
