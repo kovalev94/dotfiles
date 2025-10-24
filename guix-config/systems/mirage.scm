@@ -21,8 +21,7 @@
   #:use-module (guix-config package-lists)
   #:use-module (guix-config etc-hosts)
   #:use-module (guix-config services)
-  #:use-module (guix-config keyboard)
-  #:use-module (guix-config homes kovalev))
+  #:use-module (guix-config keyboard))
 
 (define-public mirage-system
   (operating-system
