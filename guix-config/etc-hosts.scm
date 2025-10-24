@@ -1,17 +1,19 @@
 (define-module (guix-config etc-hosts)
   #:use-module (gnu services base)
-  #:export (personal-machines
+  #:export (vpn-servers
+            personal-machines
             ipoint))
+
+
+(define vpn-servers
+  (list
+  (host "185.169.107.235" "vpnserv")))
 
 
 (define personal-machines
   (list
-  ;; Orange Pi R1+ LTS
-  (host "185.169.107.235" "vpnserv")
   (host "213.87.105.213" "damocles")
-  (host "172.16.13.3" "lancelot")
-  ;; Mikrotik Hex RB760igs - home router
-  (host "172.16.13.5" "gawain")))
+  (host "172.16.13.3" "lancelot")))
 
 (define ipoint
   (list

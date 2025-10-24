@@ -109,6 +109,7 @@
                       hosts-service-type
                       (append
                        ipoint
+                       vpn-servers
                        personal-machines))
       (service openssh-service-type
                (openssh-configuration
