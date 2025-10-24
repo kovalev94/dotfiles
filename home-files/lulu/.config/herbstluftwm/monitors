@@ -1,3 +1,4 @@
+SCALE_FACTOR=1
 INTERNAL_MONITOR="eDP-1"
 
 # Функция для настройки размера шрифта alacritty
@@ -27,7 +28,6 @@ function work_mode(){
     xrandr --dpi 96
     herbstclient detect_monitors
     echo "Xft.dpi:96" | xrdb -load
-    SCALE_FACTOR=1
 }
 
 function home_tv_mode(){
@@ -41,7 +41,6 @@ function home_tv_mode(){
     herbstclient remove_monitor 0
     herbstclient set show_frame_decorations all
     echo "Xft.dpi:96" | xrdb -load
-    SCALE_FACTOR=1
 }
 
 function laptop_mode(){

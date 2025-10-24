@@ -1,4 +1,4 @@
-(define-module (guix-config homes kovalev)
+(define-module (guix-config homes lulu)
   #:use-module (gnu home)
   #:use-module (gnu packages)
   #:use-module (gnu packages wm)
@@ -36,7 +36,7 @@
 ;; specifies package names.  To reproduce the exact same profile, you also
 ;; need to capture the channels being used, as returned by "guix describe".
 ;; See the "Replicating Guix" section in the manual.
-(define-public kovalev-home
+(define-public lulu-home
   (home-environment
    ;; Below is the list of packages that will show up in your
    ;; Home profile, under ~/.guix-home/profile.
@@ -89,11 +89,11 @@
                  (list
                   (string-append
                    "--config="
-                   (or (getenv "XDG_CONFIG_HOME") "/home/kovalev/.config")
+                   (or (getenv "XDG_CONFIG_HOME") "/home/lulu/.config")
                    "/syncthing")
                   (string-append
                    "--data="
-                   (or (getenv "XDG_STATE_HOME") "/home/kovalev/.local/state")
+                   (or (getenv "XDG_STATE_HOME") "/home/lulu/.local/state")
                    "/syncthing"))))))
      (service home-bash-service-type
               (home-bash-configuration
@@ -103,20 +103,21 @@
                         (local-file
                          (string-append
                           (getenv "DOTFILES_DIR")
-                          "/home-files/kovalev/.bashrc")
+                          "/home-files/lulu/.bashrc")
                          "bashrc")))
                (bash-profile (list
                               (local-file
                                (string-append
                                 (getenv "DOTFILES_DIR")
-                                "/home-files/kovalev/.bash_profile")
+                                "/home-files/general/.bash_profile")
                                "bash_profile")))))
+
      (service home-dotfiles-service-type
               (home-dotfiles-configuration
                (source-directory
                 (string-append
                  (getenv "DOTFILES_DIR") "/home-files"))
-               (directories '("kovalev"))
+               (directories '("general" "lulu"))
                (excluded
                 (list
                  ".*~"
@@ -127,6 +128,7 @@
                  ;;already managed by home-bash-service
                  ".bashrc"
                  ".bash_profile"))))
+
      (service home-openssh-service-type
               (home-openssh-configuration
                (hosts
@@ -144,4 +146,4 @@
                (authorized-keys '())
                (add-keys-to-agent "120m")))))))
 
-kovalev-home
+lulu-home
