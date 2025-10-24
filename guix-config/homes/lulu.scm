@@ -133,16 +133,10 @@
               (home-openssh-configuration
                (hosts
                 (append
+                 vpn-servers
                  personal-servers
-                 version-control
-                 ipoint
-                 akadem
-                 spd-servers
-                 spd-routers
-                 xring-servers
-                 xring-routers
-                 xring-general
-                 general))
+                 my-version-control
+                 ipoint))
                (authorized-keys '())
                (add-keys-to-agent "120m")))))))
 
