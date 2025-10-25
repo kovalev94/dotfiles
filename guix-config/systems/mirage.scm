@@ -60,10 +60,10 @@
    (users
     (cons*
      (user-account
-      (name "kovalev")
-      (comment "Виталий Ковалёв")
+      (name "lulu")
+      (comment "Лелуш Ламперуж")
       (group "users")
-      (home-directory "/home/kovalev")
+      (home-directory "/home/lulu")
       (supplementary-groups
        '("wheel" "netdev" "audio" "video" "kvm" "libvirt" )))
      %base-user-accounts))
