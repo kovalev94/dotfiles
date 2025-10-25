@@ -1,4 +1,4 @@
-(define-module (guix-config homes vitaliy.kovalev)
+(define-module (guix-config homes vitaliy-kovalev)
   #:use-module (gnu home)
   #:use-module (gnu packages)
   #:use-module (gnu packages wm)
