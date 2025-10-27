@@ -125,8 +125,8 @@
        (guix-service-type
         config =>(guix-configuration
                   (inherit config)
-                  (channels default-channels-with-nonguix)
-                  (guix (guix-for-channels default-channels-with-nonguix))
+                  (channels pinned-channels)
+                  (guix (guix-for-channels pinned-channels))
                   (substitute-urls bordeaux-nonguix-substitute-urls)
                   (authorized-keys default-authorized-keys-with-nonguix)))
        (console-font-service-type
