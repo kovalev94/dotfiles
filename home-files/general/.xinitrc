@@ -3,4 +3,4 @@
 [ -f /etc/xprofile ] && . /etc/xprofile
 [ -f ~/.xprofile ] && . ~/.xprofile
 
-exec herbstluftwm --locked
+exec dbus-launch --exit-with-session herbstluftwm --locked
