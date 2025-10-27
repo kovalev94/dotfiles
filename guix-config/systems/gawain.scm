@@ -112,8 +112,10 @@
       (service dhcpcd-service-type
                (dhcpcd-configuration
                 (interfaces '("enp1s0"))
-                (option '("rapid_commit" "interface_mtu"))
-                (no-option '("router"))
+                (option '("rapid_commit" "interface_mtu" "nogateway"))
+                (no-option '("domain_name_servers" "domain_name" "domain_search" "gateway"))
+                (command-arguments '("--nogateway"))
+                (no-hook '("resolv.conf"))
                 (shepherd-provision '(dhcp-eltex))))
 
       (service static-networking-service-type
@@ -138,8 +140,8 @@
                       (guix-service-type
                        config =>(guix-configuration
                                  (inherit config)
-                                 (channels default-channels-with-nonguix)
-                                 (guix (guix-for-channels default-channels-with-nonguix))
+                                 (channels pinned-channels)
+                                 (guix (guix-for-channels pinned-channels))
                                  (substitute-urls bordeaux-nonguix-substitute-urls)
                                  (authorized-keys default-authorized-keys-with-nonguix))))))
 
