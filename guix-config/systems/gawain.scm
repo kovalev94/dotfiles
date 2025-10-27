@@ -25,7 +25,7 @@
 
 (define-public gawain-system
   (operating-system
-   (host-name "mirage")
+   (host-name "gawain")
    (locale "ru_RU.utf8")
    (timezone "Asia/Novosibirsk")
 
@@ -56,6 +56,7 @@
      (user-account
       (name "vitaliy.kovalev")
       (comment "Виталий Ковалёв")
+      (uid 1000)
       (group "users")
       (home-directory "/home/vitaliy.kovalev")
       (supplementary-groups
@@ -106,16 +107,41 @@
                        work-machines))
       (service openssh-service-type
                (openssh-configuration
-                (port-number 13131))))
+                (port-number 13131)))
+
+      (service dhcpcd-service-type
+               (dhcpcd-configuration
+                (interfaces '("enp1s0"))
+                (option '("rapid_commit" "interface_mtu"))
+                (no-option '("router"))
+                (shepherd-provision '(dhcp-eltex))))
+
+      (service static-networking-service-type
+               (list (static-networking
+                      (addresses
+                       (list
+                        (network-address
+                         (device "enp2s0")
+                         (value "192.168.114.175/12"))))
+                      (routes
+                       (list
+                        (network-route
+                         (destination "default")
+                         (gateway "192.168.112.1"))
+                        (network-route
+                         (destination "192.168.96.0/19")
+                         (gateway "192.168.114.65"))))
+                      (name-servers '("192.168.107.61"))))))
 
      (modify-services shit-trimmed-desktop-services
-       (guix-service-type
-        config =>(guix-configuration
-                  (inherit config)
-                  (channels default-channels-with-nonguix)
-                  (guix (guix-for-channels default-channels-with-nonguix))
-                  (substitute-urls bordeaux-nonguix-substitute-urls)
-                  (authorized-keys default-authorized-keys-with-nonguix))))))
+                      (delete network-manager-service-type)
+                      (guix-service-type
+                       config =>(guix-configuration
+                                 (inherit config)
+                                 (channels default-channels-with-nonguix)
+                                 (guix (guix-for-channels default-channels-with-nonguix))
+                                 (substitute-urls bordeaux-nonguix-substitute-urls)
+                                 (authorized-keys default-authorized-keys-with-nonguix))))))
 
 
    (privileged-programs
