@@ -12,6 +12,7 @@
   #:use-module (gnu packages vim)
   #:use-module (gnu packages mc)
   #:use-module (gnu packages wm)
+  #:use-module (gnu packages mail)
   #:use-module (gnu packages terminals)
   #:use-module (gnu packages compression)
   #:use-module (gnu packages version-control)
@@ -108,6 +109,8 @@
    python-pyflakes
    python-nose
    ccls
+   mu
+   isync
    markdown
    libvterm
    ripgrep
