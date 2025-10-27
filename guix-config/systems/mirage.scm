@@ -102,9 +102,9 @@
                    "/sys-files/mirage/iptables.rules")))))
       (simple-service 'dotfiles-and-guix-env session-environment-service-type
                      `(("DOTFILES_DIR" .
-                        "/home/kovalev/.dotfiles")
+                        "/home/lulu/.dotfiles")
                        ("GUIX_PACKAGE_PATH" .
-                        "/home/kovalev/.dotfiles")))
+                        "/home/lulu/.dotfiles")))
       (simple-service 'add-extra-hosts
                       hosts-service-type
                       (append

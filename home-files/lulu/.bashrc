@@ -30,5 +30,5 @@ alias ls='ls -p --color=auto'
 alias ll='ls -l'
 alias grep='grep --color=auto'
 
-export PATH="$PATH:/home/lulu/.local/bin:/home/kovalev/.nix-profile/bin"
+export PATH="$PATH:/home/lulu/.local/bin:/home/lulu/.nix-profile/bin"
 export EDITOR="emacs"

@@ -1,6 +1,6 @@
 #!/run/current-system/profile/bin/bash
 
-WALLPAPER='/home/kovalev/Pictures/japan-city-anime.jpg'
+WALLPAPER=$HOME/Pictures/japan-city-anime.jpg
 ENABLE_PICOM=true
 
 hc attr theme.tiling.reset 1 ?
