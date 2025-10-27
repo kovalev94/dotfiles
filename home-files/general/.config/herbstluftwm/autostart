@@ -5,7 +5,7 @@ hc() {
 }
 export -f hc
 
-CONFIG_DIR=/home/kovalev/.config/herbstluftwm
+CONFIG_DIR=$HOME/.config/herbstluftwm
 TERMINAL=$(which alacritty)
 LOCK_CMD=$(which xlock)
 
