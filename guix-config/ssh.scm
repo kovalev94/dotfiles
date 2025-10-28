@@ -24,7 +24,7 @@
     (name "gawain")
     (host-name "gawain")
     (user "vitaliy.kovalev")
-    (port 57133)
+    (port 13131)
     (identity-file "~/.ssh/keys/gawain"))))
 
 (define personal-machines
