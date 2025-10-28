@@ -62,6 +62,7 @@
      (user-account
       (name "lulu")
       (comment "Лелуш Ламперуж")
+      (uid 1000)
       (group "users")
       (home-directory "/home/lulu")
       (supplementary-groups
