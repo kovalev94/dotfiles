@@ -78,7 +78,16 @@
 ;; they are implemented.
 (after! vterm
   (setq vterm-max-scrollback 100000))
-(set-frame-parameter nil 'alpha-background 70)
 
-(add-to-list 'default-frame-alist '(alpha-background . 70))
+(set-frame-parameter nil 'alpha-background 80)
+(add-to-list 'default-frame-alist '(alpha-background . 80))
 
+(defun toggle-background-transparency ()
+  "Toggle background transparency of the current Emacs frame."
+  (interactive)
+  (let ((current-alpha (cdr (assoc 'alpha-background (frame-parameters)))))
+    (if (/= current-alpha 100)
+        (set-frame-parameter nil 'alpha-background 100) ; Set opaque
+      (set-frame-parameter nil 'alpha-background 80)))) ; Set transparent (e.g., 85%)
+
+(evil-define-key 'normal 'global (kbd "M-o") 'toggle-background-transparency)

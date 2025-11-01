@@ -73,3 +73,7 @@
 - [ ] Keys management
 
 * Guix home password-store
+
+
+
+* Change alacritty to use same keybind to TOGGLE transparancy as emacs

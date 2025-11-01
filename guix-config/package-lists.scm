@@ -45,6 +45,7 @@
   #:use-module (gnu packages golang-xyz)
   #:use-module (gnu packages golang-apps)
   #:use-module (nongnu packages mozilla)
+  #:use-module (guix-config packages emacs)
 
   #:export (base-sys-toolkit
             base-gui-toolkit
@@ -96,7 +97,7 @@
 
 (define emacs-toolkit
   (list
-   emacs
+   emacs-transparent
    emacs-rg
    emacs-pdf-tools
    emacs-clang-format
