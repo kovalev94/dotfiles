@@ -7,7 +7,7 @@
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
 (setq user-full-name "Vitaliy Kovalev"
-      user-mail-address "kovalev_94@icloud.com")
+      user-mail-address "kvp94best@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -91,3 +91,24 @@
       (set-frame-parameter nil 'alpha-background 80)))) ; Set transparent (e.g., 85%)
 
 (evil-define-key 'normal 'global (kbd "M-o") 'toggle-background-transparency)
+
+(set-email-account! "Gmail"
+                    '((mu4e-sent-folder       . "/gmail/[Gmail]/Отправленные")
+                      (mu4e-drafts-folder     . "/gmail/[Gmail]/Черновики")
+                      (mu4e-change-filenames-when-moving t)
+                      (mu4e-update-interval (* 10 60))
+                      (mu4e-trash-folder      . "/gmail/[Gmail]/Корзина")
+                      (mu4e-refile-folder     . "/gmail/[Gmail]/Вся\ почта")
+                      (smtpmail-smtp-user     . "kvp94best@gmail.com")
+                      (mu4e-compose-signature . "---\nKovalev Vitaliy"))
+                    t)
+
+(setq mu4e-context-policy 'ask-if-none
+      mu4e-compose-context-policy 'always-ask)
+
+(after! mu4e
+  (setq sendmail-program (executable-find "msmtp")
+	send-mail-function #'smtpmail-send-it
+	message-sendmail-f-is-evil t
+	message-sendmail-extra-arguments '("--read-envelope-from")
+	message-send-mail-function #'message-send-mail-with-sendmail))

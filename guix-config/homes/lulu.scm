@@ -23,6 +23,7 @@
   #:use-module (guix gexp)
   #:use-module (gnu home services)
   #:use-module (gnu home services gnupg)
+  #:use-module (gnu home services mail)
   #:use-module (gnu home services shells)
   #:use-module (gnu home services ssh)
   #:use-module (gnu home services desktop)
@@ -130,6 +131,25 @@
                  ;;already managed by home-bash-service
                  ".bashrc"
                  ".bash_profile"))))
+
+
+(service home-msmtp-service-type
+         (home-msmtp-configuration
+          (defaults
+            (msmtp-configuration
+             (tls? #t)
+             (auth? #t)))
+          (accounts
+           (list
+            (msmtp-account
+             (name "Gmail")
+             (configuration
+              (msmtp-configuration
+               (host "smtp.gmail.com")
+               (port 587)
+               (user "kvp94best@gmail.com")
+               (from "kvp94best@gmail.com")
+               (password-eval "pass Mail/kvp94best@gmail.com"))))))))
 
      (service home-openssh-service-type
               (home-openssh-configuration
