@@ -79,6 +79,9 @@
 (after! vterm
   (setq vterm-max-scrollback 100000))
 
+;; Fix guix emacs pinned find path.
+(setopt find-program "find")
+
 (set-frame-parameter nil 'alpha-background 80)
 (add-to-list 'default-frame-alist '(alpha-background . 80))
 
