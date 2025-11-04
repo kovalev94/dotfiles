@@ -82,6 +82,9 @@
 ;; Fix guix emacs pinned find path.
 (setopt find-program "find")
 
+;;Don't work now, hope will work when move from doom emacs
+(with-eval-after-load 'bluetooth (evil-collection-bluetooth-setup))
+
 (set-frame-parameter nil 'alpha-background 80)
 (add-to-list 'default-frame-alist '(alpha-background . 80))
 

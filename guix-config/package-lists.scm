@@ -102,6 +102,7 @@
    emacs-pdf-tools
    emacs-clang-format
    emacs-vterm
+   emacs-bluetooth
    node
    shellcheck
    python-black
