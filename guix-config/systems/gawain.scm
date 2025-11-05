@@ -21,6 +21,7 @@
   #:use-module (guix-config package-lists)
   #:use-module (guix-config etc-hosts)
   #:use-module (guix-config services)
+  #:use-module (guix-config packages certs)
   #:use-module (guix-config keyboard))
 
 (define-public gawain-system
@@ -67,6 +68,7 @@
    (packages
     (cons*
      vpnc
+     eltex-certs
      (append
       base-sys-toolkit
       base-gui-toolkit
