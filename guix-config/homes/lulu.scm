@@ -18,6 +18,7 @@
   #:use-module (gnu packages password-utils)
   #:use-module (gnu packages gnupg)
   #:use-module (nongnu packages chrome)
+  #:use-module (nongnu packages fonts)
   #:use-module (gnu services)
   #:use-module (gnu services xorg)
   #:use-module (guix gexp)
@@ -46,7 +47,10 @@
     (append
      (list
       glibc
+      font-ubuntu
       font-google-noto-emoji
+      font-awesome
+      font-awesome-nonfree
       font-fira-mono
       font-fira-sans
       font-fira-code

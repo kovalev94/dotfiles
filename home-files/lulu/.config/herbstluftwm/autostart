@@ -1,0 +1,65 @@
+#!/run/current-system/profile/bin/bash
+
+hc() {
+    herbstclient "$@"
+}
+export -f hc
+
+CONFIG_DIR=$HOME/.config/herbstluftwm
+TERMINAL=$(which alacritty)
+LOCK_CMD=$(which xlock)
+
+#Need normal very global(env) variable
+export SCALE_FACTOR=2
+
+
+hc emit_hook reload
+
+
+# Tags settings
+hc load '(clients grid:0)'
+hc set default_frame_layout grid
+
+tag_names=( {1..9} )
+tag_keys=( {1..9} 0 )
+
+hc rename default "${tag_names[0]}" || true
+for i in "${!tag_names[@]}" ; do
+    hc add "${tag_names[$i]}"
+done
+
+
+# Keybinding settings
+. $CONFIG_DIR/keybindings
+
+
+# Setup monitors at startup
+SCALE_FACTOR=$(sh ~/.config/herbstluftwm/monitors)
+
+# Theme settings
+. $CONFIG_DIR/themes/current
+
+
+# Rule settings
+. $CONFIG_DIR/rules
+hc set tree_style '╾│ ├└╼─┐'
+
+
+# unlock, just to be sure
+hc unlock
+
+
+# Setup touchpad at startup
+sh ~/.config/herbstluftwm/touchpad.sh
+
+
+# find the panel
+panel=$CONFIG_DIR/polybar_panel.sh
+$panel &
+
+#panel=~/.config/herbstluftwm/panel.sh
+#[ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
+#for monitor in $(hc list_monitors | cut -d: -f1) ; do
+#    # start it on each monitor
+#    "$panel" "$monitor" &
+#done
