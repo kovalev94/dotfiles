@@ -25,6 +25,7 @@
   #:use-module (guix gexp)
   #:use-module (gnu home services)
   #:use-module (gnu home services gnupg)
+  #:use-module (gnu home services mail)
   #:use-module (gnu home services shells)
   #:use-module (gnu home services ssh)
   #:use-module (gnu home services desktop)
@@ -119,6 +120,24 @@
                  ".bashrc"
                  ".bash_profile"))))
 
+
+(service home-msmtp-service-type
+         (home-msmtp-configuration
+          (defaults
+            (msmtp-configuration
+             (tls? #t)
+             (auth? #t)))
+          (accounts
+           (list
+            (msmtp-account
+             (name "Eltex")
+             (configuration
+              (msmtp-configuration
+               (host "smtp.eltex.loc")
+               (port 587)
+               (user "vitaliy.kovalev@eltex.loc")
+               (from "vitaliy.kovalev@eltex.loc")
+               (password-eval "pass Eltex/LDAP/vitaliy.kovalev"))))))))
 
      (service home-openssh-service-type
               (home-openssh-configuration
