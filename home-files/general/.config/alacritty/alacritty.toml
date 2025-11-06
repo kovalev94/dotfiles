@@ -34,5 +34,8 @@ program = "alacritty"
 history = 10000
 
 [window]
-opacity = 0.65
+opacity = 0.75
 padding = { x = 6, y = 6 }
+
+[general]
+import = ["~/.config/alacritty/dracula.toml"]

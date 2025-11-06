@@ -14,7 +14,7 @@ echo $opacity
 ## Assign toggle opacity value
 case $opacity in
       1)
-        toggle_opacity=0.65
+        toggle_opacity=0.75
         ;;
       *)
         toggle_opacity=1
