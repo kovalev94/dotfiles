@@ -95,7 +95,7 @@
 
 (evil-define-key 'normal 'global (kbd "M-o") 'toggle-background-transparency)
 
-(set-email-account! "Gmail"
+(set-email-account! "Eltex"
                     '((mu4e-sent-folder       . "/eltex/Отправленные")
                       (mu4e-drafts-folder     . "/eltex/Черновики")
                       (mu4e-change-filenames-when-moving t)
