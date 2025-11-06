@@ -114,9 +114,8 @@
       (service dhcpcd-service-type
                (dhcpcd-configuration
                 (interfaces '("enp1s0"))
-                (option '("rapid_commit" "interface_mtu" "nogateway"))
-                (no-option '("domain_name_servers" "domain_name" "domain_search" "gateway"))
-                (command-arguments '("--nogateway"))
+                (option '("rapid_commit" "interface_mtu"))
+                (no-option '("domain_name_servers" "domain_name" "domain_search" ))
                 (no-hook '("resolv.conf"))
                 (shepherd-provision '(dhcp-eltex))))
 
@@ -130,10 +129,7 @@
                       (routes
                        (list
                         (network-route
-                         (destination "default")
-                         (gateway "192.168.112.1"))
-                        (network-route
-                         (destination "192.168.96.0/19")
+                         (destination "192.168.104.0/21")
                          (gateway "192.168.114.65"))))
                       (name-servers '("192.168.107.61"))))))
 
