@@ -19,3 +19,25 @@ Near :gmail-local:
 Patterns *
 Create Both
 SyncState *
+
+IMAPAccount yandex
+Host imap.yandex.com
+User kovalev.kovalev94@yandex.ru
+PassCmd "pass Mail/kovalev.kovalev94@yandex.ru"
+TLSType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore yandex-remote
+Account yandex
+
+MaildirStore yandex-local
+Subfolders Verbatim
+Path ~/.mail/yandex/
+Inbox ~/.mail/yandex/Inbox
+
+Channel yandex
+Far :yandex-remote:
+Near :yandex-local:
+Patterns *
+Create Both
+SyncState *

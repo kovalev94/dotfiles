@@ -153,7 +153,16 @@
                (port 587)
                (user "kvp94best@gmail.com")
                (from "kvp94best@gmail.com")
-               (password-eval "pass Mail/kvp94best@gmail.com"))))))))
+               (password-eval "pass Mail/kvp94best@gmail.com"))))
+            (msmtp-account
+             (name "Yandex")
+             (configuration
+              (msmtp-configuration
+               (host "smtp.yandex.ru")
+               (port 587)
+               (user "kovalev.kovalev94@yandex.ru")
+               (from "kovalev.kovalev94@yandex.ru")
+               (password-eval "pass Mail/kovalev.kovalev94@yandex.ru"))))))))
 
      (service home-openssh-service-type
               (home-openssh-configuration

@@ -109,6 +109,17 @@
                       (mu4e-compose-signature . "---\nKovalev Vitaliy"))
                     t)
 
+(set-email-account! "Yandex"
+                    '((mu4e-sent-folder       . "/yandex/Отправленные")
+                      (mu4e-drafts-folder     . "/yandex/Черновики")
+                      (mu4e-change-filenames-when-moving t)
+                      (mu4e-update-interval (* 10 60))
+                      (mu4e-trash-folder      . "/yandex/Удаленные")
+                      (mu4e-refile-folder     . "/yandex/[Gmail]/Вся\ почта")
+                      (smtpmail-smtp-user     . "kovalev.kovalev94@yandex.ru")
+                      (mu4e-compose-signature . "---\nKovalev Vitaliy"))
+                    t)
+
 (setq mu4e-context-policy 'ask-if-none
       mu4e-compose-context-policy 'always-ask)
 
