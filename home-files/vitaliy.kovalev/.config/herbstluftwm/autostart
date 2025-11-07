@@ -8,6 +8,7 @@ export -f hc
 CONFIG_DIR=$HOME/.config/herbstluftwm
 TERMINAL=$(which alacritty)
 LOCK_CMD=$(which xlock)
+DUNST=$(which dunst)
 
 #Need normal very global(env) variable
 export SCALE_FACTOR=2
@@ -48,10 +49,11 @@ hc set tree_style '╾│ ├└╼─┐'
 # unlock, just to be sure
 hc unlock
 
-
 # Setup touchpad at startup
 sh ~/.config/herbstluftwm/touchpad.sh
 
+#Run dunst
+$DUNST &
 
 # find the panel
 #panel=$CONFIG_DIR/polybar_panel.sh

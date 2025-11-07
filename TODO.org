@@ -77,3 +77,5 @@
 
 
 * Change alacritty to use same keybind to TOGGLE transparancy as emacs
+
+* Setup emacs-ednc when swith to exwm

@@ -89,6 +89,7 @@
 (define tiled-wm-toolkit
   (list
    polybar
+   dunst
    rofi
    dzen
    xftwidth
