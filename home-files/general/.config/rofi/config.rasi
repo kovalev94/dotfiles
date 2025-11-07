@@ -1,4 +1,4 @@
 configuration {
     dpi: 0;
 }
-@theme "~/.local/share/rofi/themes/rounded-pink-dark.rasi"
+@theme "~/.local/share/rofi/themes/dracula-2.rasi"
