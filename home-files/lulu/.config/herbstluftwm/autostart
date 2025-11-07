@@ -66,3 +66,6 @@ $panel &
 #    # start it on each monitor
 #    "$panel" "$monitor" &
 #done
+
+#Start emacs daemon
+pgrep  emacs >> /dev/null || emacs --daemon >> /dev/null

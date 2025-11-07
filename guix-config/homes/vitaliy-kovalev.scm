@@ -94,7 +94,7 @@
                         (local-file
                          (string-append
                           (getenv "DOTFILES_DIR")
-                          "/home-files/vitaliy.kovalev/.bashrc")
+                          "/home-files/general/.bashrc")
                          "bashrc")))
                (bash-profile (list
                               (local-file

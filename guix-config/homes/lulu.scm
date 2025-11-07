@@ -110,7 +110,7 @@
                         (local-file
                          (string-append
                           (getenv "DOTFILES_DIR")
-                          "/home-files/lulu/.bashrc")
+                          "/home-files/general/.bashrc")
                          "bashrc")))
                (bash-profile (list
                               (local-file
