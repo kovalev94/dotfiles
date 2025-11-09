@@ -1,65 +1,65 @@
-IMAPAccount gmail
+IMAPAccount Gmail
 Host imap.gmail.com
 User kvp94best@gmail.com
 PassCmd "pass Mail/kvp94best@gmail.com"
 TLSType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
-IMAPStore gmail-remote
-Account gmail
+IMAPStore Gmail-remote
+Account Gmail
 
-MaildirStore gmail-local
+MaildirStore Gmail-local
 Subfolders Verbatim
-Path ~/.mail/gmail/
-Inbox ~/.mail/gmail/Inbox
+Path ~/.Mail/Gmail/
+Inbox ~/.Mail/Gmail/Inbox
 
-Channel gmail
-Far :gmail-remote:
-Near :gmail-local:
+Channel Gmail
+Far :Gmail-remote:
+Near :Gmail-local:
 Patterns *
 Create Both
 SyncState *
 
-IMAPAccount yandex
+IMAPAccount Yandex
 Host imap.yandex.com
 User kovalev.kovalev94@yandex.ru
 PassCmd "pass Mail/kovalev.kovalev94@yandex.ru"
 TLSType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
-IMAPStore yandex-remote
-Account yandex
+IMAPStore Yandex-remote
+Account Yandex
 
-MaildirStore yandex-local
+MaildirStore Yandex-local
 Subfolders Verbatim
-Path ~/.mail/yandex/
-Inbox ~/.mail/yandex/Inbox
+Path ~/.Mail/Yandex/
+Inbox ~/.Mail/Yandex/Inbox
 
-Channel yandex
-Far :yandex-remote:
-Near :yandex-local:
+Channel Yandex
+Far :Yandex-remote:
+Near :Yandex-local:
 Patterns *
 Create Both
 SyncState *
 
-IMAPAccount apple
+IMAPAccount Apple
 Host imap.mail.me.com
 User kovalev_94@icloud.com
 PassCmd "pass Mail/kovalev_94@icloud.com"
 TLSType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
-IMAPStore apple-remote
-Account apple
+IMAPStore Apple-remote
+Account Apple
 
-MaildirStore apple-local
+MaildirStore Apple-local
 Subfolders Verbatim
-Path ~/.mail/apple/
-Inbox ~/.mail/apple/Inbox
+Path ~/.Mail/Apple/
+Inbox ~/.Mail/Apple/Inbox
 
-Channel apple
-Far :apple-remote:
-Near :apple-local:
+Channel Apple
+Far :Apple-remote:
+Near :Apple-local:
 Patterns *
 Create Both
 SyncState *
