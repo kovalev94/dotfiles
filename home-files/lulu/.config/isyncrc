@@ -41,3 +41,25 @@ Near :yandex-local:
 Patterns *
 Create Both
 SyncState *
+
+IMAPAccount apple
+Host imap.mail.me.com
+User kovalev_94@icloud.com
+PassCmd "pass Mail/kovalev_94@icloud.com"
+TLSType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore apple-remote
+Account apple
+
+MaildirStore apple-local
+Subfolders Verbatim
+Path ~/.mail/apple/
+Inbox ~/.mail/apple/Inbox
+
+Channel apple
+Far :apple-remote:
+Near :apple-local:
+Patterns *
+Create Both
+SyncState *

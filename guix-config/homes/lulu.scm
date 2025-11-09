@@ -137,32 +137,41 @@
                  ".bash_profile"))))
 
 
-(service home-msmtp-service-type
-         (home-msmtp-configuration
-          (defaults
-            (msmtp-configuration
-             (tls? #t)
-             (auth? #t)))
-          (accounts
-           (list
-            (msmtp-account
-             (name "Gmail")
-             (configuration
-              (msmtp-configuration
-               (host "smtp.gmail.com")
-               (port 587)
-               (user "kvp94best@gmail.com")
-               (from "kvp94best@gmail.com")
-               (password-eval "pass Mail/kvp94best@gmail.com"))))
-            (msmtp-account
-             (name "Yandex")
-             (configuration
-              (msmtp-configuration
-               (host "smtp.yandex.ru")
-               (port 587)
-               (user "kovalev.kovalev94@yandex.ru")
-               (from "kovalev.kovalev94@yandex.ru")
-               (password-eval "pass Mail/kovalev.kovalev94@yandex.ru"))))))))
+     (service home-msmtp-service-type
+              (home-msmtp-configuration
+               (defaults
+                 (msmtp-configuration
+                  (tls? #t)
+                  (auth? #t)))
+               (accounts
+                (list
+                 (msmtp-account
+                  (name "Gmail")
+                  (configuration
+                   (msmtp-configuration
+                    (host "smtp.gmail.com")
+                    (port 587)
+                    (user "kvp94best@gmail.com")
+                    (from "kvp94best@gmail.com")
+                    (password-eval "pass Mail/kvp94best@gmail.com"))))
+                 (msmtp-account
+                  (name "Yandex")
+                  (configuration
+                   (msmtp-configuration
+                    (host "smtp.yandex.ru")
+                    (port 587)
+                    (user "kovalev.kovalev94@yandex.ru")
+                    (from "kovalev.kovalev94@yandex.ru")
+                    (password-eval "pass Mail/kovalev.kovalev94@yandex.ru"))))
+                 (msmtp-account
+                  (name "Apple")
+                  (configuration
+                   (msmtp-configuration
+                    (host "smtp.mail.me.com")
+                    (port 587)
+                    (user "kovalev_94@icloud.com")
+                    (from "kovalev_94@icloud.com")
+                    (password-eval "pass Mail/kovalev_94@icloud.com"))))))))
 
      (service home-openssh-service-type
               (home-openssh-configuration

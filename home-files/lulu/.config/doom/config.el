@@ -120,6 +120,17 @@
                       (mu4e-compose-signature . "---\nKovalev Vitaliy"))
                     t)
 
+(set-email-account! "Apple"
+                    '((mu4e-sent-folder       . "/apple/Sent\ Messages")
+                      (mu4e-drafts-folder     . "/apple/Drafts")
+                      (mu4e-change-filenames-when-moving t)
+                      (mu4e-update-interval (* 10 60))
+                      (mu4e-trash-folder      . "/apple/Deleted\ Messages")
+                      (mu4e-refile-folder     . "/apple/All\ mail")
+                      (smtpmail-smtp-user     . "kovalev_94@icloud.com")
+                      (mu4e-compose-signature . "---\nKovalev Vitaliy"))
+                    t)
+
 (setq mu4e-context-policy 'ask-if-none
       mu4e-compose-context-policy 'always-ask)
 
