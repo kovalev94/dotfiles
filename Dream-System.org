@@ -16,8 +16,17 @@
 - [ ] nm-connections setup with guix
 ** Editor - Emacs
 *** TODO
-- [ ] Move from doom to vanila emacs
-- [ ] Setup guix home services or packages(See system-crafters or rde project)
+**** Move from doom to vanila emacs
+- [ ] Install python ide tool via doom for easy future config
+- [ ] install gomodifytags for Manipulating struct tags will not work
+- [ ] install gotests for Generating tests will not work
+- [ ] install shfmt for Code formatting will not work.
+- [ ] Create needed package list
+- [ ] install emacs-nerd-icons
+- [ ] Nerd-font Fira Code install
+
+
+**** Setup guix home services or packages(See system-crafters or rde project)
 
 ** Terminal - Emacs Vterm
 ** Fallback Terminal - Alacritty
@@ -41,6 +50,8 @@
 ** Icons - dracula
 ** Fonts - Fira Code
 ** App Launcher - Emacs
+** File manager - Dired
+- [ ] setup icons for folder and files
 ** Sleep/Power off/Logout Launcher - Emacs
 ** Compositor - Picom
 ** HiDPI settings - guix(rde)
@@ -63,6 +74,7 @@
 ** SOPS guix
 ** Fix slow autocompletion for guix
 ** Maybe switch to channels.scm in user dir
+** Inferior packages
 ** Setup damocles image
 - [ ] Learn vault
 - [ ] Root password in config.scm(pass/vault)
