@@ -62,6 +62,7 @@
 ** Games
 ** SOPS guix
 ** Fix slow autocompletion for guix
+** Maybe switch to channels.scm in user dir
 ** Setup damocles image
 - [ ] Learn vault
 - [ ] Root password in config.scm(pass/vault)
