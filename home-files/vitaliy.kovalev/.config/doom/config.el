@@ -42,6 +42,8 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
+;; Set dired work in async mode
+(dired-async-mode 1)
 
 
 
