@@ -1,0 +1,76 @@
+#+title: Dream System
+
+* General
+** Distro - Guix
+** Bootloader - grub
+*** TODO
+- [ ] Check pure EFI setups
+- [ ] Setup grub theme
+** Password Manager - GNU Pass
+*** TODO
+- [ ] Write own ssh-agent to integrate with pass
+- [ ] Move ssh-keys to password-store
+- [ ] Write home service for gnu pass
+** Network Management backend - NetworkManager
+*** TODO
+- [ ] nm-connections setup with guix
+** Editor - Emacs
+*** TODO
+- [ ] Move from doom to vanila emacs
+- [ ] Setup guix home services or packages(See system-crafters or rde project)
+
+** Terminal - Emacs Vterm
+** Fallback Terminal - Alacritty
+*** TODO
+- [ ] Change alacritty to use same keybind to TOGGLE transparancy as emacs
+** Container tool - podman
+** Audio backend - alsa
+- [ ] alsa без pulseaudio?
+
+** Battery Management - TPM
+*** TODO
+- [ ] Update to newer kernel
+** Firewall - nftables
+
+
+* UI/UX
+** Window Manager - EXWM
+** Bar - EWW
+** Screen Locker - xlock
+** Themes - dracula
+** Icons - dracula
+** Fonts - Fira Code
+** App Launcher - Emacs
+** Sleep/Power off/Logout Launcher - Emacs
+** Compositor - Picom
+** HiDPI settings - guix(rde)
+** Shell - eshell
+** Global translator - Emacs
+** SSH runner - Emacs
+** Backup/Syncing - Syncthing
+** Autostart system - guix shepherd
+*** TODO
+- [ ] emacs daemon to shepherd
+- [ ] picom to shepherd
+** Touchpad gestures - ?
+** Web Browser - Nyxt
+** Notifications - Emacs ednc
+
+* TODO other
+** distrotube xmonad like setup
+** Ubuntu check features
+** Games
+** SOPS guix
+** Fix slow autocompletion for guix
+** Setup damocles image
+- [ ] Learn vault
+- [ ] Root password in config.scm(pass/vault)
+- [ ] User password in config.scm(pass/vault)
+- [ ] Setup wireguard
+- [ ] Setup syncthing
+** Setup ipoint-controller image
+- [ ] Learn vault
+- [ ] Root password in config.scm(pass/vault)
+- [ ] User password in config.scm(pass/vault)
+- [ ] Setup wireguard
+
