@@ -96,12 +96,12 @@
 (evil-define-key 'normal 'global (kbd "M-o") 'toggle-background-transparency)
 
 (set-email-account! "Eltex"
-                    '((mu4e-sent-folder       . "/eltex/Отправленные")
-                      (mu4e-drafts-folder     . "/eltex/Черновики")
+                    '((mu4e-sent-folder       . "/Eltex/Отправленные")
+                      (mu4e-drafts-folder     . "/Eltex/Черновики")
                       (mu4e-change-filenames-when-moving t)
                       (mu4e-update-interval (* 10 60))
-                      (mu4e-trash-folder      . "/eltex/Корзина")
-                      (mu4e-refile-folder     . "/eltex/Вся\ почта")
+                      (mu4e-trash-folder      . "/Eltex/Корзина")
+                      (mu4e-refile-folder     . "/Eltex/Вся\ почта")
                       (smtpmail-smtp-user     . "vitaliy.kovalev@eltex.loc")
                       (mu4e-compose-signature . "---\nVitaliy Kovalev"))
                     t)

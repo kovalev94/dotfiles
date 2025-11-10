@@ -1,21 +1,21 @@
-IMAPAccount eltex
+IMAPAccount Eltex
 Host imap.eltex.loc
 User vitaliy.kovalev@eltex.loc
 PassCmd "pass Eltex/LDAP/vitaliy.kovalev"
 TLSType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
-IMAPStore eltex-remote
-Account eltex
+IMAPStore Eltex-remote
+Account Eltex
 
-MaildirStore eltex-local
+MaildirStore Eltex-local
 Subfolders Verbatim
-Path ~/.mail/eltex/
-Inbox ~/.mail/eltex/Inbox
+Path ~/.Mail/Eltex/
+Inbox ~/.Mail/Eltex/Inbox
 
-Channel eltex
-Far :eltex-remote:
-Near :eltex-local:
+Channel Eltex
+Far :Eltex-remote:
+Near :Eltex-local:
 Patterns *
 Create Both
 SyncState *
