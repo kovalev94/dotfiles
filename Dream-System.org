@@ -24,6 +24,7 @@
 - [ ] Create needed package list
 - [ ] install emacs-nerd-icons
 - [ ] Nerd-font Fira Code install
+- [ ] Check doom emacs init.el for usefull packages
 
 
 **** Setup guix home services or packages(See system-crafters or rde project)
