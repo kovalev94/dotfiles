@@ -70,6 +70,7 @@
       vlc)
      tiled-wm-toolkit
      emacs-toolkit
+     python-tools
      golang-tools))
 
    ;; Below is the list of Home services.  To search for available

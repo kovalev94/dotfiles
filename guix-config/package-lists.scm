@@ -56,6 +56,7 @@
             fs-tools
             network-tools
             video-tools
+            python-tools
             golang-tools
             virtualization-tools
             sys-fonts))
@@ -108,11 +109,6 @@
    emacs-bluetooth
    node
    shellcheck
-   python-black
-   python-isort
-   python-pytest
-   python-pyflakes
-   python-nose
    ccls
    mu
    isync
@@ -144,6 +140,15 @@
    vlc
    ;obs
    kdenlive))
+
+(define python-tools
+  (list
+   python-black
+   python-isort
+   python-pytest
+   python-pyflakes
+   python-nose
+   python-lsp-server))
 
 (define golang-tools
   (list

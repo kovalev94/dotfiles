@@ -72,6 +72,7 @@
       qbittorrent)
      tiled-wm-toolkit
      emacs-toolkit
+     python-tools
      golang-tools
      video-tools))
 
