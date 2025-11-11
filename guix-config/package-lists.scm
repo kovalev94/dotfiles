@@ -47,6 +47,7 @@
   #:use-module (gnu packages shellutils)
   #:use-module (nongnu packages mozilla)
   #:use-module (guix-config packages emacs)
+  #:use-module (guix-config packages golang-xyz)
 
   #:export (base-sys-toolkit
             base-gui-toolkit
@@ -149,7 +150,8 @@
    go
    gopls
    gore
-   go-github-com-fatih-gomodifytags))
+   go-github-com-cweill-gotests
+   go-github-com-fatih-gomodifytags-next))
 
 (define virtualization-tools
   (list
