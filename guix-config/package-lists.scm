@@ -44,6 +44,7 @@
   #:use-module (gnu packages golang)
   #:use-module (gnu packages golang-xyz)
   #:use-module (gnu packages golang-apps)
+  #:use-module (gnu packages shellutils)
   #:use-module (nongnu packages mozilla)
   #:use-module (guix-config packages emacs)
 
@@ -116,6 +117,7 @@
    isync
    markdown
    libvterm
+   shfmt
    ripgrep
    fd))
 
