@@ -72,6 +72,8 @@
 * TODO other
 ** distrotube xmonad like setup
 ** Ubuntu check features
+** Check emacs highlight window
+** Check emacs save layout function
 ** Games
 ** SOPS guix
 ** Fix slow autocompletion for guix
