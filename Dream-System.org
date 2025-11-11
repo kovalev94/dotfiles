@@ -21,7 +21,7 @@
 - [X] install gomodifytags for Manipulating struct tags will not work
 - [X] install gotests for Generating tests will not work
 - [X] install shfmt for Code formatting will not work.
-- [ ] install pipenv for pipenv support will not work.
+- [X] install pipenv for pipenv support will not work.
 - [ ] Create needed package list
 - [ ] install emacs-nerd-icons
 - [ ] Nerd-font Fira Code install

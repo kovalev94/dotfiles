@@ -47,6 +47,7 @@
   #:use-module (gnu packages shellutils)
   #:use-module (nongnu packages mozilla)
   #:use-module (guix-config packages emacs)
+  #:use-module (guix-config packages python-xyz)
   #:use-module (guix-config packages golang-xyz)
 
   #:export (base-sys-toolkit
@@ -148,6 +149,7 @@
    python-pytest
    python-pyflakes
    python-nose
+   python-pipenv
    python-lsp-server))
 
 (define golang-tools
