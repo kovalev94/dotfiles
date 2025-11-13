@@ -5,12 +5,13 @@
   #:use-module (gnu packages python-build)
   #:use-module (gnu packages python-check)
   #:use-module (gnu packages check)
+  #:use-module (gnu packages time)
   #:use-module (gnu packages sphinx)
   #:use-module (guix packages)
+  #:use-module (guix download)
   #:use-module (guix gexp)
   #:use-module (guix build-system python)
-  #:use-module (guix build-system pyproject)
-  #:use-module (guix download))
+  #:use-module (guix build-system pyproject))
 
 
 (define-public python-parver
@@ -34,7 +35,7 @@
                          python-pytest
                          python-setuptools
                          python-wheel))
-    (home-page "https://pypi.org/project/parver/")
+    (home-page "https://github.com/RazerM/parver")
     (synopsis "Parse and manipulate version numbers.")
     (description "Parse and manipulate version numbers.")
     (license license:expat)))
@@ -42,20 +43,19 @@
 (define-public python-pipenv
   (package
     (name "python-pipenv")
-    (version "2024.4.1")
+    (version "2025.0.4")
     (source
      (origin
        (method url-fetch)
        (uri (pypi-uri "pipenv" version))
        (sha256
-        (base32 "116z98qm2yqyg4n605z0skrm2rq0k91xcyyz35f7vnndq42n3sp8"))))
+        (base32 "18npx2vjhbw1f504vf3rbcxylpg1qabb51zpm5c2znyc85w2mz1n"))))
     (build-system pyproject-build-system)
+    (arguments
+     (list #:tests? #f)) ; no tests in PyPI
     (propagated-inputs (list python-certifi python-packaging python-setuptools
                              python-virtualenv))
-    (arguments
-     (list #:tests? #f)) ;; Temporary disable
     (native-inputs (list python-beautifulsoup4
-    ;                     python-pytest-cov
                          python-black
                          python-flake8
                          python-flaky
@@ -65,7 +65,6 @@
                          python-pytest
                          python-pytest-timeout
                          python-pytest-xdist
-    ;                     python-hypothesis
                          python-setuptools
                          python-sphinx
                          python-towncrier
