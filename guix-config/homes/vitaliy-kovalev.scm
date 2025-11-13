@@ -2,7 +2,6 @@
   #:use-module (gnu home)
   #:use-module (gnu packages)
   #:use-module (gnu packages wm)
-  #:use-module (gnu packages vpn)
   #:use-module (gnu packages base)
   #:use-module (gnu packages sync)
   #:use-module (gnu packages fonts)
@@ -12,12 +11,9 @@
   #:use-module (gnu packages terminals)
   #:use-module (gnu packages networking)
   #:use-module (gnu packages bittorrent)
-  #:use-module (gnu packages libreoffice)
-  #:use-module (gnu packages imagemagick)
   #:use-module (gnu packages web-browsers)
-  #:use-module (gnu packages password-utils)
-  #:use-module (gnu packages gnupg)
   #:use-module (gnu packages video)
+  #:use-module (gnu packages gnupg)
   #:use-module (nongnu packages chrome)
   #:use-module (gnu services)
   #:use-module (gnu services)
@@ -31,7 +27,7 @@
   #:use-module (gnu home services desktop)
   #:use-module (gnu home services dotfiles)
   #:use-module (gnu home services syncthing)
-  #:use-module (guix-config package-lists)
+  #:use-module (guix-config package-sets)
   #:use-module (guix-config keyboard)
   #:use-module (guix-config ssh))
 
@@ -47,31 +43,12 @@
    (packages
     (append
      (list
-      glibc
-      font-google-noto-emoji
-      font-fira-mono
-      font-fira-sans
-      font-fira-code
-      rclone
-      google-chrome-stable
-      wireshark
-      wireguard-tools
-      herbstluftwm
-      libreoffice
-      imagemagick
-      alacritty
-      bluez
-      nyxt
-      password-store
-      rofi-pass
-      gnupg
-      ;telegram-desktop
-      qbittorrent
-      vlc)
-     tiled-wm-toolkit
-     emacs-toolkit
-     python-tools
-     golang-tools))
+      wireshark)
+     herbst-de
+     emacs-base
+     python-emacs
+     mail-emacs
+     golang-emacs))
 
    ;; Below is the list of Home services.  To search for available
    ;; services, run 'guix home search KEYWORD' in a terminal.

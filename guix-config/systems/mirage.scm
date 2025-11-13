@@ -18,7 +18,7 @@
   #:use-module (gnu packages networking)
   #:use-module (gnu packages package-management)
   #:use-module (nongnu packages linux)
-  #:use-module (guix-config package-lists)
+  #:use-module (guix-config package-sets)
   #:use-module (guix-config etc-hosts)
   #:use-module (guix-config services)
   #:use-module (guix-config keyboard))
@@ -71,16 +71,15 @@
 
    ;Globaly installed packages(e.g. for all users)
    (packages
-    (cons*
-     vpnc
      (append
-      base-sys-toolkit
-      base-gui-toolkit
+      base-sys
+      base-gui
+      laptop
       fs-tools
       network-tools
-      virtualization-tools
+      virtualization-base
       sys-fonts
-      %base-packages)))
+      %base-packages))
 
    ;Installed and enabled services(like ssh-server,docker, etc.)
    (services

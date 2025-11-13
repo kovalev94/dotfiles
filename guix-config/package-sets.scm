@@ -1,4 +1,4 @@
-(define-module (guix-config package-lists)
+(define-module (guix-config package-sets)
   #:use-module (gnu packages linux)
   #:use-module (gnu packages disk)
   #:use-module (gnu packages admin)
@@ -6,6 +6,7 @@
   #:use-module (gnu packages networking)
   #:use-module (gnu packages curl)
   #:use-module (gnu packages dns)
+  #:use-module (gnu packages vpn)
   #:use-module (gnu packages screen)
   #:use-module (gnu packages python)
   #:use-module (gnu packages xorg)
@@ -14,7 +15,11 @@
   #:use-module (gnu packages wm)
   #:use-module (gnu packages mail)
   #:use-module (gnu packages terminals)
+  #:use-module (gnu packages password-utils)
+  #:use-module (gnu packages gnupg)
   #:use-module (gnu packages compression)
+  #:use-module (gnu packages imagemagick)
+  #:use-module (gnu packages libreoffice)
   #:use-module (gnu packages version-control)
   #:use-module (gnu packages xdisorg)
   #:use-module (gnu packages image)
@@ -46,24 +51,13 @@
   #:use-module (gnu packages golang-apps)
   #:use-module (gnu packages shellutils)
   #:use-module (nongnu packages mozilla)
+  #:use-module (nongnu packages fonts)
   #:use-module (guix-config packages emacs)
   #:use-module (guix-config packages python-xyz)
-  #:use-module (guix-config packages golang-xyz)
-
-  #:export (base-sys-toolkit
-            base-gui-toolkit
-            tiled-wm-toolkit
-            emacs-toolkit
-            fs-tools
-            network-tools
-            video-tools
-            python-tools
-            golang-tools
-            virtualization-tools
-            sys-fonts))
+  #:use-module (guix-config packages golang-xyz))
 
 
-(define base-sys-toolkit
+(define-public base-sys
   (list
    htop
    screen
@@ -77,7 +71,12 @@
    p7zip
    git))
 
-(define base-gui-toolkit
+(define-public laptop
+  (list
+   bluez
+   tlp))
+
+(define-public base-gui
   (list
    flameshot
    picom
@@ -86,47 +85,21 @@
    xrandr
    xinput
    xrdb
-   xterm
+   imagemagick
+   libreoffice
    firefox
+   vlc
    xdg-utils))
 
-(define tiled-wm-toolkit
-  (list
-   polybar
-   dunst
-   rofi
-   dzen
-   xftwidth
-   brightnessctl
-   pulsemixer))
-
-(define emacs-toolkit
-  (list
-   emacs-transparent
-   emacs-rg
-   emacs-pdf-tools
-   emacs-clang-format
-   emacs-vterm
-   emacs-bluetooth
-   node
-   shellcheck
-   ccls
-   mu
-   isync
-   markdown
-   libvterm
-   shfmt
-   ripgrep
-   fd))
-
-(define fs-tools
+(define-public fs-tools
   (list
    lvm2
    parted))
 
-(define network-tools
+(define-public network-tools
   (list
    tcpdump
+   wireguard-tools
    nmap
    iputils
    iptables
@@ -136,14 +109,32 @@
    curl
    (list isc-bind "utils")))
 
-(define video-tools
+(define-public video-tools
   (list
-   vlc
    ;obs
    kdenlive))
 
-(define python-tools
+(define-public emacs-base
   (list
+   emacs-transparent
+   emacs-rg
+   ripgrep
+   emacs-pdf-tools
+   emacs-vterm
+   libvterm
+   markdown
+   shellcheck
+   shfmt
+   fd))
+
+(define-public mail-emacs
+  (list
+   mu
+   isync))
+
+(define-public python-emacs
+  (list
+   python
    python-black
    python-isort
    python-pytest
@@ -152,7 +143,7 @@
    python-pipenv
    python-lsp-server))
 
-(define golang-tools
+(define-public golang-emacs
   (list
    go
    gopls
@@ -160,12 +151,44 @@
    go-github-com-cweill-gotests
    go-github-com-fatih-gomodifytags-next))
 
-(define virtualization-tools
+(define-public virtualization-base
   (list
    virt-manager
    spice-gtk))
 
-(define sys-fonts
+(define-public sys-fonts
   (list
    font-gnu-freefont
    font-gnu-unifont))
+
+(define-public fira-code-fonts
+  (list
+   font-fira-mono
+   font-fira-sans
+   font-fira-code))
+
+(define-public polybar-fonts
+  (list
+   font-ubuntu
+   font-google-noto-emoji
+   font-awesome
+   font-awesome-nonfree))
+
+(define-public herbst-de
+  (append
+   polybar-fonts
+   fira-code-fonts
+   (list
+    herbstluftwm
+    alacritty
+    nyxt
+    polybar
+    dunst
+    rofi
+    rofi-pass
+    password-store
+    gnupg
+    dzen
+    xftwidth
+    brightnessctl
+    pulsemixer)))

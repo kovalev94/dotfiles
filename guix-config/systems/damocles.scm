@@ -15,7 +15,7 @@
   #:use-module (gnu bootloader grub)
   #:use-module (gnu packages networking)
   #:use-module (gnu packages package-management)
-  #:use-module (guix-config package-lists)
+  #:use-module (guix-config package-sets)
   #:use-module (guix-config services)
   #:use-module (guix-config keyboard)
   #:use-module (guix-config homes schneizel))
@@ -52,7 +52,7 @@
    ;Globaly installed packages(e.g. for all users)
    (packages
     (append
-     base-sys-toolkit
+     base-sys
      fs-tools
      network-tools
      sys-fonts

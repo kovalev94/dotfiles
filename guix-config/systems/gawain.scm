@@ -14,11 +14,10 @@
   #:use-module (nongnu system linux-initrd)
   #:use-module (gnu bootloader)
   #:use-module (gnu bootloader grub)
-  #:use-module (gnu packages vpn)
   #:use-module (gnu packages networking)
   #:use-module (gnu packages package-management)
   #:use-module (nongnu packages linux)
-  #:use-module (guix-config package-lists)
+  #:use-module (guix-config package-sets)
   #:use-module (guix-config etc-hosts)
   #:use-module (guix-config services)
   #:use-module (guix-config packages certs)
@@ -67,14 +66,13 @@
    ;Globaly installed packages(e.g. for all users)
    (packages
     (cons*
-     vpnc
      eltex-certs
      (append
-      base-sys-toolkit
-      base-gui-toolkit
+      base-sys
+      base-gui
       fs-tools
       network-tools
-      virtualization-tools
+      virtualization-base
       sys-fonts
       %base-packages)))
 

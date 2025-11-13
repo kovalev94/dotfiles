@@ -8,7 +8,7 @@
   #:use-module (gnu packages package-management)
   #:use-module (nongnu packages linux)
 
-  #:use-module (guix-config package-lists)
+  #:use-module (guix-config package-sets)
   #:use-module (guix-config services)
   #:use-module (guix-config keyboard))
 
@@ -36,7 +36,7 @@
 
    (packages
     (append
-     base-sys-toolkit
+     base-sys
      fs-tools
      network-tools
      (operating-system-packages installation-os)))
