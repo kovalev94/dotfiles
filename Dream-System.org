@@ -17,13 +17,12 @@
 ** Editor - Emacs
 *** TODO
 **** Move from doom to vanila emacs
-- [ ] Install python ide tool via doom for easy future config
+- [X] Install python ide tool via doom for easy future config
 - [X] install gomodifytags for Manipulating struct tags will not work
 - [X] install gotests for Generating tests will not work
 - [X] install shfmt for Code formatting will not work.
 - [X] install pipenv for pipenv support will not work.
 - [ ] Create needed package list
-- [ ] install emacs-nerd-icons
 - [ ] Nerd-font Fira Code install
 - [ ] Check doom emacs init.el for usefull packages
 
