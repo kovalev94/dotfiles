@@ -24,7 +24,7 @@
 - [X] install pipenv for pipenv support will not work.
 - [ ] Create needed package list
 - [ ] Nerd-font Fira Code install
-- [ ] Check doom emacs init.el for usefull packages
+- [X] Check doom emacs init.el for usefull packages
 
 
 **** Setup guix home services or packages(See system-crafters or rde project)
