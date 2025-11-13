@@ -23,7 +23,7 @@
 - [X] install shfmt for Code formatting will not work.
 - [X] install pipenv for pipenv support will not work.
 - [ ] Create needed package list
-- [ ] Nerd-font Fira Code install
+- [X] Nerd-font-symbols-only install
 - [X] Check doom emacs init.el for usefull packages
 
 

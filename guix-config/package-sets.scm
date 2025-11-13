@@ -53,6 +53,7 @@
   #:use-module (nongnu packages mozilla)
   #:use-module (nongnu packages fonts)
   #:use-module (guix-config packages emacs)
+  #:use-module (guix-config packages fonts)
   #:use-module (guix-config packages python-xyz)
   #:use-module (guix-config packages golang-xyz))
 
@@ -125,6 +126,7 @@
    markdown
    shellcheck
    shfmt
+   font-nerd-symbols-only
    fd))
 
 (define-public mail-emacs
