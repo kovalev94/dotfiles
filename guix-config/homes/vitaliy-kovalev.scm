@@ -127,7 +127,7 @@
                                  (local-file
                                   (string-append
                                    (getenv "DOTFILES_DIR")
-                                   "/home-files/vitaliy.kovalev/.ssh/keys/gawain.pub")
+                                   "/home-files/general/.ssh/keys/gawain.pub")
                                   "gawain.pub")))
                (add-keys-to-agent "120m")))))))
 
