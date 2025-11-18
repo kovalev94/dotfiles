@@ -112,7 +112,7 @@
 
 (define-public video-tools
   (list
-   ;obs
+   ;;obs
    kdenlive))
 
 (define-public emacs-base
@@ -127,6 +127,7 @@
    shellcheck
    shfmt
    font-nerd-symbols-only
+   emacs-dashboard
    fd))
 
 (define-public mail-emacs
