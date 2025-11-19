@@ -35,92 +35,286 @@
 ***** Install guix package and forbid doom package
 ****** (corfu +orderless +icons)
 complete with cap(f), cape and a flying feather!
+- emacs-corfu
+- emacs-cape
+- emacs-orderless
+create-package:
+- yasnippet-capf
+- nerd-icons-corfu
 ****** vertico
 the search engine of the future
+- emacs-vertico
+- emacs-consult
+- emacs-consult-dir
+- emacs-embark
+- emacs-marginalia
+- emacs-wgrep
+- emacs-consult-yasnippet
+create-package:
+- embark-consult
+- nerd-icons-completion
 ****** doom
 what makes DOOM look the way it does
+- emacs-doom-themes
+- emacs-solaire-mode
+****** doom-dashboard
+; a nifty splash screen for Emacs
+no-package - switch to
+- emacs-dashboard
 ****** (emoji +unicode)
 🙂
+- emacs-emojify
 ****** hl-todo
 highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
+- emacs-hl-todo
 ****** ligatures
 ligatures and symbols to make your code pretty again
+- emacs-ligature
 ****** modeline
 snazzy, Atom-inspired modeline, plus API
+- emacs-doom-modeline
+- emacs-anzu
+- evil-anzu
 ****** ophints
 highlight the region an operation acts on
+- emacs-evil-goggles
+- emacs-goggles
 ****** (popup +defaults)
 tame sudden yet inevitable temporary windows
-****** smooth-scroll     
- So smooth you won't believe it's not butter
+no-packages
+****** smooth-scroll + interpolate
+So smooth you won't believe it's not butter
+- emacs-ultra-scroll
+create packages:
+- good-scroll
 ****** unicode           
- extended unicode support for various languages
+extended unicode support for various languages
+create packages:
+- unicode-fonts
+
 ****** (vc-gutter +pretty) 
- vcs diff in the fringe
+vcs diff in the fringe
+- emacs-diff-hl
 ****** vi-tilde-fringe   
- fringe tildes to mark beyond EOB
-****** workspaces        
- tab emulation, persistence & separate workspaces
+fringe tildes to mark beyond EOB
+
+create packages:
+- vi-tilde-fringe
 ****** (evil +everywhere)
- come to the dark side, we have cookies
+come to the dark side, we have cookies
+    - emacs-evil
+    - emacs-evil-args
+    - emacs-evil-escape
+    - emacs-evil-exchange
+    - emacs-evil-indent-plus
+    - emacs-evil-lion
+    - emacs-evil-nerd-commenter
+    - emacs-evil-numbers
+    - emacs-evil-surround
+    - emacs-evil-traces
+    - emacs-evil-visualstar
+    - emacs-evil-collection
+
+      create packages:
+      - evil-easymotion
+      - evil-embrace
+      - evil-snipe
+      - evil-textobj-anyblock
+      - exato
+      - evil-quick-diff
+
 ****** file-templates    
- auto-snippets for empty files
+auto-snippets for empty files
+- emacs-yasnippet
+
 ****** fold              
- (nigh) universal code folding
+(nigh) universal code folding
+create-packages:
+- hideshow
+- vimish-fold
+- evil-vimish-fold
+- treesit-fold
+
 ****** (format +onsave)  
- automated prettiness
+automated prettiness
+- emacs-apheleia
 ****** snippets          
- my elves. They type so I don't have to
+my elves. They type so I don't have to
+- emacs-auto-yasnippet
+- emacs-doom-snippets
+
+****** (whitespace +guess +trim)
+a butler for your whitespace
+- emacs-dtrt-indent
+- emacs-ws-butler
+
 ****** dired             
- making dired pretty [functional]
+making dired pretty [functional]
+- dirvish
+- diredfl
 ****** electric          
- smarter, keyword-based electric-indent
+smarter, keyword-based electric-indent
+no packages
 ****** ibuffer         
- interactive buffer management
+interactive buffer management
+- emacs-ibuffer-projectile
+- emacs-ibuffer-vc
 ****** tramp             
- remote files at your arthritic fingertips
+remote files at your arthritic fingertips
+no packages
 ****** undo              
- persistent, smarter undo for your inevitable mistakes
+persistent, smarter undo for your inevitable mistakes
+
+- emacs-undo-fu
+- emacs-undo-fu-session
+- emacs-vundo
+
 ****** vc                
- version-control and Emacs, sitting in a tree
+version-control and Emacs, sitting in a tree
+emacs-browse-at-remote
+emacs-git-timemachine
+emacs-git-modes
+create-packages:
+- vc
+- vc-annotate
+- smerge-mode
 ****** vterm             
- the best terminal emulation in Emacs
-****** syntax              
- tasing you for every semicolon you forget
-****** (eval +overlay)     
- run code, run (also, repls)
+the best terminal emulation in Emacs
+- emacs-vterm
+****** syntax + icons              
+tasing you for every semicolon you forget
+- emacs-flycheck
+- emacs-package-lint
+create-packages:
+- flycheck-popup-tip
+****** (eval +overlay)
+run code, run (also, repls)
+- emacs-quickrun
+- emacs-eros
 ****** lookup              
- navigate your code and its documentation
+navigate your code and its documentation
+- emacs-dumb-jump
+- emacs-request
 ****** lsp               
- M-x vscode
+M-x vscode
+no-packages
 ****** magit             
- a git porcelain for Emacs
+a git porcelain for Emacs
+- emacs-transient
+- emacs-magit
 ****** pass              
- password manager for nerds
+password manager for nerds
+- emacs-pass
+- emacs-password-store
+- emacs-password-store-otp
 ****** pdf               
- pdf enhancements
+pdf enhancements
+- emasc-pdf-tools
+- emasc-saveplace-pdf-view
 ****** tree-sitter       
- syntax and parsing, sitting in a tree...
-****** emacs-lisp        
- drown in parentheses
-****** (go +lsp)         
- the hipster dialect
+syntax and parsing, sitting in a tree...
+no packages
+****** emacs-lisp
+drown in parentheses
+
+- emacs-helpful
+- emacs-macrostep
+- emacs-elisp-demos
+- emacs-buttercup
+
+create-packages:
+- highlight-quoted :pin "24103478158cd19fbcfb4339a3f1fa1f054f1469")
+- overseer :pin "7fdcf1a6fba6b1569a09c1666b4e51bcde266ed9")
+- elisp-def :pin "2451ed6594807448a24a63c51c917727713ed19d")
+
+****** (go +lsp)
+the hipster dialect
+
+- emacs-go-mode
+create-packages:
+- gorepl-mode
+- go-tag
+- go-gen-test
+
 ****** json              
- At least it ain't XML
-****** markdown          
- writing docs for people to ignore
-****** org               
- organize your plain life in plain text
-****** (python +lsp)            
- beautiful is better than ugly
-****** (scheme +guile)   
- a fully conniving family of lisps
+At least it ain't XML
+
+- emacs-json-mode
+- emacs-json-snatcher
+
+****** (markdown +treesitter +grip)
+writing docs for people to ignore
+
+- emacs-markdown-mode
+- emacs-edit-indirect
+- evil-markdown
+
+create-packages:
+- markdown-toc
+- markdown-ts-mode
+- grip-mode
+
+****** (org +pomodoro +pretty)
+organize your plain life in plain text
+
+- emacs-org-contrib
+- emacs-avy
+- emacs-htmlize
+- emacs-toc-org
+- emacs-org-cliplink
+- emacs-evil-org
+- emacs-org-pdftools
+- emacs-orgit
+- emacs-org-pomodoro
+- emacs-org-modern
+- emacs-org-appear
+- emacs-ob-async
+- emacs-ob-go
+
+create-packages:
+- ox-clip
+
+****** (python +lsp)
+beautiful is better than ugly
+
+- emacs-pyimport
+- emacs-py-isort
+
+  create packages:
+- pip-requirements
+- pipenv
+- pyvenv
+- nose
+- python-pytest
+
+****** (scheme +guile)
+a fully conniving family of lisps
+
+- emacs-geiser
+- emacs-macrostep-geiser
+- emacs-geiser-guile
+
+create packages:
+scheme ???
+
 ****** sh                
- she sells {ba,z,fi}sh shells on the C xor
+she sells {ba,z,fi}sh shells on the C xor
+
+- emacs-bash-completion
+
 ****** yaml              
- JSON, but readable
+JSON, but readable
+
+- emacs-yaml-mode
+
 ****** (mu4e +org +gmail)
+- emacs-org-msg
+
+create packages:
+- mu4e-compat
 ****** (default +bindings +smartparens))
+- emacs-avy
+- emacs-link-hint
 
 
 
@@ -189,3 +383,6 @@ tame sudden yet inevitable temporary windows
 ** distrotube xmonad like setup
 ** Ubuntu check features
 ** Games
+
+* workspaces
+ delete workspaces
