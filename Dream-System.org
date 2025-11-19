@@ -323,7 +323,11 @@ create packages:
 
 - [ ] Defer garbage coolector like in doom
 **** Emacs Geiser
+- [ ] corfu error with scheme
+- [ ] guix support
 **** Emacs Paredit
+**** pdf image-roll
+
 ** Terminal - Emacs Vterm
 ** Fallback Terminal - Alacritty
 *** TODO
