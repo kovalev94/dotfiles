@@ -21,6 +21,7 @@
   #:use-module (guix-config etc-hosts)
   #:use-module (guix-config services)
   #:use-module (guix-config packages certs)
+  #:use-module (guix-config packages telephony)
   #:use-module (guix-config keyboard))
 
 (define-public gawain-system
@@ -63,7 +64,7 @@
        '("wheel" "netdev" "audio" "video" "kvm" "libvirt" )))
      %base-user-accounts))
 
-   ;Globaly installed packages(e.g. for all users)
+   ;;Globaly installed packages(e.g. for all users)
    (packages
     (cons*
      eltex-certs
@@ -76,7 +77,7 @@
       sys-fonts
       %base-packages)))
 
-   ;Installed and enabled services(like ssh-server,docker, etc.)
+   ;;Installed and enabled services(like ssh-server,docker, etc.)
    (services
     (append
      (assoc-ref virtualization-service-list "services")
@@ -95,10 +96,10 @@
                    (getenv "DOTFILES_DIR")
                    "/sys-files/gawain/iptables.rules")))))
       (simple-service 'dotfiles-and-guix-env session-environment-service-type
-                     `(("DOTFILES_DIR" .
-                        "/home/vitaliy.kovalev/.dotfiles")
-                       ("GUIX_PACKAGE_PATH" .
-                        "/home/vitaliy.kovalev/.dotfiles")))
+                      `(("DOTFILES_DIR" .
+                         "/home/vitaliy.kovalev/.dotfiles")
+                        ("GUIX_PACKAGE_PATH" .
+                         "/home/vitaliy.kovalev/.dotfiles")))
       (simple-service 'add-extra-hosts
                       hosts-service-type
                       (append
@@ -149,10 +150,14 @@
        (program
         (file-append iputils "/bin/ping"));Neeeded for iptuils ping
        (setuid? #t))
+      (privileged-program
+       (program
+        (file-append sngrep "/bin/sngrep"));Neeeded for iptuils ping
+       (capabilities "CAP_NET_RAW+eip"))
       (assoc-ref virtualization-service-list "privileged-programs"))
      %default-privileged-programs))
 
-   ;Required for LVM disks
+   ;;Required for LVM disks
    (mapped-devices
     (list
      (mapped-device
