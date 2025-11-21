@@ -21,6 +21,7 @@
   #:use-module (guix-config package-sets)
   #:use-module (guix-config etc-hosts)
   #:use-module (guix-config services)
+  #:use-module (guix-config packages telephony)
   #:use-module (guix-config keyboard))
 
 (define-public mirage-system
@@ -40,7 +41,7 @@
      (keyboard-layout kb-layout)))
 
    (kernel linux)
-   ;Temporary(I hope) fix for screen redraw lags
+   ;;Temporary(I hope) fix for screen redraw lags
    (kernel-arguments
     (append
      (list "i915.enable_psr=0")
@@ -69,19 +70,19 @@
        '("wheel" "netdev" "audio" "video" "kvm" "libvirt" )))
      %base-user-accounts))
 
-   ;Globaly installed packages(e.g. for all users)
+   ;;Globaly installed packages(e.g. for all users)
    (packages
-     (append
-      base-sys
-      base-gui
-      laptop
-      fs-tools
-      network-tools
-      virtualization-base
-      sys-fonts
-      %base-packages))
+    (append
+     base-sys
+     base-gui
+     laptop
+     fs-tools
+     network-tools
+     virtualization-base
+     sys-fonts
+     %base-packages))
 
-   ;Installed and enabled services(like ssh-server,docker, etc.)
+   ;;Installed and enabled services(like ssh-server,docker, etc.)
    (services
     (append
      (assoc-ref virtualization-service-list "services")
@@ -101,10 +102,10 @@
                    (getenv "DOTFILES_DIR")
                    "/sys-files/mirage/iptables.rules")))))
       (simple-service 'dotfiles-and-guix-env session-environment-service-type
-                     `(("DOTFILES_DIR" .
-                        "/home/lulu/.dotfiles")
-                       ("GUIX_PACKAGE_PATH" .
-                        "/home/lulu/.dotfiles")))
+                      `(("DOTFILES_DIR" .
+                         "/home/lulu/.dotfiles")
+                        ("GUIX_PACKAGE_PATH" .
+                         "/home/lulu/.dotfiles")))
       (simple-service 'add-extra-hosts
                       hosts-service-type
                       (append
@@ -117,22 +118,22 @@
                 (port-number 13131))))
 
      (modify-services shit-trimmed-desktop-services
-       ;Sleep doesn't work, using freeze until fix.
-       (elogind-service-type
-        config =>(elogind-configuration
-                  (inherit config)
-                  (suspend-mode '(s2idle deep))))
-       (guix-service-type
-        config =>(guix-configuration
-                  (inherit config)
-                  (channels pinned-channels)
-                  (guix (guix-for-channels pinned-channels))
-                  (substitute-urls bordeaux-nonguix-substitute-urls)
-                  (authorized-keys default-authorized-keys-with-nonguix)))
-       (console-font-service-type
-        _ => hi-dpi-console-font-configuration)
-       (network-manager-service-type
-        _ => network-manager-with-vpnc-configuration))))
+                      ;;Sleep doesn't work, using freeze until fix.
+                      (elogind-service-type
+                       config =>(elogind-configuration
+                                 (inherit config)
+                                 (suspend-mode '(s2idle deep))))
+                      (guix-service-type
+                       config =>(guix-configuration
+                                 (inherit config)
+                                 (channels pinned-channels)
+                                 (guix (guix-for-channels pinned-channels))
+                                 (substitute-urls bordeaux-nonguix-substitute-urls)
+                                 (authorized-keys default-authorized-keys-with-nonguix)))
+                      (console-font-service-type
+                       _ => hi-dpi-console-font-configuration)
+                      (network-manager-service-type
+                       _ => network-manager-with-vpnc-configuration))))
 
 
    (privileged-programs
@@ -142,10 +143,14 @@
        (program
         (file-append iputils "/bin/ping"));Neeeded for iptuils ping
        (setuid? #t))
+      (privileged-program
+       (program
+        (file-append sngrep "/bin/sngrep"));Neeeded for iptuils ping
+       (capabilities "CAP_NET_RAW+eip"))
       (assoc-ref virtualization-service-list "privileged-programs"))
      %default-privileged-programs))
 
-   ;Required for LVM disks
+   ;;Required for LVM disks
    (mapped-devices
     (list
      (mapped-device
