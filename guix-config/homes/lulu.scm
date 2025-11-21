@@ -14,6 +14,7 @@
   #:use-module (gnu packages web-browsers)
   #:use-module (gnu packages gnupg)
   #:use-module (gnu packages emacs-xyz)
+  #:use-module (gnu packages telephony)
   #:use-module (nongnu packages chrome)
   #:use-module (nongnu packages fonts)
   #:use-module (gnu services)
@@ -43,6 +44,7 @@
    (packages
     (append
      (list
+      sipp
       emacs-bluetooth
       wireshark
       qbittorrent)
@@ -66,7 +68,7 @@
                (max-cache-ttl 7200)))
      (service home-startx-command-service-type
               (for-home (xorg-configuration
-               (keyboard-layout kb-layout))))
+                         (keyboard-layout kb-layout))))
      (service home-syncthing-service-type
               (for-home
                (syncthing-configuration

@@ -14,6 +14,7 @@
   #:use-module (gnu packages web-browsers)
   #:use-module (gnu packages video)
   #:use-module (gnu packages gnupg)
+  #:use-module (gnu packages telephony)
   #:use-module (nongnu packages chrome)
   #:use-module (gnu services)
   #:use-module (gnu services)
@@ -43,6 +44,7 @@
    (packages
     (append
      (list
+      sipp
       wireshark)
      herbst-de
      emacs-base
@@ -63,7 +65,7 @@
                (max-cache-ttl 7200)))
      (service home-startx-command-service-type
               (for-home (xorg-configuration
-               (keyboard-layout kb-layout))))
+                         (keyboard-layout kb-layout))))
      (service home-bash-service-type
               (home-bash-configuration
                (aliases '(("grep" . "grep --color=auto") ("ll" . "ls -l")
@@ -99,23 +101,23 @@
                  ".bash_profile"))))
 
 
-(service home-msmtp-service-type
-         (home-msmtp-configuration
-          (defaults
-            (msmtp-configuration
-             (tls? #t)
-             (auth? #t)))
-          (accounts
-           (list
-            (msmtp-account
-             (name "Eltex")
-             (configuration
-              (msmtp-configuration
-               (host "smtp.eltex.loc")
-               (port 587)
-               (user "vitaliy.kovalev@eltex.loc")
-               (from "vitaliy.kovalev@eltex.loc")
-               (password-eval "pass Eltex/LDAP/vitaliy.kovalev"))))))))
+     (service home-msmtp-service-type
+              (home-msmtp-configuration
+               (defaults
+                 (msmtp-configuration
+                  (tls? #t)
+                  (auth? #t)))
+               (accounts
+                (list
+                 (msmtp-account
+                  (name "Eltex")
+                  (configuration
+                   (msmtp-configuration
+                    (host "smtp.eltex.loc")
+                    (port 587)
+                    (user "vitaliy.kovalev@eltex.loc")
+                    (from "vitaliy.kovalev@eltex.loc")
+                    (password-eval "pass Eltex/LDAP/vitaliy.kovalev"))))))))
 
      (service home-openssh-service-type
               (home-openssh-configuration
