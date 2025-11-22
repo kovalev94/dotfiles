@@ -52,7 +52,8 @@
       emacs-base
       python-emacs
       mail-emacs
-      golang-emacs))
+      golang-emacs
+      video-tools))
 
     ;; Below is the list of Home services.  To search for available
     ;; services, run 'guix home search KEYWORD' in a terminal.

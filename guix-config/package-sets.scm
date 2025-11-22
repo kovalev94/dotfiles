@@ -112,7 +112,7 @@
 
 (define-public video-tools
   (list
-   ;;obs
+   obs
    kdenlive))
 
 (define-public emacs-base
