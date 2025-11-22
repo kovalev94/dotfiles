@@ -1,26 +1,9 @@
 (define-module (guix-config homes lulu)
+  #:use-module (guix gexp)
   #:use-module (gnu home)
   #:use-module (gnu packages)
-  #:use-module (gnu packages wm)
-  #:use-module (gnu packages base)
-  #:use-module (gnu packages sync)
-  #:use-module (gnu packages fonts)
-  #:use-module (gnu packages gnome)
-  #:use-module (gnu packages linux)
-  #:use-module (gnu packages chromium)
-  #:use-module (gnu packages terminals)
-  #:use-module (gnu packages networking)
-  #:use-module (gnu packages bittorrent)
-  #:use-module (gnu packages web-browsers)
-  #:use-module (gnu packages gnupg)
-  #:use-module (gnu packages emacs-xyz)
-  #:use-module (gnu packages telephony)
-  #:use-module (gnu packages linphone)
-  #:use-module (nongnu packages chrome)
-  #:use-module (nongnu packages fonts)
   #:use-module (gnu services)
   #:use-module (gnu services xorg)
-  #:use-module (guix gexp)
   #:use-module (gnu home services)
   #:use-module (gnu home services gnupg)
   #:use-module (gnu home services mail)
@@ -43,19 +26,20 @@
     ;; Below is the list of packages that will show up in your
     ;; Home profile, under ~/.guix-home/profile.
     (packages
-     (append
-      (list
-       sipp
-       linphone-desktop
-       emacs-bluetooth
-       wireshark
-       qbittorrent)
-      herbst-de
-      emacs-base
-      python-emacs
-      mail-emacs
-      golang-emacs
-      video-tools))
+     (specifications->packages
+      (append
+       (list
+        "sipp"
+        "linphone-desktop"
+        "emacs-bluetooth"
+        "wireshark"
+        "qbittorrent")
+       herbst-de
+       emacs-base
+       python-emacs
+       mail-emacs
+       golang-emacs
+       video-tools)))
 
     ;; Below is the list of Home services.  To search for available
     ;; services, run 'guix home search KEYWORD' in a terminal.
@@ -65,7 +49,9 @@
       (service home-gpg-agent-service-type
                (home-gpg-agent-configuration
                  (pinentry-program
-                  (file-append pinentry-rofi "/bin/pinentry-rofi"))
+                  (file-append
+                   (specification->package "pinentry-rofi")
+                   "/bin/pinentry-rofi"))
                  (default-cache-ttl 6000)
                  (max-cache-ttl 7200)))
       (service home-startx-command-service-type

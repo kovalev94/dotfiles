@@ -15,8 +15,8 @@
      (origin
        (method git-fetch)
        (uri (git-reference
-             (url "https://github.com/cweill/gotests")
-             (commit (string-append "v" version))))
+              (url "https://github.com/cweill/gotests")
+              (commit (string-append "v" version))))
        (file-name (git-file-name name version))
        (sha256
         (base32 "1721gn6zp2bbnj92yh8jjn7yajms28d94xkfkck8kcxqb5nj07wp"))))
@@ -36,14 +36,14 @@
 
 (define-public go-github-com-fatih-gomodifytags-next
   (package
-    (name "go-github-com-fatih-gomodifytags")
+    (name "go-github-com-fatih-gomodifytags-next")
     (version "1.17.0")
     (source
      (origin
        (method git-fetch)
        (uri (git-reference
-             (url "https://github.com/fatih/gomodifytags")
-             (commit (string-append "v" version))))
+              (url "https://github.com/fatih/gomodifytags")
+              (commit (string-append "v" version))))
        (file-name (git-file-name name version))
        (sha256
         (base32 "1wzbz2fn3n4a9hbi96p0gdaly3rn5mzc9zk4k337dkf5dr2x4n2x"))))
