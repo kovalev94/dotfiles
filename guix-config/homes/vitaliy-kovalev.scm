@@ -22,6 +22,7 @@
   #:use-module (gnu services xorg)
   #:use-module (guix gexp)
   #:use-module (gnu home services)
+  #:use-module (gnu home services pm)
   #:use-module (gnu home services gnupg)
   #:use-module (gnu home services mail)
   #:use-module (gnu home services shells)
@@ -59,6 +60,7 @@
     ;; services, run 'guix home search KEYWORD' in a terminal.
     (services
      (list
+      (service home-batsignal-service-type)
       (service home-ssh-agent-service-type)
       (service home-gpg-agent-service-type
                (home-gpg-agent-configuration
