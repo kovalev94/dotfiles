@@ -327,6 +327,7 @@ create packages:
 - [ ] guix support
 **** Emacs Paredit
 **** pdf image-roll
+**** Fix not async rm
 
 ** Terminal - Emacs Vterm
 ** Fallback Terminal - Alacritty
