@@ -8,13 +8,13 @@
 
 (define-public emacs-transparent
   (package/inherit emacs
-    (name "emacs-transparent")
-    (synopsis "The extensible, customizable, self-documenting text
+                   (name "emacs-transparent")
+                   (synopsis "The extensible, customizable, self-documenting text
 editor (with libxaw for transparency and imagemagick for images)")
-    (inputs
-     (modify-inputs (package-inputs emacs)
-       (prepend imagemagick libxaw)))
-    (arguments
-     (substitute-keyword-arguments (package-arguments emacs)
-       ((#:configure-flags flags #~'())
-        #~(cons* "--with-imagemagick"  #$flags))))))
+                   (inputs
+                    (modify-inputs (package-inputs emacs)
+                                   (prepend imagemagick libxaw)))
+                   (arguments
+                    (substitute-keyword-arguments (package-arguments emacs)
+                                                  ((#:configure-flags flags #~'())
+                                                   #~(cons* "--with-imagemagick"  #$flags))))))
