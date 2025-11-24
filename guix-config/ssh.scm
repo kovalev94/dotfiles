@@ -15,7 +15,13 @@
     (host-name "vpnserv")
     (user "vpn_admin")
     (port 56713)
-    (identity-file "~/.ssh/keys/vpnserv"))))
+    (identity-file "~/.ssh/keys/vpnserv"))
+   (openssh-host
+    (name "vpnserv2")
+    (host-name "vpnserv2")
+    (user "vpn_admin")
+    (port 56713)
+    (identity-file "~/.ssh/keys/vpnserv2"))))
 
 (define work-machines
   (list
