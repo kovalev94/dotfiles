@@ -32,6 +32,7 @@
        "sipp"
        "linphone-desktop"
        "emacs-bluetooth"
+       "emacs-exwm-transparent"
        "wireshark"
        "qbittorrent")
       herbst-de
