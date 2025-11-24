@@ -138,3 +138,11 @@
     "xftwidth"
     "brightnessctl"
     "pulsemixer")))
+
+(define-public emacs-doom-module-corfu
+  (list
+   "emacs-corfu"
+   "emacs-cape"
+   "emacs-orderless"
+   "emacs-yasnippet-capf"
+   "emacs-nerd-icons-corfu"))

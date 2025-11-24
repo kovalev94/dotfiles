@@ -33,7 +33,7 @@
 - [X] Check doom emacs init.el for usefull packages
 **** Move from doom to vanila emacs
 ***** Install guix package and forbid doom package
-****** (corfu +orderless +icons)
+****** [X] (corfu +orderless +icons)
 complete with cap(f), cape and a flying feather!
 - emacs-corfu
 - emacs-cape
