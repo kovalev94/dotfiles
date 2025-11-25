@@ -57,8 +57,6 @@ configurable, but should be text icons provided by the icons fonts in
 (add-to-list corfu-margin-formatters #'nerd-icons-corfu-formatter).")
    (license license:gpl3)))
 
-;;https://github.com/tumashu/vertico-posframe
-;;https://github.com/emacs-exwm/xdg-launcher
 (define-public emacs-xdg-launcher
   (let ((commit "251f8cd9f6a83d07e1f4a110142fb4810c94f24a")
         (revision "0")
