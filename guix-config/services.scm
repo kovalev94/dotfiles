@@ -49,15 +49,15 @@ from SERVICE-LIST (%desktop-services for example)"
 
 (define default-channels-with-nonguix
   (cons* (channel
-         (name 'nonguix)
-         (url "https://gitlab.com/nonguix/nonguix")
-         ;; Enable signature verification:
-         (introduction
-          (make-channel-introduction
-           "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
-           (openpgp-fingerprint
-            "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5"))))
-        %default-channels))
+          (name 'nonguix)
+          (url "https://gitlab.com/nonguix/nonguix")
+          ;; Enable signature verification:
+          (introduction
+           (make-channel-introduction
+            "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
+            (openpgp-fingerprint
+             "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5"))))
+         %default-channels))
 
 
 (define default-authorized-keys-with-nonguix
@@ -95,14 +95,14 @@ from SERVICE-LIST (%desktop-services for example)"
 
 (define docker-service-list
   (list
-    (service docker-service-type)
-    (service containerd-service-type)))
+   (service docker-service-type)
+   (service containerd-service-type)))
 
 
 (define power-management-service-list
   (list
-    (service tlp-service-type)
-    (service thermald-service-type)))
+   (service tlp-service-type)
+   (service thermald-service-type)))
 
 
 (define virtualization-service-list
@@ -122,8 +122,8 @@ from SERVICE-LIST (%desktop-services for example)"
                                  (setuid? #t))))))
 
 
- ;Because (gnu services networking) module does not expose nm-applet-service
- ;define own nm-applet-service-type similar to that module
+                                        ;Because (gnu services networking) module does not expose nm-applet-service
+                                        ;define own nm-applet-service-type similar to that module
 (define nm-applet-service-type
   (service-kind
    (simple-service 'network-manager-applet
