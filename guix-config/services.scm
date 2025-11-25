@@ -146,7 +146,7 @@ from SERVICE-LIST (%desktop-services for example)"
          (url "https://git.guix.gnu.org/guix.git")
          (branch "master")
          (commit
-          "e423fbd7d47366b909acb9a8584f6925d7dfbb4a")
+          "5e63c9bdb1bf7114d742ba4c07596932e0124188")
          (introduction
           (make-channel-introduction
            "9edb3f66fd807b096b48283debdcddccfea34bad"
