@@ -1,6 +1,7 @@
 (define-module (guix-config packages emacs-xyz)
   #:use-module ((guix licenses) #:prefix license:)
   #:use-module (guix packages)
+  #:use-module (gnu packages emacs-build)
   #:use-module (guix git-download)
   #:use-module (guix build-system emacs)
   #:use-module (gnu packages emacs-xyz))
@@ -84,3 +85,25 @@ configurable, but should be text icons provided by the icons fonts in
       "XDG launcher implements a dmenu-style XDG application launcher
 in Emacs using standard Emacs minibuffer completion.")
      (license license:gpl3))))
+
+(define-public emacs-nerd-icons-completion
+  (package
+   (name "emacs-nerd-icons-completion")
+   (version "20251029.2106")
+   (source
+    (origin
+     (method git-fetch)
+     (uri (git-reference
+           (url "https://github.com/rainstormstudio/nerd-icons-completion")
+           (commit "d09ea987ed3d2cc64137234f27851594050e2b64")))
+     (file-name (git-file-name name version))
+     (sha256
+      (base32 "022yfkfvcywgjplvsj5xajmc24q1c7yx0l5mvnzagjfdg4iajidv"))))
+   (build-system emacs-build-system)
+   (propagated-inputs (list emacs-nerd-icons emacs-compat))
+   (home-page "https://github.com/rainstormstudio/nerd-icons-completion")
+   (synopsis "Add icons to completion candidates")
+   (description
+    "Add nerd-icons to completion candidates.  nerd-icons-completion is inspired by
+`all-the-icons-completion': https://github.com/iyefrat/all-the-icons-completion.")
+   (license license:gpl3)))
