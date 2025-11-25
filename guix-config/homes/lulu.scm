@@ -33,6 +33,7 @@
        "linphone-desktop"
        "emacs-bluetooth"
        "emacs-exwm-transparent"
+       "emacs-nerd-icons-completion"
        "wireshark"
        "qbittorrent")
       herbst-de
