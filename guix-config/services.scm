@@ -157,7 +157,7 @@ from SERVICE-LIST (%desktop-services for example)"
          (url "https://gitlab.com/nonguix/nonguix")
          (branch "master")
          (commit
-          "a345ef84fbdf3b2491acb2c2b6665a4eb97bd4aa")
+          "0f68c1684169cbef8824fb246dfefa3e6832225b")
          (introduction
           (make-channel-introduction
            "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
