@@ -32,6 +32,7 @@
      (append
       (list
        "sipp"
+       "emacs-nerd-icons-completion"
        "linphone-desktop"
        "wireshark")
       herbst-de
