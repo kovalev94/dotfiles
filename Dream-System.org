@@ -328,6 +328,7 @@ create packages:
 **** Emacs Paredit
 **** pdf image-roll
 **** Fix not async rm
+**** Add nerd-icons-dired
 
 ** Terminal - Emacs Vterm
 ** Fallback Terminal - Alacritty
