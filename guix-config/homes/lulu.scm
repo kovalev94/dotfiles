@@ -32,12 +32,12 @@
        "sipp"
        "linphone-desktop"
        "emacs-bluetooth"
-       "emacs-exwm-transparent"
        "emacs-nerd-icons-completion"
        "wireshark"
        "qbittorrent")
       herbst-de
       emacs-base
+      emacs-exwm
       emacs-doom-module-corfu
       python-emacs
       mail-emacs

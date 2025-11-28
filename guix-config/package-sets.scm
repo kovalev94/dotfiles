@@ -146,3 +146,8 @@
    "emacs-orderless"
    "emacs-yasnippet-capf"
    "emacs-nerd-icons-corfu"))
+
+(define-public emacs-exwm
+  (list
+   "emacs-exwm-transparent"
+   "emacs-move-border"))
