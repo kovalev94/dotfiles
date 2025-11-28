@@ -107,3 +107,31 @@ in Emacs using standard Emacs minibuffer completion.")
     "Add nerd-icons to completion candidates.  nerd-icons-completion is inspired by
 `all-the-icons-completion': https://github.com/iyefrat/all-the-icons-completion.")
    (license license:gpl3)))
+
+(define-public emacs-move-border
+  (let ((commit "79787ae93129fd98029c74780a79a2b659803061")
+        (revision "0")
+        (url "https://github.com/ramnes/move-border"))
+    (package
+     (name "emacs-move-border")
+     (version (git-version "0.1" revision commit))
+     (source
+      (origin
+       (method git-fetch)
+       (uri (git-reference
+             (url url)
+             (commit commit)))
+       (file-name (git-file-name name version))
+       (sha256
+        (base32 "0syazkswcdf9wv561nlfr9zx32hfwh9mjlbjrqhb5g6l5367f81b"))))
+     (build-system emacs-build-system)
+     (propagated-inputs
+      (list emacs-yasnippet))
+     (arguments (list #:tests? #f))      ; no test suite
+     (home-page url)
+     (synopsis
+      "Emacs windows resizing made intuitive.")
+     (description
+      "Move-border provides functions for resizing Emacs windows,
+considering the current window border instead of the window itself.")
+     (license license:gpl3))))
