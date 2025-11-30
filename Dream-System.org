@@ -358,7 +358,7 @@ create packages:
 - [ ] Fix image background
 - [ ] Fix navigation
   
-** Bar - EWW
+** Bar - EWW/emacs-modeline?
 ** Screen Locker - xlock
 ** Themes - dracula
 ** Icons - dracula
