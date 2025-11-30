@@ -2,11 +2,20 @@
   #:use-module ((guix licenses) #:prefix license:)
   #:use-module (guix packages)
   #:use-module (gnu packages emacs-build)
+  #:use-module (gnu packages emacs)
   #:use-module (guix git-download)
   #:use-module (guix build-system emacs)
   #:use-module (guix-config packages emacs)
   #:use-module (gnu packages emacs-xyz))
 
+
+(define-public emacs-exwm-transparent
+  (package/inherit emacs-exwm
+                   (name "emacs-exwm-transparent")
+                   (arguments (append
+                               (package-arguments emacs-exwm)
+                               (list #:emacs emacs-transparent)))
+                   (synopsis "Emacs X window manager(with emacs-transparent use)")))
 
 (define-public emacs-yasnippet-capf
   (let ((commit "f53c42a996b86fc95b96bdc2deeb58581f48c666")

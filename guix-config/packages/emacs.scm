@@ -19,11 +19,3 @@ editor (with libxaw for transparency and imagemagick for images)")
                     (substitute-keyword-arguments (package-arguments emacs)
                                                   ((#:configure-flags flags #~'())
                                                    #~(cons* "--with-imagemagick"  #$flags))))))
-
-(define-public emacs-exwm-transparent
-  (package/inherit emacs-exwm
-                   (name "emacs-exwm-transparent")
-                   (arguments (append
-                               (package-arguments emacs-exwm)
-                               (list #:emacs emacs-transparent)))
-                   (synopsis "Emacs X window manager(with emacs-transparent use)")))
