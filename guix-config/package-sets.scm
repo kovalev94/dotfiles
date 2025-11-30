@@ -150,4 +150,6 @@
 (define-public emacs-exwm
   (list
    "emacs-exwm-transparent"
+   "emacs-xdg-launcher"
+   "emacs-exwm-modeline"
    "emacs-move-border"))
