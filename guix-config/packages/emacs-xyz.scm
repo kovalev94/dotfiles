@@ -4,6 +4,7 @@
   #:use-module (gnu packages emacs-build)
   #:use-module (guix git-download)
   #:use-module (guix build-system emacs)
+  #:use-module (guix-config packages emacs)
   #:use-module (gnu packages emacs-xyz))
 
 
@@ -135,3 +136,27 @@ in Emacs using standard Emacs minibuffer completion.")
       "Move-border provides functions for resizing Emacs windows,
 considering the current window border instead of the window itself.")
      (license license:gpl3))))
+
+(define-public emacs-exwm-modeline
+  (package
+   (name "emacs-exwm-modeline")
+   (version "20250222.1334")
+   (source
+    (origin
+     (method git-fetch)
+     (uri (git-reference
+           (url "https://github.com/SqrtMinusOne/exwm-modeline")
+           (commit "c933baccb8535a81ebae06a5dc4245b801c47f06")))
+     (file-name (git-file-name name version))
+     (sha256
+      (base32 "19csnf2qgkwy8gpdn1bx5fifw4ibjw3kbjhsabhjbr3j529p5v45"))))
+   (build-system emacs-build-system)
+   (propagated-inputs (list emacs-exwm-transparent))
+   (home-page "https://github.com/SqrtMinusOne/exwm-modeline")
+   (synopsis "A modeline segment for EXWM workspaces")
+   (description
+    "This package provides a modeline segment to display exwm workspaces.  Features:
+- Supports `exwm-randr to display only of workspaces related to the the current
+monitor. - The segment is clickable.  Take a look at `exwm-modeline-mode for
+more info.")
+   (license license:gpl3)))
