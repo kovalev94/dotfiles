@@ -44,6 +44,10 @@
   ;; display battery status
   (display-battery-mode)
 
+  (load-file "~/.config/exwm/monitors.el")
+  (setq exwm-randr-workspace-monitor-plist 'exwm-randr-plist)
+  (add-hook 'exwm-randr-screen-change-hook #'exwm-change-screen)
+  (exwm-randr-mode 1)
 
   ;; You are strongly encouraged to enable something like `icomplete-vertical-mode' to alter
   ;; the default behavior of 'C-x b', or you will take great pains to switch
