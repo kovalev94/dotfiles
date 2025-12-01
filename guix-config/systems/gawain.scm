@@ -6,10 +6,12 @@
   #:use-module (gnu services ssh)
   #:use-module (gnu services base)
   #:use-module (gnu services desktop)
+  #:use-module (gnu services containers)
   #:use-module (gnu services networking)
   #:use-module (gnu system)
   #:use-module (gnu system pam)
   #:use-module (gnu system shadow)
+  #:use-module (gnu system accounts)
   #:use-module (gnu system file-systems)
   #:use-module (gnu system mapped-devices)
   #:use-module (gnu system privilege)
@@ -103,6 +105,12 @@
                        vpn-servers
                        personal-machines
                        work-machines))
+      (service rootless-podman-service-type
+               (rootless-podman-configuration
+                (subgids
+                 (list (subid-range (name "vitaliy.kovalev"))))
+                (subuids
+                 (list (subid-range (name "vitaliy.kovalev"))))))
       (service openssh-service-type
                (openssh-configuration
                 (port-number 13131)))
