@@ -82,6 +82,9 @@
          ([s-C-up]   .   move-border-up)
          ([s-C-right]   .  move-border-right)
 
+         ([?\s-i]   .  exwm-input-release-keyboard)
+         ([s-escape]   .  exwm-input-grab-keyboard)
+
          ([s-tab]   .  evil-window-next)
          ([s-iso-lefttab]   .  evil-window-prev)))
 
