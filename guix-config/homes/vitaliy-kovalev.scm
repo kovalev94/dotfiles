@@ -37,6 +37,8 @@
        "wireshark")
       herbst-de
       emacs-base
+      emacs-exwm
+      emacs-doom-module-corfu
       python-emacs
       mail-emacs
       golang-emacs
