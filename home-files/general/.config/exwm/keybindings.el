@@ -30,6 +30,7 @@
          ([?\s-y] . (lambda () (interactive) (start-process "rofi-pass" nil "rofi-pass")))
          ([?\s-`] . (lambda () (interactive) (start-process "xlock" nil "xlock")))
          ([?\s-t] . +vterm/here)
+         ([?\s-m] . exwm-workspace-move-window)
 
          ;; Bind "s-0" to "s-9" to switch to a workspace by its index.
          ,@(mapcar (lambda (i)
@@ -39,13 +40,6 @@
                          (exwm-workspace-switch-create ,i))))
                    (number-sequence 0 9))
 
-         ;; Bind "s-S-0" to "s-S-9" to move window to a workspace by its index.
-         ;;,@(mapcar (lambda (i)
-         ;;`(,(kbd (format "s-<S-%d>" i)) .
-         ;;(lambda ()
-         ;;(interactive)
-         ;;(exwm-workspace-move-window ,i))))
-         ;;(number-sequence 0 9))
 
          ;; movement between windows
          ([s-left]  . windmove-left)
