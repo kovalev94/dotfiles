@@ -19,7 +19,7 @@
   :config
 
   ;; Set the initial number of workspaces (they can also be created later).
-  (setq exwm-workspace-number 1)
+  (setq exwm-workspace-number 2)
 
   (add-hook 'exwm-init-hook #'exwm-modeline-mode)
   ;; Maybe move to :hooks?
@@ -45,7 +45,7 @@
   (display-battery-mode)
 
   (load-file "~/.config/exwm/monitors.el")
-  (setq exwm-randr-workspace-monitor-plist 'exwm-randr-plist)
+  (setq exwm-randr-workspace-monitor-plist exwm-randr-plist)
   (add-hook 'exwm-randr-screen-change-hook #'exwm-change-screen)
   (exwm-randr-mode 1)
 
