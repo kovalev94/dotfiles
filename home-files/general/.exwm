@@ -15,8 +15,6 @@
   (select-window (split-window-below))
   (switch-to-buffer "*doom*"))
 
-
-
 (use-package exwm
   :config
 
@@ -80,7 +78,7 @@
 
   ;; Global keybindings can be defined with `exwm-input-global-keys'.
   ;; Here are a few examples:
-  (load-file "~/exwm-keybindings.el")
+  (load-file "~/.config/exwm/keybindings.el")
   ;;(setq exwm-input-global-keys
   ;;      `(
   ;;        ;; Bind "s-r" to exit char-mode and fullscreen mode.
