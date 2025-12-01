@@ -169,3 +169,27 @@ considering the current window border instead of the window itself.")
 monitor. - The segment is clickable.  Take a look at `exwm-modeline-mode for
 more info.")
    (license license:gpl3)))
+
+(define-public emacs-perspective-exwm
+  (package
+   (name "emacs-perspective-exwm")
+   (version "20231225.2313")
+   (source
+    (origin
+     (method git-fetch)
+     (uri (git-reference
+           (url "https://github.com/SqrtMinusOne/perspective-exwm.el")
+           (commit "68fb0ca2d482e0f4a92c4ceb19bf2262ea937e95")))
+     (file-name (git-file-name name version))
+     (sha256
+      (base32 "1sq00ifmdf61m3vpj59b2fc14djy1sxqnwk5wjg4zbkvml9hf7d2"))))
+   (build-system emacs-build-system)
+   (propagated-inputs (list emacs-burly emacs-exwm-transparent emacs-perspective))
+   (home-page "https://github.com/SqrtMinusOne/perspective-exwm.el")
+   (synopsis "Better integration for perspective.el and EXWM")
+   (description
+    "This package provides a couple of tricks and fixes to make using EXWM and
+perspective.el a better experience.  Most importantly, this package provides
+`perspective-exwm-mode', which fixes certain annoying issues between the two
+packages.")
+   (license license:gpl3)))
