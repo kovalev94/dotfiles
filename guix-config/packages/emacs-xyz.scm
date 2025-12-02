@@ -3,6 +3,7 @@
   #:use-module (guix packages)
   #:use-module (gnu packages emacs-build)
   #:use-module (gnu packages emacs)
+  #:use-module (guix download)
   #:use-module (guix git-download)
   #:use-module (guix build-system emacs)
   #:use-module (guix-config packages emacs)
@@ -193,3 +194,25 @@ perspective.el a better experience.  Most importantly, this package provides
 `perspective-exwm-mode', which fixes certain annoying issues between the two
 packages.")
    (license license:gpl3)))
+
+
+(define-public emacs-embark-consult
+  (package
+   (name "emacs-embark-consult")
+   (version "1.1")
+   (source
+    (origin
+     (method url-fetch)
+     (uri (string-append "https://elpa.gnu.org/packages/embark-consult-"
+                         version ".tar"))
+     (sha256
+      (base32 "06yh6w4zgvvkfllmcr0szsgjrfhh9rpjwgmcrf6h2gai2ps9xdqr"))))
+   (build-system emacs-build-system)
+   (propagated-inputs (list emacs-compat emacs-embark emacs-consult))
+   (home-page "https://github.com/oantolin/embark")
+   (synopsis "Consult integration for Embark")
+   (description
+    "Embark makes it easy to choose a command to run based on
+what is near point, both during a minibuffer completion session (in a way
+familiar to Helm or Counsel users) and in normal buffers.")
+   (license license:gpl3+)))
