@@ -19,7 +19,7 @@
   :config
 
   ;; Set the initial number of workspaces (they can also be created later).
-  (setq exwm-workspace-number 2)
+  (setq exwm-workspace-number 10)
 
   (add-hook 'exwm-init-hook #'exwm-modeline-mode)
   ;; Maybe move to :hooks?
