@@ -147,6 +147,18 @@
    "emacs-yasnippet-capf"
    "emacs-nerd-icons-corfu"))
 
+(define-public emacs-doom-module-vertico
+  (list
+   "emacs-vertico"
+   "emacs-consult"
+   "emacs-consult-dir"
+   "emacs-embark"
+   "emacs-marginalia"
+   "emacs-wgrep"
+   "emacs-consult-yasnippet"
+   "embark-consult"
+   "nerd-icons-completion"))
+
 (define-public emacs-exwm
   (list
    "emacs-exwm-transparent"

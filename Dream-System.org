@@ -41,7 +41,7 @@ complete with cap(f), cape and a flying feather!
 create-package:
 - yasnippet-capf
 - nerd-icons-corfu
-****** vertico
+****** [X] vertico
 the search engine of the future
 - emacs-vertico
 - emacs-consult
