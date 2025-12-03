@@ -164,6 +164,28 @@
    "emacs-doom-themes"
    "emacs-solaire-mode"))
 
+(define-public emacs-doom-module-emoji
+  (list
+   "emacs-emojify"))
+
+(define-public emacs-doom-module-hl-todo
+  (list
+   "emacs-hl-todo"))
+(define-public emacs-doom-module-ligatures
+  (list
+   "emacs-ligature"))
+
+(define-public emacs-doom-module-modeline
+  (list
+   "emacs-doom-modeline"
+   "emacs-anzu"
+   "evil-anzu"))
+
+(define-public emacs-doom-module-ophints
+  (list
+   "emacs-evil-goggles"
+   "emacs-goggles"))
+
 (define-public emacs-exwm
   (list
    "emacs-exwm-transparent"

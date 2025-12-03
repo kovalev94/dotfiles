@@ -61,21 +61,21 @@ what makes DOOM look the way it does
 ; a nifty splash screen for Emacs
 no-package - switch to
 - emacs-dashboard
-****** (emoji +unicode)
+****** [X] (emoji +unicode)
 🙂
 - emacs-emojify
-****** hl-todo
+****** [X] hl-todo
 highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
 - emacs-hl-todo
-****** ligatures
+****** [X] ligatures
 ligatures and symbols to make your code pretty again
 - emacs-ligature
-****** modeline
+****** [X] modeline
 snazzy, Atom-inspired modeline, plus API
 - emacs-doom-modeline
 - emacs-anzu
 - evil-anzu
-****** ophints
+****** [X] ophints
 highlight the region an operation acts on
 - emacs-evil-goggles
 - emacs-goggles
