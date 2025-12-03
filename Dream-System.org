@@ -353,6 +353,7 @@ create packages:
 - [ ] Swith to exwm
 - [ ] Check emacs highlight window
 - [ ] Check emacs save layout function
+- [ ] Setup xsettings protocol
 ** Dashboard - emacs-dashboard
 *** TODO
 - [ ] Fix image background
