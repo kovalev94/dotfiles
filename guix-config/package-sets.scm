@@ -159,6 +159,11 @@
    "embark-consult"
    "nerd-icons-completion"))
 
+(define-public emacs-doom-module-doom
+  (list
+   "emacs-doom-themes"
+   "emacs-solaire-mode"))
+
 (define-public emacs-exwm
   (list
    "emacs-exwm-transparent"

@@ -53,7 +53,7 @@ the search engine of the future
 create-package:
 - embark-consult
 - nerd-icons-completion
-****** doom
+****** [X] doom
 what makes DOOM look the way it does
 - emacs-doom-themes
 - emacs-solaire-mode
