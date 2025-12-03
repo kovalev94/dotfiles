@@ -23,13 +23,14 @@
          ([?\s-R] . exwm-reset)
          ([?\s-b] . exwm-workspace-switch-to-buffer)
          ([?\s-C] . kill-buffer-and-window)
-         ([?\s-d] .  xdg-launcher-run-app )
+         ([?\s-d] . xdg-launcher-run-app)
+         ([?\s-f] . exwm-layout-toggle-fullscreen)
          ([?\s-n] . (lambda () (interactive) (start-process "nyxt" nil "nyxt")))
 
          ;; change to something like emacs-pass
          ([?\s-y] . (lambda () (interactive) (start-process "rofi-pass" nil "rofi-pass")))
          ([?\s-`] . (lambda () (interactive) (start-process "xlock" nil "xlock")))
-         ([?\s-t] . +vterm/here)
+         ([s-return] . +vterm/here)
          ([?\s-m] . exwm-workspace-move-window)
 
          ;; Bind "s-0" to "s-9" to switch to a workspace by its index.
