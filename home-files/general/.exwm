@@ -20,6 +20,8 @@
 
   ;; Set the initial number of workspaces (they can also be created later).
   (setq exwm-workspace-number 10)
+  (setq exwm-workspace-show-all-buffers t)
+  (setq exwm-layout-show-all-buffers t)
 
   (add-hook 'exwm-init-hook #'exwm-modeline-mode)
   ;; Maybe move to :hooks?
