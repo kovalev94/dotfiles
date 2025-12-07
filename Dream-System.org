@@ -82,25 +82,25 @@ highlight the region an operation acts on
 ****** (popup +defaults)
 tame sudden yet inevitable temporary windows
 no-packages
-****** smooth-scroll + interpolate
+****** [X] smooth-scroll + interpolate
 So smooth you won't believe it's not butter
 - emacs-ultra-scroll
 create packages:
 - good-scroll
-****** unicode           
+****** [X] unicode
 extended unicode support for various languages
 create packages:
 - unicode-fonts
 
-****** (vc-gutter +pretty) 
+****** [X] (vc-gutter +pretty)
 vcs diff in the fringe
 - emacs-diff-hl
-****** vi-tilde-fringe   
+****** [X] vi-tilde-fringe
 fringe tildes to mark beyond EOB
 
 create packages:
 - vi-tilde-fringe
-****** (evil +everywhere)
+****** [X] (evil +everywhere)
 come to the dark side, we have cookies
     - emacs-evil
     - emacs-evil-args
@@ -123,7 +123,7 @@ come to the dark side, we have cookies
       - exato
       - evil-quick-diff
 
-****** file-templates    
+****** [X] file-templates
 auto-snippets for empty files
 - emacs-yasnippet
 
@@ -297,12 +297,12 @@ a fully conniving family of lisps
 create packages:
 scheme ???
 
-****** sh                
+****** [X] sh
 she sells {ba,z,fi}sh shells on the C xor
 
 - emacs-bash-completion
 
-****** yaml              
+****** [X] yaml
 JSON, but readable
 
 - emacs-yaml-mode
@@ -312,7 +312,7 @@ JSON, but readable
 
 create packages:
 - mu4e-compat
-****** (default +bindings +smartparens))
+****** [X] (default +bindings +smartparens))
 - emacs-avy
 - emacs-link-hint
 

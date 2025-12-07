@@ -186,6 +186,127 @@
    "emacs-evil-goggles"
    "emacs-goggles"))
 
+(define-public emacs-doom-module-smooth-scroll
+  (list
+   "emacs-ultra-scroll"
+   "emacs-good-scroll"))
+
+(define-public emacs-doom-module-unicode
+  (list
+   "emacs-unicode-fonts"))
+
+(define-public emacs-doom-module-vc-gutter
+  (list
+   "emacs-diff-hl"))
+
+(define-public emacs-doom-module-vi-tilde-fringe
+  (list
+   "emacs-vi-tilde-fringe"))
+
+
+(define-public emacs-doom-module-evil
+  (list
+   "emacs-evil"
+   "emacs-evil-args"
+   "emacs-evil-escape"
+   "emacs-evil-exchange"
+   "emacs-evil-indent-plus"
+   "emacs-evil-lion"
+   "emacs-evil-nerd-commenter"
+   "emacs-evil-numbers"
+   "emacs-evil-surround"
+   "emacs-evil-traces"
+   "emacs-evil-visualstar"
+   "emacs-evil-collection"
+   "emacs-evil-easymotion"
+   "emacs-evil-embrace"
+   "emacs-evil-snipe"
+   "emacs-evil-textobj-anyblock"
+   "emacs-exato"
+   "emacs-evil-quick-diff"))
+
+(define-public emacs-doom-module-format
+  (list
+   "emacs-apheleia"))
+
+(define-public emacs-doom-module-snippets
+  (list
+   "emacs-auto-yasnippet"
+   "emacs-doom-snippets"))
+
+(define-public emacs-doom-module-whitespace
+  (list
+   "emacs-dtrt-indent"
+   "emacs-ws-butler"))
+
+(define-public emacs-doom-module-dired
+  (list
+   "emacs-dirvish"
+   "emacs-diredfl"))
+
+(define-public emacs-doom-module-ibuffer
+  (list
+   "emacs-ibuffer-projectile"
+   "emacs-ibuffer-vc"))
+
+(define-public emacs-doom-module-undo
+  (list
+   "emacs-undo-fu"
+   "emacs-undo-fu-session"
+   "emacs-vundo"))
+
+(define-public emacs-doom-module-vterm
+  (list
+   "emacs-vterm"))
+
+(define-public emacs-doom-module-eval
+  (list
+   "emacs-quickrun"
+   "emacs-eros"))
+
+(define-public emacs-doom-module-lookup
+  (list
+   "emacs-dumb-jump"
+   "emacs-request"))
+
+(define-public emacs-doom-module-magit
+  (list
+   "emacs-transient"
+   "emacs-magit"))
+
+(define-public emacs-doom-module-pass
+  (list
+   "emacs-pass"
+   "emacs-password-store"
+   "emacs-password-store-otp"))
+
+(define-public emacs-doom-module-pdf
+  (list
+   "emasc-pdf-tools"
+   "emasc-saveplace-pdf-view"))
+
+(define-public emacs-doom-module-json
+  (list
+   "emacs-json-mode"
+   "emacs-json-snatcher"))
+
+(define-public emacs-doom-module-file-templates
+  (list
+   "emacs-diff-hl"))
+
+(define-public emacs-doom-module-sh
+  (list
+   "emacs-bash-completion"))
+
+(define-public emacs-doom-module-yaml
+  (list
+   "emacs-yaml-mode"))
+
+(define-public emacs-doom-module-default
+  (list
+   "emacs-avy"
+   "emacs-link-hint"))
+
 (define-public emacs-exwm
   (list
    "emacs-exwm-transparent"
