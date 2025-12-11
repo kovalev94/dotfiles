@@ -20,5 +20,6 @@ if $ENABLE_PICOM; then
 fi
 
 echo "Xft.dpi:192" | xrdb -load
+xrdb -merge ~/.Xresources
 
 exwm -mm
