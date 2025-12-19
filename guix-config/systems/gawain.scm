@@ -94,9 +94,10 @@
                   (string-append
                    (getenv "DOTFILES_DIR")
                    "/sys-files/gawain/iptables.rules")))))
-      (simple-service 'dotfiles-and-guix-env session-environment-service-type
+      (simple-service 'my-env session-environment-service-type
                       `(("DOTFILES_DIR" .
                          "/home/vitaliy.kovalev/.dotfiles")
+                        ("TZ" . ,timezone)
                         ("GUIX_PACKAGE_PATH" .
                          "/home/vitaliy.kovalev/.dotfiles")))
       (simple-service 'add-extra-hosts
