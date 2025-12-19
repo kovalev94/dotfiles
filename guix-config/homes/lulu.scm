@@ -29,6 +29,8 @@
     (specifications->packages
      (append
       (list
+       "ungoogled-chromium"
+       "google-chrome-stable"
        "sipp"
        "linphone-desktop"
        "emacs-bluetooth"

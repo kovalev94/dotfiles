@@ -31,6 +31,8 @@
     (specifications->packages
      (append
       (list
+       "ungoogled-chromium"
+       "google-chrome-stable"
        "sipp"
        "emacs-nerd-icons-completion"
        "linphone-desktop"
