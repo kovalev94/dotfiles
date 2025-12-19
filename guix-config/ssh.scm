@@ -31,7 +31,11 @@
     (host-name "gawain")
     (user "vitaliy.kovalev")
     (port 13131)
-    (identity-file "~/.ssh/keys/gawain"))))
+    (identity-file "~/.ssh/keys/gawain"))
+   (openssh-host
+    (name "192.168.10*.*")
+    (user "vitaliy.kovalev")
+    (identity-file "~/.ssh/keys/eltex-nightmares"))))
 
 (define personal-machines
   (list
