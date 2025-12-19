@@ -329,6 +329,7 @@ create packages:
 **** pdf image-roll
 **** Fix not async rm
 **** Add nerd-icons-dired
+**** Maybe add vertico-posframe?
 
 ** Terminal - Emacs Vterm
 ** Fallback Terminal - Alacritty
