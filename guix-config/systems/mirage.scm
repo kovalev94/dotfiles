@@ -141,6 +141,10 @@
                     (guix (guix-for-channels pinned-channels))
                     (substitute-urls bordeaux-nonguix-substitute-urls)
                     (authorized-keys default-authorized-keys-with-nonguix)))
+        (network-manager-service-type config =>
+                                      (network-manager-configuration
+                                       (inherit config)
+                                       (vpn-plugins (list network-manager-openvpn))))
         (console-font-service-type
          _ => hi-dpi-console-font-configuration))))
 
