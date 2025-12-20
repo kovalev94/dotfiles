@@ -2,6 +2,7 @@
   #:use-module (guix gexp)
   #:use-module (gnu packages)
   #:use-module (gnu packages package-management)
+  #:use-module (gnu packages gnome)
   #:use-module (gnu services)
   #:use-module (gnu services ssh)
   #:use-module (gnu services base)
@@ -141,9 +142,7 @@
                     (substitute-urls bordeaux-nonguix-substitute-urls)
                     (authorized-keys default-authorized-keys-with-nonguix)))
         (console-font-service-type
-         _ => hi-dpi-console-font-configuration)
-        (network-manager-service-type
-         _ => network-manager-with-vpnc-configuration))))
+         _ => hi-dpi-console-font-configuration))))
 
 
     (privileged-programs

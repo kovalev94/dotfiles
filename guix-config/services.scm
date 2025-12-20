@@ -87,12 +87,6 @@ from SERVICE-LIST (%desktop-services for example)"
    '("tty1" "tty2" "tty3" "tty4" "tty5" "tty6")))
 
 
-(define network-manager-with-vpnc-configuration
-  (network-manager-configuration
-   (vpn-plugins
-    (list network-manager-vpnc))))
-
-
 (define docker-service-list
   (list
    (service docker-service-type)
