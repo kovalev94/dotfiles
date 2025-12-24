@@ -45,7 +45,8 @@
 ;; Set dired work in async mode
 (dired-async-mode 1)
 
-
+;; Set evil work in minibuffer too
+(setq evil-want-minibuffer t)
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
