@@ -34,6 +34,7 @@
        "ungoogled-chromium"
        "google-chrome-stable"
        "sipp"
+       "audacity"
        "emacs-nerd-icons-completion"
        "linphone-desktop"
        "wireshark")

@@ -33,6 +33,7 @@
        "google-chrome-stable"
        "sipp"
        "linphone-desktop"
+       "audacity"
        "emacs-bluetooth"
        "emacs-nerd-icons-completion"
        "wireshark"
