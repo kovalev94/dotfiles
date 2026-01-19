@@ -89,6 +89,11 @@
    "python-pipenv"
    "python-lsp-server"))
 
+(define-public ansible-emacs
+  (list
+   "ansible"
+   "emacs-ansible"))
+
 (define-public golang-emacs
   (list
    "go"
