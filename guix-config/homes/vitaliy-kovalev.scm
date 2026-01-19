@@ -43,6 +43,7 @@
       emacs-exwm
       emacs-doom-module-corfu
       python-emacs
+      ansible-emacs
       mail-emacs
       golang-emacs
       video-tools)))
