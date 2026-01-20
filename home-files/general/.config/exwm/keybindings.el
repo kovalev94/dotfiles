@@ -16,8 +16,9 @@
          (,(kbd "<XF86AudioMicMute>") . (lambda () (interactive) (start-process "pulsemixer" nil "pulsemixer" "--toggle-mute" "--id" "source-5")))
          ;; issue
          (,(kbd "<XF86WLAN>") . (lambda () (interactive) (start-process-shell-command "rfkill" nil "rfkill toggle wlan")))
-         (,(kbd "<print>") . (lambda () (interactive) (start-process "flameshot" nil "flameshot" "screen")))
-         (,(kbd "S-<print>") . (lambda () (interactive) (start-process "flameshot" nil "flameshot" "gui")))
+         (,(kbd "<print>") . (lambda () (interactive) (start-process "scrot" nil "scrot" (expand-file-name "~/Pictures/Screenshots/%Y-%m-%d_%H-%M-%S.png"))))
+         (,(kbd "S-<print>") . (lambda () (interactive) (start-process "scrot" nil "scrot" "-s" (expand-file-name "~/Pictures/Screenshots/%Y-%m-%d_%H-%M-%S.png"))))
+
 
 
          ([?\s-R] . exwm-reset)

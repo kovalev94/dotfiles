@@ -37,6 +37,7 @@
        "audacity"
        "emacs-nerd-icons-completion"
        "linphone-desktop"
+       "scrot";; Temporary, I hope replacement for flameshot
        "wireshark")
       herbst-de
       emacs-base

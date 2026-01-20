@@ -37,6 +37,7 @@
        "emacs-bluetooth"
        "emacs-nerd-icons-completion"
        "wireshark"
+       "scrot";; Temporary, I hope replacement for flameshot
        "qbittorrent")
       herbst-de
       emacs-base
