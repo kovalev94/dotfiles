@@ -125,8 +125,8 @@
                (hosts
                 (append
                  vpn-servers
-                 work-machines
-                 my-version-control))
+                 my-version-control
+                 work-machines))
                (authorized-keys (list
                                  (local-file
                                   (string-append

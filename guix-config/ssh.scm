@@ -27,15 +27,30 @@
   (list
    ;; Gawain Work PC
    (openssh-host
-    (name "gawain")
-    (host-name "gawain")
+    (name "gawain.tester.uc")
     (user "vitaliy.kovalev")
     (port 13131)
     (identity-file "~/.ssh/keys/gawain"))
+   ;; Mirage Laptop
    (openssh-host
-    (name "192.168.10*.*")
+    (name "mirage.tester.uc")
+    (host-name "localhost")
+    (user "lulu")
+    (port 31313)
+    (identity-file "~/.ssh/keys/mirage"))
+   ;; Other work machines
+   (openssh-host
+    (name "*.tester.uc")
     (user "vitaliy.kovalev")
-    (identity-file "~/.ssh/keys/eltex-nightmares"))))
+    (identity-file "~/.ssh/keys/eltex-nightmares"))
+   ;; General settings
+   (openssh-host
+    (match-criteria "all")
+    (extra-content
+     "  CanonicalizeHostname always
+  CanonicalDomains tester.uc
+  CanonicalizeMaxDots 3
+  IdentitiesOnly yes"))))
 
 (define personal-machines
   (list

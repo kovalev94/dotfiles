@@ -19,7 +19,8 @@
 
 (define work-machines
   (list
-   (host "192.168.114.175" "gawain")))
+   (host "192.168.114.175" "gawain.tester.uc")
+   (host "10.30.101.84" "gawain.eltex.loc")))
 
 (define ipoint
   (list
