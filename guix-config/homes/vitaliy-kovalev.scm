@@ -38,6 +38,7 @@
        "emacs-nerd-icons-completion"
        "linphone-desktop"
        "scrot";; Temporary, I hope replacement for flameshot
+       "jq"
        "wireshark")
       herbst-de
       emacs-base
