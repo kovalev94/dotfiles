@@ -133,8 +133,14 @@
                        (list
                         (network-route
                          (destination "192.168.104.0/21")
-                         (gateway "192.168.114.65"))))
-                      (name-servers '("192.168.107.61"))))))
+                         (gateway "192.168.114.65")))))))
+      ;;Because of stupid static-networking-setup redefine resolv.conf here
+      (simple-service 'custom-resolv-conf etc-service-type
+                      `(("resolv.conf"
+                         ,(plain-file "resolv.conf"
+                                      (string-append
+                                       "search tester.uc\n"
+                                       "nameserver 192.168.107.61\n"))))))
 
      (modify-services shit-trimmed-desktop-services
                       (delete network-manager-service-type)

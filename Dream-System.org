@@ -391,6 +391,7 @@ create packages:
 ** distrotube xmonad like setup
 ** Ubuntu check features
 ** Games
+** rewrite static-networking-service-type for search domains
 
 * workspaces
  delete workspaces
