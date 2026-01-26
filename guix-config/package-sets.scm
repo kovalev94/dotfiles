@@ -92,6 +92,7 @@
 (define-public ansible-emacs
   (list
    "ansible"
+   "sshpass"
    "emacs-ansible"))
 
 (define-public golang-emacs
