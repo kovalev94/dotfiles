@@ -114,7 +114,7 @@
                  (list (subid-range (name "vitaliy.kovalev"))))))
       (service openssh-service-type
                (openssh-configuration
-                (port-number 13131)))
+                (port-number 22)))
       (service dhcpcd-service-type
                (dhcpcd-configuration
                 (interfaces '("enp1s0"))
