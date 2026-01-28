@@ -29,7 +29,7 @@
    (openssh-host
     (name "gawain.tester.uc")
     (user "vitaliy.kovalev")
-    (port 13131)
+    (port 22)
     (identity-file "~/.ssh/keys/gawain"))
    ;; Mirage Laptop
    (openssh-host
