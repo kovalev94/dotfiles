@@ -140,7 +140,8 @@
                          ,(plain-file "resolv.conf"
                                       (string-append
                                        "search tester.uc\n"
-                                       "nameserver 192.168.107.61\n"))))))
+                                       "nameserver 192.168.107.61\n"
+                                       "options ndots:5"))))))
 
      (modify-services shit-trimmed-desktop-services
                       (delete network-manager-service-type)
