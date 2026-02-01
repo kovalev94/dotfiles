@@ -27,17 +27,10 @@
   (list
    ;; Gawain Work PC
    (openssh-host
-    (name "gawain.tester.uc")
+    (name "gawain.*")
     (user "vitaliy.kovalev")
     (port 22)
     (identity-file "~/.ssh/keys/gawain"))
-   ;; Mirage Laptop
-   (openssh-host
-    (name "mirage.tester.uc")
-    (host-name "localhost")
-    (user "lulu")
-    (port 31313)
-    (identity-file "~/.ssh/keys/mirage"))
    ;; Other work machines
    (openssh-host
     (name "*.tester.uc")
