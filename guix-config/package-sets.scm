@@ -33,6 +33,7 @@
    "libreoffice"
    "firefox"
    "vlc"
+   "x11-ssh-askpass"
    "xdg-utils"))
 
 (define-public fs-tools
