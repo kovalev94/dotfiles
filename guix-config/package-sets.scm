@@ -45,6 +45,7 @@
    "tcpdump"
    "wireguard-tools"
    "nmap"
+   "netcat"
    "iputils"
    "iptables"
    "whois"
