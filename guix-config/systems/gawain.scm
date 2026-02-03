@@ -129,9 +129,12 @@
                        (list
                         (network-address
                          (device "enp2s0")
-                         (value "192.168.114.175/12"))))
+                         (value "192.168.114.175/20"))))
                       (routes
                        (list
+                        (network-route
+                         (destination "default")
+                         (gateway "192.168.112.1"))
                         (network-route
                          (destination "192.168.104.0/21")
                          (gateway "192.168.114.65")))))))
