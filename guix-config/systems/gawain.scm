@@ -88,12 +88,12 @@
                  (local-file
                   (string-append
                    (getenv "DOTFILES_DIR")
-                   "/sys-files/gawain/iptables.rules")))
+                   "/sys-files/gawain/iptables/rules.v4")))
                 (ipv6-rules
                  (local-file
                   (string-append
                    (getenv "DOTFILES_DIR")
-                   "/sys-files/gawain/iptables.rules")))))
+                   "/sys-files/gawain/iptables/rules.v6")))))
       (simple-service 'my-env session-environment-service-type
                       `(("DOTFILES_DIR" .
                          "/home/vitaliy.kovalev/.dotfiles")
@@ -125,11 +125,22 @@
                 (shepherd-provision '(dhcp-eltex))))
       (service static-networking-service-type
                (list (static-networking
+                      (links
+                       (list
+                        (network-link
+                         (name "vlan84")
+                         (type 'vlan)
+                         (arguments
+                          '((id . 84)
+                            (link . "enp2s0"))))))
                       (addresses
                        (list
                         (network-address
                          (device "enp2s0")
-                         (value "192.168.114.175/20"))))
+                         (value "192.168.114.175/20"))
+                        (network-address
+                         (device "vlan84")
+                         (value "172.16.16.1/24"))))
                       (routes
                        (list
                         (network-route
