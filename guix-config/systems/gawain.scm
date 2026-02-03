@@ -145,7 +145,7 @@
                                       (string-append
                                        "search tester.uc\n"
                                        "nameserver 192.168.107.61\n"
-                                       "options ndots:5\n"))))))
+                                       "options ndots:3\n"))))))
 
      (modify-services shit-trimmed-desktop-services
                       (delete network-manager-service-type)
