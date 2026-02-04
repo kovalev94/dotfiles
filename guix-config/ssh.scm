@@ -42,7 +42,7 @@
     (extra-content
      "  CanonicalizeHostname always
   CanonicalDomains tester.uc
-  CanonicalizeMaxDots 3
+  CanonicalizeMaxDots 4
   IdentitiesOnly yes"))))
 
 (define personal-machines
