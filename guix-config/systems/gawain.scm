@@ -115,50 +115,8 @@
                (openssh-configuration
                 (port-number 22)
                 (extra-content "PermitTunnel yes")))
-      (service dhcpcd-service-type
-               (dhcpcd-configuration
-                (interfaces '("enp1s0"))
-                (option '("rapid_commit" "interface_mtu"))
-                (no-option '("domain_name_servers" "domain_name" "domain_search" ))
-                (no-hook '("resolv.conf"))
-                (shepherd-provision '(dhcp-eltex))))
-      (service static-networking-service-type
-               (list (static-networking
-                      (links
-                       (list
-                        (network-link
-                         (name "vlan84")
-                         (type 'vlan)
-                         (arguments
-                          '((id . 84)
-                            (link . "enp2s0"))))))
-                      (addresses
-                       (list
-                        (network-address
-                         (device "enp2s0")
-                         (value "192.168.114.175/20"))
-                        (network-address
-                         (device "vlan84")
-                         (value "172.16.16.1/24"))))
-                      (routes
-                       (list
-                        (network-route
-                         (destination "default")
-                         (gateway "192.168.112.1"))
-                        (network-route
-                         (destination "192.168.104.0/21")
-                         (gateway "192.168.114.65")))))))
-      ;;Because of stupid static-networking-setup redefine resolv.conf here
-      (simple-service 'custom-resolv-conf etc-service-type
-                      `(("resolv.conf"
-                         ,(plain-file "resolv.conf"
-                                      (string-append
-                                       "search tester.uc\n"
-                                       "nameserver 192.168.107.61\n"
-                                       "options ndots:4\n"))))))
 
      (modify-services shit-trimmed-desktop-services
-                      (delete network-manager-service-type)
                       (guix-service-type
                        config =>(guix-configuration
                                  (inherit config)
