@@ -28,153 +28,153 @@
 
 (define-public gawain-system
   (operating-system
-   (host-name "gawain")
-   (locale "ru_RU.utf8")
-   (timezone "Asia/Novosibirsk")
+    (host-name "gawain")
+    (locale "ru_RU.utf8")
+    (timezone "Asia/Novosibirsk")
 
-   (bootloader
-    (bootloader-configuration
-     (bootloader grub-efi-bootloader)
-     (targets '("/boot/efi"))
-     (theme (grub-theme
-             (inherit (grub-theme))
-             (gfxmode '("1920x1080x32" "auto"))))
-     (keyboard-layout kb-layout)))
+    (bootloader
+      (bootloader-configuration
+        (bootloader grub-efi-bootloader)
+        (targets '("/boot/efi"))
+        (theme (grub-theme
+                (inherit (grub-theme))
+                (gfxmode '("1920x1080x32" "auto"))))
+        (keyboard-layout kb-layout)))
 
-   (kernel linux)
-   (initrd microcode-initrd)
-   (firmware
-    (list
-     linux-firmware
-     sof-firmware))
-
-   (keyboard-layout kb-layout)
-
-   (users
-    (cons*
-     (user-account
-      (name "vitaliy.kovalev")
-      (comment "Виталий Ковалёв")
-      (uid 1000)
-      (group "users")
-      (home-directory "/home/vitaliy.kovalev")
-      (supplementary-groups
-       '("wheel" "netdev" "audio" "video" "kvm" "libvirt" )))
-     %base-user-accounts))
-   ;;Globaly installed packages(e.g. for all users)
-   (packages
-    (append
-     (specifications->packages
-      (cons*
-       "eltex-certs"
-       (append
-        base-sys
-        base-gui
-        fs-tools
-        network-tools
-        virtualization-base
-        sys-fonts)))
-     %base-packages))
-
-   ;;Installed and enabled services(like ssh-server,docker, etc.)
-   (services
-    (append
-     (assoc-ref virtualization-service-list "services")
+    (kernel linux)
+    (initrd microcode-initrd)
+    (firmware
      (list
-      (service iptables-service-type
-               (iptables-configuration
-                (ipv4-rules
-                 (local-file
-                  (string-append
-                   (getenv "DOTFILES_DIR")
-                   "/sys-files/gawain/iptables/rules.v4")))
-                (ipv6-rules
-                 (local-file
-                  (string-append
-                   (getenv "DOTFILES_DIR")
-                   "/sys-files/gawain/iptables/rules.v6")))))
-      (simple-service 'my-env session-environment-service-type
-                      `(("DOTFILES_DIR" .
-                         "/home/vitaliy.kovalev/.dotfiles")
-                        ("TZ" . ,timezone)
-                        ("GUIX_PACKAGE_PATH" .
-                         "/home/vitaliy.kovalev/.dotfiles")))
-      (simple-service 'add-extra-hosts
-                      hosts-service-type
-                      (append
-                       vpn-servers
-                       personal-machines
-                       work-machines))
-      (service rootless-podman-service-type
-               (rootless-podman-configuration
-                (subgids
-                 (list (subid-range (name "vitaliy.kovalev"))))
-                (subuids
-                 (list (subid-range (name "vitaliy.kovalev"))))))
-      (service openssh-service-type
-               (openssh-configuration
-                (port-number 22)
-                (extra-content "PermitTunnel yes"))))
+      linux-firmware
+      sof-firmware))
 
-     (modify-services shit-trimmed-desktop-services
-                      (guix-service-type
-                       config =>(guix-configuration
-                                 (inherit config)
-                                 (channels pinned-channels)
-                                 (guix (guix-for-channels pinned-channels))
-                                 (substitute-urls bordeaux-nonguix-substitute-urls)
-                                 (authorized-keys default-authorized-keys-with-nonguix))))))
+    (keyboard-layout kb-layout)
 
-
-   (privileged-programs
-    (append
+    (users
      (cons*
-      (privileged-program
-       (program
-        (file-append (specification->package "iputils") "/bin/ping"));Neeeded for iptuils ping
-       (setuid? #t))
-      (privileged-program
-       (program
-        (file-append sngrep "/bin/sngrep"));Neeeded for iptuils ping
-       (capabilities "CAP_NET_RAW+eip"))
-      (assoc-ref virtualization-service-list "privileged-programs"))
-     %default-privileged-programs))
+      (user-account
+        (name "vitaliy.kovalev")
+        (comment "Виталий Ковалёв")
+        (uid 1000)
+        (group "users")
+        (home-directory "/home/vitaliy.kovalev")
+        (supplementary-groups
+         '("wheel" "netdev" "audio" "video" "kvm" "libvirt" )))
+      %base-user-accounts))
+    ;;Globaly installed packages(e.g. for all users)
+    (packages
+     (append
+      (specifications->packages
+       (cons*
+        "eltex-certs"
+        (append
+         base-sys
+         base-gui
+         fs-tools
+         network-tools
+         virtualization-base
+         sys-fonts)))
+      %base-packages))
 
-   ;;Required for LVM disks
-   (mapped-devices
-    (list
-     (mapped-device
-      (source "GawainLinux")
-      (targets
-       (list
-        "GawainLinux-GuixRoot"
-        "GawainLinux-GuixHome"
-        "GawainLinux-Swap"))
-      (type lvm-device-mapping))))
+    ;;Installed and enabled services(like ssh-server,docker, etc.)
+    (services
+     (append
+      (assoc-ref virtualization-service-list "services")
+      (list
+       (service iptables-service-type
+                (iptables-configuration
+                  (ipv4-rules
+                   (local-file
+                    (string-append
+                     (getenv "DOTFILES_DIR")
+                     "/sys-files/gawain/iptables/rules.v4")))
+                  (ipv6-rules
+                   (local-file
+                    (string-append
+                     (getenv "DOTFILES_DIR")
+                     "/sys-files/gawain/iptables/rules.v6")))))
+       (simple-service 'my-env session-environment-service-type
+                       `(("DOTFILES_DIR" .
+                          "/home/vitaliy.kovalev/.dotfiles")
+                         ("TZ" . ,timezone)
+                         ("GUIX_PACKAGE_PATH" .
+                          "/home/vitaliy.kovalev/.dotfiles")))
+       (simple-service 'add-extra-hosts
+                       hosts-service-type
+                       (append
+                        vpn-servers
+                        personal-machines
+                        work-machines))
+       (service rootless-podman-service-type
+                (rootless-podman-configuration
+                  (subgids
+                   (list (subid-range (name "vitaliy.kovalev"))))
+                  (subuids
+                   (list (subid-range (name "vitaliy.kovalev"))))))
+       (service openssh-service-type
+                (openssh-configuration
+                  (port-number 22)
+                  (extra-content "PermitTunnel yes"))))
 
-   (file-systems
-    (cons*
-     (file-system
-      (mount-point "/home")
-      (device (file-system-label "guix-home"))
-      (dependencies mapped-devices)
-      (type "ext4"))
-     (file-system
-      (mount-point "/")
-      (device (file-system-label "guix-root"))
-      (dependencies mapped-devices)
-      (type "ext4"))
-     (file-system
-      (mount-point "/boot/efi")
-      (device (file-system-label "EFI"))
-      (type "vfat"))
-     %base-file-systems))
+      (modify-services shit-trimmed-desktop-services
+        (guix-service-type
+         config =>(guix-configuration
+                    (inherit config)
+                    (channels pinned-channels)
+                    (guix (guix-for-channels pinned-channels))
+                    (substitute-urls bordeaux-nonguix-substitute-urls)
+                    (authorized-keys default-authorized-keys-with-nonguix))))))
 
-   (swap-devices
-    (list
-     (swap-space
-      (target (file-system-label "swap"))
-      (dependencies mapped-devices))))))
+
+    (privileged-programs
+     (append
+      (cons*
+       (privileged-program
+         (program
+          (file-append (specification->package "iputils") "/bin/ping"));Neeeded for iptuils ping
+         (setuid? #t))
+       (privileged-program
+         (program
+          (file-append sngrep "/bin/sngrep"))
+         (capabilities "CAP_NET_RAW+eip"))
+       (assoc-ref virtualization-service-list "privileged-programs"))
+      %default-privileged-programs))
+
+    ;;Required for LVM disks
+    (mapped-devices
+     (list
+      (mapped-device
+        (source "GawainLinux")
+        (targets
+         (list
+          "GawainLinux-GuixRoot"
+          "GawainLinux-GuixHome"
+          "GawainLinux-Swap"))
+        (type lvm-device-mapping))))
+
+    (file-systems
+     (cons*
+      (file-system
+        (mount-point "/home")
+        (device (file-system-label "guix-home"))
+        (dependencies mapped-devices)
+        (type "ext4"))
+      (file-system
+        (mount-point "/")
+        (device (file-system-label "guix-root"))
+        (dependencies mapped-devices)
+        (type "ext4"))
+      (file-system
+        (mount-point "/boot/efi")
+        (device (file-system-label "EFI"))
+        (type "vfat"))
+      %base-file-systems))
+
+    (swap-devices
+     (list
+      (swap-space
+        (target (file-system-label "swap"))
+        (dependencies mapped-devices))))))
 
 
 gawain-system
