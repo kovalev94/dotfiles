@@ -114,7 +114,7 @@
       (service openssh-service-type
                (openssh-configuration
                 (port-number 22)
-                (extra-content "PermitTunnel yes")))
+                (extra-content "PermitTunnel yes"))))
 
      (modify-services shit-trimmed-desktop-services
                       (guix-service-type
