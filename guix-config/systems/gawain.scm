@@ -81,7 +81,6 @@
     (append
      (assoc-ref virtualization-service-list "services")
      (list
-      (service bluetooth-service-type)
       (service iptables-service-type
                (iptables-configuration
                 (ipv4-rules
