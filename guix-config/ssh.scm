@@ -31,6 +31,11 @@
     (user "vitaliy.kovalev")
     (port 22)
     (identity-file "~/.ssh/keys/gawain"))
+   ;; My MES2308P
+   (openssh-host
+    (name "mes.kovalev")
+    (user "vitaliy.kovalev")
+    (port 22))
    ;; Other work machines
    (openssh-host
     (name "*.tester.uc")
