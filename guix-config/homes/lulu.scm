@@ -29,17 +29,9 @@
     (specifications->packages
      (append
       (list
-       "ungoogled-chromium"
-       "google-chrome-stable"
-       "sipp"
-       "linphone-desktop"
-       "audacity"
        "emacs-bluetooth"
-       "emacs-nerd-icons-completion"
-       "wireshark"
-       "scrot";; Temporary, I hope replacement for flameshot
-       "jq"
        "qbittorrent")
+      work-tools
       herbst-de
       emacs-base
       emacs-exwm

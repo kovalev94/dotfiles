@@ -34,6 +34,7 @@
    "firefox"
    "vlc"
    "x11-ssh-askpass"
+   "scrot";; Temporary, I hope replacement for flameshot
    "xdg-utils"))
 
 (define-public fs-tools
@@ -41,9 +42,20 @@
    "lvm2"
    "parted"))
 
+(define-public work-tools
+  (list
+   "sipp"
+   "ffmpeg"
+   "audacity"
+   "linphone-desktop"
+   "ungoogled-chromium"
+   "google-chrome-stable"
+   "jq"))
+
 (define-public network-tools
   (list
    "tcpdump"
+   "wireshark"
    "wireguard-tools"
    "nmap"
    "netcat"
@@ -72,6 +84,7 @@
    "shellcheck"
    "shfmt"
    "font-nerd-symbols-only"
+   "emacs-nerd-icons-completion"
    "emacs-dashboard"
    "fd"))
 

@@ -29,26 +29,16 @@
    ;; Home profile, under ~/.guix-home/profile.
    (packages
     (specifications->packages
-     (append
-      (list
-       "ungoogled-chromium"
-       "google-chrome-stable"
-       "sipp"
-       "audacity"
-       "emacs-nerd-icons-completion"
-       "linphone-desktop"
-       "scrot";; Temporary, I hope replacement for flameshot
-       "jq"
-       "wireshark")
-      herbst-de
-      emacs-base
-      emacs-exwm
-      emacs-doom-module-corfu
-      python-emacs
-      ansible-emacs
-      mail-emacs
-      golang-emacs
-      video-tools)))
+     work-tools
+     herbst-de
+     emacs-base
+     emacs-exwm
+     emacs-doom-module-corfu
+     python-emacs
+     ansible-emacs
+     mail-emacs
+     golang-emacs
+     video-tools))
 
    ;; Below is the list of Home services.  To search for available
    ;; services, run 'guix home search KEYWORD' in a terminal.
