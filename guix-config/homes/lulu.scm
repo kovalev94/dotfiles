@@ -25,149 +25,149 @@
 ;; See the "Replicating Guix" section in the manual.
 (define-public lulu-home
   (home-environment
-   ;; Below is the list of packages that will show up in your
-   ;; Home profile, under ~/.guix-home/profile.
-   (packages
-    (specifications->packages
-     (append
-      (list
-       "emacs-bluetooth"
-       "qbittorrent")
-      work-tools
-      herbst-de
-      emacs-base
-      emacs-exwm
-      emacs-doom-module-corfu
-      python-emacs
-      ansible-emacs
-      mail-emacs
-      golang-emacs
-      video-tools)))
+    ;; Below is the list of packages that will show up in your
+    ;; Home profile, under ~/.guix-home/profile.
+    (packages
+     (specifications->packages
+      (append
+       (list
+        "emacs-bluetooth"
+        "qbittorrent")
+       work-tools
+       herbst-de
+       emacs-base
+       emacs-exwm
+       emacs-doom-module-corfu
+       python-emacs
+       ansible-emacs
+       mail-emacs
+       golang-emacs
+       video-tools)))
 
-   ;; Below is the list of Home services.  To search for available
-   ;; services, run 'guix home search KEYWORD' in a terminal.
-   (services
-    (list
-     (simple-service 'my-channels-service
-                     home-channels-service-type
-                     (list
-                      (channel
-                        (name 'nonguix)
-                        (url "https://gitlab.com/nonguix/nonguix")
-                        (branch "master")
-                        (commit
-                         "0f68c1684169cbef8824fb246dfefa3e6832225b")
-                        (introduction
-                         (make-channel-introduction
-                          "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
-                          (openpgp-fingerprint
-                           "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5"))))))
-     (service home-ssh-agent-service-type)
-     (service home-gpg-agent-service-type
-              (home-gpg-agent-configuration
-               (pinentry-program
-                (file-append
-                 (specification->package "pinentry-rofi")
-                 "/bin/pinentry-rofi"))
-               (default-cache-ttl 6000)
-               (max-cache-ttl 7200)))
-     (service home-startx-command-service-type
-              (for-home (xorg-configuration
-                         (keyboard-layout kb-layout))))
-     (service home-syncthing-service-type
-              (for-home
-               (syncthing-configuration
-                (arguments
-                 (list
+    ;; Below is the list of Home services.  To search for available
+    ;; services, run 'guix home search KEYWORD' in a terminal.
+    (services
+     (list
+      (simple-service 'my-channels-service
+                      home-channels-service-type
+                      (list
+                       (channel
+                         (name 'nonguix)
+                         (url "https://gitlab.com/nonguix/nonguix")
+                         (branch "master")
+                         (commit
+                          "0f68c1684169cbef8824fb246dfefa3e6832225b")
+                         (introduction
+                          (make-channel-introduction
+                           "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
+                           (openpgp-fingerprint
+                            "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5"))))))
+      (service home-ssh-agent-service-type)
+      (service home-gpg-agent-service-type
+               (home-gpg-agent-configuration
+                 (pinentry-program
+                  (file-append
+                   (specification->package "pinentry-rofi")
+                   "/bin/pinentry-rofi"))
+                 (default-cache-ttl 6000)
+                 (max-cache-ttl 7200)))
+      (service home-startx-command-service-type
+               (for-home (xorg-configuration
+                           (keyboard-layout kb-layout))))
+      (service home-syncthing-service-type
+               (for-home
+                (syncthing-configuration
+                  (arguments
+                   (list
+                    (string-append
+                     "--config="
+                     (or (getenv "XDG_CONFIG_HOME") "/home/lulu/.config")
+                     "/syncthing")
+                    (string-append
+                     "--data="
+                     (or (getenv "XDG_STATE_HOME") "/home/lulu/.local/state")
+                     "/syncthing"))))))
+      (service home-bash-service-type
+               (home-bash-configuration
+                 (aliases '(("grep" . "grep --color=auto") ("ll" . "ls -l")
+                            ("ls" . "ls -p --color=auto")))
+                 (bashrc (list
+                          (local-file
+                           (string-append
+                            (getenv "DOTFILES_DIR")
+                            "/home-files/general/.bashrc")
+                           "bashrc")))
+                 (bash-profile (list
+                                (local-file
+                                 (string-append
+                                  (getenv "DOTFILES_DIR")
+                                  "/home-files/general/.bash_profile")
+                                 "bash_profile")))))
+
+      (service home-dotfiles-service-type
+               (home-dotfiles-configuration
+                 (source-directory
                   (string-append
-                   "--config="
-                   (or (getenv "XDG_CONFIG_HOME") "/home/lulu/.config")
-                   "/syncthing")
-                  (string-append
-                   "--data="
-                   (or (getenv "XDG_STATE_HOME") "/home/lulu/.local/state")
-                   "/syncthing"))))))
-     (service home-bash-service-type
-              (home-bash-configuration
-               (aliases '(("grep" . "grep --color=auto") ("ll" . "ls -l")
-                          ("ls" . "ls -p --color=auto")))
-               (bashrc (list
-                        (local-file
-                         (string-append
-                          (getenv "DOTFILES_DIR")
-                          "/home-files/general/.bashrc")
-                         "bashrc")))
-               (bash-profile (list
-                              (local-file
-                               (string-append
-                                (getenv "DOTFILES_DIR")
-                                "/home-files/general/.bash_profile")
-                               "bash_profile")))))
-
-     (service home-dotfiles-service-type
-              (home-dotfiles-configuration
-               (source-directory
-                (string-append
-                 (getenv "DOTFILES_DIR") "/home-files"))
-               (directories '("general" "lulu"))
-               (excluded
-                (list
-                 ".*~"
-                 ".*\\.swp"
-                 "\\.git"
-                 "\\.gitignore"
-                 ;;Exclude .bash* files because they are
-                 ;;already managed by home-bash-service
-                 ".bashrc"
-                 ".bash_profile"))))
+                   (getenv "DOTFILES_DIR") "/home-files"))
+                 (directories '("general" "lulu"))
+                 (excluded
+                  (list
+                   ".*~"
+                   ".*\\.swp"
+                   "\\.git"
+                   "\\.gitignore"
+                   ;;Exclude .bash* files because they are
+                   ;;already managed by home-bash-service
+                   ".bashrc"
+                   ".bash_profile"))))
 
 
-     (service home-msmtp-service-type
-              (home-msmtp-configuration
-               (defaults
-                 (msmtp-configuration
-                  (tls? #t)
-                  (auth? #t)))
-               (accounts
-                (list
-                 (msmtp-account
-                  (name "Gmail")
-                  (configuration
+      (service home-msmtp-service-type
+               (home-msmtp-configuration
+                 (defaults
                    (msmtp-configuration
-                    (host "smtp.gmail.com")
-                    (port 587)
-                    (user "kvp94best@gmail.com")
-                    (from "kvp94best@gmail.com")
-                    (password-eval "pass Mail/kvp94best@gmail.com"))))
-                 (msmtp-account
-                  (name "Yandex")
-                  (configuration
-                   (msmtp-configuration
-                    (host "smtp.yandex.ru")
-                    (port 587)
-                    (user "kovalev.kovalev94@yandex.ru")
-                    (from "kovalev.kovalev94@yandex.ru")
-                    (password-eval "pass Mail/kovalev.kovalev94@yandex.ru"))))
-                 (msmtp-account
-                  (name "Apple")
-                  (configuration
-                   (msmtp-configuration
-                    (host "smtp.mail.me.com")
-                    (port 587)
-                    (user "kovalev_94@icloud.com")
-                    (from "kovalev_94@icloud.com")
-                    (password-eval "pass Mail/kovalev_94@icloud.com"))))))))
+                     (tls? #t)
+                     (auth? #t)))
+                 (accounts
+                  (list
+                   (msmtp-account
+                     (name "Gmail")
+                     (configuration
+                      (msmtp-configuration
+                        (host "smtp.gmail.com")
+                        (port 587)
+                        (user "kvp94best@gmail.com")
+                        (from "kvp94best@gmail.com")
+                        (password-eval "pass Mail/kvp94best@gmail.com"))))
+                   (msmtp-account
+                     (name "Yandex")
+                     (configuration
+                      (msmtp-configuration
+                        (host "smtp.yandex.ru")
+                        (port 587)
+                        (user "kovalev.kovalev94@yandex.ru")
+                        (from "kovalev.kovalev94@yandex.ru")
+                        (password-eval "pass Mail/kovalev.kovalev94@yandex.ru"))))
+                   (msmtp-account
+                     (name "Apple")
+                     (configuration
+                      (msmtp-configuration
+                        (host "smtp.mail.me.com")
+                        (port 587)
+                        (user "kovalev_94@icloud.com")
+                        (from "kovalev_94@icloud.com")
+                        (password-eval "pass Mail/kovalev_94@icloud.com"))))))))
 
-     (service home-openssh-service-type
-              (home-openssh-configuration
-               (hosts
-                (append
-                 vpn-servers
-                 personal-machines
-                 work-machines
-                 my-version-control
-                 ipoint))
-               (authorized-keys '())
-               (add-keys-to-agent "120m")))))))
+      (service home-openssh-service-type
+               (home-openssh-configuration
+                 (hosts
+                  (append
+                   vpn-servers
+                   personal-machines
+                   work-machines
+                   my-version-control
+                   ipoint))
+                 (authorized-keys '())
+                 (add-keys-to-agent "120m")))))))
 
 lulu-home
