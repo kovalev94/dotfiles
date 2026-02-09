@@ -1,10 +1,12 @@
 (define-module (guix-config homes lulu)
   #:use-module (guix gexp)
+  #:use-module (guix channels)
   #:use-module (gnu home)
   #:use-module (gnu packages)
   #:use-module (gnu services)
   #:use-module (gnu services xorg)
   #:use-module (gnu home services)
+  #:use-module (gnu home services guix)
   #:use-module (gnu home services gnupg)
   #:use-module (gnu home services mail)
   #:use-module (gnu home services shells)
@@ -46,6 +48,20 @@
    ;; services, run 'guix home search KEYWORD' in a terminal.
    (services
     (list
+     (simple-service 'my-channels-service
+                     home-channels-service-type
+                     (list
+                      (channel
+                        (name 'nonguix)
+                        (url "https://gitlab.com/nonguix/nonguix")
+                        (branch "master")
+                        (commit
+                         "0f68c1684169cbef8824fb246dfefa3e6832225b")
+                        (introduction
+                         (make-channel-introduction
+                          "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
+                          (openpgp-fingerprint
+                           "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5"))))))
      (service home-ssh-agent-service-type)
      (service home-gpg-agent-service-type
               (home-gpg-agent-configuration
