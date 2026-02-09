@@ -29,16 +29,17 @@
    ;; Home profile, under ~/.guix-home/profile.
    (packages
     (specifications->packages
-     work-tools
-     herbst-de
-     emacs-base
-     emacs-exwm
-     emacs-doom-module-corfu
-     python-emacs
-     ansible-emacs
-     mail-emacs
-     golang-emacs
-     video-tools))
+     (append
+      work-tools
+      herbst-de
+      emacs-base
+      emacs-exwm
+      emacs-doom-module-corfu
+      python-emacs
+      ansible-emacs
+      mail-emacs
+      golang-emacs
+      video-tools)))
 
    ;; Below is the list of Home services.  To search for available
    ;; services, run 'guix home search KEYWORD' in a terminal.
