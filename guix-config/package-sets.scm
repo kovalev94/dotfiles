@@ -100,7 +100,7 @@
    "python-isort"
    "python-pytest"
    "python-pyflakes"
-   "python-nose"
+   "python-pynose"
    "python-pipenv"
    "python-lsp-server"))
 
@@ -148,7 +148,6 @@
    (list
     "herbstluftwm"
     "alacritty"
-    "nyxt"
     "polybar"
     "dunst"
     "rofi"
