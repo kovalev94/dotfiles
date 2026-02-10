@@ -60,7 +60,7 @@
    "nmap"
    "netcat"
    "iputils"
-   "iptables"
+   "nftables"
    "whois"
    "fping"
    "sshfs"

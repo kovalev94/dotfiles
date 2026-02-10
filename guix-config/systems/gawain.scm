@@ -81,18 +81,13 @@
      (append
       (assoc-ref virtualization-service-list "services")
       (list
-       (service iptables-service-type
-                (iptables-configuration
-                  (ipv4-rules
+       (service nftables-service-type
+                (nftables-configuration
+                  (ruleset
                    (local-file
                     (string-append
                      (getenv "DOTFILES_DIR")
-                     "/sys-files/gawain/iptables/rules.v4")))
-                  (ipv6-rules
-                   (local-file
-                    (string-append
-                     (getenv "DOTFILES_DIR")
-                     "/sys-files/gawain/iptables/rules.v6")))))
+                     "/sys-files/gawain/nftables/rules")))))
        (simple-service 'my-env session-environment-service-type
                        `(("DOTFILES_DIR" .
                           "/home/vitaliy.kovalev/.dotfiles")
