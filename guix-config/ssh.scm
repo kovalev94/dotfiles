@@ -46,8 +46,8 @@
     (match-criteria "all")
     (extra-content
      "  CanonicalizeHostname always
-  CanonicalDomains tester.uc
-  CanonicalizeMaxDots 4
+  CanonicalDomains tester.uc kovalev.tester.uc
+  CanonicalizeMaxDots 5
   IdentitiesOnly yes"))))
 
 (define personal-machines
