@@ -93,18 +93,13 @@
       power-management-service-list
       (list
        (service bluetooth-service-type)
-       (service iptables-service-type
-                (iptables-configuration
-                  (ipv4-rules
+       (service nftables-service-type
+                (nftables-configuration
+                  (ruleset
                    (local-file
                     (string-append
                      (getenv "DOTFILES_DIR")
-                     "/sys-files/mirage/iptables.rules")))
-                  (ipv6-rules
-                   (local-file
-                    (string-append
-                     (getenv "DOTFILES_DIR")
-                     "/sys-files/mirage/iptables.rules")))))
+                     "/sys-files/mirage/nftables/rules")))))
        (simple-service 'my-env session-environment-service-type
                        `(("DOTFILES_DIR" .
                           "/home/lulu/.dotfiles")

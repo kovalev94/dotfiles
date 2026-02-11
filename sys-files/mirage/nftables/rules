@@ -1,12 +1,5 @@
 flush ruleset
 
-define PHONES_NETWORK= {
-    172.16.84.0/24
-}
-
-define SSW_DATA_NETWORK= {
-    172.16.85.0/29
-}
 
 add table ip mangle
 add chain ip mangle PREROUTING { type filter hook prerouting priority -150; policy accept; }
@@ -28,16 +21,13 @@ add rule ip filter INPUT icmp type {echo-reply, echo-request } counter accept
 #Allow connections to loopback
 add rule ip filter INPUT iifname "lo" counter accept
 #Allow ssh
-add rule ip filter INPUT ct state new tcp dport 22 counter accept
-
-# Allow forward established and related
-add rule ip filter FORWARD ct state established,related counter accept
-#Allow forwarding for Phones Network
-add rule ip filter FORWARD ip saddr $PHONES_NETWORK counter accept
+add rule ip filter INPUT ct state new tcp dport 13131 counter accept
+#Allow syncthing
+add rule ip filter INPUT ct state new tcp dport 22000 counter accept
+add rule ip filter INPUT ct state new udp dport 22000 counter accept
 
 add table ip nat
 add chain ip nat PREROUTING { type nat hook prerouting priority -100; policy accept; }
 add chain ip nat INPUT { type nat hook input priority 100; policy accept; }
 add chain ip nat OUTPUT { type nat hook output priority -100; policy accept; }
 add chain ip nat POSTROUTING { type nat hook postrouting priority 100; policy accept; }
-add rule ip nat POSTROUTING ip saddr $PHONES_NETWORK ip daddr != $SSW_DATA_NETWORK counter masquerade
