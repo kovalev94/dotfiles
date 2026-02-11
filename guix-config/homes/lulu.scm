@@ -33,7 +33,8 @@
        (list
         "emacs-bluetooth"
         "qbittorrent")
-       work-tools
+       (delete "ungoogled-chromium"
+               work-tools)
        herbst-de
        emacs-base
        emacs-exwm
