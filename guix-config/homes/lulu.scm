@@ -39,6 +39,8 @@
        emacs-base
        emacs-exwm
        emacs-doom-module-corfu
+       emacs-doom-module-magit
+       emacs-doom-module-dired
        python-emacs
        ansible-emacs
        mail-emacs

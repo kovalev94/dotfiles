@@ -148,10 +148,10 @@ a butler for your whitespace
 - emacs-dtrt-indent
 - emacs-ws-butler
 
-****** dired             
+****** [X] dired
 making dired pretty [functional]
-- dirvish
-- diredfl
+- emacs-dirvish
+- emacs-diredfl
 ****** electric          
 smarter, keyword-based electric-indent
 no packages
@@ -198,9 +198,8 @@ navigate your code and its documentation
 ****** lsp               
 M-x vscode
 no-packages
-****** magit             
+****** [X] magit
 a git porcelain for Emacs
-- emacs-transient
 - emacs-magit
 ****** pass              
 password manager for nerds

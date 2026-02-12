@@ -333,3 +333,12 @@
    "emacs-xdg-launcher"
    "emacs-exwm-modeline"
    "emacs-move-border"))
+
+(define-public emacs-doom-module-magit
+  (list
+   "emacs-magit"))
+
+(define-public emacs-doom-module-dired
+  (list
+   "emacs-dirvish"
+   "emacs-diredfl"))
