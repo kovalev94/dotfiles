@@ -17,13 +17,17 @@ xinput set-prop "$TOUCHPAD_DEV_NAME" "libinput Click Method Enabled" 0 1
 
 #turn on picom
 if $ENABLE_PICOM; then
-        picom \
-                --blur-method=gaussian \
-                --blur-size=20 \
-                --blur-deviation=15 \
-                --blur-strength=5 \
-                --backend=glx \
-                -b
+    picom \
+        --blur-method=gaussian \
+        --blur-size=20 \
+        --blur-deviation=15 \
+        --blur-strength=5 \
+        --backend=glx \
+        --fading \
+        --fade-in-step=0.03 \
+        --fade-out-step=0.03 \
+        --fade-delta=5 \
+        -b
 fi
 
 xrandr --output eDP-1 --dpi 192
