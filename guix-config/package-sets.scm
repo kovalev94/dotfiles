@@ -86,6 +86,8 @@
    "font-nerd-symbols-only"
    "emacs-nerd-icons-completion"
    "emacs-dashboard"
+   "emacs-org-texlive-collection"
+   "texlive-xetex"
    "fd"))
 
 (define-public mail-emacs
