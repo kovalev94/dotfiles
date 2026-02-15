@@ -20,7 +20,6 @@
   #:use-module (gnu bootloader grub)
   #:use-module (nongnu packages linux)
   #:use-module (guix-config package-sets)
-  #:use-module (guix-config etc-hosts)
   #:use-module (guix-config services)
   #:use-module (guix-config packages certs)
   #:use-module (guix-config packages telephony)
@@ -94,12 +93,6 @@
                          ("TZ" . ,timezone)
                          ("GUIX_PACKAGE_PATH" .
                           "/home/vitaliy.kovalev/.dotfiles")))
-       (simple-service 'add-extra-hosts
-                       hosts-service-type
-                       (append
-                        vpn-servers
-                        personal-machines
-                        work-machines))
        (service rootless-podman-service-type
                 (rootless-podman-configuration
                   (subgids

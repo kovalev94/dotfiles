@@ -21,7 +21,6 @@
   #:use-module (gnu bootloader grub)
   #:use-module (nongnu packages linux)
   #:use-module (guix-config package-sets)
-  #:use-module (guix-config etc-hosts)
   #:use-module (guix-config services)
   #:use-module (guix-config packages telephony)
   #:use-module (guix-config keyboard))
@@ -108,11 +107,13 @@
                           "/home/lulu/.dotfiles")))
        (simple-service 'add-extra-hosts
                        hosts-service-type
-                       (append
-                        ipoint
-                        vpn-servers
-                        personal-machines
-                        work-machines))
+                       (list
+                        (host "185.164.163.16" "vpnserv")
+                        (host "213.87.105.213" "damocles")
+                        (host "172.16.13.3" "lancelot")
+                        (host "109.174.98.182" "ipoint-marksa-white")
+                        (host "109.111.191.225" "ipoint-gogolya-white")
+                        (host "176.126.103.60" "ipoint-controller-white")))
        (service rootless-podman-service-type
                 (rootless-podman-configuration
                   (subgids
