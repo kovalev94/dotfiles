@@ -14,11 +14,13 @@
   #:use-module (gnu services dbus)
   #:use-module (gnu services desktop)
   #:use-module (gnu services pm)
+  #:use-module (gnu system keyboard)
   #:use-module (guix gexp)
   #:use-module (guix channels)
   #:use-module ((srfi srfi-1) #:prefix srfi-1:)
 
-  #:export (remove-services
+  #:export (kb-layout
+            remove-services
             default-channels-with-nonguix
             default-authorized-keys-with-nonguix
             bordeaux-nonguix-substitute-urls
@@ -31,6 +33,11 @@
             shit-trimmed-desktop-services
             pinned-channels))
 
+
+(define kb-layout
+  (keyboard-layout
+   "us,ru"
+   #:options '("grp:alt_space_toggle" "caps:swapescape")))
 
 
 (define (remove-services services service-list)

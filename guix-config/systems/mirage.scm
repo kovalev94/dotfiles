@@ -22,8 +22,7 @@
   #:use-module (nongnu packages linux)
   #:use-module (guix-config package-sets)
   #:use-module (guix-config services)
-  #:use-module (guix-config packages telephony)
-  #:use-module (guix-config keyboard))
+  #:use-module (guix-config packages telephony))
 
 (define-public mirage-system
   (operating-system

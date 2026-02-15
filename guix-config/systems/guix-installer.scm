@@ -9,8 +9,7 @@
   #:use-module (nongnu packages linux)
 
   #:use-module (guix-config package-sets)
-  #:use-module (guix-config services)
-  #:use-module (guix-config keyboard))
+  #:use-module (guix-config services))
 
 
 (define-public guix-installer-system
