@@ -15,7 +15,7 @@
   #:use-module (gnu home services dotfiles)
   #:use-module (gnu home services syncthing)
   #:use-module (guix-config package-sets)
-  #:use-module (guix-config keyboard)
+  #:use-module (guix-config services)
   #:use-module (guix-config ssh))
 
 ;; This "home-environment" file can be passed to 'guix home reconfigure'

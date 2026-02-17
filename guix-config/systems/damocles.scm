@@ -17,7 +17,6 @@
   #:use-module (gnu packages package-management)
   #:use-module (guix-config package-sets)
   #:use-module (guix-config services)
-  #:use-module (guix-config keyboard)
   #:use-module (guix-config homes schneizel))
 
 (define-public damocles-system
