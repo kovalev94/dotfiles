@@ -26,8 +26,9 @@
 ;; If you'd like to disable a package included with Doom, you can do so here
 ;; with the `:disable' property:
 (package! dirvish :built-in t)
-(package! magit :built-in t)
-(package! diredfl :built-in t)
+(package! magit :built-in 'force)
+(package! with-editor :built-in 'force)
+(package! diredfl :built-in 'force)
 
 ;; You can override the recipe of a built in package without having to specify
 ;; all the properties for `:recipe'. These will inherit the rest of its recipe

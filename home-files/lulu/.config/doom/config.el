@@ -143,3 +143,6 @@
 	message-sendmail-f-is-evil t
 	message-sendmail-extra-arguments '("--read-envelope-from")
 	message-send-mail-function #'message-send-mail-with-sendmail))
+;; Fix magit and maybe others autoloads for doom
+(when (featurep 'guix-emacs)
+  (guix-emacs-autoload-packages))
