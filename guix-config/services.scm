@@ -5,7 +5,6 @@
   #:use-module (gnu packages gnome)
   #:use-module (gnu packages package-management)
   #:use-module (gnu services base)
-  #:use-module (gnu services docker)
   #:use-module (gnu services avahi)
   #:use-module (gnu services networking)
   #:use-module (gnu services virtualization)
@@ -24,7 +23,6 @@
             default-authorized-keys-with-nonguix
             bordeaux-nonguix-substitute-urls
             network-manager-with-vpnc-configuration
-            docker-service-list
             power-management-service-list
             virtualization-service-list
             nm-applet-service-type
@@ -78,12 +76,6 @@ from SERVICE-LIST (%desktop-services for example)"
   (list
    "https://bordeaux.guix.gnu.org"
    "https://substitutes.nonguix.org"))
-
-
-(define docker-service-list
-  (list
-   (service docker-service-type)
-   (service containerd-service-type)))
 
 
 (define power-management-service-list
