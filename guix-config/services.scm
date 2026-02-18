@@ -3,7 +3,6 @@
   #:use-module (gnu services)
   #:use-module (gnu packages spice)
   #:use-module (gnu packages gnome)
-  #:use-module (gnu packages fonts)
   #:use-module (gnu packages package-management)
   #:use-module (gnu services base)
   #:use-module (gnu services docker)
@@ -24,7 +23,6 @@
             default-channels-with-nonguix
             default-authorized-keys-with-nonguix
             bordeaux-nonguix-substitute-urls
-            hi-dpi-console-font-configuration
             network-manager-with-vpnc-configuration
             docker-service-list
             power-management-service-list
@@ -80,18 +78,6 @@ from SERVICE-LIST (%desktop-services for example)"
   (list
    "https://bordeaux.guix.gnu.org"
    "https://substitutes.nonguix.org"))
-
-
-(define hi-dpi-console-font-configuration
-  (map
-   (lambda
-       (tty)
-     (cons
-      tty
-      (file-append
-       font-terminus
-       "/share/consolefonts/ter-k32n")))
-   '("tty1" "tty2" "tty3" "tty4" "tty5" "tty6")))
 
 
 (define docker-service-list

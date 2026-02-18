@@ -3,6 +3,7 @@
   #:use-module (gnu packages)
   #:use-module (gnu packages package-management)
   #:use-module (gnu packages gnome)
+  #:use-module (gnu packages fonts)
   #:use-module (gnu services)
   #:use-module (gnu services ssh)
   #:use-module (gnu services base)
@@ -140,7 +141,16 @@
                                                      (inherit config)
                                                      (vpn-plugins (list network-manager-openvpn))))
                       (console-font-service-type
-                       _ => hi-dpi-console-font-configuration))))
+                       _ =>
+                       (map
+                        (lambda
+                            (tty)
+                          (cons
+                           tty
+                           (file-append
+                            font-terminus
+                            "/share/consolefonts/ter-k32n")))
+                        '("tty1" "tty2" "tty3" "tty4" "tty5" "tty6"))))))
 
 
    (privileged-programs
