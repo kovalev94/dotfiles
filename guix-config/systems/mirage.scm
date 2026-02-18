@@ -5,6 +5,7 @@
   #:use-module (gnu packages gnome)
   #:use-module (gnu packages fonts)
   #:use-module (gnu services)
+  #:use-module (gnu services pm)
   #:use-module (gnu services ssh)
   #:use-module (gnu services base)
   #:use-module (gnu services desktop)
@@ -88,8 +89,9 @@
    (services
     (append
      (assoc-ref virtualization-service-list "services")
-     power-management-service-list
      (list
+      (service tlp-service-type)
+      (service thermald-service-type)
       (service bluetooth-service-type)
       (service nftables-service-type
                (nftables-configuration

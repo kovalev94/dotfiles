@@ -11,7 +11,6 @@
   #:use-module (gnu services xorg)
   #:use-module (gnu services dbus)
   #:use-module (gnu services desktop)
-  #:use-module (gnu services pm)
   #:use-module (gnu system keyboard)
   #:use-module (guix gexp)
   #:use-module (guix channels)
@@ -23,7 +22,6 @@
             default-authorized-keys-with-nonguix
             bordeaux-nonguix-substitute-urls
             network-manager-with-vpnc-configuration
-            power-management-service-list
             virtualization-service-list
             nm-applet-service-type
             shit-trimmed-desktop-services
@@ -76,12 +74,6 @@ from SERVICE-LIST (%desktop-services for example)"
   (list
    "https://bordeaux.guix.gnu.org"
    "https://substitutes.nonguix.org"))
-
-
-(define power-management-service-list
-  (list
-   (service tlp-service-type)
-   (service thermald-service-type)))
 
 
 (define virtualization-service-list
