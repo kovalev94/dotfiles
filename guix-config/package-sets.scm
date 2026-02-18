@@ -80,6 +80,7 @@
    "emacs-pdf-tools"
    "emacs-vterm"
    "libvterm"
+   "emacs-eat"
    "markdown"
    "shellcheck"
    "shfmt"
