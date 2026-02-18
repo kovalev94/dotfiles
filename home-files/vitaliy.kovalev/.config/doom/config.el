@@ -118,6 +118,3 @@
 	message-sendmail-f-is-evil t
 	message-sendmail-extra-arguments '("--read-envelope-from")
 	message-send-mail-function #'message-send-mail-with-sendmail))
-
-(setq evil-escape-delay 0.1)
-(setq evil-escape-key-sequence "fd")
