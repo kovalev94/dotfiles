@@ -81,6 +81,7 @@
    "emacs-vterm"
    "libvterm"
    "emacs-eat"
+   "emacs-docker"
    "markdown"
    "shellcheck"
    "shfmt"

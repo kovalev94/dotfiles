@@ -146,3 +146,7 @@
 ;; Fix magit and maybe others autoloads for doom
 (when (featurep 'guix-emacs)
   (guix-emacs-autoload-packages))
+
+(after! docker
+  (require 'evil-collection-docker)
+  (evil-collection-docker-setup))
