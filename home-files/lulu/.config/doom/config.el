@@ -146,3 +146,6 @@
 ;; Fix magit and maybe others autoloads for doom
 (when (featurep 'guix-emacs)
   (guix-emacs-autoload-packages))
+
+(setq evil-escape-delay 0.2)
+(setq evil-escape-sequence "fd")
