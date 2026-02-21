@@ -17,6 +17,8 @@
   #:use-module (gnu packages package-management)
   #:use-module (guix-config package-sets)
   #:use-module (guix-config services)
+  #:use-module (guix-config channels)
+  #:use-module (guix-config substitutes)
   #:use-module (guix-config homes schneizel))
 
 (define-public damocles-system
@@ -122,10 +124,10 @@
        (guix-service-type
         config =>(guix-configuration
                   (inherit config)
-                  (channels default-channels-with-nonguix)
-                  (guix (guix-for-channels default-channels-with-nonguix))
-                  (substitute-urls bordeaux-nonguix-substitute-urls)
-                  (authorized-keys default-authorized-keys-with-nonguix))))))
+                  (channels %my-channels)
+                  (guix (guix-for-channels %my-channels))
+                  (substitute-urls %my-substitutes-urls)
+                  (authorized-keys %my-authorized-keys))))))
 
    (privileged-programs
     (append
