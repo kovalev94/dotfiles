@@ -17,6 +17,7 @@
   #:use-module (guix-config package-sets)
   #:use-module (guix-config services)
   #:use-module (guix-config channels)
+  #:use-module (guix-config common)
   #:use-module (guix-config ssh))
 
 ;; This "home-environment" file can be passed to 'guix home reconfigure'
@@ -65,7 +66,7 @@
                  (max-cache-ttl 7200)))
       (service home-startx-command-service-type
                (for-home (xorg-configuration
-                           (keyboard-layout kb-layout))))
+                           (keyboard-layout %my-kb-layout))))
       (service home-syncthing-service-type
                (for-home
                 (syncthing-configuration

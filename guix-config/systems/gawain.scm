@@ -23,6 +23,7 @@
   #:use-module (guix-config services)
   #:use-module (guix-config channels)
   #:use-module (guix-config substitutes)
+  #:use-module (guix-config common)
   #:use-module (guix-config packages certs)
   #:use-module (guix-config packages telephony))
 
@@ -39,7 +40,7 @@
         (theme (grub-theme
                 (inherit (grub-theme))
                 (gfxmode '("1920x1080x32" "auto"))))
-        (keyboard-layout kb-layout)))
+        (keyboard-layout %my-kb-layout)))
 
     (kernel linux)
     (initrd microcode-initrd)
@@ -48,7 +49,7 @@
       linux-firmware
       sof-firmware))
 
-    (keyboard-layout kb-layout)
+    (keyboard-layout %my-kb-layout)
 
     (users
      (cons*

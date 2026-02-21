@@ -19,6 +19,7 @@
   #:use-module (guix-config services)
   #:use-module (guix-config channels)
   #:use-module (guix-config substitutes)
+  #:use-module (guix-config common)
   #:use-module (guix-config homes schneizel))
 
 (define-public damocles-system
@@ -31,13 +32,13 @@
     (bootloader-configuration
      (bootloader grub-bootloader)
      (targets '("/dev/sda"))
-     (keyboard-layout kb-layout)))
+     (keyboard-layout %my-kb-layout)))
 
    (initrd-modules
     (cons "virtio_scsi" %base-initrd-modules))
 
 
-   (keyboard-layout kb-layout)
+   (keyboard-layout %my-kb-layout)
 
 
    (users

@@ -10,7 +10,8 @@
   #:use-module (guix-config package-sets)
   #:use-module (guix-config channels)
   #:use-module (guix-config substitutes)
-  #:use-module (guix-config services))
+  #:use-module (guix-config services)
+  #:use-module (guix-config common))
 
 
 (define-public guix-installer-system
@@ -25,14 +26,14 @@
     (bootloader-configuration
      (bootloader grub-bootloader)
      (targets '("/dev/sda"))
-     (keyboard-layout kb-layout)))
+     (keyboard-layout %my-kb-layout)))
 
    (firmware
     (list
      linux-firmware
      sof-firmware))
 
-   (keyboard-layout kb-layout)
+   (keyboard-layout %my-kb-layout)
 
    (packages
     (append

@@ -16,18 +16,11 @@
   #:use-module (guix channels)
   #:use-module ((srfi srfi-1) #:prefix srfi-1:)
 
-  #:export (kb-layout
-            remove-services
+  #:export (remove-services
             network-manager-with-vpnc-configuration
             virtualization-service-list
             nm-applet-service-type
             shit-trimmed-desktop-services))
-
-
-(define kb-layout ;; Move to base
-  (keyboard-layout
-   "us,ru"
-   #:options '("grp:alt_space_toggle" "caps:swapescape")))
 
 
 (define (remove-services services service-list) ;;Delete
