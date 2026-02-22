@@ -15,7 +15,6 @@
   #:use-module (gnu home services dotfiles)
   #:use-module (gnu home services syncthing)
   #:use-module (guix-config package-sets)
-  #:use-module (guix-config services)
   #:use-module (guix-config common)
   #:use-module (guix-config ssh))
 

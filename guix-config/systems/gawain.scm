@@ -1,15 +1,18 @@
 (define-module (guix-config systems gawain)
   #:use-module (guix gexp)
   #:use-module (gnu packages)
+  #:use-module (gnu packages spice)
   #:use-module (gnu packages package-management)
   #:use-module (gnu services)
   #:use-module (gnu services ssh)
   #:use-module (gnu services base)
+  #:use-module (gnu services dbus)
   #:use-module (gnu services xorg)
   #:use-module (gnu services avahi)
   #:use-module (gnu services desktop)
   #:use-module (gnu services containers)
   #:use-module (gnu services networking)
+  #:use-module (gnu services virtualization)
   #:use-module (gnu system)
   #:use-module (gnu system pam)
   #:use-module (gnu system shadow)
@@ -22,7 +25,6 @@
   #:use-module (gnu bootloader grub)
   #:use-module (nongnu packages linux)
   #:use-module (guix-config package-sets)
-  #:use-module (guix-config services)
   #:use-module (guix-config channels)
   #:use-module (guix-config substitutes)
   #:use-module (guix-config common)
@@ -82,8 +84,12 @@
     ;;Installed and enabled services(like ssh-server,docker, etc.)
     (services
      (append
-      (assoc-ref virtualization-service-list "services")
       (list
+       (service libvirt-service-type)
+       (service virtlog-service-type)
+       (simple-service
+        'spice-polkit polkit-service-type
+        (list spice-gtk))
        (service nftables-service-type
                 (nftables-configuration
                   (ruleset
@@ -122,17 +128,21 @@
 
 
     (privileged-programs
-     (append
-      (cons*
-       (privileged-program
-         (program
-          (file-append (specification->package "iputils") "/bin/ping"));Neeeded for iptuils ping
-         (setuid? #t))
-       (privileged-program
-         (program
-          (file-append sngrep "/bin/sngrep"))
-         (capabilities "CAP_NET_RAW+eip"))
-       (assoc-ref virtualization-service-list "privileged-programs"))
+     (cons*
+      (privileged-program
+        (program
+         (file-append (specification->package "iputils") "/bin/ping"));Neeeded for iptuils ping
+        (setuid? #t))
+      (privileged-program
+        (program
+         (file-append sngrep "/bin/sngrep"))
+        (capabilities "CAP_NET_RAW+eip"))
+      (privileged-program
+        (program
+         (file-append
+          spice-gtk
+          "/libexec/spice-client-glib-usb-acl-helper"))
+        (setuid? #t))
       %default-privileged-programs))
 
     ;;Required for LVM disks

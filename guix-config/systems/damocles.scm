@@ -16,7 +16,6 @@
   #:use-module (gnu packages networking)
   #:use-module (gnu packages package-management)
   #:use-module (guix-config package-sets)
-  #:use-module (guix-config services)
   #:use-module (guix-config channels)
   #:use-module (guix-config substitutes)
   #:use-module (guix-config common)
