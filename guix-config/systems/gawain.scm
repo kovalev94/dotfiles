@@ -5,6 +5,8 @@
   #:use-module (gnu services)
   #:use-module (gnu services ssh)
   #:use-module (gnu services base)
+  #:use-module (gnu services xorg)
+  #:use-module (gnu services avahi)
   #:use-module (gnu services desktop)
   #:use-module (gnu services containers)
   #:use-module (gnu services networking)
@@ -106,7 +108,10 @@
                   (port-number 22)
                   (extra-content "PermitTunnel yes"))))
 
-      (modify-services shit-trimmed-desktop-services
+      (modify-services %desktop-services
+        (delete avahi-service-type)
+        (delete gdm-service-type)
+        (delete (service-kind gdm-file-system-service))
         (guix-service-type
          config =>(guix-configuration
                     (inherit config)

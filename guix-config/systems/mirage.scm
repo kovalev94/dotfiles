@@ -8,6 +8,8 @@
   #:use-module (gnu services pm)
   #:use-module (gnu services ssh)
   #:use-module (gnu services base)
+  #:use-module (gnu services xorg)
+  #:use-module (gnu services avahi)
   #:use-module (gnu services desktop)
   #:use-module (gnu services containers)
   #:use-module (gnu services networking)
@@ -128,34 +130,36 @@
                (openssh-configuration
                 (port-number 13131))))
 
-     (modify-services shit-trimmed-desktop-services
-                      ;;Sleep doesn't work, using freeze until fix.
-                      (elogind-service-type
-                       config =>(elogind-configuration
-                                 (inherit config)
-                                 (suspend-mode '(s2idle deep))))
-                      (guix-service-type
-                       config =>(guix-configuration
-                                 (inherit config)
-                                 (channels %my-pinned-channels)
-                                 (guix (guix-for-channels %my-pinned-channels))
-                                 (substitute-urls %my-substitutes-urls)
-                                 (authorized-keys %my-authorized-keys)))
-                      (network-manager-service-type config =>
-                                                    (network-manager-configuration
-                                                     (inherit config)
-                                                     (vpn-plugins (list network-manager-openvpn))))
-                      (console-font-service-type
-                       _ =>
-                       (map
-                        (lambda
-                            (tty)
-                          (cons
-                           tty
-                           (file-append
-                            font-terminus
-                            "/share/consolefonts/ter-k32n")))
-                        '("tty1" "tty2" "tty3" "tty4" "tty5" "tty6"))))))
+     (modify-services %desktop-services
+       (delete avahi-service-type)
+       (delete gdm-service-type)
+       (delete (service-kind gdm-file-system-service))
+       ;;Sleep doesn't work, using freeze until fix.
+       (elogind-service-type
+        config =>(elogind-configuration
+                   (inherit config)
+                   (suspend-mode '(s2idle deep))))
+       (guix-service-type
+        config =>(guix-configuration
+                   (inherit config)
+                   (channels %my-pinned-channels)
+                   (guix (guix-for-channels %my-pinned-channels))
+                   (substitute-urls %my-substitutes-urls)
+                   (authorized-keys %my-authorized-keys)))
+       (network-manager-service-type config =>
+                                     (network-manager-configuration
+                                       (inherit config)
+                                       (vpn-plugins (list network-manager-openvpn))))
+       (console-font-service-type
+        _ => (map
+              (lambda
+                  (tty)
+                (cons
+                 tty
+                 (file-append
+                  font-terminus
+                  "/share/consolefonts/ter-k32n")))
+              '("tty1" "tty2" "tty3" "tty4" "tty5" "tty6"))))))
 
 
    (privileged-programs

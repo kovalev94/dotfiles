@@ -15,26 +15,7 @@
   #:use-module (guix gexp)
   #:use-module (guix channels)
   #:use-module ((srfi srfi-1) #:prefix srfi-1:)
-
-  #:export (remove-services
-            network-manager-with-vpnc-configuration
-            virtualization-service-list
-            nm-applet-service-type
-            shit-trimmed-desktop-services))
-
-
-(define (remove-services services service-list) ;;Delete
-  "Remove SERVICES, which should be a list of services,
-from SERVICE-LIST (%desktop-services for example)"
-  (srfi-1:fold
-   (lambda (service service-list)
-     (srfi-1:remove
-      (lambda (srv)
-        (equal?
-         (service-kind srv) service))
-      service-list))
-   service-list
-   services))
+  #:export (virtualization-service-list))
 
 
 (define virtualization-service-list ;;Keep and rewrite
@@ -52,23 +33,3 @@ from SERVICE-LIST (%desktop-services for example)"
                                     spice-gtk
                                     "/libexec/spice-client-glib-usb-acl-helper"))
                                   (setuid? #t))))))
-
-
-                                        ;Because (gnu services networking) module does not expose nm-applet-service
-                                        ;define own nm-applet-service-type similar to that module
-(define nm-applet-service-type ;; Delete
-  (service-kind
-   (simple-service 'network-manager-applet
-                   profile-service-type
-                   (list network-manager-applet))))
-
-(define shit-trimmed-desktop-services ;; Move to base
-  (remove-services
-   (list
-    avahi-service-type
-    nm-applet-service-type
-    usb-modeswitch-service-type
-    gdm-service-type
-    (service-kind gdm-file-system-service))
-   %desktop-services))
-
