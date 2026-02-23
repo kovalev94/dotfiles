@@ -15,7 +15,7 @@
   #:use-module (gnu home services dotfiles)
   #:use-module (gnu home services syncthing)
   #:use-module (guix-config package-sets)
-  #:use-module (guix-config keyboard)
+  #:use-module (guix-config common)
   #:use-module (guix-config ssh))
 
 ;; This "home-environment" file can be passed to 'guix home reconfigure'
@@ -57,7 +57,7 @@
                  (max-cache-ttl 7200)))
       (service home-startx-command-service-type
                (for-home (xorg-configuration
-                           (keyboard-layout kb-layout))))
+                           (keyboard-layout %my-kb-layout))))
       (service home-bash-service-type
                (home-bash-configuration
                  (aliases '(("grep" . "grep --color=auto") ("ll" . "ls -l")

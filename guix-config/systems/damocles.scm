@@ -16,8 +16,9 @@
   #:use-module (gnu packages networking)
   #:use-module (gnu packages package-management)
   #:use-module (guix-config package-sets)
-  #:use-module (guix-config services)
-  #:use-module (guix-config keyboard)
+  #:use-module (guix-config channels)
+  #:use-module (guix-config substitutes)
+  #:use-module (guix-config common)
   #:use-module (guix-config homes schneizel))
 
 (define-public damocles-system
@@ -30,13 +31,13 @@
     (bootloader-configuration
      (bootloader grub-bootloader)
      (targets '("/dev/sda"))
-     (keyboard-layout kb-layout)))
+     (keyboard-layout %my-kb-layout)))
 
    (initrd-modules
     (cons "virtio_scsi" %base-initrd-modules))
 
 
-   (keyboard-layout kb-layout)
+   (keyboard-layout %my-kb-layout)
 
 
    (users
@@ -123,10 +124,10 @@
        (guix-service-type
         config =>(guix-configuration
                   (inherit config)
-                  (channels default-channels-with-nonguix)
-                  (guix (guix-for-channels default-channels-with-nonguix))
-                  (substitute-urls bordeaux-nonguix-substitute-urls)
-                  (authorized-keys default-authorized-keys-with-nonguix))))))
+                  (channels %my-channels)
+                  (guix (guix-for-channels %my-channels))
+                  (substitute-urls %my-substitutes-urls)
+                  (authorized-keys %my-authorized-keys))))))
 
    (privileged-programs
     (append

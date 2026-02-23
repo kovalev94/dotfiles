@@ -15,7 +15,8 @@
   #:use-module (gnu home services dotfiles)
   #:use-module (gnu home services syncthing)
   #:use-module (guix-config package-sets)
-  #:use-module (guix-config keyboard)
+  #:use-module (guix-config channels)
+  #:use-module (guix-config common)
   #:use-module (guix-config ssh))
 
 ;; This "home-environment" file can be passed to 'guix home reconfigure'
@@ -52,24 +53,7 @@
     (services
      (list
       (service home-channels-service-type
-               (list (channel
-                      (name 'guix)
-                      (url "https://git.guix.gnu.org/guix.git")
-                      (branch "master")
-                      (introduction
-                       (make-channel-introduction
-                        "9edb3f66fd807b096b48283debdcddccfea34bad"
-                        (openpgp-fingerprint
-                         "BBB0 2DDF 2CEA F6A8 0D1D  E643 A2A0 6DF2 A33A 54FA"))))
-                     (channel
-                      (name 'nonguix)
-                      (url "https://gitlab.com/nonguix/nonguix")
-                      (branch "master")
-                      (introduction
-                       (make-channel-introduction
-                        "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
-                        (openpgp-fingerprint
-                         "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5"))))))
+               %my-channels)
       (service home-ssh-agent-service-type)
       (service home-gpg-agent-service-type
                (home-gpg-agent-configuration
@@ -81,7 +65,7 @@
                  (max-cache-ttl 7200)))
       (service home-startx-command-service-type
                (for-home (xorg-configuration
-                           (keyboard-layout kb-layout))))
+                           (keyboard-layout %my-kb-layout))))
       (service home-syncthing-service-type
                (for-home
                 (syncthing-configuration

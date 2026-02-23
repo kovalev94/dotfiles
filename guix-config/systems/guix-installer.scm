@@ -7,10 +7,10 @@
   #:use-module (gnu services base)
   #:use-module (gnu packages package-management)
   #:use-module (nongnu packages linux)
-
   #:use-module (guix-config package-sets)
-  #:use-module (guix-config services)
-  #:use-module (guix-config keyboard))
+  #:use-module (guix-config channels)
+  #:use-module (guix-config substitutes)
+  #:use-module (guix-config common))
 
 
 (define-public guix-installer-system
@@ -25,14 +25,14 @@
     (bootloader-configuration
      (bootloader grub-bootloader)
      (targets '("/dev/sda"))
-     (keyboard-layout kb-layout)))
+     (keyboard-layout %my-kb-layout)))
 
    (firmware
     (list
      linux-firmware
      sof-firmware))
 
-   (keyboard-layout kb-layout)
+   (keyboard-layout %my-kb-layout)
 
    (packages
     (append
@@ -46,10 +46,10 @@
        (guix-service-type
         config =>(guix-configuration
                   (inherit config)
-                  (channels pinned-channels)
-                  (guix (guix-for-channels pinned-channels))
-                  (substitute-urls bordeaux-nonguix-substitute-urls)
-                  (authorized-keys default-authorized-keys-with-nonguix)))))))
+                  (channels %my-pinned-channels)
+                  (guix (guix-for-channels %my-pinned-channels))
+                  (substitute-urls %my-substitutes-urls)
+                  (authorized-keys %my-authorized-keys)))))))
 
 
 guix-installer-system
