@@ -29,7 +29,9 @@
   #:use-module (guix-config substitutes)
   #:use-module (guix-config common)
   #:use-module (guix-config packages certs)
-  #:use-module (guix-config packages telephony))
+  #:use-module (guix-config packages telephony)
+  #:use-module (srfi srfi-1))
+
 
 (define-public gawain-system
   (operating-system
@@ -126,12 +128,13 @@
                     (substitute-urls %my-substitutes-urls)
                     (authorized-keys %my-authorized-keys))))))
 
-
     (privileged-programs
      (cons*
       (privileged-program
         (program
-         (file-append (specification->package "iputils") "/bin/ping"));Neeeded for iptuils ping
+         (file-append
+          spice-gtk
+          "/libexec/spice-client-glib-usb-acl-helper"))
         (setuid? #t))
       (privileged-program
         (program
@@ -139,11 +142,13 @@
         (capabilities "CAP_NET_RAW+eip"))
       (privileged-program
         (program
-         (file-append
-          spice-gtk
-          "/libexec/spice-client-glib-usb-acl-helper"))
-        (setuid? #t))
-      %default-privileged-programs))
+         (file-append (specification->package "iputils") "/bin/ping"))
+        (capabilities "cap_net_raw=ep"))
+      (remove (lambda (p)
+                (let ((path (object->string (privileged-program-program p))))
+                  (or (string-suffix? "/bin/ping" path)
+                      (string-suffix? "/bin/ping6" path))))
+              %default-privileged-programs)))
 
     ;;Required for LVM disks
     (mapped-devices

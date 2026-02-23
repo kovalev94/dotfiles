@@ -31,7 +31,8 @@
   #:use-module (guix-config channels)
   #:use-module (guix-config substitutes)
   #:use-module (guix-config common)
-  #:use-module (guix-config packages telephony))
+  #:use-module (guix-config packages telephony)
+  #:use-module (srfi srfi-1))
 
 (define-public mirage-system
   (operating-system
@@ -167,24 +168,27 @@
                   "/share/consolefonts/ter-k32n")))
               '("tty1" "tty2" "tty3" "tty4" "tty5" "tty6"))))))
 
-
-   (privileged-programs
-    (cons*
-     (privileged-program
-       (program
-        (file-append (specification->package "iputils") "/bin/ping"));Neeeded for iptuils ping
-       (setuid? #t))
-     (privileged-program
-       (program
-        (file-append sngrep "/bin/sngrep"));Neeeded for iptuils ping
-       (capabilities "CAP_NET_RAW+eip"))
-     (privileged-program
-       (program
-        (file-append
-         spice-gtk
-         "/libexec/spice-client-glib-usb-acl-helper"))
-       (setuid? #t))
-     %default-privileged-programs))
+    (privileged-programs
+     (cons*
+      (privileged-program
+        (program
+         (file-append
+          spice-gtk
+          "/libexec/spice-client-glib-usb-acl-helper"))
+        (setuid? #t))
+      (privileged-program
+        (program
+         (file-append sngrep "/bin/sngrep"))
+        (capabilities "CAP_NET_RAW+eip"))
+      (privileged-program
+        (program
+         (file-append (specification->package "iputils") "/bin/ping"))
+        (capabilities "cap_net_raw=ep"))
+      (remove (lambda (p)
+                (let ((path (object->string (privileged-program-program p))))
+                  (or (string-suffix? "/bin/ping" path)
+                      (string-suffix? "/bin/ping6" path))))
+              %default-privileged-programs)))
 
    (mapped-devices
     (list
