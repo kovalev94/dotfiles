@@ -33,15 +33,14 @@
   #:use-module (guix-config common)
   #:use-module (guix-config systems base)
   #:use-module (guix-config packages telephony)
-  #:use-module (srfi srfi-1))
+  #:use-module (srfi srfi-1)
+  #:export (mirage-system))
 ;;Clean imports
 
-(define-public mirage-system
+(define mirage-system
   (operating-system
     (inherit %my-desktop-base-system)
     (host-name "mirage")
-    (locale "ru_RU.utf8")
-    (timezone "Asia/Novosibirsk")
     ;;Temporary(I hope) fix for screen redraw lags
     (kernel-arguments
      (append
@@ -57,7 +56,7 @@
         (group "users")
         (home-directory "/home/lulu")
         (supplementary-groups
-         '("wheel" "netdev" "audio" "video" "kvm" "libvirt" )))
+         '("wheel" "netdev" "audio" "video" "kvm" "libvirt" "cgroup")))
       %base-user-accounts))
 
     (services
@@ -75,12 +74,15 @@
                         (host "176.126.103.60" "ipoint-controller-white")))
        (simple-service 'my-env session-environment-service-type
                        `(("DOTFILES_DIR" .
-                          "/home/vitaliy.kovalev/.dotfiles")
+                          "/home/lulu/.dotfiles")
                          ("TZ" .
                           ,(operating-system-timezone %my-desktop-base-system))
                          ("GUIX_PACKAGE_PATH" .
-                          "/home/vitaliy.kovalev/.dotfiles"))));; add dynamic behavior
+                          "/home/lulu/.dotfiles"))));; add dynamic behavior
       (modify-services (operating-system-user-services %my-desktop-base-system)
+        (openssh-service-type
+         config => (openssh-configuration
+                     (port-number 13131)))
         ;;Sleep doesn't work, using freeze until fix.
         (elogind-service-type
          config =>(elogind-configuration
@@ -93,7 +95,7 @@
                       (local-file
                        (string-append
                         (getenv "DOTFILES_DIR");;
-                        "/sys-files/gawain/nftables/rules")))));; add dynamic behavior
+                        "/sys-files/mirage/nftables/rules")))));; add dynamic behavior
         (network-manager-service-type
          config => (network-manager-configuration
                      (inherit config)

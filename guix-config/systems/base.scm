@@ -28,7 +28,6 @@
   #:use-module (guix-config channels)
   #:use-module (guix-config substitutes)
   #:use-module (guix-config common)
-  #:use-module (guix-config packages certs)
   #:use-module (guix-config packages telephony)
   #:use-module (srfi srfi-1)
   #:export (%my-desktop-base-system))
@@ -132,8 +131,9 @@
         (capabilities "cap_net_raw=ep"))
       (remove (lambda (p)
                 (let ((path (object->string (privileged-program-program p))))
-                  (or (string-suffix? "/bin/ping" path)
-                      (string-suffix? "/bin/ping6" path))))
+                  (and (string-contains path "inetutils")
+                       (or (string-contains path "/bin/ping")
+                           (string-contains path "/bin/ping6")))))
               %default-privileged-programs)))
     ;;Required for LVM disks
     (mapped-devices
@@ -141,7 +141,7 @@
       (mapped-device
         (source "Guix")
         (targets
-         (list "Root" "Home" "Swap"))
+         (list "Guix-Root" "Guix-Home" "Guix-Swap"))
         (type lvm-device-mapping))))
 
     (file-systems
