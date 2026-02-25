@@ -140,9 +140,9 @@ in Emacs using standard Emacs minibuffer completion.")
 considering the current window border instead of the window itself.")
       (license license:gpl3))))
 
-(define-public emacs-exwm-modeline
+(define-public emacs-exwm-modeline-next
   (package
-    (name "emacs-exwm-modeline")
+    (name "emacs-exwm-modeline-next")
     (version "20250222.1334")
     (source
      (origin

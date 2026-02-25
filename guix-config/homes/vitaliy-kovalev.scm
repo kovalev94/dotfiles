@@ -15,6 +15,7 @@
   #:use-module (gnu home services dotfiles)
   #:use-module (gnu home services syncthing)
   #:use-module (guix-config package-sets)
+  #:use-module (guix-config doom-modules-packages)
   #:use-module (guix-config common)
   #:use-module (guix-config ssh))
 
@@ -23,23 +24,31 @@
 ;; specifies package names.  To reproduce the exact same profile, you also
 ;; need to capture the channels being used, as returned by "guix describe".
 ;; See the "Replicating Guix" section in the manual.
+;;
+
+(define-public video-tools
+  (list
+   "obs"
+   "kdenlive"))
+
 (define-public vitaliy.kovalev-home
   (home-environment
     ;; Below is the list of packages that will show up in your
     ;; Home profile, under ~/.guix-home/profile.
     (packages
-     (specifications->packages
-      (append
-       work-tools
-       herbst-de
-       emacs-base
-       emacs-exwm
-       emacs-doom-module-corfu
-       python-emacs
-       ansible-emacs
-       mail-emacs
-       golang-emacs
-       video-tools)))
+     (append
+      doom-module-corfu-packages
+      (specifications->packages
+       (append
+        work-tools
+        herbst-de
+        emacs-base
+        emacs-exwm
+        python-emacs
+        ansible-emacs
+        mail-emacs
+        golang-emacs
+        video-tools))))
 
     ;; Below is the list of Home services.  To search for available
     ;; services, run 'guix home search KEYWORD' in a terminal.
