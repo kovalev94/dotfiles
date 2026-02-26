@@ -31,7 +31,7 @@
   #:use-module (guix-config channels)
   #:use-module (guix-config substitutes)
   #:use-module (guix-config common)
-  #:use-module (guix-config systems base)
+  #:use-module (guix-config systems desktop)
   #:use-module (guix-config packages telephony)
   #:use-module (srfi srfi-1)
   #:export (mirage-system))
@@ -39,7 +39,7 @@
 
 (define mirage-system
   (operating-system
-    (inherit %my-desktop-base-system)
+    (inherit %my-desktop-system)
     (host-name "mirage")
     ;;Temporary(I hope) fix for screen redraw lags
     (kernel-arguments
@@ -76,10 +76,10 @@
                        `(("DOTFILES_DIR" .
                           "/home/lulu/.dotfiles")
                          ("TZ" .
-                          ,(operating-system-timezone %my-desktop-base-system))
+                          ,(operating-system-timezone %my-desktop-system))
                          ("GUIX_PACKAGE_PATH" .
                           "/home/lulu/.dotfiles"))));; add dynamic behavior
-      (modify-services (operating-system-user-services %my-desktop-base-system)
+      (modify-services (operating-system-user-services %my-desktop-system)
         (openssh-service-type
          config => (openssh-configuration
                      (port-number 13131)))

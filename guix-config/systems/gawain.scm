@@ -30,14 +30,14 @@
   #:use-module (guix-config common)
   #:use-module (guix-config packages certs)
   #:use-module (guix-config packages telephony)
-  #:use-module (guix-config systems base)
+  #:use-module (guix-config systems desktop)
   #:use-module (srfi srfi-1)
   #:export (gawain-system))
 ;;Clean imports
 
 (define gawain-system
   (operating-system
-    (inherit %my-desktop-base-system)
+    (inherit %my-desktop-system)
     (host-name "gawain")
 
     (users
@@ -55,7 +55,7 @@
     (packages
      (cons*
       (specification->package "eltex-certs")
-      (operating-system-packages %my-desktop-base-system)))
+      (operating-system-packages %my-desktop-system)))
 
     (services
      (append
@@ -64,10 +64,10 @@
                        `(("DOTFILES_DIR" .
                           "/home/vitaliy.kovalev/.dotfiles")
                          ("TZ" .
-                          ,(operating-system-timezone %my-desktop-base-system))
+                          ,(operating-system-timezone %my-desktop-system))
                          ("GUIX_PACKAGE_PATH" .
                           "/home/vitaliy.kovalev/.dotfiles"))));; add dynamic behavior
-      (modify-services (operating-system-user-services %my-desktop-base-system)
+      (modify-services (operating-system-user-services %my-desktop-system)
         (openssh-service-type
          config => (openssh-configuration
                      (extra-content "PermitTunnel yes")))

@@ -1,4 +1,4 @@
-(define-module (guix-config systems base)
+(define-module (guix-config systems desktop)
   #:use-module (guix gexp)
   #:use-module (gnu packages)
   #:use-module (gnu packages spice)
@@ -30,7 +30,7 @@
   #:use-module (guix-config common)
   #:use-module (guix-config packages telephony)
   #:use-module (srfi srfi-1)
-  #:export (%my-desktop-base-system))
+  #:export (%my-desktop-system))
 ;;Clean imports
 
 (define (users->podman-subids users)
@@ -46,7 +46,7 @@
          (iota (length cgroup-users)))))
 
 
-(define %my-desktop-base-system
+(define %my-desktop-system
   (operating-system
     (host-name "my-desktop-base")
     (locale "ru_RU.utf8")
