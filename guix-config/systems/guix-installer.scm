@@ -7,7 +7,6 @@
   #:use-module (gnu services base)
   #:use-module (gnu packages package-management)
   #:use-module (nongnu packages linux)
-  #:use-module (guix-config package-sets)
   #:use-module (guix-config channels)
   #:use-module (guix-config substitutes)
   #:use-module (guix-config common))
@@ -36,9 +35,7 @@
 
    (packages
     (append
-     base-sys
-     fs-tools
-     network-tools
+     %my-base-packages
      (operating-system-packages installation-os)))
 
    (services

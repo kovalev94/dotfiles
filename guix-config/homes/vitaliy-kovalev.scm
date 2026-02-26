@@ -14,7 +14,6 @@
   #:use-module (gnu home services desktop)
   #:use-module (gnu home services dotfiles)
   #:use-module (gnu home services syncthing)
-  #:use-module (guix-config package-sets)
   #:use-module (guix-config doom-modules-packages)
   #:use-module (guix-config common)
   #:use-module (guix-config ssh))
@@ -38,17 +37,7 @@
     (packages
      (append
       doom-module-corfu-packages
-      (specifications->packages
-       (append
-        work-tools
-        herbst-de
-        emacs-base
-        emacs-exwm
-        python-emacs
-        ansible-emacs
-        mail-emacs
-        golang-emacs
-        video-tools))))
+      %my-emacs-packages))
 
     ;; Below is the list of Home services.  To search for available
     ;; services, run 'guix home search KEYWORD' in a terminal.

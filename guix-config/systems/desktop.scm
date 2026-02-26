@@ -2,6 +2,7 @@
   #:use-module (guix gexp)
   #:use-module (gnu packages)
   #:use-module (gnu packages spice)
+  #:use-module (gnu packages networking)
   #:use-module (gnu packages package-management)
   #:use-module (gnu services)
   #:use-module (gnu services ssh)
@@ -24,7 +25,6 @@
   #:use-module (gnu bootloader)
   #:use-module (gnu bootloader grub)
   #:use-module (nongnu packages linux)
-  #:use-module (guix-config package-sets)
   #:use-module (guix-config channels)
   #:use-module (guix-config substitutes)
   #:use-module (guix-config common)
@@ -72,14 +72,8 @@
 
     (packages
      (append
-      (specifications->packages
-       (append
-        base-sys
-        base-gui
-        fs-tools
-        network-tools
-        virtualization-base
-        sys-fonts))
+      %my-base-packages
+      %my-desktop-packages
       %base-packages))
 
     (services
@@ -127,7 +121,7 @@
         (capabilities "CAP_NET_RAW+eip"))
       (privileged-program
         (program
-         (file-append (specification->package "iputils") "/bin/ping"))
+         (file-append iputils "/bin/ping"))
         (capabilities "cap_net_raw=ep"))
       (remove (lambda (p)
                 (let ((path (object->string (privileged-program-program p))))

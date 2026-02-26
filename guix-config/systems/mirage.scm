@@ -5,6 +5,7 @@
   #:use-module (gnu packages package-management)
   #:use-module (gnu packages gnome)
   #:use-module (gnu packages fonts)
+  #:use-module (gnu packages linux)
   #:use-module (gnu services)
   #:use-module (gnu services pm)
   #:use-module (gnu services ssh)
@@ -27,12 +28,10 @@
   #:use-module (gnu bootloader)
   #:use-module (gnu bootloader grub)
   #:use-module (nongnu packages linux)
-  #:use-module (guix-config package-sets)
   #:use-module (guix-config channels)
   #:use-module (guix-config substitutes)
   #:use-module (guix-config common)
   #:use-module (guix-config systems desktop)
-  #:use-module (guix-config packages telephony)
   #:use-module (srfi srfi-1)
   #:export (mirage-system))
 ;;Clean imports
@@ -58,6 +57,11 @@
         (supplementary-groups
          '("wheel" "netdev" "audio" "video" "kvm" "libvirt" "cgroup")))
       %base-user-accounts))
+
+    (packages
+     (cons*
+      tlp
+      (operating-system-packages %my-desktop-system)))
 
     (services
      (append

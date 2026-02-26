@@ -24,12 +24,10 @@
   #:use-module (gnu bootloader)
   #:use-module (gnu bootloader grub)
   #:use-module (nongnu packages linux)
-  #:use-module (guix-config package-sets)
   #:use-module (guix-config channels)
   #:use-module (guix-config substitutes)
   #:use-module (guix-config common)
   #:use-module (guix-config packages certs)
-  #:use-module (guix-config packages telephony)
   #:use-module (guix-config systems desktop)
   #:use-module (srfi srfi-1)
   #:export (gawain-system))
@@ -54,7 +52,7 @@
 
     (packages
      (cons*
-      (specification->package "eltex-certs")
+      eltex-certs
       (operating-system-packages %my-desktop-system)))
 
     (services

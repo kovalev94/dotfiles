@@ -15,7 +15,6 @@
   #:use-module (gnu bootloader grub)
   #:use-module (gnu packages networking)
   #:use-module (gnu packages package-management)
-  #:use-module (guix-config package-sets)
   #:use-module (guix-config channels)
   #:use-module (guix-config substitutes)
   #:use-module (guix-config common)
@@ -53,10 +52,7 @@
    ;Globaly installed packages(e.g. for all users)
    (packages
     (append
-     base-sys
-     fs-tools
-     network-tools
-     sys-fonts
+     %my-base-packages
      %base-packages))
 
    ;Installed and enabled services(like ssh-server,docker, etc.)

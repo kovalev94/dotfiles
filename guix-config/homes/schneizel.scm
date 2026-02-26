@@ -8,7 +8,7 @@
   #:use-module (gnu home services shells)
   #:use-module (gnu home services dotfiles)
   #:use-module (gnu home services syncthing)
-  #:use-module (guix-config package-sets))
+  #:use-module (guix-config common))
 
 ;; This "home-environment" file can be passed to 'guix home reconfigure'
 ;; to reproduce the content of your profile.  This is "symbolic": it only
@@ -20,12 +20,8 @@
   (home-environment
    ;; Below is the list of packages that will show up in your
    ;; Home profile, under ~/.guix-home/profile.
-   (packages
-    (append
-     (list
-      wireguard-tools)
-     emacs-base))
-
+    (packages
+     %my-emacs-packages)
    ;; 
 
    ;;Below is the list of Home services.  To search for available
