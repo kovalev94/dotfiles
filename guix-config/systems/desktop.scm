@@ -48,7 +48,7 @@
 
 (define %my-desktop-system
   (operating-system
-    (host-name "my-desktop-base")
+    (host-name "my-desktop")
     (locale "ru_RU.utf8")
     (timezone "Asia/Novosibirsk")
 
