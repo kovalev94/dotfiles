@@ -52,7 +52,6 @@
                        (list
                         (host "185.164.163.16" "vpnserv")
                         (host "213.87.105.213" "damocles")
-                        (host "172.16.13.3" "lancelot")
                         (host "109.174.98.182" "ipoint-marksa-white")
                         (host "109.111.191.225" "ipoint-gogolya-white")
                         (host "176.126.103.60" "ipoint-controller-white")))
