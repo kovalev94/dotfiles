@@ -8,7 +8,7 @@
   #:use-module (gnu home services shells)
   #:use-module (gnu home services dotfiles)
   #:use-module (gnu home services syncthing)
-  #:use-module (guix-config common))
+  #:use-module (guix-config packages))
 
 ;; This "home-environment" file can be passed to 'guix home reconfigure'
 ;; to reproduce the content of your profile.  This is "symbolic": it only

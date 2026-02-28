@@ -7,9 +7,10 @@
   #:use-module (gnu services base)
   #:use-module (gnu packages package-management)
   #:use-module (nongnu packages linux)
+  #:use-module (guix-config packages)
   #:use-module (guix-config channels)
   #:use-module (guix-config substitutes)
-  #:use-module (guix-config common))
+  #:use-module (guix-config keyboard))
 
 
 (define-public guix-installer-system

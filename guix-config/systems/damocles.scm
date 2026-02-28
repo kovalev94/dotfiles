@@ -15,9 +15,10 @@
   #:use-module (gnu bootloader grub)
   #:use-module (gnu packages networking)
   #:use-module (gnu packages package-management)
+  #:use-module (guix-config packages)
   #:use-module (guix-config channels)
   #:use-module (guix-config substitutes)
-  #:use-module (guix-config common)
+  #:use-module (guix-config keyboard)
   #:use-module (guix-config homes schneizel))
 
 (define-public damocles-system

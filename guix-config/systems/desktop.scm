@@ -9,7 +9,7 @@
   #:use-module (gnu system)
   #:use-module (gnu system accounts)
   #:use-module (gnu system privilege)
-  #:use-module (guix-config common)
+  #:use-module (guix-config packages)
   #:use-module (guix-config packages telephony)
   #:use-module (guix-config systems base)
   #:export (%my-desktop-system))
