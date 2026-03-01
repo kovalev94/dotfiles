@@ -10,7 +10,7 @@
   #:use-module (guix-config packages certs)
   #:use-module (guix-config systems desktop)
   #:export (gawain-system))
-;;Clean imports
+
 
 (define gawain-system
   (operating-system

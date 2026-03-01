@@ -16,9 +16,12 @@
 
 
 (define (users->podman-subids users)
-  (let ((cgroup-users (filter (lambda (u)
-                                (member "cgroup" (user-account-supplementary-groups u)))
-                              users)))
+  (let ((cgroup-users
+         (filter
+          (lambda (u)
+            (member "cgroup"
+                    (user-account-supplementary-groups u)))
+          users)))
     (map (lambda (user index)
            (subid-range
              (name (user-account-name user))

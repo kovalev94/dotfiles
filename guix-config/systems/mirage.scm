@@ -14,7 +14,7 @@
   #:use-module (gnu system shadow)
   #:use-module (guix-config systems desktop)
   #:export (mirage-system))
-;;Clean imports
+
 
 (define mirage-system
   (operating-system
