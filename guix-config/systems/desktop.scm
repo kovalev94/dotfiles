@@ -49,6 +49,9 @@
        (simple-service
         'spice-polkit polkit-service-type
         (list spice-gtk))
+       (service qemu-binfmt-service-type
+                (qemu-binfmt-configuration
+                  (platforms (lookup-qemu-platforms "arm" "aarch64"))))
        (service rootless-podman-service-type
                 (rootless-podman-configuration
                   (subuids
