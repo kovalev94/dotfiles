@@ -72,7 +72,6 @@
          config =>(guix-configuration
                     (inherit config)
                     (channels %my-channels)
-                    (guix (guix-for-channels %my-channels))
                     (substitute-urls %my-substitutes-urls)
                     (authorized-keys %my-authorized-keys))))))
 
