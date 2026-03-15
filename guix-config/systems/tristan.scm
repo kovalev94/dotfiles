@@ -34,11 +34,7 @@
         (targets '("/dev/mmcblk0"))))
 
     (kernel linux-arm64-full-nonguix)
-    (initrd-modules '("btrfs"
-                      "dw_mmc"          ; Базовый драйвер MMC
-                      "dw_mmc-rockchip" ; Специфика Rockchip (RK3328)
-                      "mmc_block"       ; Поддержка блочных устройств
-                      "pwm-rockchip"))    ; Питание (PWM)
+    (initrd-modules '("btrfs"))
 
     (users
      (cons*

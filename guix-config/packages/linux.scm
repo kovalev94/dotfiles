@@ -159,7 +159,11 @@
           #:extra-version "arm64-full-nonguix"
           #:extra-options
           (append
-           `(;; Provide support for ath9k wireless
+           `(("CONFIG_MMC" . "y")
+             ("CONFIG_MMC_BLOCK" . "y")
+             ("CONFIG_MMC_DW" . "y")
+             ("CONFIG_MMC_DW_ROCKCHIP" . "y")
+             ;; Provide support for ath9k wireless
              ("CONFIG_ATH9K_HTC" . m)
              ;; Support Orange Pi R1 Plus LTS ethernet PHY.
              ("CONFIG_MOTORCOMM_PHY" . m)
