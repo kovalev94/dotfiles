@@ -6,7 +6,7 @@
   #:re-export (%default-guix-channel))
 
 
-(define-public %nonguix-channel
+(define %nonguix-channel
   (channel
     (name 'nonguix)
     (url "https://gitlab.com/nonguix/nonguix")
@@ -17,12 +17,12 @@
       (openpgp-fingerprint
        "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5")))))
 
-(define-public %my-channels
+(define %my-channels
   (list
    %default-guix-channel
    %nonguix-channel))
 
-(define-public %my-pinned-channels
+(define %my-pinned-channels
   (list (channel
           (inherit %default-guix-channel)
           (commit
