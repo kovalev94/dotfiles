@@ -21,4 +21,4 @@
 (define %my-substitutes-urls
   (list
    "https://bordeaux.guix.gnu.org"
-   "https://substitutes.nonguix.org"))
+   "https://nonguix-proxy.digital.xyz"))
