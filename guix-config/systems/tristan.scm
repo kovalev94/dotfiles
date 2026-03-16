@@ -33,7 +33,7 @@
           u-boot-orangepi-r1-plus-lts-rk3328-bootloader)
         (targets '("/dev/mmcblk0"))))
 
-    (kernel linux-arm64-full-nonguix)
+    (kernel linux-libre-arm64-full)
     (initrd-modules '("btrfs"))
 
     (users
