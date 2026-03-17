@@ -24,7 +24,7 @@
                      ".config"))
                    (sha256
                     (base32
-                     "1iqn64s4k43xnz615f2wg6d7bgrjk6wpli77lsj21nldw35wfv5q"))))))
+                     "1k80cmfkm3pp3gp5498vm5jhmzvrc44wv2x436vrii7hkm40gm9f"))))))
 
 (define-public linux-libre-arm64-generic+nft
   (customize-linux
