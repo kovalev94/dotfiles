@@ -33,5 +33,5 @@
 (define %my-substitutes-urls
   (list
    "https://bordeaux.guix.gnu.org"
-   "https://nonguix-proxy.digital.xyz"
+   "https://nonguix-proxy.ditigal.xyz"
    "https://cache-cdn.guix.moe"))
