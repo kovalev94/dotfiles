@@ -2,6 +2,7 @@
   #:use-module (guix gexp)
   #:use-module (gnu home)
   #:use-module (gnu packages gnupg)
+  #:use-module (gnu packages cups)
   #:use-module (gnu services)
   #:use-module (gnu services xorg)
   #:use-module (gnu home services)
@@ -21,6 +22,7 @@
     (inherit %my-base-home)
     (packages
      (append
+      (list cups)
       doom-module-corfu-packages
       doom-module-magit-packages
       doom-module-dired-packages

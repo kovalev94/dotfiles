@@ -4,6 +4,7 @@
   #:use-module (gnu services)
   #:use-module (gnu services ssh)
   #:use-module (gnu services dbus)
+  #:use-module (gnu services cups)
   #:use-module (gnu services containers)
   #:use-module (gnu services virtualization)
   #:use-module (gnu system)
@@ -59,7 +60,10 @@
                     (operating-system-users this-operating-system)))
                   (subgids
                    (users->podman-subids
-                    (operating-system-users this-operating-system))))))
+                    (operating-system-users this-operating-system)))))
+       (service cups-service-type
+                (cups-configuration
+                 (web-interface? #t))))
       (operating-system-user-services %my-base-system)))
 
     (privileged-programs
