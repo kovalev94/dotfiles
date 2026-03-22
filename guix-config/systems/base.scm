@@ -19,7 +19,6 @@
   #:use-module (gnu system privilege)
   #:use-module (gnu bootloader)
   #:use-module (gnu bootloader grub)
-  #:use-module (nongnu system linux-initrd)
   #:use-module (nongnu packages linux)
   #:use-module (guix-config packages)
   #:use-module (guix-config channels)
@@ -45,11 +44,6 @@
         (keyboard-layout %my-kb-layout)))
 
     (kernel linux)
-    (initrd microcode-initrd)
-    (firmware
-     (list
-      linux-firmware
-      sof-firmware))
 
     (keyboard-layout %my-kb-layout)
 

@@ -1,6 +1,7 @@
 (define-module (guix-config systems desktop)
   #:use-module (guix gexp)
   #:use-module (gnu packages spice)
+  #:use-module (nongnu packages linux)
   #:use-module (gnu services)
   #:use-module (gnu services ssh)
   #:use-module (gnu services dbus)
@@ -10,6 +11,7 @@
   #:use-module (gnu system)
   #:use-module (gnu system accounts)
   #:use-module (gnu system privilege)
+  #:use-module (nongnu system linux-initrd)
   #:use-module (guix-config packages)
   #:use-module (guix-config packages telephony)
   #:use-module (guix-config systems base)
@@ -36,6 +38,13 @@
   (operating-system
     (inherit %my-base-system)
     (host-name "my-desktop")
+
+    (initrd microcode-initrd)
+
+    (firmware
+     (list
+      linux-firmware
+      sof-firmware))
 
     (packages
      (append
