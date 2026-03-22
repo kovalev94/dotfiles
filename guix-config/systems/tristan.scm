@@ -33,7 +33,11 @@
           u-boot-orangepi-r1-plus-lts-rk3328-bootloader)
         (targets '("/dev/mmcblk0"))))
 
-    (kernel linux-libre-arm64-full)
+    (kernel linux-arm64-generic)
+    (firmware
+     (list
+      realtek-firmware))
+
     (initrd-modules '("btrfs"))
 
     (users
@@ -75,20 +79,26 @@
                  (config-file
                   (local-file
                    (string-append
-                    (getenv "DOTFILES_DIR");;
+                    (getenv "DOTFILES_DIR")
                     "/sys-files/tristan/dhcpd/dhcpd.conf")))));; add dynamic behavior
+      (service iptables-service-type
+               (iptables-configuration
+                (ipv4-rules
+                 (local-file
+                  (string-append
+                   (getenv "DOTFILES_DIR")
+                   "/sys-files/tristan/iptables/rules.v4")))
+                (ipv6-rules
+                 (local-file
+                  (string-append
+                   (getenv "DOTFILES_DIR")
+                   "/sys-files/tristan/iptables/rules.v6")))))
       (modify-services (operating-system-user-services %my-base-system)
         (delete network-manager-service-type)
         (openssh-service-type
          config => (openssh-configuration
                      (port-number 13131)))
-        (nftables-service-type
-         config => (nftables-configuration
-                     (ruleset
-                      (local-file
-                       (string-append
-                        (getenv "DOTFILES_DIR");;
-                        "/sys-files/tristan/nftables/rules"))))))));; add dynamic behavior
+        (delete nftables-service-type))))
 
     (mapped-devices '())
 
