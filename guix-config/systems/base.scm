@@ -19,7 +19,6 @@
   #:use-module (gnu system privilege)
   #:use-module (gnu bootloader)
   #:use-module (gnu bootloader grub)
-  #:use-module (nongnu packages linux)
   #:use-module (guix-config packages)
   #:use-module (guix-config channels)
   #:use-module (guix-config substitutes)
@@ -42,8 +41,6 @@
                 (inherit (grub-theme))
                 (gfxmode '("1920x1080x32" "auto"))))
         (keyboard-layout %my-kb-layout)))
-
-    (kernel linux)
 
     (keyboard-layout %my-kb-layout)
 

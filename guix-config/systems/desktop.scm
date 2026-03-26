@@ -39,8 +39,8 @@
     (inherit %my-base-system)
     (host-name "my-desktop")
 
+    (kernel linux)
     (initrd microcode-initrd)
-
     (firmware
      (list
       linux-firmware
