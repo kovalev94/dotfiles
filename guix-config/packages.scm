@@ -33,7 +33,8 @@
    ;; Networking
    tcpdump wireguard-tools nmap netcat
    iputils nftables whois fping sshfs
-   curl (list isc-bind "utils") sngrep sipp
+   curl (list isc-bind "utils") sngrep
+   sipp arp-scan
    ;; File-system
    lvm2 parted
    ;; Archive
