@@ -8,6 +8,7 @@
   #:use-module (gnu home services shells)
   #:use-module (gnu home services dotfiles)
   #:use-module (gnu home services syncthing)
+  #:use-module (guix-config channels)
   #:use-module (guix-config packages))
 
 ;; This "home-environment" file can be passed to 'guix home reconfigure'
@@ -47,7 +48,7 @@
                 (list
                  (local-file
                   (string-append
-                   (getenv "DOTFILES_DIR")
+                   %distro-root-directory
                    "/home-files/general/knightmares.pub"))))))
      (service home-bash-service-type
               (home-bash-configuration
@@ -56,20 +57,21 @@
                (bashrc (list
                         (local-file
                          (string-append
-                          (getenv "DOTFILES_DIR")
+                          %distro-root-directory
                           "/home-files/schneizel/.bashrc")
                          "bashrc")))
                (bash-profile (list
                               (local-file
                                (string-append
-                                (getenv "DOTFILES_DIR")
+                                %distro-root-directory
                                 "/home-files/schneizel/.bash_profile")
                                "bash_profile")))))
      (service home-dotfiles-service-type
               (home-dotfiles-configuration
                (source-directory
                 (string-append
-                 (getenv "DOTFILES_DIR") "/home-files"))
+                 %distro-root-directory
+                 "/home-files"))
                (directories '("schneizel"))
                (excluded
                 (list

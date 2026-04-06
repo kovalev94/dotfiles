@@ -80,12 +80,12 @@
                 (ipv4-rules
                  (local-file
                   (string-append
-                   (getenv "DOTFILES_DIR")
+                   %distro-root-directory
                    "/sys-files/iptables/damocles.rules")))
                 (ipv6-rules
                  (local-file
                   (string-append
-                   (getenv "DOTFILES_DIR")
+                   %distro-root-directory
                    "/sys-files/iptables/damocles.rules")))))
       (simple-service 'dotfiles-and-guix-env session-environment-service-type
                      `(("DOTFILES_DIR" .

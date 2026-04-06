@@ -7,6 +7,7 @@
   #:use-module (gnu system)
   #:use-module (gnu system pam)
   #:use-module (gnu system shadow)
+  #:use-module (guix-config channels)
   #:use-module (guix-config packages certs)
   #:use-module (guix-config systems desktop)
   #:export (gawain-system))
@@ -53,7 +54,7 @@
                      (ruleset
                       (local-file
                        (string-append
-                        (getenv "DOTFILES_DIR");;
+                        %distro-root-directory
                         "/sys-files/gawain/nftables/rules"))))))))));; add dynamic behavior
 
 

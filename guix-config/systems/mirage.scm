@@ -12,6 +12,7 @@
   #:use-module (gnu system)
   #:use-module (gnu system pam)
   #:use-module (gnu system shadow)
+  #:use-module (guix-config channels)
   #:use-module (guix-config systems desktop)
   #:export (mirage-system))
 
@@ -77,7 +78,7 @@
                      (ruleset
                       (local-file
                        (string-append
-                        (getenv "DOTFILES_DIR");;
+                        %disro-root-directory
                         "/sys-files/mirage/nftables/rules")))));; add dynamic behavior
         (network-manager-service-type
          config => (network-manager-configuration

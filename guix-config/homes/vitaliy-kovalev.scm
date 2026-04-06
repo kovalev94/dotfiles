@@ -6,6 +6,7 @@
   #:use-module (gnu home services mail)
   #:use-module (gnu home services ssh)
   #:use-module (gnu home services dotfiles)
+  #:use-module (guix-config channels)
   #:use-module (guix-config homes desktop)
   #:use-module (guix-config ssh)
   #:export (vitaliy-kovalev-home))
@@ -49,7 +50,7 @@
                      (list
                       (local-file
                        (string-append
-                        (getenv "DOTFILES_DIR")
+                        %distro-root-directory
                         "/home-files/vitaliy.kovalev/.ssh/keys/gawain.pub")
                        "gawain.pub")))
                     (add-keys-to-agent "120m")))))))

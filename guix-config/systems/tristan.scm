@@ -9,6 +9,7 @@
   #:use-module (gnu services admin)
   #:use-module (gnu services networking)
   #:use-module (nongnu packages linux)
+  #:use-module (guix-config channels)
   #:use-module (guix-config packages linux)
   #:use-module (guix-config systems base)
   #:use-module (guix-config homes gino)
@@ -79,19 +80,19 @@
                  (config-file
                   (local-file
                    (string-append
-                    (getenv "DOTFILES_DIR")
+                    %distro-root-directory
                     "/sys-files/tristan/dhcpd/dhcpd.conf")))));; add dynamic behavior
       (service iptables-service-type
                (iptables-configuration
                 (ipv4-rules
                  (local-file
                   (string-append
-                   (getenv "DOTFILES_DIR")
+                   %distro-root-directory
                    "/sys-files/tristan/iptables/rules.v4")))
                 (ipv6-rules
                  (local-file
                   (string-append
-                   (getenv "DOTFILES_DIR")
+                   %distro-root-directory
                    "/sys-files/tristan/iptables/rules.v6")))))
       (modify-services (operating-system-user-services %my-base-system)
         (delete network-manager-service-type)

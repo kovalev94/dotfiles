@@ -39,7 +39,8 @@
                (home-dotfiles-configuration
                  (source-directory
                   (string-append
-                   (getenv "DOTFILES_DIR") "/home-files"))
+                   %distro-root-directory
+                   "/home-files"))
                  (directories '("base"))
                  (excluded
                   (list

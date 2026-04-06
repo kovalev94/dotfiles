@@ -4,6 +4,7 @@
   #:use-module (gnu services)
   #:use-module (gnu home services)
   #:use-module (gnu home services ssh)
+  #:use-module (guix-config channels)
   #:use-module (guix-config homes base)
   #:export (gino-home))
 
@@ -20,7 +21,7 @@
                      (list
                       (local-file
                        (string-append
-                        (getenv "DOTFILES_DIR")
+                        %distro-root-directory
                         "/home-files/gino/.ssh/keys/tristan.pub")
                        "knightmares.pub")))
                     (add-keys-to-agent "120m")))))))
