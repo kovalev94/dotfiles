@@ -52,8 +52,10 @@
   (list (channel
           (inherit %default-guix-channel)
           (commit
-           "5e63c9bdb1bf7114d742ba4c07596932e0124188"))
+           "b383c0ece5501f3f0d75cbb530cedf5141e011ca"))
         (channel
           (inherit %nonguix-channel)
           (commit
-           "0f68c1684169cbef8824fb246dfefa3e6832225b"))))
+           "48a8706d44040cc7014f36873dbd834c048aadd3"))
+        %this-channel
+        rosenthal-channel))
