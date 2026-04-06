@@ -1,11 +1,23 @@
 (define-module (guix-config channels)
   #:use-module (guix channels)
-  #:export (%nonguix-channel
+  #:export (%distro-root-directory
+            %this-channel
+            %nonguix-channel
             rosenthal-channel
             %my-channels
             %my-pinned-channels)
   #:re-export (%default-guix-channel))
 
+
+(define %distro-root-directory
+  ;; Absolute file name of the module hierarchy.
+  (dirname (search-path %load-path "guix-config/channels.scm")))
+
+(define %this-channel
+  (channel
+    (name 'dotfiles)
+    (url "git@github.com:kovalev94/dotfiles.git")
+    (branch "main")))
 
 (define %nonguix-channel
   (channel
@@ -33,6 +45,7 @@
   (list
    %default-guix-channel
    %nonguix-channel
+   %this-channel
    rosenthal-channel))
 
 (define %my-pinned-channels

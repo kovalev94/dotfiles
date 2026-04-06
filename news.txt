@@ -1,0 +1,16 @@
+;; Local Variables:
+;; mode: scheme
+;; End:
+
+;; vim: filetype=scheme
+
+(channel-news
+ (version 0)
+
+ (entry (commit "14e5e408a33e95b0ad9a79a371f3b3bee7934ed8")
+        (title
+         (en "Create the channel finaly"))
+        (body
+         (en "After a long time living with a GUIX_PACKAGE_PATH env
+variable, about a month of preparing -
+I'm finally have create the channel from this repo."))))
