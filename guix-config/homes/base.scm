@@ -17,7 +17,7 @@
     (services
      (list
       (service home-channels-service-type
-               %my-channels)
+               %my-pinned-channels)
       (service home-ssh-agent-service-type)
 
       (service home-openssh-service-type
