@@ -62,7 +62,7 @@
         (guix-service-type
          config =>(guix-configuration
                     (inherit config)
-                    (channels %my-channels)
+                    (channels %my-pinned-channels)
                     (substitute-urls %my-substitutes-urls)
                     (authorized-keys %my-authorized-keys))))))
 
