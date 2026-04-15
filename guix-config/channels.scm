@@ -11,7 +11,9 @@
 
 (define %distro-root-directory
   ;; Absolute file name of the module hierarchy.
-  (dirname (search-path %load-path "guix-config/channels.scm")))
+  (dirname
+   (dirname
+    (search-path %load-path "guix-config/channels.scm"))))
 
 (define %this-channel
   (channel
