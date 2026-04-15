@@ -60,4 +60,7 @@
           (commit
            "48a8706d44040cc7014f36873dbd834c048aadd3"))
         %this-channel
-        rosenthal-channel))
+        (channel
+          (inherit rosenthal-channel)
+          (commit
+           "128c21d11adb015793a7bc895cbe15ef7aef39c7"))))
