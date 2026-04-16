@@ -39,5 +39,3 @@
     (description "Вызывает функции из модуля guix-config.")
     (home-page "https://example.com")
     (license #f)))
-
-guix-config-tool
