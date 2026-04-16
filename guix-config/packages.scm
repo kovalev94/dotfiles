@@ -9,6 +9,7 @@
   #:use-module (guix-config packages fonts)
   #:use-module (guix-config packages python-xyz)
   #:use-module (guix-config packages golang-xyz)
+  #:use-module (guix-config packages guix-config)
   #:export (%my-base-packages
             %my-desktop-packages
             %my-emacs-packages))
