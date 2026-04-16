@@ -12,7 +12,9 @@
     (version "0.1")
     (source
      (local-file
-      %distro-root-directory #:recursive? #t))
+      (string-append
+       %distro-root-directory
+       "/guix-config/scripts/guix-config.scm")))
     (build-system guile-build-system)
     (arguments
      (list
