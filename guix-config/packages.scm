@@ -40,7 +40,7 @@
    ;; Archive
    unzip zip 7zip
    ;; General
-   python htop screen minicom
+   python htop screen minicom guix-config-tool
    ;;lrzsz
    mc vim git jq ffmpeg password-store
    python gnupg bluez
