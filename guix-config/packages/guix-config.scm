@@ -3,13 +3,16 @@
   #:use-module (guix packages)
   #:use-module (guix build-system guile)
   #:use-module (gnu packages package-management)
-  #:use-module (gnu packages guile))
+  #:use-module (gnu packages guile)
+  #:use-module (guix-config channels))
 
 (define-public guix-config-tool
   (package
     (name "guix-config-tool")
     (version "0.1")
-    (source (local-file "/home/lulu/.dotfiles/guix-config/scripts" #:recursive? #t)) ; Берем весь репозиторий
+    (source
+     (local-file
+      %distro-root-directory #:recursive? #t))
     (build-system guile-build-system)
     (arguments
      (list
