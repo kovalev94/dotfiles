@@ -77,7 +77,7 @@
 
                        (guix-config-main (command-line)))
                    #:guile guile-3.0
-                   #:module-path (list (gexp-input guix "share/guile/site/3.0")))))
+                   #:module-path (file-append guix "share/guile/site/3.0"))))
             (mkdir-p bin)
             (symlink script (string-append bin "/guix-config"))))))
     (inputs (list guile-3.0 guix))
@@ -85,5 +85,3 @@
     (description "Весь код встроен в пакет.")
     (home-page #f)
     (license #f)))
-
-guix-config-tool
