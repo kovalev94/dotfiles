@@ -78,7 +78,7 @@
                      (ruleset
                       (local-file
                        (string-append
-                        %disro-root-directory
+                        %distro-root-directory
                         "/sys-files/mirage/nftables/rules")))));; add dynamic behavior
         (network-manager-service-type
          config => (network-manager-configuration
