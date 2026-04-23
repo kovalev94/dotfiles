@@ -44,6 +44,11 @@
 
     (keyboard-layout %my-kb-layout)
 
+    (sudoers-file
+     (plain-file "sudoers"
+                 (string-append (plain-file-content %sudoers-specification)
+                                (format #f Defaults env_keep += SSH_AUTH_SOCK))))
+
     (packages
      (append
       %my-base-packages
