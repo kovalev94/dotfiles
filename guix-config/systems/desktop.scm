@@ -4,6 +4,7 @@
   #:use-module (nongnu packages linux)
   #:use-module (gnu services)
   #:use-module (gnu services ssh)
+  #:use-module (gnu services base)
   #:use-module (gnu services dbus)
   #:use-module (gnu services cups)
   #:use-module (gnu services containers)
