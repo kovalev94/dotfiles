@@ -1,7 +1,6 @@
 (define-module (guix-config systems damocles)
   #:use-module (guix gexp)
   #:use-module (gnu system)
-  #:use-module (gnu system pam)
   #:use-module (gnu system shadow)
   #:use-module (gnu system privilege)
   #:use-module (gnu system file-systems)

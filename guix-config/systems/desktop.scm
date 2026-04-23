@@ -9,6 +9,7 @@
   #:use-module (gnu services containers)
   #:use-module (gnu services virtualization)
   #:use-module (gnu system)
+  #:use-module (gnu system pam)
   #:use-module (gnu system accounts)
   #:use-module (gnu system privilege)
   #:use-module (nongnu system linux-initrd)

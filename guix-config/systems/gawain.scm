@@ -5,7 +5,6 @@
   #:use-module (gnu services base)
   #:use-module (gnu services networking)
   #:use-module (gnu system)
-  #:use-module (gnu system pam)
   #:use-module (gnu system shadow)
   #:use-module (guix-config channels)
   #:use-module (guix-config packages certs)
