@@ -87,11 +87,6 @@
                   (string-append
                    %distro-root-directory
                    "/sys-files/iptables/damocles.rules")))))
-      (simple-service 'dotfiles-and-guix-env session-environment-service-type
-                     `(("DOTFILES_DIR" .
-                        "/home/schneizel/.dotfiles")
-                       ("GUIX_PACKAGE_PATH" .
-                        "/home/schneizel/.dotfiles")))
       ;(service wireguard-service-type
       ;         (wireguard-configuration
       ;          (interface "knightmares")

@@ -55,14 +55,7 @@
                         (host "213.87.105.213" "damocles")
                         (host "109.174.98.182" "ipoint-marksa-white")
                         (host "109.111.191.225" "ipoint-gogolya-white")
-                        (host "176.126.103.60" "ipoint-controller-white")))
-       (simple-service 'my-env session-environment-service-type
-                       `(("DOTFILES_DIR" .
-                          "/home/lulu/.dotfiles")
-                         ("TZ" .
-                          ,(operating-system-timezone %my-desktop-system))
-                         ("GUIX_PACKAGE_PATH" .
-                          "/home/lulu/.dotfiles"))));; add dynamic behavior
+                        (host "176.126.103.60" "ipoint-controller-white"))))
       (modify-services (operating-system-user-services %my-desktop-system)
         (openssh-service-type
          config => (openssh-configuration

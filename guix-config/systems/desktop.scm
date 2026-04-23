@@ -59,6 +59,9 @@
        (simple-service
         'spice-polkit polkit-service-type
         (list spice-gtk))
+       (simple-service 'my-env session-environment-service-type
+                       `(("TZ" .
+                          ,(operating-system-timezone %my-desktop-system))))
        (service qemu-binfmt-service-type
                 (qemu-binfmt-configuration
                   (platforms (lookup-qemu-platforms "arm" "aarch64"))))

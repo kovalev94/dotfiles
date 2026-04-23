@@ -36,15 +36,6 @@
       (operating-system-packages %my-desktop-system)))
 
     (services
-     (append
-      (list
-       (simple-service 'my-env session-environment-service-type
-                       `(("DOTFILES_DIR" .
-                          "/home/vitaliy.kovalev/.dotfiles")
-                         ("TZ" .
-                          ,(operating-system-timezone %my-desktop-system))
-                         ("GUIX_PACKAGE_PATH" .
-                          "/home/vitaliy.kovalev/.dotfiles"))));; add dynamic behavior
       (modify-services (operating-system-user-services %my-desktop-system)
         (openssh-service-type
          config => (openssh-configuration
@@ -55,7 +46,7 @@
                       (local-file
                        (string-append
                         %distro-root-directory
-                        "/sys-files/gawain/nftables/rules"))))))))));; add dynamic behavior
+                        "/sys-files/gawain/nftables/rules")))))))));; add dynamic behavior
 
 
 gawain-system
