@@ -63,6 +63,13 @@
        (simple-service 'my-env session-environment-service-type
                        `(("TZ" .
                           ,(operating-system-timezone %my-desktop-system))))
+       (simple-service 'add-extra-hosts hosts-service-type
+                       (list
+                        (host "185.164.163.16" "vpnserv")
+                        (host "213.87.105.213" "damocles")
+                        (host "109.174.98.182" "ipoint-marksa-white")
+                        (host "109.111.191.225" "ipoint-gogolya-white")
+                        (host "176.126.103.60" "ipoint-controller-white")))
        (service qemu-binfmt-service-type
                 (qemu-binfmt-configuration
                   (platforms (lookup-qemu-platforms "arm" "aarch64"))))
