@@ -29,6 +29,8 @@ add rule ip filter INPUT icmp type {echo-reply, echo-request } counter accept
 add rule ip filter INPUT iifname "lo" counter accept
 #Allow ssh
 add rule ip filter INPUT ct state new tcp dport 22 counter accept
+#Allow web-server
+add rule ip filter INPUT ct state new tcp dport 8080 counter accept
 
 # Allow forward established and related
 add rule ip filter FORWARD ct state established,related counter accept
