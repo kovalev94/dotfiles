@@ -18,4 +18,5 @@ Far :Eltex-remote:
 Near :Eltex-local:
 Patterns *
 Create Both
+Expunge Both
 SyncState *
