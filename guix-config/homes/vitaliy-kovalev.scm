@@ -6,6 +6,7 @@
   #:use-module (gnu home services mail)
   #:use-module (gnu home services ssh)
   #:use-module (gnu home services dotfiles)
+  #:use-module (gnu packages web-browsers)
   #:use-module (guix-config channels)
   #:use-module (guix-config homes desktop)
   #:use-module (guix-config ssh)
