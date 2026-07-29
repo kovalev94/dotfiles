@@ -54,6 +54,7 @@
    libreoffice
    ;; Browsers
    firefox
+   qutebrowser
    ;;ungoogled-chromium - Disable while will not fix
    google-chrome-stable
    ;; Video
