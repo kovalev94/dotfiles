@@ -124,4 +124,7 @@
 
 (after! docker
   (require 'evil-collection-docker)
-  (evil-collection-docker-setup))
+  (evil-collection-docker-setup)
+  (setq display-buffer-alist
+        (cons '("\\*docker-" display-buffer-same-window)
+              display-buffer-alist)))
