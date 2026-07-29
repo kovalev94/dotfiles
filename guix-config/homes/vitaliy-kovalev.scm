@@ -15,6 +15,10 @@
 (define vitaliy-kovalev-home
   (home-environment
     (inherit %my-desktop-home)
+    (packages
+     (append
+      (list epiphany)
+      (home-environment-packages %my-desktop-home)))
     (services
      (modify-services (home-environment-user-services %my-desktop-home)
        (home-dotfiles-service-type
