@@ -18,8 +18,8 @@
 (use-package-modules admin vpn networking linux curl dns
                      telephony disk compression python
                      screen engineering mc vim version-control
-                     web video password-utils gnupg fonts
-                     libreoffice chromium image tex
+                     web web-browsers video password-utils gnupg
+                     fonts libreoffice chromium image tex
                      kde-multimedia audio linphone wm
                      compton pulseaudio image-viewers xorg
                      imagemagick freedesktop xdisorg ssh
