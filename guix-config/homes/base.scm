@@ -28,6 +28,12 @@
                    personal-machines
                    my-version-control))
                  (authorized-keys '())
+                 (known-hosts2
+                  (list
+                   (local-file
+                    (string-append
+                     %distro-root-directory
+                     "/aux-files/known_hosts_github"))))
                  (add-keys-to-agent "120m")))
 
       (service home-gpg-agent-service-type
