@@ -7,6 +7,7 @@
   #:use-module (gnu home services shells)
   #:use-module (gnu home services ssh)
   #:use-module (gnu home services dotfiles)
+  #:use-module (guix gexp)
   #:use-module (guix-config channels)
   #:use-module (guix-config ssh)
   #:export (%my-base-home))
