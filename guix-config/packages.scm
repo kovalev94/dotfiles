@@ -43,7 +43,7 @@
    ;; General
    python htop screen minicom guix-config-tool
    ;;lrzsz
-   mc vim git jq ffmpeg password-store
+   mc vim git git-lfs jq ffmpeg password-store
    python gnupg bluez
    ;; Fonts
    font-gnu-freefont font-gnu-unifont))
