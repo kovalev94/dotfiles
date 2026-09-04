@@ -18,7 +18,7 @@
 (define %this-channel
   (channel
     (name 'dotfiles)
-    (url "git@github.com:kovalev94/dotfiles.git")
+    (url "https://github.com/kovalev94/dotfiles.git")
     (branch "main")))
 
 (define %nonguix-channel
