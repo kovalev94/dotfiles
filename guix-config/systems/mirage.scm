@@ -4,6 +4,7 @@
   #:use-module (gnu packages fonts)
   #:use-module (gnu packages linux)
   #:use-module (gnu services)
+  #:use-module (gnu services base)
   #:use-module (gnu services pm)
   #:use-module (gnu services ssh)
   #:use-module (gnu services desktop)
