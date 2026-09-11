@@ -21,7 +21,6 @@
   #:use-module (gnu bootloader grub)
   #:use-module (guix-config packages)
   #:use-module (guix-config channels)
-  #:use-module (guix-config substitutes)
   #:use-module (guix-config keyboard)
   #:use-module (srfi srfi-1)
   #:export (%my-base-system))

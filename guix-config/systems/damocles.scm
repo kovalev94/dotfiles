@@ -16,7 +16,6 @@
   #:use-module (gnu packages package-management)
   #:use-module (guix-config packages)
   #:use-module (guix-config channels)
-  #:use-module (guix-config substitutes)
   #:use-module (guix-config keyboard)
   #:use-module (guix-config homes schneizel))
 
