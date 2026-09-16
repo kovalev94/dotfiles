@@ -52,23 +52,22 @@
 (setq pdf-misc-print-program-executable "lpr")
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
-;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
+;; `with-eval-after-load' block, otherwise Doom's defaults may override your
+;; settings. E.g.
 ;;
-;;   (after! PACKAGE
+;;   (with-eval-after-load 'PACKAGE
 ;;     (setq x y))
 ;;
 ;; The exceptions to this rule:
 ;;
 ;;   - Setting file/directory variables (like `org-directory')
 ;;   - Setting variables which explicitly tell you to set them before their
-;;     package is loaded (see 'C-h v VARIABLE' to look up their documentation).
+;;     package is loaded (see 'C-h v VARIABLE' to look them up).
 ;;   - Setting doom variables (which start with 'doom-' or '+').
 ;;
 ;; Here are some additional functions/macros that will help you configure Doom.
 ;;
 ;; - `load!' for loading external *.el files relative to this one
-;; - `use-package!' for configuring packages
-;; - `after!' for running code after a package has loaded
 ;; - `add-load-path!' for adding directories to the `load-path', relative to
 ;;   this file. Emacs searches the `load-path' when you load packages with
 ;;   `require' or `use-package'.
@@ -82,7 +81,7 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-(after! vterm
+(with-eval-after-load vterm
   (setq vterm-max-scrollback 100000))
 
 ;; Fix guix emacs pinned find path.
@@ -115,14 +114,14 @@
 (setq mu4e-context-policy 'ask-if-none
       mu4e-compose-context-policy 'always-ask)
 
-(after! mu4e
+(with-eval-after-load mu4e
   (setq sendmail-program (executable-find "msmtp")
 	send-mail-function #'smtpmail-send-it
 	message-sendmail-f-is-evil t
 	message-sendmail-extra-arguments '("--read-envelope-from")
 	message-send-mail-function #'message-send-mail-with-sendmail))
 
-(after! docker
+(with-eval-after-load docker
   (require 'evil-collection-docker)
   (evil-collection-docker-setup)
   (setq display-buffer-alist
