@@ -81,7 +81,7 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-(with-eval-after-load vterm
+(with-eval-after-load 'vterm
   (setq vterm-max-scrollback 100000))
 
 ;; Fix guix emacs pinned find path.
@@ -114,14 +114,14 @@
 (setq mu4e-context-policy 'ask-if-none
       mu4e-compose-context-policy 'always-ask)
 
-(with-eval-after-load mu4e
+(with-eval-after-load 'mu4e
   (setq sendmail-program (executable-find "msmtp")
 	send-mail-function #'smtpmail-send-it
 	message-sendmail-f-is-evil t
 	message-sendmail-extra-arguments '("--read-envelope-from")
 	message-send-mail-function #'message-send-mail-with-sendmail))
 
-(with-eval-after-load docker
+(with-eval-after-load 'docker
   (require 'evil-collection-docker)
   (evil-collection-docker-setup)
   (setq display-buffer-alist
