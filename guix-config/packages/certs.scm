@@ -22,42 +22,44 @@
        #:builder
        (begin
          (use-modules (guix build utils))
-         (let ((eltex-ca (assoc-ref %build-inputs "EltexRootCA.crt"))
+         (let ((eltex-root-ca (assoc-ref %build-inputs "EltexRootCA.crt"))
+               (eltex-rca (assoc-ref %build-inputs "Eltex_RCA.crt"))
                (out (string-append (assoc-ref %outputs "out") "/etc/ssl/certs"))
                (openssl (assoc-ref %build-inputs "openssl"))
                (perl (assoc-ref %build-inputs "perl")))
            (mkdir-p out)
-           ((lambda (cert)
-              (copy-file
-               cert (string-append
-                     out "/" (strip-store-file-name cert))))
-            eltex-ca)
+
+           (for-each (lambda (cert)
+                  (copy-file
+                   cert (string-append
+                         out "/" (strip-store-file-name cert))))
+                (list eltex-root-ca eltex-rca))
            ;; Create hash symlinks suitable for OpenSSL ('SSL_CERT_DIR' and
            ;; similar.)
            (chdir (string-append %output "/etc/ssl/certs"))
-           (invoke (string-append openssl "/bin/openssl")
-                   "x509"
-                   "-in"
-                   "EltexRootCA.crt"
-                   "-out"
-                   "EltexRootCA.pem"
-                   "-outform PEM")
            (invoke (string-append perl "/bin/perl")
                    (string-append openssl "/bin/c_rehash")
                    ".")))))
     (native-inputs
-     (list openssl perl))                           ;for 'c_rehash'
+     (list openssl perl))
     (inputs
      `(; The Let's Encrypt root certificate, "ISRG Root X1".
        ("EltexRootCA.crt"
         ,(origin
            (method url-fetch)
-           (uri "https://intdocs.eltex.loc/download/attachments/337631/EltexRootCA.crt")
+           (uri "https://ca.eltex.loc/crt/EltexRootCA.crt")
            (sha256
             (base32
-             "00a9s6ny148wk50hyxrd7a2vkr3y7f6wiwx7sq1asbjla0wixrrn"))))))
-    (home-page "https://intdoc.eltex.loc")
+             "1hxc99axlgzhfnkas90lhas8iy1hgiqamy8s8ln7i7qx8nz3k626"))))
+       ("Eltex_RCA.crt"
+        ,(origin
+           (method url-fetch)
+           (uri "https://ca.eltex.loc/crt/Eltex_RCA.crt")
+           (sha256
+            (base32
+             "0vfpjr7w2qigkf3mk31fmj8ihndc9krb4h47s1qiqaalpj06m0kr"))))))
+    (home-page "https://ca.eltex.loc")
     (synopsis "Eltex root certificate")
     (description "This package provides a certificate store containing only the
 Eltex root certificate.  It is intended to be used within Guix.")
-    (license (undistributable "https://intdocs.eltex.loc"))))
+    (license (undistributable "https://ca.eltex.loc"))))
