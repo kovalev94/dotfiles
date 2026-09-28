@@ -46,7 +46,7 @@
 (dired-async-mode 1)
 
 ;; Set evil work in minibuffer too
-(setq evil-want-minibuffer t)
+;;(setq evil-want-minibuffer t)
 
 ;; Set printing program
 (setq pdf-misc-print-program-executable "lpr")
