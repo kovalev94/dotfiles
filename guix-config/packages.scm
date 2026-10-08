@@ -3,6 +3,7 @@
   #:use-module (nongnu packages mozilla)
   #:use-module (nongnu packages chrome)
   #:use-module (nongnu packages fonts)
+  #:use-module (nongnu packages k8s)
   #:use-module (guix-config packages telephony)
   #:use-module (guix-config packages emacs)
   #:use-module (guix-config packages emacs-xyz)
@@ -41,7 +42,7 @@
    ;; Archive
    unzip zip 7zip
    ;; General
-   python htop screen minicom
+   python htop screen minicom p11-kit
    ;;lrzsz
    mc vim git git-lfs jq ffmpeg password-store
    python gnupg bluez
@@ -97,6 +98,8 @@
    python-lsp-server
    ;; Ansible IDE
    ansible sshpass emacs-ansible
+   ;; Kube IDE
+   kubectl
    ;; Golang IDE
    go gopls gore go-github-com-cweill-gotests
    go-github-com-fatih-gomodifytags-next))
