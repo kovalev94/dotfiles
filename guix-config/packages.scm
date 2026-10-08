@@ -20,7 +20,7 @@
                      screen engineering mc vim version-control
                      web web-browsers video password-utils gnupg
                      fonts libreoffice chromium image tex
-                     kde-multimedia audio linphone wm
+                     kde-multimedia audio linphone wm tls
                      compton pulseaudio image-viewers xorg
                      imagemagick freedesktop xdisorg ssh
                      terminals virtualization spice emacs-xyz
