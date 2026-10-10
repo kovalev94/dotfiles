@@ -12,16 +12,10 @@
    ;; VPN server
    (openssh-host
     (name "vpnserv")
-    (host-name "vpnserv")
+    (host-name "mgmt.lrn.kvp-services.xyz")
     (user "vpn_admin")
     (port 56713)
-    (identity-file "~/.ssh/keys/vpnserv"))
-   (openssh-host
-    (name "vpnserv2")
-    (host-name "vpnserv2")
-    (user "vpn_admin")
-    (port 56713)
-    (identity-file "~/.ssh/keys/vpnserv2"))))
+    (identity-file "~/.ssh/keys/vpnserv"))))
 
 (define work-machines
   (list
