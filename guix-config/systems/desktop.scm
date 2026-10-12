@@ -83,7 +83,13 @@
        (service cups-service-type
                 (cups-configuration
                  (web-interface? #t))))
-      (operating-system-user-services %my-base-system)))
+
+      (modify-services
+       (operating-system-user-services %my-base-system)
+       (openssh-service-type
+        config => (openssh-configuration
+                   (inherit config)
+                   (x11-forwarding? #t)))l)
 
     (privileged-programs
      (cons*
