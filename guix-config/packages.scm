@@ -41,7 +41,7 @@
    ;; Archive
    unzip zip 7zip
    ;; General
-   python htop screen minicom p11-kit
+   python htop screen minicom p11-kit xauth
    ;;lrzsz
    mc vim git git-lfs jq ffmpeg password-store
    python gnupg bluez
