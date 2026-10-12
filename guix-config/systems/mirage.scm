@@ -51,6 +51,7 @@
       (modify-services (operating-system-user-services %my-desktop-system)
         (openssh-service-type
          config => (openssh-configuration
+                     (inherit config)
                      (port-number 13131)))
         ;;Sleep doesn't work, using freeze until fix.
         (elogind-service-type

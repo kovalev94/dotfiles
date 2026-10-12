@@ -36,9 +36,6 @@
 
     (services
       (modify-services (operating-system-user-services %my-desktop-system)
-        (openssh-service-type
-         config => (openssh-configuration
-                     (extra-content "PermitTunnel yes")))
         (nftables-service-type
          config => (nftables-configuration
                      (ruleset
