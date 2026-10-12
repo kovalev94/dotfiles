@@ -89,7 +89,7 @@
        (openssh-service-type
         config => (openssh-configuration
                    (inherit config)
-                   (x11-forwarding? #t)))l)
+                   (x11-forwarding? #t))))))
 
     (privileged-programs
      (cons*
