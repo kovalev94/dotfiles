@@ -88,7 +88,7 @@
    shellcheck shfmt font-nerd-symbols-only
    emacs-nerd-icons-completion emacs-dashboard
    emacs-org-texlive-collection texlive-xetex
-   fd emacs-tramp
+   fd emacs-tramp emacs-restclient
    ;; Mail
    mu isync
    ;; Python IDE
