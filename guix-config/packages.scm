@@ -7,6 +7,7 @@
   #:use-module (guix-config packages telephony)
   #:use-module (guix-config packages emacs)
   #:use-module (guix-config packages emacs-xyz)
+  #:use-module (guix-config packages emacs-ewm)
   #:use-module (guix-config packages fonts)
   #:use-module (guix-config packages python-xyz)
   #:use-module (guix-config packages golang-xyz)
@@ -79,9 +80,13 @@
 (define-public %my-emacs-packages
   (list
    ;; EXWM
-   emacs-exwm-transparent emacs-xdg-launcher
-   emacs-exwm-modeline-next emacs-move-border
-   emacs-transparent
+   ;;emacs-exwm-transparent emacs-xdg-launcher
+   ;;emacs-exwm-modeline-next emacs-move-border
+   ;;emacs-transparent
+   ;;EWM
+   emacs-pgtk
+   wl-clipboard
+   wireplumber
    ;; General
    emacs-rg ripgrep emacs-pdf-tools emacs-vterm
    libvterm emacs-eat emacs-docker markdown
