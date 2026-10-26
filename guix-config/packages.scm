@@ -24,7 +24,7 @@
                      kde-multimedia audio linphone wm tls
                      compton pulseaudio image-viewers xorg
                      imagemagick freedesktop xdisorg ssh
-                     terminals virtualization spice emacs-xyz
+                     terminals virtualization spice emacs emacs-xyz
                      rust-apps markup haskell-apps shellutils
                      mail python-xyz check python-check
                      golang golang-apps)
