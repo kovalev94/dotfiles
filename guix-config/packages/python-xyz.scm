@@ -10,7 +10,6 @@
   #:use-module (guix packages)
   #:use-module (guix download)
   #:use-module (guix gexp)
-  #:use-module (guix build-system python)
   #:use-module (guix build-system pyproject))
 
 
