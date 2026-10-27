@@ -4,6 +4,14 @@
 ;; sync' after modifying this file!
 
 
+(when (daemonp)
+  (add-hook 'after-make-frame-functions
+            (defun +ewm-trigger-server-hooks-h (frame)
+              (when (display-graphic-p frame)
+                (remove-hook 'after-make-frame-functions #'+ewm-trigger-server-hooks-h)
+                (with-selected-frame frame
+                  (run-hooks 'server-after-make-frame-hook))))))
+
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
 (setq user-full-name "Vitaliy Kovalev"
