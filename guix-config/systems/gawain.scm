@@ -26,7 +26,7 @@
         (group "users")
         (home-directory "/home/vitaliy.kovalev")
         (supplementary-groups
-         '("wheel" "netdev" "audio" "video" "kvm" "libvirt" "cgroup")))
+         '("wheel" "netdev" "input" "audio" "video" "kvm" "libvirt" "cgroup")))
       %base-user-accounts))
 
     (packages

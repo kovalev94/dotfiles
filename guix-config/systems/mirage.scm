@@ -35,7 +35,7 @@
         (group "users")
         (home-directory "/home/lulu")
         (supplementary-groups
-         '("wheel" "netdev" "audio" "video" "kvm" "libvirt" "cgroup")))
+         '("wheel" "netdev" "input" "audio" "video" "kvm" "libvirt" "cgroup")))
       %base-user-accounts))
 
     (packages
