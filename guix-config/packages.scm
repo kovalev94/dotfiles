@@ -85,6 +85,7 @@
    ;;emacs-transparent
    ;;EWM
    emacs-pgtk
+   emacs-ewm
    wl-clipboard
    wireplumber
    ;; General
