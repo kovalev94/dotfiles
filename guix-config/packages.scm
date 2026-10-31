@@ -88,6 +88,7 @@
    emacs-ewm
    wl-clipboard
    wireplumber
+   xwayland-satellite
    ;; General
    emacs-rg ripgrep emacs-pdf-tools emacs-vterm
    libvterm emacs-eat emacs-docker markdown
