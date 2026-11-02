@@ -163,3 +163,10 @@
   (setq display-buffer-alist
         (cons '("\\*docker-" display-buffer-same-window)
               display-buffer-alist)))
+
+(use-package ewm
+  :config
+  (add-to-list 'doom-real-buffer-modes 'ewm-surface-mode)
+  (put 'ewm-surface-mode 'mode-class 'special)
+  (when (modulep! :editor evil)
+    (add-to-list 'evil-emacs-state-modes 'ewm-surface-mode)))
