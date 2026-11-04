@@ -80,15 +80,15 @@
 (define-public %my-emacs-packages
   (list
    ;; EXWM
-   ;;emacs-exwm-transparent emacs-xdg-launcher
-   ;;emacs-exwm-modeline-next emacs-move-border
-   ;;emacs-transparent
+   emacs-exwm-transparent emacs-xdg-launcher
+   emacs-exwm-modeline-next emacs-move-border
+   emacs-transparent
    ;;EWM
-   emacs-pgtk
-   emacs-ewm
-   wl-clipboard
-   wireplumber
-   xwayland-satellite
+   ;;emacs-pgtk
+   ;;emacs-ewm
+   ;;wl-clipboard
+   ;;wireplumber
+   ;;xwayland-satellite
    ;; General
    emacs-rg ripgrep emacs-pdf-tools emacs-vterm
    libvterm emacs-eat emacs-docker markdown
