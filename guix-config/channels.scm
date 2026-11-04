@@ -4,6 +4,7 @@
   #:use-module (guix channels)
   #:export (%distro-root-directory
             %this-channel
+            doomemacs-channel
             %nonguix-channel
             rosenthal-channel
             %my-channels
@@ -27,6 +28,12 @@
     (name 'dotfiles)
     (url "https://github.com/kovalev94/dotfiles.git")
     (branch "main")))
+
+(define doomemacs-channel
+  (channel
+    (name 'doomemacs)
+    (url "https://github.com/sarg/guix-doomemacs.git")
+    (branch "master")))
 
 (define %nonguix-channel
   (channel
@@ -77,6 +84,7 @@
    %default-guix-channel
    %nonguix-channel
    %this-channel
+   doomemacs-channel
    rosenthal-channel))
 
 (define %my-pinned-channels
