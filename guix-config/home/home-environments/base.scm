@@ -1,4 +1,4 @@
-(define-module (guix-config home environments base)
+(define-module (guix-config home home-environments base)
   #:use-module (gnu home)
   #:use-module (gnu services)
   #:use-module (gnu home services)

@@ -1,4 +1,4 @@
-(define-module (guix-config home environments vitaliy-kovalev)
+(define-module (guix-config home home-environments vitaliy-kovalev)
   #:use-module (guix gexp)
   #:use-module (gnu home)
   #:use-module (gnu services)
@@ -8,7 +8,7 @@
   #:use-module (gnu home services dotfiles)
   #:use-module (gnu packages gnome)
   #:use-module (guix-config channels)
-  #:use-module (guix-config home environments desktop)
+  #:use-module (guix-config home home-environments desktop)
   #:use-module (guix-config ssh)
   #:export (vitaliy-kovalev-home))
 

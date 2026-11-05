@@ -1,11 +1,11 @@
-(define-module (guix-config home envinronments gino)
+(define-module (guix-config home home-environments gino)
   #:use-module (guix gexp)
   #:use-module (gnu home)
   #:use-module (gnu services)
   #:use-module (gnu home services)
   #:use-module (gnu home services ssh)
   #:use-module (guix-config channels)
-  #:use-module (guix-config home environments base)
+  #:use-module (guix-config home home-environments base)
   #:export (gino-home))
 
 

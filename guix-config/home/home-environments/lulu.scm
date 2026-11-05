@@ -1,4 +1,4 @@
-(define-module (guix-config home environments lulu)
+(define-module (guix-config home home-environments lulu)
   #:use-module (gnu home)
   #:use-module (gnu services)
   #:use-module (gnu home services)
@@ -6,7 +6,7 @@
   #:use-module (gnu home services ssh)
   #:use-module (gnu home services dotfiles)
   #:use-module (guix-config ssh)
-  #:use-module (guix-config home environments desktop)
+  #:use-module (guix-config home home-environments desktop)
   #:export (lulu-home))
 
 

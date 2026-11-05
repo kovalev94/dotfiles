@@ -1,4 +1,4 @@
-(define-module (guix-config home envinronments desktop)
+(define-module (guix-config home home-environments desktop)
   #:use-module (guix gexp)
   #:use-module (gnu home)
   #:use-module (gnu packages gnupg)
@@ -13,7 +13,7 @@
   #:use-module (guix-config packages)
   #:use-module (guix-config keyboard)
   #:use-module (guix-config doom-modules-packages)
-  #:use-module (guix-config home environments base)
+  #:use-module (guix-config home home-environments base)
   #:export (%my-desktop-home))
 
 

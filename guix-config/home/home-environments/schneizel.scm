@@ -1,4 +1,4 @@
-(define-module (guix-config home environments schneizel)
+(define-module (guix-config home home-environments schneizel)
   #:use-module (gnu home)
   #:use-module (gnu packages vpn)
   #:use-module (gnu packages fonts)
