@@ -6,7 +6,7 @@
   #:use-module (gnu home services ssh)
   #:use-module (gnu home services dotfiles)
   #:use-module (guix-config ssh)
-  #:use-module (guix-config homes desktop)
+  #:use-module (guix-config home environments desktop)
   #:export (lulu-home))
 
 

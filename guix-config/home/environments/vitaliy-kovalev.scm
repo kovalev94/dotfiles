@@ -8,7 +8,7 @@
   #:use-module (gnu home services dotfiles)
   #:use-module (gnu packages gnome)
   #:use-module (guix-config channels)
-  #:use-module (guix-config homes desktop)
+  #:use-module (guix-config home environments desktop)
   #:use-module (guix-config ssh)
   #:export (vitaliy-kovalev-home))
 

@@ -13,7 +13,7 @@
   #:use-module (guix-config packages)
   #:use-module (guix-config keyboard)
   #:use-module (guix-config doom-modules-packages)
-  #:use-module (guix-config homes base)
+  #:use-module (guix-config home environments base)
   #:export (%my-desktop-home))
 
 

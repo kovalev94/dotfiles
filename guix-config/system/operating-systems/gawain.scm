@@ -8,7 +8,7 @@
   #:use-module (gnu system shadow)
   #:use-module (guix-config channels)
   #:use-module (guix-config packages certs)
-  #:use-module (guix-config systems desktop)
+  #:use-module (guix-config system operating-systems desktop)
   #:export (gawain-system))
 
 

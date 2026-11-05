@@ -16,7 +16,7 @@
   #:use-module (nongnu system linux-initrd)
   #:use-module (guix-config packages)
   #:use-module (guix-config packages telephony)
-  #:use-module (guix-config systems base)
+  #:use-module (guix-config system operating-systems base)
   #:export (%my-desktop-system))
 
 

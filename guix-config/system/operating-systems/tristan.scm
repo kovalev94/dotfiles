@@ -11,7 +11,7 @@
   #:use-module (nongnu packages linux)
   #:use-module (guix-config channels)
   #:use-module (guix-config packages linux)
-  #:use-module (guix-config systems base)
+  #:use-module (guix-config system operating-systems base)
   #:use-module (guix-config homes gino)
   #:export (tristan-system))
 

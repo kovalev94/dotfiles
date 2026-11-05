@@ -5,7 +5,7 @@
   #:use-module (gnu home services)
   #:use-module (gnu home services ssh)
   #:use-module (guix-config channels)
-  #:use-module (guix-config homes base)
+  #:use-module (guix-config home environments base)
   #:export (gino-home))
 
 
