@@ -1,4 +1,4 @@
-(define-module (guix-config systems images tristan)
+(define-module (guix-config system images tristan)
   #:use-module (gnu image)
   #:use-module (guix platforms arm)
   #:use-module (guix-config system operating-systems tristan)
