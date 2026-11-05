@@ -1,4 +1,4 @@
-(define-module (guix-config homes schneizel)
+(define-module (guix-config home environments schneizel)
   #:use-module (gnu home)
   #:use-module (gnu packages vpn)
   #:use-module (gnu packages fonts)
@@ -21,27 +21,27 @@
   (home-environment
    ;; Below is the list of packages that will show up in your
    ;; Home profile, under ~/.guix-home/profile.
-    (packages
-     %my-emacs-packages)
-   ;; 
+   (packages
+    %my-emacs-packages)
+   ;;
 
    ;;Below is the list of Home services.  To search for available
    ;; services, run 'guix home search KEYWORD' in a terminal.
    (services
     (list
-     ;(service home-syncthing-service-type
-     ;         (for-home
-     ;          (syncthing-configuration
-     ;           (arguments
-     ;            (list
-     ;             (string-append
-     ;              "--config="
-     ;              (or (getenv "XDG_CONFIG_HOME") "/home/schneizel/.config")
-     ;              "/syncthing")
-     ;             (string-append
-     ;              "--data="
-     ;              (or (getenv "XDG_STATE_HOME") "/home/schneizel/.local/state")
-     ;              "/syncthing"))))))
+                                        ;(service home-syncthing-service-type
+                                        ;         (for-home
+                                        ;          (syncthing-configuration
+                                        ;           (arguments
+                                        ;            (list
+                                        ;             (string-append
+                                        ;              "--config="
+                                        ;              (or (getenv "XDG_CONFIG_HOME") "/home/schneizel/.config")
+                                        ;              "/syncthing")
+                                        ;             (string-append
+                                        ;              "--data="
+                                        ;              (or (getenv "XDG_STATE_HOME") "/home/schneizel/.local/state")
+                                        ;              "/syncthing"))))))
      (service home-openssh-service-type
               (home-openssh-configuration
                (authorized-keys
@@ -49,7 +49,7 @@
                  (local-file
                   (string-append
                    %distro-root-directory
-                   "/home-files/general/knightmares.pub"))))))
+                   "/home/aux-files/general/knightmares.pub"))))))
      (service home-bash-service-type
               (home-bash-configuration
                (aliases '(("grep" . "grep --color=auto") ("ll" . "ls -l")
@@ -58,20 +58,20 @@
                         (local-file
                          (string-append
                           %distro-root-directory
-                          "/home-files/schneizel/.bashrc")
+                          "/home/aux-files/schneizel/.bashrc")
                          "bashrc")))
                (bash-profile (list
                               (local-file
                                (string-append
                                 %distro-root-directory
-                                "/home-files/schneizel/.bash_profile")
+                                "/home/aux-files/schneizel/.bash_profile")
                                "bash_profile")))))
      (service home-dotfiles-service-type
               (home-dotfiles-configuration
                (source-directory
                 (string-append
                  %distro-root-directory
-                 "/home-files"))
+                 "/home/aux-files"))
                (directories '("schneizel"))
                (excluded
                 (list

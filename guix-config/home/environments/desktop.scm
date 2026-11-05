@@ -1,4 +1,4 @@
-(define-module (guix-config homes desktop)
+(define-module (guix-config home envinronments desktop)
   #:use-module (guix gexp)
   #:use-module (gnu home)
   #:use-module (gnu packages gnupg)
@@ -30,7 +30,6 @@
    (services
     (append
      (list
-      (service home-dbus-service-type)
       (service home-startx-command-service-type
                (for-home (xorg-configuration
                           (keyboard-layout %my-kb-layout))))

@@ -1,4 +1,4 @@
-(define-module (guix-config systems damocles)
+(define-module (guix-config system operating-systems damocles)
   #:use-module (guix gexp)
   #:use-module (gnu system)
   #:use-module (gnu system shadow)
@@ -49,18 +49,18 @@
                               "audio" "video")))
      %base-user-accounts))
 
-   ;Globaly installed packages(e.g. for all users)
+                                        ;Globaly installed packages(e.g. for all users)
    (packages
     (append
      %my-base-packages
      %base-packages))
 
-   ;Installed and enabled services(like ssh-server,docker, etc.)
+                                        ;Installed and enabled services(like ssh-server,docker, etc.)
    (services
     (append
      (list
       (service guix-home-service-type
-            `(("schneizel" ,schneizel-home)))
+               `(("schneizel" ,schneizel-home)))
       (service static-networking-service-type
                (list
                 (static-networking
@@ -68,43 +68,43 @@
                   (list (network-address
                          (device "eth0")
                          (value "10.220.120.11/25"))))
-                (routes
-                 (list (network-route
-                        (destination "default")
-                        (gateway "10.220.120.1"))))
-                (name-servers '("8.8.8.8")))))
+                 (routes
+                  (list (network-route
+                         (destination "default")
+                         (gateway "10.220.120.1"))))
+                 (name-servers '("8.8.8.8")))))
       (service iptables-service-type
                (iptables-configuration
                 (ipv4-rules
                  (local-file
                   (string-append
                    %distro-root-directory
-                   "/sys-files/iptables/damocles.rules")))
+                   "/system/aux-files/iptables/damocles.rules")))
                 (ipv6-rules
                  (local-file
                   (string-append
                    %distro-root-directory
-                   "/sys-files/iptables/damocles.rules")))))
-      ;(service wireguard-service-type
-      ;         (wireguard-configuration
-      ;          (interface "knightmares")
-      ;          (adresses '("172.16.13.1/27"))
-      ;          (port 51833)
-      ;          (private-key
-      ;           #~(string-append "<("
-      ;                            #$(file-append password-store "/bin/pass")
-      ;             " Damocles/WireGuard/private-keys/%i)"))
-      ;          (bootstrap-private-key? #f)
-      ;          (peers
-      ;           (list
-      ;            (wireguard-peer
-      ;             (name "ipoint-test")
-      ;             (public-key "8f/vqKnyFNXV97tgJknBYd2YUt9WgSVxRaiQ2ngAnDQ=")
-      ;             (allowed-ips '("172.16.13.2/32"
-      ;                            "192.168.110.0/23"
-      ;                            "192.168.112.0/23"
-      ;                            "192.168.114.0/23"))
-      ;             (keep-alive #t))))))
+                   "/system/aux-files/iptables/damocles.rules")))))
+                                        ;(service wireguard-service-type
+                                        ;         (wireguard-configuration
+                                        ;          (interface "knightmares")
+                                        ;          (adresses '("172.16.13.1/27"))
+                                        ;          (port 51833)
+                                        ;          (private-key
+                                        ;           #~(string-append "<("
+                                        ;                            #$(file-append password-store "/bin/pass")
+                                        ;             " Damocles/WireGuard/private-keys/%i)"))
+                                        ;          (bootstrap-private-key? #f)
+                                        ;          (peers
+                                        ;           (list
+                                        ;            (wireguard-peer
+                                        ;             (name "ipoint-test")
+                                        ;             (public-key "8f/vqKnyFNXV97tgJknBYd2YUt9WgSVxRaiQ2ngAnDQ=")
+                                        ;             (allowed-ips '("172.16.13.2/32"
+                                        ;                            "192.168.110.0/23"
+                                        ;                            "192.168.112.0/23"
+                                        ;                            "192.168.114.0/23"))
+                                        ;             (keep-alive #t))))))
 
       (service openssh-service-type
                (openssh-configuration
@@ -112,13 +112,13 @@
                 (port-number 13131))))
 
      (modify-services %base-services
-       (guix-service-type
-        config =>(guix-configuration
-                  (inherit config)
-                  (channels %my-channels)
-                  (guix (guix-for-channels %my-channels))
-                  (substitute-urls %my-substitutes-urls)
-                  (authorized-keys %my-authorized-keys))))))
+                      (guix-service-type
+                       config =>(guix-configuration
+                                 (inherit config)
+                                 (channels %my-channels)
+                                 (guix (guix-for-channels %my-channels))
+                                 (substitute-urls %my-substitutes-urls)
+                                 (authorized-keys %my-authorized-keys))))))
 
    (privileged-programs
     (append
@@ -127,7 +127,7 @@
        (program
         (file-append iputils "/bin/ping"));Neeeded for iptuils ping
        (setuid? #t))
-     %default-privileged-programs)))
+      %default-privileged-programs)))
 
    (file-systems
     (cons*
