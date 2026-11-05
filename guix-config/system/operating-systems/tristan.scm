@@ -12,7 +12,7 @@
   #:use-module (guix-config channels)
   #:use-module (guix-config packages linux)
   #:use-module (guix-config system operating-systems base)
-  #:use-module (guix-config homes gino)
+  #:use-module (guix-config home home-environments gino)
   #:export (tristan-system))
 
 
