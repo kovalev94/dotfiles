@@ -56,7 +56,7 @@
                                    (local-file
                                     (string-append
                                      %distro-root-directory
-                                     "/home/aux-files/vitaliy.kovalev/.ssh/keys/gawain.pub")
+                                     "/guix-config/home/aux-files/vitaliy.kovalev/.ssh/keys/gawain.pub")
                                     "gawain.pub")))
                                  (add-keys-to-agent "120m")))))))
 

@@ -41,7 +41,7 @@
                (source-directory
                 (string-append
                  %distro-root-directory
-                 "/home/aux-files"))
+                 "/guix-config/home/aux-files"))
                (directories '("base"))
                (excluded
                 (list

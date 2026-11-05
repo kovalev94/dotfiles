@@ -79,12 +79,12 @@
                  (local-file
                   (string-append
                    %distro-root-directory
-                   "/system/aux-files/iptables/damocles.rules")))
+                   "/guix-config/system/aux-files/iptables/damocles.rules")))
                 (ipv6-rules
                  (local-file
                   (string-append
                    %distro-root-directory
-                   "/system/aux-files/iptables/damocles.rules")))))
+                   "/guix-config/system/aux-files/iptables/damocles.rules")))))
                                         ;(service wireguard-service-type
                                         ;         (wireguard-configuration
                                         ;          (interface "knightmares")

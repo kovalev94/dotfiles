@@ -65,7 +65,7 @@
                                    (local-file
                                     (string-append
                                      %distro-root-directory
-                                     "/system/aux-files/mirage/nftables/rules")))));; add dynamic behavior
+                                     "/guix-config/system/aux-files/mirage/nftables/rules")))));; add dynamic behavior
                       (network-manager-service-type
                        config => (network-manager-configuration
                                   (inherit config)

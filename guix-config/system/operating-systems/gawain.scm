@@ -42,7 +42,7 @@
                                   (local-file
                                    (string-append
                                     %distro-root-directory
-                                    "/system/aux-files/gawain/nftables/rules")))))))));; add dynamic behavior
+                                    "/guix-config/system/aux-files/gawain/nftables/rules")))))))));; add dynamic behavior
 
 
 gawain-system

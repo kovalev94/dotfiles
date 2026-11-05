@@ -81,19 +81,19 @@
                 (local-file
                  (string-append
                   %distro-root-directory
-                  "/system/aux-files/tristan/dhcpd/dhcpd.conf")))));; add dynamic behavior
+                  "/guix-config/system/aux-files/tristan/dhcpd/dhcpd.conf")))));; add dynamic behavior
      (service iptables-service-type
               (iptables-configuration
                (ipv4-rules
                 (local-file
                  (string-append
                   %distro-root-directory
-                  "/system/aux-files/tristan/iptables/rules.v4")))
+                  "/guix-config/system/aux-files/tristan/iptables/rules.v4")))
                (ipv6-rules
                 (local-file
                  (string-append
                   %distro-root-directory
-                  "/system/aux-files/tristan/iptables/rules.v6")))))
+                  "/guix-config/system/aux-files/tristan/iptables/rules.v6")))))
      (modify-services (operating-system-user-services %my-base-system)
                       (delete network-manager-service-type)
                       (openssh-service-type

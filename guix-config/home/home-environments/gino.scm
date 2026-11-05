@@ -22,7 +22,7 @@
                                    (local-file
                                     (string-append
                                      %distro-root-directory
-                                     "/home/aux-files/gino/.ssh/keys/tristan.pub")
+                                     "/guix-config/home/aux-files/gino/.ssh/keys/tristan.pub")
                                     "knightmares.pub")))
                                  (add-keys-to-agent "120m")))))))
 
