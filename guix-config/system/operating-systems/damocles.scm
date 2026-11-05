@@ -17,7 +17,7 @@
   #:use-module (guix-config packages)
   #:use-module (guix-config channels)
   #:use-module (guix-config keyboard)
-  #:use-module (guix-config homes schneizel))
+  #:use-module (guix-config home home-environments schneizel))
 
 
 (define-public damocles-system
