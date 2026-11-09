@@ -1,47 +1,147 @@
-#+TITLE: =/home/kovalev/.dotfiles=
-My Guix SD and Guix Home configuration and relative modules.
+#+TITLE: ~/.dotfiles
 
-* INFO
-At this moment I don't know how to manipulate sensitive data - <br>
-So \*.nmconnection files should be added, after system reconfiguring/building, manually.
-Rclone.conf, syncthing certificates and keys, should be added before home reconfiguring, manually.
+My Guix System and Guix Home configuration, custom modules and packages.
+This repository is also a Guix channel named =dotfiles=.
 
-Also, for now - doom emacs should copied or installed manually,
-after system or home reconfiguring
+* Repository layout
 
-* INSTALLATION
-To recreate/deploy system from install iso, you should do the following steps:
-1. Clone this repository
-   #+BEGIN_SRC
-git clone https://github.com/kovalev94/.dotfiles.git
+- =.guix-channel= :: channel declaration; the dependency on nonguix (with
+  signature introduction) is declared here and handled automatically.
+- =news.txt= :: channel news in =channel-news= format, shown by
+  =guix pull --news=.
+- =guix-config/= :: root of the Scheme module tree, namespace =(guix-config ...)=.
+  - =channels.scm= :: channel definitions, pinned channels, substitute
+    servers and authorized keys.
+  - =packages.scm=, =keyboard.scm=, =ssh.scm=, =substitutes.scm=,
+    =doom-modules-packages.scm= :: shared variables (package lists, keyboard
+    layout, ssh hosts, etc.).
+  - =packages/= :: custom package definitions, grouped either by purpose
+    (=certs=, =fonts=, =linux=) or by ecosystem (=emacs-xyz=, =golang-xyz=,
+    =python-xyz=).
+  - =system/operating-systems/= :: operating-system configurations.
+    Shared bases: =base.scm=, =desktop.scm=. Per-machine configs:
+    =damocles=, =gawain=, =mirage=, =tristan=. Plus =guix-installer.scm= —
+    a custom installation ISO based on nonguix =installation-os-nonfree=.
+  - =system/aux-files/= :: auxiliary files referenced from configs via
+    =local-file= (dhcpd.conf, iptables rules, etc.).
+  - =system/images/= :: image definitions.
+  - =home/home-environments/= :: home environments. Shared bases:
+    =base.scm=, =desktop.scm=. Per-user environments: =gino=, =lulu=,
+    =schneizel=, =vitaliy-kovalev=.
+  - =home/aux-files/= :: program dotfiles, split into layered directories:
+    =base=, =desktop= and one directory per user (=gino=, =lulu=,
+    =schneizel=, =vitaliy.kovalev=). See the next section.
+- =AGENTS.md= :: instructions for AI coding agents.
+- =Dream-System.org= :: personal roadmap / TODO list.
+
+* Dotfiles
+
+Program configuration (including Emacs) lives in the dotfiles under
+=guix-config/home/aux-files/=, not in the Scheme modules. The Scheme side
+only declares which dotfile layers to deploy and which packages to install.
+
+- Each layer directory mirrors the home directory structure:
+  =.config/...=, =.ssh/...=, =.local/...=, etc.
+  - =base= :: minimal shared layer (=.config/mc=, =.ssh=).
+  - =desktop= :: desktop programs — =.config/alacritty=, =.config/doom=
+    (Doom Emacs config), =.config/dunst=, =.config/exwm=,
+    =.config/herbstluftwm=, =.config/nyxt=, =.config/qutebrowser=,
+    =.config/rofi=, plus =.exwm= and =.xinitrc-herbst=.
+  - per-user directories :: personal overrides on top of =base= + =desktop=.
+- Layers are deployed with =home-dotfiles-service-type=; each home
+  environment lists its layers in the =directories= field, extending the
+  inherited list (see =home/home-environments/desktop.scm= and
+  =vitaliy-kovalev.scm=).
+
+* Using this repository as a channel
+
+Add the channel to your =channels.scm=
+(=~/.config/guix/channels.scm=, or =/etc/guix/channels.scm= on a fresh
+install system):
+
+#+BEGIN_SRC scheme
+(channel
+ (name 'dotfiles)
+ (url "https://github.com/kovalev94/dotfiles.git")
+ (branch "main"))
+#+END_SRC
+
+The nonguix dependency and its signature introduction are declared in
+=.guix-channel=, so =guix pull= handles them automatically.
+
+After every push to =main=, update the local checkout of the channel with:
+
+#+BEGIN_SRC sh
+guix pull
+#+END_SRC
+
+Without =guix pull=, system and home reconfigures keep using the old
+version of the modules. Breaking changes are announced in =news.txt= —
+check =guix pull --news=.
+
+** Testing local changes before publishing
+
+To test changes without pushing to GitHub, point the channel at a local
+clone of the repository:
+
+#+BEGIN_SRC scheme
+(channel
+ (name 'dotfiles)
+ (url "/home/user/path/to/dotfiles"))
+#+END_SRC
+
+Then run =guix pull=. Note that =guix pull= only sees the *committed*
+state of the local repository: commit your changes locally, no push is
+needed. Restore the GitHub URL when done.
+
+* Secrets and manual steps
+
+Sensitive data is NOT managed by this repository:
+
+- =*.nmconnection= files should be added manually, after system
+  reconfiguring/building.
+- =rclone.conf=, syncthing certificates and keys should be added manually,
+  before home reconfiguring.
+- Doom Emacs should be copied or installed manually after system or home
+  reconfiguring; its configuration is already in the dotfiles
+  (=home/aux-files/desktop/.config/doom=). Migration to vanilla Emacs is
+  in progress, see =Dream-System.org=.
+
+* Installation
+
+To recreate/deploy a system from the install ISO (the official Guix ISO or
+the custom one from =guix-installer.scm=):
+
+1. Boot the install ISO and set up networking.
+2. Manually create disk partitions, LVM volumes, etc., create filesystems
+   and mount them under =/mnt=. The base system expects LVM volumes
+   =Guix-Root=, =Guix-Home=, =Guix-Swap= in volume group =Guix=, and an EFI
+   partition labelled =EFI=.
+3. Add this channel to =/etc/guix/channels.scm= on the install system
+   (see "Using this repository as a channel" above).
+4. Update the channels:
+   #+BEGIN_SRC sh
+   guix pull
    #+END_SRC
-2. Set enviroment variable - DOTFILES_DIR with path to this repository
-   #+BEGIN_SRC
-export DOTFILES_DIR=/path/to/this/repo
+5. Start cow-store on /mnt
+   #+BEGIN_SRC sh
+   herd start cow-store /mnt
    #+END_SRC
-3. Manually create disk partitions, LVM volumes, etc., and create filesystems.
-4. Start cow-store on mnt
-   #+BEGIN_SRC
-herd start cow-store /mnt
+6. Initialize the desired system, referencing the operating-system record
+   exported by the channel module:
+   #+BEGIN_SRC sh
+   guix system init \
+       -e '(@ (guix-config system operating-systems tristan) tristan-system)' \
+       /mnt
    #+END_SRC
-5. Initialize the desired system with /path/to/this/repo directory prepended to %load-path
-   #+BEGIN_SRC
-guix system -L /path/to/this/repo/ init \
-    /path/to/this/repo/guix-config/systems/desired-system.scm /mnt
+   (Replace =tristan= / =tristan-system= with the desired machine module
+   and its exported variable.)
+7. After the install, reboot into the new system.
+8. Log in as root and set passwords for root and, if needed, other users.
+9. If the system definition doesn't include =guix-home-service-type=, set
+   up the home environment:
+   #+BEGIN_SRC sh
+   guix home reconfigure \
+       -e '(@ (guix-config home home-environments gino) gino-home)'
    #+END_SRC
-6. After install reboot into new system
-7. Login as root and setup password for root and if needed for other users
-8. If system definition doesn't have guix-home-service Setup home enviroment:
-   1. Clone this repository
-      #+BEGIN_SRC
-git clone https://github.com/kovalev94/.dotfiles.git
-      #+END_SRC
-   2. Set enviroment variable - DOTFILES_DIR with path to this repository
-      #+BEGIN_SRC
-export DOTFILES_DIR=/path/to/this/repo
-      #+END_SRC
-   3. Setup desired home environment with /path/to/this/repo directory prepended to %load-path
-      #+BEGIN_SRC sh
-guix home -L /path/to/this/repo/guix-config reconfigure \
-    /path/to/this/repo/guix-config/kovalev/homes/desired-home.scm
-      #+END_SRC
+10. Perform the manual steps from "Secrets and manual steps" above.
