@@ -1,63 +1,67 @@
 #+TITLE: ~/.dotfiles
 
-My Guix System and Guix Home configuration, custom modules and packages.
-This repository is also a Guix channel named =dotfiles=.
+Мои конфигурации Guix System и Guix Home, а также собственные модули и пакеты.
+Этот репозиторий также является Guix-каналом с именем =dotfiles=.
 
-* Repository layout
+* Структура репозитория
 
-- =.guix-channel= :: channel declaration; the dependency on nonguix (with
-  signature introduction) is declared here and handled automatically.
-- =news.txt= :: channel news in =channel-news= format, shown by
-  =guix pull --news=.
-- =guix-config/= :: root of the Scheme module tree, namespace =(guix-config ...)=.
-  - =channels.scm= :: channel definitions, pinned channels, substitute
-    servers and authorized keys.
+- =.guix-channel= :: объявление канала; здесь также объявлена зависимость
+  от nonguix (включая данные для проверки подписи), которую Guix обрабатывает
+  автоматически.
+- =news.txt= :: новости канала в формате =channel-news=; их можно посмотреть
+  командой =guix pull --news=.
+- =guix-config/= :: корень дерева Scheme-модулей с пространством имён
+  =(guix-config ...)=.
+  - =channels.scm= :: определения каналов, закреплённые версии каналов,
+    серверы подстановок и авторизованные ключи.
   - =packages.scm=, =keyboard.scm=, =ssh.scm=, =substitutes.scm=,
-    =doom-modules-packages.scm= :: shared variables (package lists, keyboard
-    layout, ssh hosts, etc.).
-  - =packages/= :: custom package definitions, grouped either by purpose
-    (=certs=, =fonts=, =linux=) or by ecosystem (=emacs-xyz=, =golang-xyz=,
-    =python-xyz=).
-  - =system/operating-systems/= :: operating-system configurations.
-    Shared bases: =base.scm=, =desktop.scm=. Per-machine configs:
-    =damocles=, =gawain=, =mirage=, =tristan=. Plus =guix-installer.scm= —
-    a custom installation ISO based on nonguix =installation-os-nonfree=.
-  - =system/aux-files/= :: auxiliary files referenced from configs via
-    =local-file= (dhcpd.conf, iptables rules, etc.).
-  - =system/images/= :: image definitions.
-  - =home/home-environments/= :: home environments. Shared bases:
-    =base.scm=, =desktop.scm=. Per-user environments: =gino=, =lulu=,
-    =schneizel=, =vitaliy-kovalev=.
-  - =home/aux-files/= :: program dotfiles, split into layered directories:
-    =base=, =desktop= and one directory per user (=gino=, =lulu=,
-    =schneizel=, =vitaliy.kovalev=). See the next section.
-- =AGENTS.md= :: instructions for AI coding agents.
-- =Dream-System.org= :: personal roadmap / TODO list.
+    =doom-modules-packages.scm= :: общие переменные (списки пакетов,
+    раскладка клавиатуры, SSH-хосты и т. д.).
+  - =packages/= :: собственные определения пакетов, сгруппированные либо
+    по назначению (=certs=, =fonts=, =linux=), либо по экосистеме
+    (=emacs-xyz=, =golang-xyz=, =python-xyz=).
+  - =system/operating-systems/= :: конфигурации операционных систем.
+    Общие базовые конфигурации: =base.scm=, =desktop.scm=. Конфигурации
+    отдельных машин: =damocles=, =gawain=, =mirage=, =tristan=. Кроме того,
+    =guix-installer.scm= — пользовательский установочный ISO-образ на базе
+    =installation-os-nonfree= из nonguix.
+  - =system/aux-files/= :: вспомогательные файлы, подключаемые к конфигурациям
+    через =local-file= (dhcpd.conf, правила iptables и т. д.).
+  - =system/images/= :: определения образов.
+  - =home/home-environments/= :: home-окружения. Общие базовые конфигурации:
+    =base.scm=, =desktop.scm=. Окружения отдельных пользователей: =gino=,
+    =lulu=, =schneizel=, =vitaliy-kovalev=.
+  - =home/aux-files/= :: дотфайлы программ, разбитые на каталоги-слои:
+    =base=, =desktop= и по одному каталогу на пользователя (=gino=, =lulu=,
+    =schneizel=, =vitaliy.kovalev=). Подробнее — в следующем разделе.
+- =AGENTS.md= :: инструкции для AI-агентов, работающих с кодом.
+- =Dream-System.org= :: личная дорожная карта и список задач.
 
-* Dotfiles
+* Дотфайлы
 
-Program configuration (including Emacs) lives in the dotfiles under
-=guix-config/home/aux-files/=, not in the Scheme modules. The Scheme side
-only declares which dotfile layers to deploy and which packages to install.
+Настройки программ (включая Emacs) находятся в дотфайлах в каталоге
+=guix-config/home/aux-files/=, а не в Scheme-модулях. Scheme-код только
+указывает, какие слои дотфайлов разворачивать и какие пакеты устанавливать.
 
-- Each layer directory mirrors the home directory structure:
-  =.config/...=, =.ssh/...=, =.local/...=, etc.
-  - =base= :: minimal shared layer (=.config/mc=, =.ssh=).
-  - =desktop= :: desktop programs — =.config/alacritty=, =.config/doom=
-    (Doom Emacs config), =.config/dunst=, =.config/exwm=,
+- Каждый каталог слоя повторяет структуру домашнего каталога:
+  =.config/...=, =.ssh/...=, =.local/...= и т. д.
+  - =base= :: минимальный общий слой (=.config/mc=, =.ssh=).
+  - =desktop= :: десктопные программы — =.config/alacritty=, =.config/doom=
+    (конфигурация Doom Emacs), =.config/dunst=, =.config/exwm=,
     =.config/herbstluftwm=, =.config/nyxt=, =.config/qutebrowser=,
-    =.config/rofi=, plus =.exwm= and =.xinitrc-herbst=.
-  - per-user directories :: personal overrides on top of =base= + =desktop=.
-- Layers are deployed with =home-dotfiles-service-type=; each home
-  environment lists its layers in the =directories= field, extending the
-  inherited list (see =home/home-environments/desktop.scm= and
+    =.config/rofi=, а также =.exwm= и =.xinitrc-herbst=.
+  - каталоги пользователей :: персональные переопределения поверх =base=
+    и =desktop=.
+- Слои разворачиваются сервисом =home-dotfiles-service-type=; каждое
+  home-окружение перечисляет свои слои в поле =directories=, дополняя
+  унаследованный список (см. =home/home-environments/desktop.scm= и
   =vitaliy-kovalev.scm=).
 
-* Using this repository as a channel
+* Использование репозитория как канала
 
-Add the channel to your =channels.scm=
-(=~/.config/guix/channels.scm=, or =/etc/guix/channels.scm= on a fresh
-install system):
+Добавьте канал в =channels.scm=
+(=~/.config/guix/channels.scm= или =/etc/guix/channels.scm= на установочной
+системе):
 
 #+BEGIN_SRC scheme
 (channel
@@ -66,23 +70,23 @@ install system):
  (branch "main"))
 #+END_SRC
 
-The nonguix dependency and its signature introduction are declared in
-=.guix-channel=, so =guix pull= handles them automatically.
+Зависимость от nonguix и данные для проверки её подписи объявлены в
+=.guix-channel=, поэтому =guix pull= обрабатывает их автоматически.
 
-After every push to =main=, update the local checkout of the channel with:
+После каждого пуша в =main= обновляйте локальную копию канала:
 
 #+BEGIN_SRC sh
 guix pull
 #+END_SRC
 
-Without =guix pull=, system and home reconfigures keep using the old
-version of the modules. Breaking changes are announced in =news.txt= —
-check =guix pull --news=.
+Без =guix pull= система и home-окружения будут по-прежнему собираться с
+использованием старой версии модулей. О ломающих изменениях объявляется в
+=news.txt= — см. =guix pull --news=.
 
-** Testing local changes before publishing
+** Проверка локальных изменений перед публикацией
 
-To test changes without pushing to GitHub, point the channel at a local
-clone of the repository:
+Чтобы проверить изменения без пуша на GitHub, укажите для канала путь к
+локальному клону репозитория:
 
 #+BEGIN_SRC scheme
 (channel
@@ -90,58 +94,59 @@ clone of the repository:
  (url "/home/user/path/to/dotfiles"))
 #+END_SRC
 
-Then run =guix pull=. Note that =guix pull= only sees the *committed*
-state of the local repository: commit your changes locally, no push is
-needed. Restore the GitHub URL when done.
+Затем выполните =guix pull=. Обратите внимание: =guix pull= видит только
+*закоммиченное* состояние локального репозитория. Создайте локальный коммит,
+пушить изменения необязательно. После проверки верните URL GitHub.
 
-* Secrets and manual steps
+* Секреты и ручные действия
 
-Sensitive data is NOT managed by this repository:
+Репозиторий НЕ управляет конфиденциальными данными:
 
-- =*.nmconnection= files should be added manually, after system
-  reconfiguring/building.
-- =rclone.conf=, syncthing certificates and keys should be added manually,
-  before home reconfiguring.
-- Doom Emacs should be copied or installed manually after system or home
-  reconfiguring; its configuration is already in the dotfiles
-  (=home/aux-files/desktop/.config/doom=). Migration to vanilla Emacs is
-  in progress, see =Dream-System.org=.
+- файлы =*.nmconnection= добавляйте вручную после переконфигурирования или
+  сборки системы;
+- =rclone.conf=, сертификаты и ключи Syncthing добавляйте вручную перед
+  переконфигурированием home-окружения;
+- Doom Emacs копируйте или устанавливайте вручную после переконфигурирования
+  системы или home-окружения; его конфигурация уже находится в дотфайлах
+  (=home/aux-files/desktop/.config/doom=). Выполняется переход на ванильный
+  Emacs — см. =Dream-System.org=.
 
-* Installation
+* Установка
 
-To recreate/deploy a system from the install ISO (the official Guix ISO or
-the custom one from =guix-installer.scm=):
+Чтобы заново развернуть систему с установочного ISO-образа (официального
+Guix ISO или собственного из =guix-installer.scm=):
 
-1. Boot the install ISO and set up networking.
-2. Manually create disk partitions, LVM volumes, etc., create filesystems
-   and mount them under =/mnt=. The base system expects LVM volumes
-   =Guix-Root=, =Guix-Home=, =Guix-Swap= in volume group =Guix=, and an EFI
-   partition labelled =EFI=.
-3. Add this channel to =/etc/guix/channels.scm= on the install system
-   (see "Using this repository as a channel" above).
-4. Update the channels:
+1. Загрузитесь с установочного ISO-образа и настройте сеть.
+2. Вручную создайте разделы диска, тома LVM и т. д., создайте файловые
+   системы и смонтируйте их в =/mnt=. Базовая система предполагает наличие
+   LVM-томов =Guix-Root=, =Guix-Home=, =Guix-Swap= в группе томов =Guix=,
+   а также EFI-раздела с меткой =EFI=.
+3. Добавьте этот канал в =/etc/guix/channels.scm= на установочной системе
+   (см. раздел «Использование репозитория как канала» выше).
+4. Обновите каналы:
    #+BEGIN_SRC sh
    guix pull
    #+END_SRC
-5. Start cow-store on /mnt
+5. Запустите cow-store для /mnt:
    #+BEGIN_SRC sh
    herd start cow-store /mnt
    #+END_SRC
-6. Initialize the desired system, referencing the operating-system record
-   exported by the channel module:
+6. Инициализируйте нужную систему, указав запись operating-system,
+   экспортируемую модулем канала:
    #+BEGIN_SRC sh
    guix system init \
        -e '(@ (guix-config system operating-systems tristan) tristan-system)' \
        /mnt
    #+END_SRC
-   (Replace =tristan= / =tristan-system= with the desired machine module
-   and its exported variable.)
-7. After the install, reboot into the new system.
-8. Log in as root and set passwords for root and, if needed, other users.
-9. If the system definition doesn't include =guix-home-service-type=, set
-   up the home environment:
+   (Замените =tristan= / =tristan-system= на модуль нужной машины и
+   экспортируемую им переменную.)
+7. После установки перезагрузитесь в новую систему.
+8. Войдите как root и задайте пароли для root и, при необходимости, других
+   пользователей.
+9. Если определение системы не включает =guix-home-service-type=, настройте
+   home-окружение:
    #+BEGIN_SRC sh
    guix home reconfigure \
        -e '(@ (guix-config home home-environments gino) gino-home)'
    #+END_SRC
-10. Perform the manual steps from "Secrets and manual steps" above.
+10. Выполните ручные действия из раздела «Секреты и ручные действия» выше.
