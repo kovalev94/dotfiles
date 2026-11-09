@@ -33,6 +33,11 @@
       (service home-startx-command-service-type
                (for-home (xorg-configuration
                           (keyboard-layout %my-kb-layout))))
+      ;; Enable the built-in Exa-backed web search in opencode
+      ;; (free, no API key required).
+      (simple-service 'opencode-env
+                      home-environment-variables-service-type
+                      '(("OPENCODE_ENABLE_EXA" . "1")))
       (service home-msmtp-service-type
                (home-msmtp-configuration
                 (defaults

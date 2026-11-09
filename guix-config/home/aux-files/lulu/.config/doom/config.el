@@ -177,4 +177,8 @@
 ;; Start a session with M-x agent-shell-opencode-start-agent.
 (use-package agent-shell
   :ensure nil
-  :commands (agent-shell-opencode-start-agent))
+  :commands (agent-shell agent-shell-opencode-start-agent)
+  :config
+  ;; Make plain M-x agent-shell start an OpenCode session.
+  (setq agent-shell-preferred-agent-config
+        (agent-shell-opencode-make-agent-config)))
