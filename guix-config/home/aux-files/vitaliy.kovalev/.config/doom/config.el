@@ -127,3 +127,15 @@
   (setq display-buffer-alist
         (cons '("\\*docker-" display-buffer-same-window)
               display-buffer-alist)))
+
+;; Opencode AI coding agent integration via agent-shell (ACP).
+;; The opencode binary is installed from (guix-config packages ai);
+;; authentication uses credentials from `opencode auth login'.
+;; Start a session with M-x agent-shell-opencode-start-agent.
+(use-package agent-shell
+  :ensure nil
+  :commands (agent-shell agent-shell-opencode-start-agent)
+  :config
+  ;; Make plain M-x agent-shell start an OpenCode session.
+  (setq agent-shell-preferred-agent-config
+        (agent-shell-opencode-make-agent-config)))

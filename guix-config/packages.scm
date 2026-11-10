@@ -11,6 +11,7 @@
   #:use-module (guix-config packages fonts)
   #:use-module (guix-config packages python-xyz)
   #:use-module (guix-config packages golang-xyz)
+  #:use-module (guix-config packages ai)
   #:export (%my-base-packages
             %my-desktop-packages
             %my-emacs-packages))
@@ -108,4 +109,6 @@
    kubectl
    ;; Golang IDE
    go gopls gore go-github-com-cweill-gotests
-   go-github-com-fatih-gomodifytags-next))
+   go-github-com-fatih-gomodifytags-next
+   ;; AI agents
+   opencode emacs-agent-shell))
