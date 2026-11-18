@@ -28,7 +28,7 @@
                      terminals virtualization spice emacs emacs-xyz
                      rust-apps markup haskell-apps shellutils
                      mail python-xyz check python-check
-                     golang golang-apps)
+                     golang golang-apps build-tools)
 
 
 (define-public %my-base-packages
@@ -111,4 +111,4 @@
    go gopls gore go-github-com-cweill-gotests
    go-github-com-fatih-gomodifytags-next
    ;; AI agents
-   opencode emacs-agent-shell))
+   opencode emacs-agent-shell uv))
