@@ -27,7 +27,7 @@
                      imagemagick freedesktop xdisorg ssh
                      terminals virtualization spice emacs emacs-xyz
                      rust-apps markup haskell-apps shellutils
-                     mail python-xyz check python-check
+                     mail python-xyz check python-check node
                      golang golang-apps build-tools)
 
 
@@ -43,7 +43,7 @@
    ;; Archive
    unzip zip 7zip
    ;; General
-   python htop screen minicom p11-kit xauth
+   python htop screen minicom p11-kit xauth node
    ;;lrzsz
    mc vim git git-lfs jq ffmpeg password-store
    python gnupg bluez
