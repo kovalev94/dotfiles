@@ -12,7 +12,6 @@
   #:use-module (gnu home services dotfiles)
   #:use-module (guix-config packages)
   #:use-module (guix-config keyboard)
-  #:use-module (guix-config doom-modules-packages)
   #:use-module (guix-config home home-environments base)
   #:export (%my-desktop-home))
 
