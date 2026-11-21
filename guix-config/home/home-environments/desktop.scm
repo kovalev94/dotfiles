@@ -23,9 +23,6 @@
    (packages
     (append
      (list cups)
-     doom-module-corfu-packages
-     doom-module-magit-packages
-     doom-module-dired-packages
      %my-emacs-packages))
    (services
     (append
